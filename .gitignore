@@ -1,0 +1,14 @@
+# 本仓库只收录 Web3 行业安全资损 101：源稿、学习站、离线包和工具；其他文件不进仓库
+/*
+!/.gitignore
+!/README.md
+!/index.html
+!/data/
+!/labs/
+!/learning-site/
+!/web3-loss-101-site/
+!/tools/
+
+# 系统与编辑器
+.DS_Store
+.claude/
