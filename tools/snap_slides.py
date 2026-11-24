@@ -3,7 +3,7 @@
 
   python3 tools/snap_slides.py <chapter id> <out dir> [first-last]
 
-Builds slides/<id>/preview.html, renders each page with headless Chrome at 1920x1080 into <out dir>/p<NN>.png,
+Builds src/slides/<id>/preview.html, renders each page with headless Chrome at 1920x1080 into <out dir>/p<NN>.png,
 and writes <out dir>/sheet-<n>.png (3x3 pages each, page number + caption under every tile). Needs network (GSAP from cdnjs).
 """
 import os, subprocess, sys, tempfile, json, re
@@ -15,8 +15,8 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ch, out = sys.argv[1], os.path.abspath(sys.argv[2])
 os.makedirs(out, exist_ok=True)
 subprocess.run([sys.executable, os.path.join(ROOT, "tools", "make_slides.py"), "--only", ch], check=True)
-prev = os.path.join(ROOT, "slides", ch, "preview.html")
-nar = json.load(open(os.path.join(ROOT, "slides", ch, "narration.json"), encoding="utf-8"))
+prev = os.path.join(ROOT, "src", "slides", ch, "preview.html")
+nar = json.load(open(os.path.join(ROOT, "src", "slides", ch, "narration.json"), encoding="utf-8"))
 caps = [l for s in nar["scenes"] for l in s["lines"]]
 pages = list(range(1, len(caps) + 1))
 if len(sys.argv) > 3:

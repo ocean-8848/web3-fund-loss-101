@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Build slides.html (the Slides player, data inlined) and data/slides.js (which chapters have slides).
+"""Build dist/site/slides.html (the Slides player, data inlined) and dist/site/data/slides.js (which chapters have slides).
 
-Sources: slides/<chapter id>/narration.json + slides/<chapter id>/compositions/<scene id>.html,
-player shell slides/player.tpl.html. There is no voice-over: each narration line gets a reading time
+Sources: src/slides/<chapter id>/narration.json + src/slides/<chapter id>/compositions/<scene id>.html,
+player shell src/slides/player.tpl.html; chapter list from src/handbook/data/. There is no voice-over: each narration line gets a reading time
 from its length, and those times drive the scene timelines the same way cues.json does in course-video.
 """
 import argparse, json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SLIDES = os.path.join(ROOT, "slides")
+SLIDES = os.path.join(ROOT, "src", "slides")
+HANDBOOK = os.path.join(ROOT, "src", "handbook")
+SITE = os.path.join(ROOT, "dist", "site")
 GROUPS = {"o": "总论", "g": "手法归纳", "d": "防御与附录"}
 LEAD, GAP, TAIL = 0.3, 0.0, 0.9  # seconds before the first line / between lines / after the last line
 
@@ -23,7 +25,7 @@ def chapters():
     """O/G/D chapters in handbook order, read from the source data files."""
     out = []
     for f in ("core.js", "groups.js"):
-        src = open(os.path.join(ROOT, "data", f), encoding="utf-8").read()
+        src = open(os.path.join(HANDBOOK, "data", f), encoding="utf-8").read()
         for m in re.finditer(r'\{id:"([ogd]\d\d)",code:', src):
             head = src[m.start(): m.start() + 400]
             code = re.search(r'code:"([^"]+)"', head).group(1)
@@ -76,14 +78,15 @@ def main():
              f"{sum(s['d'] for c in ready for s in c['scenes']):.0f}s")
     if a.only:
         out = os.path.join(SLIDES, a.only, "preview.html")
-        open(out, "w", encoding="utf-8").write(html.replace('href="index.html', 'href="../../index.html'))
+        open(out, "w", encoding="utf-8").write(html.replace('href="index.html', 'href="../../handbook/index.html'))
         print(f"{out}: {stats}")
         return
-    open(os.path.join(ROOT, "slides.html"), "w", encoding="utf-8").write(html)
+    os.makedirs(os.path.join(SITE, "data"), exist_ok=True)
+    open(os.path.join(SITE, "slides.html"), "w", encoding="utf-8").write(html)
     idx = {c["id"]: {"pages": sum(len(s["lines"]) for s in c["scenes"])} for c in ready}
-    open(os.path.join(ROOT, "data", "slides.js"), "w", encoding="utf-8").write(
+    open(os.path.join(SITE, "data", "slides.js"), "w", encoding="utf-8").write(
         "/* 生成文件：tools/make_slides.py。有 Slides 的章节及页数 */\nH.slides=" + json.dumps(idx) + ";\n")
-    print(f"slides.html: {stats}")
+    print(f"dist/site/slides.html: {stats}")
 
 
 if __name__ == "__main__":

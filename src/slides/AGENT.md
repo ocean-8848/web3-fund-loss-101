@@ -1,6 +1,6 @@
 # Slides 制作代理简报
 
-你负责把手册的一章或几章做成 3b1b 风格的动画 slides。只写你分到的章节目录 `slides/<章 id>/`，不改其他文件（播放器、tools/、index.html、data/、别的章节目录都不要动）。
+你负责把手册的一章或几章做成 3b1b 风格的动画 slides。只写你分到的章节目录 `src/slides/<章 id>/`，不改其他文件（播放器、tools/、src/handbook/、dist/、别的章节目录都不要动）。
 
 ## 目标
 
@@ -9,19 +9,19 @@
 ## 先读
 
 1. `README.md` 的「Slides」一节。
-2. 参考实现 `slides/o00/`：`narration.json`，以及 `compositions/mtgox.html`、`compositions/dao.html`（写法、坐标、助手函数照它们来）。
+2. 参考实现 `src/slides/o00/`：`narration.json`，以及 `compositions/mtgox.html`、`compositions/dao.html`（写法、坐标、助手函数照它们来）。
 3. 你的章节源稿：
-   - O00–O03：`data/core.js`；
-   - G01–G10 是数据驱动的：`data/groups.js` 里 `const G=[...]` 中该章的对象（intro、mermaid、readpts、why、examples、defense 等字段），渲染逻辑见同文件的 `renderG`；该章的事件行来自 `data/events.js`（`rowsOf(g)` 怎么筛选就怎么用）；
-   - D01–D04：`data/groups.js` 中对应的 `H.docs.push({id:"d0x"...})` 及其用到的数据。
+   - O00–O03：`src/handbook/data/core.js`；
+   - G01–G10 是数据驱动的：`src/handbook/data/groups.js` 里 `const G=[...]` 中该章的对象（intro、mermaid、readpts、why、examples、defense 等字段），渲染逻辑见同文件的 `renderG`；该章的事件行来自 `src/handbook/data/events.js`（`rowsOf(g)` 怎么筛选就怎么用）；
+   - D01–D04：`src/handbook/data/groups.js` 中对应的 `H.docs.push({id:"d0x"...})` 及其用到的数据。
    - 要统计数字（件数、金额合计、年份分布）就用 node 读数据文件现算，不要估。
 
 ## 产出（每章）
 
 ```
-slides/<id>/STORYBOARD.md      知识点清单（从源稿逐条列出）→ 每个场景覆盖哪些点；没上 slides 的点写明理由
-slides/<id>/narration.json     {"id","title","scenes":[{"id","title","lines":[...]}]}
-slides/<id>/compositions/<场景 id>.html
+src/slides/<id>/STORYBOARD.md      知识点清单（从源稿逐条列出）→ 每个场景覆盖哪些点；没上 slides 的点写明理由
+src/slides/<id>/narration.json     {"id","title","scenes":[{"id","title","lines":[...]}]}
+src/slides/<id>/compositions/<场景 id>.html
 ```
 
 - 每章 4–7 个场景，合计 18–40 页（句）。D03 事件库、D04 术语表做 3–5 页的导览（分布、怎么查、高频术语），不要逐条搬。
@@ -47,7 +47,7 @@ slides/<id>/compositions/<场景 id>.html
 
 ## 技术约定
 
-- 从 `slides/o00/compositions/mtgox.html` 复制骨架：`<template>` 包住 style + `#root` div + script；`/*CUES*/{}/*END*/` 原样保留；`window.__timelines["<场景 id>"] = tl;` 的 key 必须等于场景 id 和文件名。
+- 从 `src/slides/o00/compositions/mtgox.html` 复制骨架：`<template>` 包住 style + `#root` div + script；`/*CUES*/{}/*END*/` 原样保留；`window.__timelines["<场景 id>"] = tl;` 的 key 必须等于场景 id 和文件名。
 - 不写 `@font-face`，字体由播放器给（中文默认字体；`.mono` 用于英文代码、地址，`.mono` 里不放中文）。
 - 所有 id 加本场景两三个字母的前缀，整章唯一。不用 `[id^=...]` 选择器。
 - 不用 CSS `transform`（SVG 的 `transform` 属性可以）；位移用 gsap 的 `x / y` 作用在 `<g>` 上；缩放用 `svgOrigin: "x y"`；同一元素不要既位移又缩放（外层 g 位移，内层 g 缩放）。
@@ -62,11 +62,11 @@ python3 tools/snap_slides.py <id> <你的 scratch 目录>/<id>          # 全部
 python3 tools/snap_slides.py <id> <你的 scratch 目录>/<id> 5-9      # 只重拍改过的页
 ```
 
-它会生成 `slides/<id>/preview.html`（已 gitignore），用无头 Chrome 拍每页句末画面 `pNN.png`，拼成 `sheet-N.png`（每张 9 页，下方是讲稿）。用 Read 看 sheet，必要时看单页 png：
+它会生成 `src/slides/<id>/preview.html`（已 gitignore），用无头 Chrome 拍每页句末画面 `pNN.png`，拼成 `sheet-N.png`（每张 9 页，下方是讲稿）。用 Read 看 sheet，必要时看单页 png：
 
 - 逐页查遮挡、出框、文字压线、该消失没消失、画面与讲稿不符、空白页（空白页多半是脚本报错：检查 id、选择器、timeline key）。
 - 修完重拍改过的页再看一次。全部 sheet 至少完整看过一遍。
-- 不要运行不带 `--only` 的 `tools/make_slides.py`，不要跑 `learning-site/loss/build.sh` / `tools/pack-offline.sh`，不要 git commit，不要 kill 任何进程。
+- 不要运行不带 `--only` 的 `tools/make_slides.py`，不要跑 `tools/build.sh`，不要 git commit，不要 kill 任何进程。
 
 ## 交付
 
