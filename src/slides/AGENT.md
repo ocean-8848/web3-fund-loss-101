@@ -13,7 +13,7 @@
 3. 你的章节源稿：
    - O00–O03：`src/handbook/data/core.js`；
    - G01–G10 是数据驱动的：`src/handbook/data/groups.js` 里 `const G=[...]` 中该章的对象（intro、mermaid、readpts、why、examples、defense 等字段），渲染逻辑见同文件的 `renderG`；该章的事件行来自 `src/handbook/data/events.js`（`rowsOf(g)` 怎么筛选就怎么用）；
-   - D01–D04：`src/handbook/data/groups.js` 中对应的 `H.docs.push({id:"d0x"...})` 及其用到的数据。
+   - D01–D05：`src/handbook/data/defense.js`；A01、A02：`src/handbook/data/groups.js` 中对应的 `H.docs.push({id:"a0x"...})` 及其用到的数据。
    - 要统计数字（件数、金额合计、年份分布）就用 node 读数据文件现算，不要估。
 
 ## 产出（每章）
@@ -24,7 +24,7 @@ src/slides/<id>/narration.json     {"id","title","scenes":[{"id","title","lines"
 src/slides/<id>/compositions/<场景 id>.html
 ```
 
-- 每章 4–7 个场景，合计 18–40 页（句）。D03 事件库、D04 术语表做 3–5 页的导览（分布、怎么查、高频术语），不要逐条搬。
+- 每章 4–7 个场景，合计 18–40 页（句）。A01 事件库、A02 术语表做 3–5 页的导览（分布、怎么查、高频术语），不要逐条搬。
 - 每句 ≤ 40 字，一句一个点；口语、短句。讲稿不照念屏幕文字；屏幕文字短。
 - 场景 `title` 是给目录用的短标题（≤ 16 字）。最后一个场景通常是本章要点回收或防御落点。
 - 时长由脚本按字数算：`read_time = clamp(1.6 + 0.17 × 字数, 4, 10)` 秒；`C.L[i] = [起, 止]` 由构建时注入。

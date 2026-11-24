@@ -330,7 +330,7 @@ a.lab-link::after{content:" ▸";color:var(--danger);font-size:.85em}
   <a class="brand" href="#home"><b>Web3 行业安全<em>资损</em> 101</b><span class="tick">CEX · DeFi · BRIDGE · WALLET · 2016–2026</span></a>
   <span class="spacer"></span>
   <a class="icon-btn" href="slides.html">▶ Slides</a>
-  <a class="icon-btn opt" href="#d03">事件库</a>
+  <a class="icon-btn opt" href="#a01">事件库</a>
   <a class="icon-btn" href="#labs">实验室</a>
 </header>
 <div class="shell">
@@ -357,6 +357,7 @@ a.lab-link::after{content:" ▸";color:var(--danger);font-size:.85em}
 <script src="data/cases-d.js"></script>
 <script src="data/cases-e.js"></script>
 <script src="data/groups.js"></script>
+<script src="data/defense.js"></script>
 <script src="data/events.js"></script>
 <script src="data/evsrc.js"></script>
 <script src="data/labs.js"></script>
@@ -391,7 +392,8 @@ const GROUPS=[
  {k:"p0",t:"第 0 部分 · 总论"},
  {k:"p1",t:"第 1 部分 · 独立案件"},
  {k:"p2",t:"第 2 部分 · 手法归纳"},
- {k:"p3",t:"第 3 部分 · 防御与附录"},
+ {k:"p3",t:"第 3 部分 · 防御与应急响应"},
+ {k:"app",t:"附录"},
  {k:"lab",t:"实验室"}
 ];
 // cases -> docs
@@ -399,7 +401,7 @@ H.cases.sort((a,b)=>a.date.localeCompare(b.date));
 H.cases.forEach((c,i)=>{c.code="C"+String(i+1).padStart(2,"0");c.layers=layersOf(c);
   H.docs.push({id:c.id,code:c.code,group:"p1",title:c.name,amt:money(c.loss),render:()=>renderCase(c),after:root=>afterCase(c,root)});});
 (H.soon||[]).forEach(s=>H.docs.push({id:"soon-"+s[0],code:"··",group:"p1",title:s[0],amt:s[1],soon:true}));
-const ORDER=["start","p0","p1","p2","p3","lab"];
+const ORDER=["start","p0","p1","p2","p3","app","lab"];
 H.docs.sort((a,b)=>ORDER.indexOf(a.group)-ORDER.indexOf(b.group)||(a.ord||0)-(b.ord||0));
 const byId={};H.docs.forEach(d=>byId[d.id]=d);
 H.byId=byId;
@@ -547,7 +549,7 @@ function navTo(id){
   const v=$("#view");v.className="doc"+(d.wide?" wide":"");
   v.innerHTML=slidesCta(d)+(d.render?d.render():d.html)+pager(d);
   if(d.after)cleanup=d.after(v)||null;
-  renderMermaid(v);bindTables(v);if(d.id!=="d04")annotate(v);
+  renderMermaid(v);bindTables(v);if(d.id!=="a02")annotate(v);
   $$(".navlink").forEach(a=>a.toggleAttribute("aria-current",a.dataset.id===d.id));
   if(document.querySelector(`.navlink[data-id="${d.id}"]`))document.querySelector(`.navlink[data-id="${d.id}"]`).setAttribute("aria-current","page");
   document.body.classList.remove("menu-open");
@@ -590,7 +592,7 @@ let tipFor=null,tipPinned=false,tipTimer=null;
 function showTip(bt,pin){const g=H.GL[+bt.dataset.g];if(!g)return;clearTimeout(tipTimer);
   if(tipFor&&tipFor!==bt)tipFor.setAttribute("aria-expanded","false");
   tipFor=bt;tipPinned=!!pin;bt.setAttribute("aria-expanded","true");
-  tip.innerHTML=`<b>${esc(g[0])}</b><p>${esc(g[1])}</p><a href="#d04">术语表 ›</a>`;tip.hidden=false;
+  tip.innerHTML=`<b>${esc(g[0])}</b><p>${esc(g[1])}</p><a href="#a02">术语表 ›</a>`;tip.hidden=false;
   const r=bt.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;
   let x=Math.min(Math.max(12,r.left+r.width/2-tw/2),innerWidth-tw-12),y=r.bottom+8;if(y+th>innerHeight-8)y=Math.max(8,r.top-th-8);
   tip.style.left=x+"px";tip.style.top=y+"px";}

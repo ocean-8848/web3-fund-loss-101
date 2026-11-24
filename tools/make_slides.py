@@ -11,7 +11,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SLIDES = os.path.join(ROOT, "src", "slides")
 HANDBOOK = os.path.join(ROOT, "src", "handbook")
 SITE = os.path.join(ROOT, "dist", "site")
-GROUPS = {"o": "总论", "g": "手法归纳", "d": "防御与附录"}
+GROUPS = {"o": "总论", "g": "手法归纳", "d": "防御与应急响应", "a": "附录"}
 LEAD, GAP, TAIL = 0.3, 0.0, 0.9  # seconds before the first line / between lines / after the last line
 
 
@@ -24,14 +24,15 @@ def read_time(text):
 def chapters():
     """O/G/D chapters in handbook order, read from the source data files."""
     out = []
-    for f in ("core.js", "groups.js"):
+    for f in ("core.js", "groups.js", "defense.js"):
         src = open(os.path.join(HANDBOOK, "data", f), encoding="utf-8").read()
-        for m in re.finditer(r'\{id:"([ogd]\d\d)",code:', src):
+        for m in re.finditer(r'\{id:"([ogda]\d\d)",code:', src):
             head = src[m.start(): m.start() + 400]
             code = re.search(r'code:"([^"]+)"', head).group(1)
             title = re.search(r'title:"([^"]+)"', head).group(1)
             out.append({"id": m.group(1), "code": code, "title": title, "group": GROUPS[m.group(1)[0]]})
-    return out
+    order = "ogda"  # 总论 → 手法 → 防御与应急响应 → 附录
+    return sorted(out, key=lambda c: order.index(c["id"][0]))
 
 
 def scene(ch, sc, lines):

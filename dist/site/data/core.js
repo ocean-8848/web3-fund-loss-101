@@ -38,11 +38,15 @@ D.push({id:"home",code:"00",group:"start",ord:1,title:"首页与阅读方法",wi
   subgraph P2["第 2 部分 · 手法归纳"]
     G["G01–G10<br/>共同链路 · 事件表 · 共同阻塞点"]
   end
-  subgraph P3["第 3 部分 · 防御与附录"]
-    X["D01 防御矩阵 · D02 洗钱与追回 · D03 事件库 · D04 术语表"]
+  subgraph P3["第 3 部分 · 防御与应急响应"]
+    X["D01 防御总览 · D02 安全建设与加固 · D03 安全运营<br/>D04 应急止损 · D05 反洗钱与追回"]
+  end
+  subgraph AP["附录"]
+    Y["A01 全量事件库 · A02 术语表"]
   end
   L["实验室 L1–L11"]
   P0 --> P1 --> P2 --> P3
+  P3 -.-> AP
   P1 -.->|"动手验证"| L
   P2 -.-> L</pre></div>
   <div class="readpts"><b>读图要点</b><ul><li>第 0 部分给出全书共用的模型和口径。先读 O01，再读任何案件章。</li><li>每个独立案件章的“阻塞点模拟器”都直接嵌在章内。实验室收录跨案件的通用实验。</li><li>局限：案件章只收录攻击链有公开细节的事件。其余事件见事件库。</li></ul></div>
@@ -54,9 +58,9 @@ D.push({id:"home",code:"00",group:"start",ord:1,title:"首页与阅读方法",wi
 
   <h2>4. 四条阅读路线</h2>
   <div class="tbl-wrap"><table><thead><tr><th>你的角色</th><th>推荐路线</th><th>重点</th></tr></thead><tbody>
-  <tr><td>交易所安全 / 钱包团队</td><td>O01 → Bybit → Binance → Bitget → DMM → G01 → G02 → G03 → D01</td><td>签名链、供应商通道、熔断开关</td></tr>
-  <tr><td>合约开发与审计</td><td>O01 → Poly → Wormhole → Nomad → Euler → G06 → G07 → L1</td><td>不变量、账户校验、升级流程</td></tr>
-  <tr><td>风控 / 产品 / 运营</td><td>O00 → O02 → Mango → Ronin → G04 → G07 → D02</td><td>经济模型、口径、追回</td></tr>
+  <tr><td>交易所安全 / 钱包团队</td><td>O01 → Bybit → Binance → Bitget → DMM → G01 → G02 → G03 → D01 → D02 → D03 → D04</td><td>签名链、供应商通道、熔断开关</td></tr>
+  <tr><td>合约开发与审计</td><td>O01 → Poly → Wormhole → Nomad → Euler → G06 → G07 → L1 → D02</td><td>不变量、账户校验、升级流程</td></tr>
+  <tr><td>风控 / 产品 / 运营</td><td>O00 → O02 → Mango → Ronin → G04 → G07 → D04 → D05</td><td>经济模型、口径、追回</td></tr>
   <tr><td>只有一小时</td><td>本页 → O01 → Bybit → D01</td><td>一个模型 + 一个案件 + 一张防御表</td></tr></tbody></table></div>
 
   <h2>5. 写作与证据规则</h2>
@@ -142,7 +146,7 @@ D.push({id:"o01",code:"O01",group:"p0",ord:2,title:"攻击链通用模型",rende
 
 /* ---------- O02 ---------- */
 D.push({id:"o02",code:"O02",group:"p0",ord:3,title:"十年数据画像",render:()=>`<div class="eyebrow"><span>O02 · DATA</span></div><h1>十年数据画像</h1>
-<p class="thesis">按年份、手法、业务类型和团伙看全部事件。下面的图全部由 <a href="#d03">D03 事件库</a> 实时计算，切换口径后会重新绘制。</p>
+<p class="thesis">按年份、手法、业务类型和团伙看全部事件。下面的图全部由 <a href="#a01">A01 事件库</a> 实时计算，切换口径后会重新绘制。</p>
 <div class="filters"><span class="note">口径：</span><div class="seg" id="o2m" role="group"><button type="button" data-m="sum" aria-pressed="true">损失合计</button><button type="button" data-m="cnt" aria-pressed="false">事件数</button></div>
 <span class="note">范围：</span><div class="seg" id="o2s" role="group"><button type="button" data-s="all" aria-pressed="true">全部</button><button type="button" data-s="EX" aria-pressed="false">CEX 与关联服务</button><button type="button" data-s="W" aria-pressed="false">非 CEX</button></div>
 <label class="note"><input type="checkbox" id="o2x"> 排除 Binance 热钱包事件（单起 63 亿，会压扁其他年份）</label></div>

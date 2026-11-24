@@ -1,4 +1,4 @@
-/* 第 2 部分 手法归纳 G01–G10 + 第 3 部分 防御与附录 */
+/* 第 2 部分 手法归纳 G01–G10 + 附录 A01 事件库、A02 术语表（第 3 部分 防御与应急响应见 defense.js） */
 (function(){
 const G=[
 {id:"g01",code:"G01",title:"根因未公开的大额热钱包失守",techs:["T13"],big:true,
@@ -168,92 +168,9 @@ function afterG(g,root){const {esc,money,evTags}=H.util;const draw=()=>{let R=ro
   root.querySelector(".gcount").textContent=`显示 ${R.length} 条`;H.bindTables(root);};
   const cb=root.querySelector(".gbig");if(cb)cb.onchange=draw;draw();}
 
-/* ---------- D01 defense matrix ---------- */
-H.docs.push({id:"d01",code:"D01",group:"p3",ord:1,title:"防御矩阵",wide:true,render:()=>{const {esc}=H.util;
-  const C=[["人员与终端","面试作业、外部项目只在一次性虚拟机中运行；EDR 监控开发工具二进制","c-binance c-bybit c-dmm c-ronin c-coincheck"],
-  ["身份与会话","会话与令牌绑定设备、短时有效；部署令牌不落终端","c-binance c-bybit c-dmm"],
-  ["云与内部平台","生产部署只走 CI/CD；安全与运维管理面与钱包网段隔离；AI 工具按用户隔离","c-binance c-bitget c-bybit"],
-  ["供应商","供应商终端与发布流程纳入评估；交易请求端到端签名","c-bybit c-dmm c-wazirx c-bitget"],
-  ["前端与界面","前端 SRI + 构建签名；签名前在独立设备解码 calldata","c-bybit c-wazirx"],
-  ["签名与密钥","MPC/多签前加独立策略层；默认拒绝升级、delegatecall、7702 授权","c-binance c-bitget c-bybit c-wazirx c-coincheck"],
-  ["阈值","按独立组织计算阈值；临时授权带到期时间","c-ronin c-wazirx"],
-  ["合约","不变量测试覆盖所有公开函数；sysvar / 账户校验；升级前主网分叉回放","c-poly c-wormhole c-nomad c-euler"],
-  ["经济参数","低流动性资产的抵押与借款上限；TWAP；治理时间锁","c-mango"],
-  ["熔断","按钱包、链一键停签；桥暂停开关；速率上限","c-bitget c-binance c-nomad c-ronin c-wormhole"],
-  ["余额","热钱包余额 ≤ 数小时提现量；冷钱包按金额拆分","c-coincheck c-bybit c-binance c-bitget"],
-  ["监控与对账","链上余额与账本实时对账；委托代码、实现地址、Keeper 变更告警","c-ronin c-poly c-binance c-wormhole"]];
-  const cs=H.cases;const ARCHF={"c-coincheck":["人员与终端","签名与密钥","余额"],"c-poly":["合约","熔断","监控与对账"],"c-ronin":["人员与终端","签名与密钥","阈值","熔断","监控与对账"],"c-wormhole":["合约","熔断","监控与对账"],"c-nomad":["合约","熔断"],"c-mango":["经济参数"],"c-euler":["合约"],"c-dmm":["人员与终端","身份与会话","供应商"],"c-wazirx":["供应商","前端与界面","签名与密钥","阈值"],"c-bybit":["人员与终端","身份与会话","云与内部平台","供应商","前端与界面","签名与密钥","余额"],"c-bitget":["云与内部平台","供应商","签名与密钥","熔断","余额"],"c-binance":["人员与终端","身份与会话","云与内部平台","签名与密钥","熔断","余额","监控与对账"]};const famOf=c=>c.fam||ARCHF[c.id]||[];
-  const cov=Object.fromEntries(C.map(r=>[r[0],cs.filter(c=>famOf(c).includes(r[0])).length]));const top=C.map(r=>r[0]).sort((a,b)=>cov[b]-cov[a]);
-  const ctr=cs.filter(c=>famOf(c).includes("合约")),ctrX=C.map(r=>r[0]).filter(f=>f!=="合约"&&f!=="熔断").map(f=>[f,ctr.filter(c=>famOf(c).includes(f))]).filter(x=>x[1].length);
-  return `<div class="eyebrow"><span>D01 · DEFENSE</span></div><h1>防御矩阵：哪道控制能切断哪起事件</h1>
-  <p class="thesis">把 ${cs.length} 起案件的阻塞点汇总到一张表。<em>●</em> 表示该控制能在资金离开前切断攻击链。表格越往下，越接近资金。最右一列是每道控制能切断的案件数。</p>
-  <div class="tbl-wrap"><table class="matrix"><thead><tr><th>控制族</th><th>做什么</th>${cs.map(c=>`<th title="${esc(c.name)}" style="writing-mode:vertical-rl;white-space:nowrap;font-size:11.5px"><a href="#${c.id}">${esc(c.name)}</a></th>`).join("")}<th>覆盖</th></tr></thead>
-  <tbody>${C.map(r=>{const set=cs.filter(c=>famOf(c).includes(r[0])).map(c=>c.id);return `<tr><td><b>${r[0]}</b></td><td style="font-size:12.5px;min-width:240px">${r[1]}</td>${cs.map(c=>`<td style="text-align:center;color:var(--ok);font-size:15px">${set.includes(c.id)?"●":""}</td>`).join("")}<td class="num">${set.length}</td></tr>`;}).join("")}</tbody></table></div>
-  <div class="readpts"><b>读表要点</b><ul><li>覆盖最多的是“${top[0]}”（${cov[top[0]]} 起），其次是${top.slice(1,4).map(f=>`“${f}”（${cov[f]}）`).join("、")}。覆盖数并不随行的位置递增，靠近入口的控制也能切断不少案件。</li><li>“签名与密钥”“熔断”“余额”三行不依赖知道入口在哪：入口未公开时，先做这三行。</li><li>“人员与终端”只对原型 A 有效，但它是最早的切断点，越早切断，攻击者暴露越少。</li><li>合约类案件（${ctr.length} 起）主要靠“合约”和“熔断”两行切断${ctrX.length?`；其中 ${ctrX.map(([f,l])=>`${l.map(c=>esc(c.name)).join("、")} 还能由“${f}”切断`).join("，")}`:""}。</li><li>局限：● 表示“公开信息显示该控制可以切断”，不表示受害方当时没有部署该控制。</li></ul></div>
-  <h2>按阶段的检测信号</h2>
-  <div class="tbl-wrap"><table><thead><tr><th>阶段</th><th>典型信号</th><th>出现在</th></tr></thead><tbody>
-  <tr><td>入口</td><td>员工收到高薪 offer、外部“面试作业”、开源贡献者邀请运行项目</td><td>Ronin、DMM、Bybit、Binance</td></tr>
-  <tr><td>立足</td><td>开发工具二进制被替换；异常外联；EDR 未覆盖的 macOS</td><td>Binance、Bybit</td></tr>
-  <tr><td>横移</td><td>同一令牌出现在两台设备；非计划部署；安全管理面下发命令</td><td>Binance、Bitget</td></tr>
-  <tr><td>取得签名能力</td><td>签名请求类型异常（升级、delegatecall、7702）；无对应订单的提现请求</td><td>Bybit、WazirX、Binance、Bitget</td></tr>
-  <tr><td>链上执行</td><td>数秒内多链大额转出；实现地址、Keeper、委托代码变化</td><td>全部</td></tr></tbody></table></div>
-  <h2>业务账务、变更窗口与现代研发 / AI 工具基线</h2>
-  <p class="note">以下三类防线针对“非黑客入侵型资损”“升级迁移窗口”和“2025–2026 现代研发工作流”，补齐上面攻击链矩阵之外的高频盲区。</p>
-  <div class="tbl-wrap"><table><thead><tr><th>防线维度</th><th>优先级</th><th>做什么</th><th>怎样验证</th><th>对应案例</th></tr></thead><tbody>
-  <tr><td rowspan="3"><b>业务账务与<br/>地址生命周期</b></td><td><span class="prio p0">P0</span></td><td>三账准实时对账（链上余额、钱包账本、业务总账），异常差额分钟级自动熔断</td><td>模拟无订单链上转出或无入账余额激增，5 分钟内告警并停签</td><td>Bitget、Kraken、Upbit</td></tr>
-  <tr><td><span class="prio p0">P0</span></td><td>营销、空投、发奖系统设单笔与活动总额硬上限，强制币种单位双人复核</td><td>构造超预算或单位错录的发奖批次，系统必须拦截</td><td>Bithumb（误发 BTC）</td></tr>
-  <tr><td><span class="prio p1">P1</span></td><td>钱包地址实行 Active → Deprecated → Retired 状态机；退役地址禁用自动记账但保留链上转入告警</td><td>向退役地址转入小额测试资产，不入账且 1 分钟内告警</td><td>CoinDCX（旧钱包）</td></tr>
-  <tr><td rowspan="3"><b>变更窗口与<br/>补丁管理</b></td><td><span class="prio p0">P0</span></td><td>热钱包迁移前先把旧钱包余额归集至冷钱包；变更期内收紧而非放宽告警，每笔转账绑定变更单号</td><td>迁移期间发起无变更单号的转出，必须被拒绝</td><td>BitoPro 2025</td></tr>
-  <tr><td><span class="prio p0">P0</span></td><td>高危安全修复走私有分支，主网部署后再公开合并；建立“合并 → 发布 → 节点部署 ≤ 72 小时”SLA</td><td>抽查最近 3 次安全修复的端到端部署耗时</td><td>Wormhole、Liquid Network</td></tr>
-  <tr><td><span class="prio p1">P1</span></td><td>合约升级前在主网分叉上回放历史交易，并对初始化参数与权限归属做不变量断言</td><td>CI 中“零值根初始化”测试必须失败</td><td>Nomad</td></tr>
-  <tr><td rowspan="3"><b>现代研发终端与<br/>AI 工具治理</b></td><td><span class="prio p0">P0</span></td><td>内部 AI 编码工具、Agent 与 MCP 按用户隔离身份与会话；终端执行、读凭证、生产部署强制人工确认</td><td>用员工 B 的 AI 会话访问员工 A 的工作区或触发部署，必须被拒绝</td><td>Binance 2026</td></tr>
-  <tr><td><span class="prio p0">P0</span></td><td>公司设备禁用 AirDrop 接收；IDE 强制 Workspace Trust 并禁用打开目录自动任务（tasks.json）；外部代码仅在一次性沙箱运行</td><td>打开含 folderOpen 自动任务的测试仓库，不得自动执行</td><td>WOO X、Drift、KelpDAO</td></tr>
-  <tr><td><span class="prio p1">P1</span></td><td>开发机零存放长期云/容器部署令牌；CI/CD 使用受保护分支与 OIDC 短时凭证</td><td>在临时分支触发 CI，不得输出生产云凭证</td><td>SwissBorg / Kiln、Binance</td></tr>
-  </tbody></table></div>
-  <h2>多链安全心智差异速查表</h2>
-  <div class="tbl-wrap"><table><thead><tr><th>链 / 生态</th><th>特有高危陷阱</th><th>必查防线</th><th>典型案例</th></tr></thead><tbody>
-  <tr><td><b>EVM（Ethereum / L2）</b></td><td>delegatecall 改写代理存储；EIP-7702 授权清扫；approve(max) 遗留授权；编译器字节码差异；ERC-4626 空池与舍入方向</td><td>Safe Guard 禁 delegatecall 与升级；策略层默认拒签 7702；对编译产物做字节码重入与舍入模糊测试；新池预存种子流动性</td><td>Bybit、WazirX、Binance、Curve / Vyper、Balancer v2</td></tr>
-  <tr><td><b>Solana</b></td><td>账户与 sysvar 未校验身份；单笔交易夹带多条 Authorize 指令；durable nonce 永不过期预签名</td><td>全部指令校验账户地址与 owner；签名端逐条解析全部指令并拦截 Authorize；管理员多签禁用 durable nonce</td><td>Wormhole、SwissBorg / Kiln、Drift</td></tr>
-  <tr><td><b>Move（Sui / Aptos）</b></td><td>语言防溢出不等于自定义位运算/共享数学库安全；充值入账未校验代币 type 参数</td><td>对 checked_* 等数学库做形式化验证与边界值模糊测试；入账严格校验合约地址与完整 type</td><td>Cetus、Upbit（假 APT）</td></tr>
-  <tr><td><b>BTC / 侧链 / 跨链桥</b></td><td>Range Proof 验证缓存键缺字段；PoW 51% 算力重组双花；DoS 迫使验证者故障切换到投毒 RPC</td><td>缓存键覆盖完整上下文；按算力成本动态设确认数与充值上限；≥ 3 个独立 DVN/RPC 且数据源不足时拒绝签名而非降级</td><td>Liquid Network、OKEx / ETC、KelpDAO</td></tr>
-  </tbody></table></div>`;}});
-
-/* ---------- D02 laundering ---------- */
-H.docs.push({id:"d02",code:"D02",group:"p3",ord:2,title:"应急止损、洗钱与追回",render:()=>`<div class="eyebrow"><span>D02 · RESPONSE &amp; RECOVERY</span></div><h1>应急止损、洗钱路径与追回</h1>
-<p class="thesis">告警响起后，前 10 分钟决定能否拦住主力资金；资金离开后，防守方还有几张牌：<em>稳定币冻结、交易所冻结、链级冻结或回滚、法院命令、谈判与赏金、执法扣押</em>。每张牌都有时间窗口。</p>
-<h2>0. 事中黄金 10 分钟止损分层</h2>
-<div class="tbl-wrap"><table><thead><tr><th>止损层级</th><th>切断的对象</th><th>常见误区</th><th>演练验收标准</th><th>对应案例</th></tr></thead><tbody>
-<tr><td><b>用户提现网关</b></td><td>正常用户端发起的提现请求</td><td>只关提现网关、没关签名服务，攻击者仍可通过内网工具直接调用签名</td><td>明确其仅能挡账户接管，不能挡签名服务被滥用</td><td>Bitget（告警后仍流出 2.4 亿）</td></tr>
-<tr><td><b>签名服务总开关</b></td><td>热/温钱包 MPC 或 HSM 对外签发交易</td><td>未按链、按钱包做一键停签开关，或依赖人工逐台下线</td><td>从告警到全链停签 &lt; 5 分钟</td><td>Bitget、Binance、G01</td></tr>
-<tr><td><b>链上合约 Pause / 速率熔断</b></td><td>协议放款、跨链铸造或批量提款</td><td>暂停窗口设了过期时间导致关键时刻无法暂停，或缺少速率上限</td><td>暂停权不设失效期；单小时流出超阈值自动暂停</td><td>Balancer v2、Nomad、Wormhole</td></tr>
-<tr><td><b>撤销链上委托与权限</b></td><td>EIP-7702 恶意委托、被盗管理员、approve(max)</td><td>以为关停服务器就能阻止链上清扫合约继续提币</td><td>提前演练零地址清除 7702 委托与替换合约 Admin</td><td>Binance（3h50m）、Wintermute、Radiant</td></tr>
-<tr><td><b>稳定币与交易所分钟级协同</b></td><td>攻击者尚未换出的 USDT/USDC 与首跳充币</td><td>等内部复盘清楚再通知发行方，错过 10–20 分钟换币窗口</td><td>10 分钟内同步地址至稳定币发行方、主流交易所与行业应急通道</td><td>Poly、Bitget、Bybit</td></tr>
-</tbody></table></div>
-<h2>1. 典型洗钱路径</h2>
-<div class="mmd-wrap" data-title="洗钱路径"><pre class="mmd">flowchart LR
-  S["被盗资产<br/>稳定币 · LST · 长尾币"] -->|"数分钟内"| D["DEX 换成 ETH / BTC"]
-  D --> X["跨链<br/>THORChain · 桥"]
-  D --> M["混币<br/>Tornado · CoinJoin · 屏蔽池"]
-  X --> P["分散到上千地址"]
-  M --> P
-  P -->|"数周到数月"| O["场外 · 中小交易所 · 地下钱庄"]
-  F1["稳定币发行方冻结"] -.->|"窗口：分钟级"| S
-  F2["交易所冻结"] -.->|"窗口：充值时"| O</pre></div>
-<div class="readpts"><b>读图要点</b><ul><li>攻击者第一步通常是把可冻结的稳定币换掉。Bitget 案中 USDT 在 20 分钟内换成 ETH。</li><li>无许可协议（THORChain）不封锁地址。Bybit、Bitget、Binance 案中大量资金经 THORChain 换成 BTC。</li><li>大额资金常长时间不动。Binance 案截至 11-07 约 31.3 亿美元仍在关联地址。</li></ul></div>
-<h2>2. 追回手段</h2>
-<div class="tbl-wrap"><table><thead><tr><th>手段</th><th>案例</th><th>效果</th><th>争议</th></tr></thead><tbody>
-<tr><td>稳定币冻结</td><td>Poly（3,300 万 USDT）、Bitget（约 110 万）</td><td>快，只对未换出的稳定币有效</td><td>发行方的中心化权力</td></tr>
-<tr><td>交易所冻结</td><td>Bybit（约 3.8%）、Binance（28.5 亿含拦截）</td><td>依赖行业情报共享</td><td>—</td></tr>
-<tr><td>链级冻结</td><td>Cetus（Sui 验证者冻结约 1.62 亿）</td><td>大额有效</td><td>验证者能否冻结用户资产</td></tr>
-<tr><td>链回滚</td><td>Tectonic（Cronos 回滚 10,961 个区块）、The DAO（硬分叉）</td><td>可恢复大部分</td><td>不可篡改性</td></tr>
-<tr><td>法院命令反向操作</td><td>Wormhole（2023，约 1.4 亿）</td><td>依赖攻击者把资金放在可升级合约中</td><td>—</td></tr>
-<tr><td>谈判与赏金</td><td>Poly、Euler、Nomad、GMX v1、Liquid Network</td><td>对“非国家行为者”有效</td><td>是否等于向攻击者付费</td></tr>
-<tr><td>执法扣押</td><td>Ronin（约 3,000 万）、Bitfinex（多年后追回）</td><td>慢，可能跨越数年</td><td>—</td></tr></tbody></table></div>
-<blockquote class="analogy"><p>🎯 打个比方：追回像追一辆逃逸的车。前 10 分钟有交警（稳定币冻结），出城后靠收费站（交易所），换了车牌就只能靠长期侦查（执法）。比喻的局限：链上每一步都公开可见，难点不在“看到”，在“拦住”。</p></blockquote>`});
-
-/* ---------- D03 event DB ---------- */
-H.docs.push({id:"d03",code:"D03",group:"p3",ord:3,title:"全量事件库",wide:true,render:()=>{const yrs=[...new Set(H.events.map(e=>e[1].slice(0,4)))].sort();const types=[...new Set(H.events.map(e=>e[3]))];
- return `<div class="eyebrow"><span>D03 · DATABASE</span><span>${H.events.length} 条</span></div><h1>全量事件库</h1>
+/* ---------- A01 event DB ---------- */
+H.docs.push({id:"a01",code:"A01",group:"app",ord:1,title:"全量事件库",wide:true,render:()=>{const yrs=[...new Set(H.events.map(e=>e[1].slice(0,4)))].sort();const types=[...new Set(H.events.map(e=>e[3]))];
+ return `<div class="eyebrow"><span>A01 · DATABASE</span><span>${H.events.length} 条</span></div><h1>全量事件库</h1>
  <p class="lede">全部条目来自本手册检索（截止 2026-11-07）。CEX 与关联服务部分参考了《交易所安全04：2016至2026 攻击案例目录》（98 条），目录数据不直接采信，已另行判断、修正与补充；证据标 C 的条目仅有索引线索。每条事件附 1–3 个来源链接（悬停看标题）：<b>✎</b> 表示已按来源更正，<b>＋</b> 表示目录之外补充的事件。点击表头排序，组合筛选。</p>
  <div class="filters"><input id="dq" type="search" placeholder="搜索名称、机制、归因" style="min-width:200px">
  <select id="dy"><option value="">全部年份</option>${yrs.map(y=>`<option>${y}</option>`).join("")}</select>
@@ -272,8 +189,8 @@ H.docs.push({id:"d03",code:"D03",group:"p3",ord:3,title:"全量事件库",wide:t
    q("#dn").textContent=`${R.length} 条 · 合计 ${money(R.reduce((a,e)=>a+(e.loss||0),0))}`;};
   ["#dq","#dy","#dt","#dh","#dl","#dc"].forEach(s=>q(s).addEventListener("input",draw));draw();}});
 
-/* ---------- D04 glossary ---------- */
+/* ---------- A02 glossary ---------- */
 const GL=[["盲签（Blind Signing）","签名者无法看到交易真实内容就签名。硬件钱包只显示哈希时即为盲签。"],["清晰签名（Clear Signing）","签名设备解析并显示交易类型、目标和参数。"],["calldata","发送给合约的调用数据，包含函数选择器和参数。"],["函数选择器（Selector）","函数签名哈希的前 4 字节。只有 2^32 种取值，可被暴力碰撞。"],["delegatecall","在调用方的存储上执行目标合约代码。可以改写钱包自身的状态。"],["masterCopy / 实现合约","代理钱包把调用转发到的逻辑合约地址。改写它等于替换钱包的全部逻辑。"],["MPC（多方计算）","多方各持一个密钥分片，共同计算签名。保护密钥完整性，不判断交易意图。"],["多签（Multisig）","N 个签名者中至少 M 个签名才能执行（M-of-N）。安全性取决于签名者是否独立。"],["阈值（Threshold）","多签或验证者网络中执行操作所需的最少签名数。"],["验证者（Validator）","为跨链桥或链签名确认消息的节点。"],["DVN","LayerZero 的去中心化验证网络。1-of-1 配置等于单点。"],["EIP-7702","允许 EOA 把执行代码委托给合约的以太坊升级（Pectra，2025-05）。"],["nonce","账户的交易序号。7702 授权只在 nonce 匹配时生效。"],["闪电贷（Flash Loan）","在一笔交易内借入并归还的无抵押贷款。"],["TWAP","时间加权平均价格。比即时价格更难被单笔交易操纵。"],["预言机（Oracle）","向合约提供链外数据（如价格）的机制。"],["sysvar","Solana 的系统账户，存放时钟、指令等系统数据。读取前必须校验地址。"],["VAA","Wormhole 的跨链消息格式，由守护者签名。"],["Keeper","Poly Network 中签署跨链证明的守门人公钥集合。"],["重组（Reorg）","链上出现更长的分支，替换原有区块。可撤销已确认交易。"],["51% 攻击","攻击者掌握多数算力或权益，可以重组链。"],["Contagious Interview","以假招聘和“面试作业”投放恶意代码的攻击活动。"],["TraderTraitor","美国政府对一类朝鲜加密货币攻击活动的命名，也称 Jade Sleet、UNC4899。"],["SRI","子资源完整性。浏览器校验外部脚本哈希，不匹配则拒绝加载。"],["Safe Guard","Safe 钱包的交易前置检查合约，可禁止特定操作。"],["时间锁（Timelock）","操作通过后必须等待一段时间才能执行。"],["热钱包 / 温钱包 / 冷钱包","在线可自动签名 / 在线需人工参与 / 离线签名的钱包分层。"],["熔断（Circuit Breaker）","异常时自动或一键停止签名或交易的机制。"],["THORChain","无许可跨链兑换协议，不封锁地址。"],["Profanity","一款靓号地址生成工具。只用 32 位种子，私钥可被还原。"],["私钥（Private Key）", "控制账户资产的密钥。谁持有私钥，谁就能签名转走资产。"],["助记词（Seed Phrase）", "一组可还原全部私钥的单词。泄露等于私钥泄露。"],["EOA（外部账户）", "由私钥直接控制的普通账户，没有合约代码。"],["代理合约（Proxy）", "只保存状态、把调用转给实现合约的合约。谁能替换实现合约，谁就能改写全部逻辑。"],["重入（Reentrancy）", "合约在更新状态之前调用外部合约，对方回调进来，重复执行同一段逻辑。"],["跨链桥（Bridge）", "在两条链之间锁定和铸造资产的系统。验证方式决定它的安全上限。"],["Tornado Cash", "以太坊上的混币协议。它切断资金来源与去向之间的链上联系。"],["Lazarus", "朝鲜相关黑客组织的统称。多起大额加密资产盗窃被官方归因于它。"],["社会工程（Social Engineering）", "利用信任、紧迫感或冒充身份，诱导人执行操作，而不是攻破系统本身。"],["会话令牌（Session Token）", "登录后发放的凭证。被窃取后，攻击者可绕过密码和 MFA 直接访问。"],["MFA / 2FA", "多因素认证。除密码外再验证一个因素，例如动态码或硬件密钥。"],["SIM 换卡（SIM Swap）", "骗运营商把受害者的号码转到攻击者的 SIM 卡上，从而截获短信验证码。"],["ATT&CK", "MITRE 维护的攻击战术与技术知识库。本手册用它的编号描述手法。"],["Web shell", "植入服务器的网页后门。攻击者用它远程执行命令。"],["0day（零日漏洞）", "厂商尚未修复、也未公开的漏洞。"],["供应链攻击（Supply Chain Attack）", "先攻破目标依赖的软件、供应商或服务，再借它进入目标。"]];
 H.GL=GL;
-H.docs.push({id:"d04",code:"D04",group:"p3",ord:4,title:"术语表",render:()=>`<div class="eyebrow"><span>D04 · GLOSSARY</span></div><h1>术语表</h1><p class="lede">按出现顺序排列。全书每个术语只用这一个词。</p><div class="tbl-wrap"><table><thead><tr><th>术语</th><th>定义</th></tr></thead><tbody>${GL.map(g=>`<tr><td style="white-space:nowrap"><b>${g[0]}</b></td><td>${g[1]}</td></tr>`).join("")}</tbody></table></div>`});
+H.docs.push({id:"a02",code:"A02",group:"app",ord:2,title:"术语表",render:()=>`<div class="eyebrow"><span>A02 · GLOSSARY</span></div><h1>术语表</h1><p class="lede">按出现顺序排列。全书每个术语只用这一个词。</p><div class="tbl-wrap"><table><thead><tr><th>术语</th><th>定义</th></tr></thead><tbody>${GL.map(g=>`<tr><td style="white-space:nowrap"><b>${g[0]}</b></td><td>${g[1]}</td></tr>`).join("")}</tbody></table></div>`});
 })();
