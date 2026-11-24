@@ -27,5 +27,5 @@
 
 - 逐条讲解的术语：MFA / 2FA、Web shell、0day、EOA 单独定义、热/温/冷钱包、Profanity、masterCopy 单独定义、重入、nonce 单独定义、sysvar、VAA、Keeper、ATT&CK。它们出现在 map 的点数里，未展开：要么是另一个已讲术语的一部分（EOA、nonce、masterCopy 在 sign / code 画面中出现），要么属于单一案例（Profanity、Keeper、VAA、sysvar），导览篇幅内价值较低。
 - 重入：O00 的 The DAO 场景已经讲过，此处不重复。
-- “多签：需要 M 个签名者中的 N 个签名”原文 M/N 用法与常见写法相反，slides 只说“凑够阈值”，不写 M-of-N。
+- “多签：需要 M 个签名者中的 N 个签名”原文 M/N 用法与常见写法相反，slides 只说“凑够阈值”，不写 M-of-N。（源稿已改为“N 个签名者中至少 M 个签名（M-of-N）”。）
 - 闸门在链上的位置（SRI 在入口、熔断在资金去向前等）是本 slides 的归类，不是源稿原文。
