@@ -18,7 +18,7 @@ D.push({id:"home",code:"00",group:"start",ord:1,title:"首页与阅读方法",wi
   <div class="fig red"><span class="n">${money(sum)}</span><span class="l">已披露损失合计（事发时估值，口径见 O03）</span></div>
   <div class="fig"><span class="n">${big.length}</span><span class="l">资损 ≥ 1,000 万美元的事件</span></div>
   <div class="fig"><span class="n">${cases.length}</span><span class="l">独立案件章${H.soon.length?`（另有 ${H.soon.length} 章待发布）`:""}</span></div>
-  <div class="fig"><span class="n">10</span><span class="l">手法归纳章 + 9 个实验室</span></div></div>
+  <div class="fig"><span class="n">10</span><span class="l">手法归纳章 + 11 个实验室</span></div></div>
 
   <h2>1. 怎样判定“单独成章”</h2>
   <div class="tbl-wrap"><table><thead><tr><th>规则</th><th>判定方法</th><th>结果</th></tr></thead><tbody>
@@ -41,7 +41,7 @@ D.push({id:"home",code:"00",group:"start",ord:1,title:"首页与阅读方法",wi
   subgraph P3["第 3 部分 · 防御与附录"]
     X["D01 防御矩阵 · D02 洗钱与追回 · D03 事件库 · D04 术语表"]
   end
-  L["实验室 L1–L9"]
+  L["实验室 L1–L11"]
   P0 --> P1 --> P2 --> P3
   P1 -.->|"动手验证"| L
   P2 -.-> L</pre></div>

@@ -1186,7 +1186,7 @@ H.evsrc={
 ],
 [
 "Rekt: WOO X",
-"https://rekt.news/ko/woox-rekt"
+"https://rekt.news/woox-rekt"
 ]
 ]
 },
@@ -1260,7 +1260,7 @@ H.evsrc={
 "s": [
 [
 "BleepingComputer: Bitget hacked via zero-day in third-party security products (2026-09-30)",
-"https://www.bleepingcomputer.com/news/security/bitget-hacked-via-zero-day-in-third-party-security-products/amp/"
+"https://www.bleepingcomputer.com/news/security/bitget-hacked-via-zero-day-in-third-party-security-products/"
 ],
 [
 "The Block: Bitget confirms $387.5M breach (2026-09-24)",
@@ -2548,8 +2548,8 @@ H.evsrc={
 "v": "new",
 "s": [
 [
-"SlowMist Hacked - Exchange (page 3) (2024-02-23)",
-"https://hacked.slowmist.io/?c=Exchange&page=3"
+"BitForex website blocks users after apparent $57 million withdrawals - The Block (2024-02-26)",
+"https://www.theblock.co/news/markets/2024-02-26-bitforex-hot-wallet-withdrawals-279086"
 ]
 ]
 },

@@ -1,4 +1,4 @@
-/* 实验室 L1–L9 */
+/* 实验室 L1–L11 */
 (function(){
 const L=[];const add=o=>{o.group="lab";L.push(o);};
 const U=()=>H.util;
@@ -38,7 +38,7 @@ add({id:"l2",code:"L2",title:"盲签实验：界面与数据不一致",tagline:"
 const PRE={
  ronin:{n:"Ronin 2022：5/9",th:5,orgs:["Sky Mavis","Axie DAO","独立 B","独立 C","独立 D","独立 E"],keys:[0,0,0,0,1,2,3,4,5],dele:{4:0},note:"Axie DAO 的第 5 把钥匙可由 Sky Mavis 代签（白名单未撤销）。"},
  harmony:{n:"Harmony 2022：2/5",th:2,orgs:["Harmony 运维","签名者 B","签名者 C","签名者 D","签名者 E"],keys:[0,1,2,3,4],dele:{},note:"阈值只有 2。攻击者拿到 2 把私钥即可。"},
- wazirx:{n:"WazirX 2024：4/6",th:4,orgs:["WazirX","Liminal"],keys:[0,0,0,0,0,1],dele:{},note:"界面欺骗让全部签名者“自愿”签名，阈值失去意义。勾选两个组织模拟。"},
+ wazirx:{n:"WazirX 2024：4/6",th:4,orgs:["WazirX","Liminal"],keys:[0,0,0,0,0,1],dele:{},note:"链上为 4/6（5 把 WazirX + 1 把 Liminal），业务流程约定“3 WazirX + 1 Liminal 把关”；界面欺骗让签名者“自愿”签名，且链上阈值并未强制 Liminal 必签。"},
  kelp:{n:"KelpDAO 2026：1-of-1 DVN",th:1,orgs:["LayerZero DVN"],keys:[0],dele:{},note:"只有一个验证者。它的 RPC 被投毒，就等于全部验证者被投毒。"},
  ideal:{n:"理想：5/9，9 个独立组织",th:5,orgs:["O1","O2","O3","O4","O5","O6","O7","O8","O9"],keys:[0,1,2,3,4,5,6,7,8],dele:{},note:"每个组织 1 把钥匙。攻击者必须攻破 5 个独立组织。"}};
 add({id:"l3",code:"L3",title:"多签与验证者阈值",tagline:"Ronin · Harmony · WazirX · KelpDAO",desc:"签名者个数不等于安全性。勾选被攻破的组织，看攻击者能否凑够阈值，以及“最少要攻破几个组织”。",
@@ -140,6 +140,83 @@ add({id:"l9",code:"L9",title:"熵与私钥暴力还原",tagline:"Wintermute · C
    const v=q("#l9v");v.className="verdict "+(s<31557600?"bad":s<31557600e6?"mid":"good");v.innerHTML=s<31557600?"<b>一年内可还原。</b>该地址的资产随时可能被盗。":s<31557600e6?"<b>需要很长时间，</b>但算力进步会缩短它。":"<b>安全。</b>前提是随机数真的有这么多位。";
    root.querySelectorAll("#l9p button").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.b===b));};
   ["#l9b","#l9r"].forEach(s=>q(s).oninput=draw);root.querySelectorAll("#l9p button").forEach(x=>x.onclick=()=>{q("#l9b").value=x.dataset.b;draw();});draw();}});
+
+/* L10 change window, reconciliation & stop switch */
+const P10={
+ bitget:{n:"Bitget 2026（告警后只停提现）",B:390,S:15,R:5,W:1,mode:"wd",K:5,M:160,chg:false},
+ bitopro:{n:"BitoPro 2025（热钱包迁移放宽告警）",B:12,S:1.5,R:30,W:6,mode:"wd",K:5,M:120,chg:false},
+ bithumb:{n:"Bithumb 2026（促销误发与三账熔断）",B:250,S:20,R:30,W:3,mode:"wd",K:3,M:45,chg:false},
+ hardened:{n:"加固基线（1 分钟三账 + 变更收紧 + 停签）",B:200,S:15,R:1,W:1,mode:"sign",K:3,M:120,chg:true}};
+add({id:"l10",code:"L10",title:"变更窗口、三账对账与止损开关",tagline:"Bitget · BitoPro · Bithumb",desc:"模拟三账对账周期、变更期放宽告警倍数以及“只停用户提现 vs 一键停签名”对最终损失的放大效应。",
+ render(){const r=(id,l,min,max,st,u)=>`<div class="rng"><label for="${id}">${l}：<b class="mono" id="${id}v"></b> ${u}</label><input type="range" id="${id}" min="${min}" max="${max}" step="${st}"></div>`;
+ return head(this,`<div class="lab"><div class="ctl"><div class="rng"><label for="l10p">预设场景</label><select id="l10p">${Object.entries(P10).map(([k,v])=>`<option value="${k}">${v.n}</option>`).join("")}</select></div>
+ ${r("l10B","钱包 / 活动敞口",10,1000,10,"百万美元")}${r("l10S","异常流出速度",0.5,50,0.5,"百万美元/分钟")}${r("l10R","三账对账周期（链上 / 钱包 / 业务）",1,120,1,"分钟")}${r("l10W","变更期告警放宽倍数（1 = 不放宽）",1,10,1,"倍")}
+ <div class="rng"><span>告警后的第一动作</span><div class="seg" id="l10mode"><button type="button" data-m="sign">一键停签名</button><button type="button" data-m="wd">只停用户提现</button></div></div>
+ ${r("l10K","一键停签耗时",1,30,1,"分钟")}${r("l10M","若只停提现：人工接管停签时刻",15,240,5,"分钟")}
+ <label class="chk"><input type="checkbox" id="l10chg"><span>变更单强校验 / 发奖硬上限<small>无变更单或超预算流出在签名前直接拦截</small></span><span></span></label></div>
+ <div class="out"><div class="figs" style="margin:0"><div class="fig" id="l10lf"><span class="n" id="l10L"></span><span class="l">当前配置预计损失</span></div><div class="fig"><span class="n" id="l10D"></span><span class="l">有效发现耗时（对账 × 放宽）</span></div><div class="fig"><span class="n" id="l10T"></span><span class="l">实际止损时刻</span></div></div>
+ <div style="margin-top:12px"><span class="note">同场景三种配置对比</span><div class="bars" id="l10bars" style="margin-top:6px"></div></div>
+ <div class="verdict" id="l10v"></div>
+ <p class="caveat">示意模型：发现耗时 = 对账周期 × 变更期告警放宽倍数；若未开启前置硬拦截，损失 = min(敞口, 流出速度 × 止损时刻)。用于直观比较对账频率、变更风控与止损开关选型的量级差异。</p></div></div>`);},
+ after(root){const q=s=>root.querySelector(s);let mode="wd";const ids=["B","S","R","W","K","M"];
+  const load=()=>{const p=P10[q("#l10p").value];ids.forEach(k=>q("#l10"+k).value=p[k]);mode=p.mode;q("#l10chg").checked=p.chg;draw();};
+  const draw=()=>{const v={};ids.forEach(k=>{v[k]=+q("#l10"+k).value;q("#l10"+k+"v").textContent=v[k];});
+   const chg=q("#l10chg").checked;
+   root.querySelectorAll("#l10mode button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===mode));
+   q("#l10chg").closest(".chk").classList.toggle("active",chg);
+   const D=v.R*v.W;const T=chg?0:(mode==="sign"?D+v.K:Math.max(v.M,D));
+   const cur=chg?0:Math.min(v.B,v.S*T);
+   const fast=Math.min(v.B,v.S*(1+Math.min(v.K,5)));
+   const mx=Math.max(cur,fast,v.B,1);
+   q("#l10L").textContent=U().money(cur);q("#l10D").textContent=chg?"前置拦截":D+" 分钟";q("#l10T").textContent=chg?"0 分钟":T+" 分钟";
+   q("#l10lf").className="fig "+(cur===0?"green":cur>v.B*0.3?"red":"");
+   const rows=[["当前配置",cur,cur===0?"b":""],["1 分钟三账 + 不放宽 + 一键停签",fast,"b"],["叠加变更单校验 / 硬上限",0,"b"]];
+   q("#l10bars").innerHTML=rows.map(([n,val,cls])=>`<div class="barrow"><span>${n}</span><div class="trk"><div class="${cls}" style="width:${val/mx*100}%"></div></div><span class="v">${U().money(val)}</span></div>`).join("");
+   const vv=q("#l10v");
+   if(chg){vv.className="verdict good";vv.innerHTML="<b>前置拦截生效，损失为 0。</b>无对应变更单或超预算的转出在进入签名服务前即被拒绝。";}
+   else if(mode==="wd"){const saved=Math.max(0,cur-Math.min(v.B,v.S*(D+v.K)));vv.className="verdict bad";vv.innerHTML=`<b>止损开关选错。</b>只停用户提现无法阻止攻击者直接调用签名服务，相比一键停签多损失约 <b>${U().money(saved)}</b>。`;}
+   else if(v.W>1){vv.className="verdict mid";vv.innerHTML=`<b>变更期放宽告警拉长了发现时间。</b>告警阈值放宽 ${v.W} 倍，使发现耗时从 ${v.R} 分钟拖长到 ${D} 分钟。`;}
+   else if(cur<v.B*0.2){vv.className="verdict good";vv.innerHTML=`<b>快速止损生效。</b>${T} 分钟内完成停签，保住了约 <b>${U().money(v.B-cur)}</b> 敞口。`;}
+   else{vv.className="verdict bad";vv.innerHTML="<b>对账或停签偏慢。</b>缩短三账对账周期、降低热钱包敞口，或开启前置变更单硬校验。";}};
+  q("#l10p").onchange=load;ids.forEach(k=>q("#l10"+k).oninput=draw);q("#l10chg").onchange=draw;
+  root.querySelectorAll("#l10mode button").forEach(b=>b.onclick=()=>{mode=b.dataset.m;draw();});load();}});
+
+/* L11 address permission graph & blast radius */
+const P11={
+ wintermute:{n:"Wintermute 2022（靓号地址转空余额，漏改 Admin）",items:[
+  {t:"地址账面余额（ETH 等）",k:"直接余额",v:2,done:true,note:"Profanity 漏洞公开后，团队只转走了地址内余额。"},
+  {t:"DeFi 金库合约 Admin 权限",k:"合约权限",v:160,done:false,note:"未更换管理员角色。攻击者还原私钥后 5 天内清空约 1.6 亿美元金库。"}]},
+ badger:{n:"BadgerDAO 2021（潜伏三周收集 approve(max)）",items:[
+  {t:"单次存取交互金额",k:"直接交互",v:1,done:true,note:"用户只关注当下这笔存取，未察觉附加的无限授权。"},
+  {t:"约 500 个地址的历史无限授权",k:"隐性授权",v:120,done:false,note:"攻击者用 transferFrom 集中提走约 1.2 亿美元金库代币。"},
+  {t:"紧急暂停合约保住的剩余额度",k:"协议暂停",v:9,done:true,note:"Badger 及时暂停合约，拦下最后约 900 万美元。"}]},
+ radiant:{n:"Radiant 2024（转移所有权 + 继承用户历史授权）",items:[
+  {t:"多签地址自身余额",k:"直接余额",v:0.2,done:true,note:"Safe 多签地址本身几乎不放流动资金，容易让人低估风险。"},
+  {t:"AddressesProvider 所有权与升级权",k:"ProxyAdmin",v:42,done:false,note:"3 个盲签交出所有权，攻击者升级借贷池并提空流动性。"},
+  {t:"用户对旧合约的历史无限授权",k:"继承授权",v:8,done:false,note:"恶意实现继承了用户既有 approve，额外转走用户钱包资产。"}]},
+ infini:{n:"Infini 2025（前开发者离职未收回链上权限）",items:[
+  {t:"公司邮箱、代码仓库与内网账号",k:"办公权限",v:0.1,done:true,note:"常规离职流程只收回了链下账号，未核对链上合约角色。"},
+  {t:"链上金库合约 Super Admin 权限",k:"链上遗留",v:49.5,done:false,note:"前开发者保留了链上管理角色，直接提走约 4,950 万美元金库。"}]}};
+add({id:"l11",code:"L11",title:"地址权限图谱与授权爆炸半径",tagline:"Wintermute · BadgerDAO · Radiant · Infini",desc:"一个地址的风险远不止账面余额，还包括它挂着的 owner、ProxyAdmin、approve(max) 与离职遗留角色。勾选已完成的处置项，看剩余爆炸半径。",
+ render(){return head(this,`<div class="lab"><div class="ctl"><div class="rng"><label for="l11p">场景</label><select id="l11p">${Object.entries(P11).map(([k,v])=>`<option value="${k}">${v.n}</option>`).join("")}</select></div>
+ <span class="note">勾选你已完成的处置 / 吊销动作（默认仅勾选现实中常见但片面的做法）：</span><div class="ctrls" id="l11c" style="margin-top:6px"></div></div>
+ <div class="out"><div class="figs" style="margin:0"><div class="fig" id="l11rf"><span class="n" id="l11r"></span><span class="l">剩余爆炸半径（仍暴露敞口）</span></div><div class="fig"><span class="n" id="l11b"></span><span class="l">已处置 / 已拦截</span></div><div class="fig"><span class="n" id="l11n"></span><span class="l">未吊销高危权限项</span></div></div>
+ <div style="margin-top:12px"><span class="note">各项权限与授权敞口分布（红 = 仍暴露，蓝 = 已处置）</span><div class="bars" id="l11bars" style="margin-top:6px"></div></div>
+ <div class="verdict" id="l11v"></div>
+ <p class="caveat">示意模型：金额按各案例公开口径近似拆分（Wintermute 地址余额与 Radiant 授权拆分占比为教学示意值）。核心结论：维护“地址 → 合约权限 / 授权”清单与月度 HR-链上权限对账，是堵住隐性爆炸半径的前提。</p></div></div>`);},
+ after(root){const q=s=>root.querySelector(s);let items=[];
+  const load=()=>{items=JSON.parse(JSON.stringify(P11[q("#l11p").value].items));
+   q("#l11c").innerHTML=items.map((it,i)=>`<label class="chk"><input type="checkbox" data-i="${i}" ${it.done?"checked":""}><span>${it.t} <small>[${it.k}] ${it.note}</small></span><span></span></label>`).join("");draw();};
+  const draw=()=>{let exp=0,safe=0,left=[];const mx=Math.max(...items.map(x=>x.v),1);
+   items.forEach(it=>{if(it.done)safe+=it.v;else{exp+=it.v;left.push(it.t);}});
+   q("#l11r").textContent=U().money(exp);q("#l11b").textContent=U().money(safe);q("#l11n").textContent=left.length+" / "+items.length;
+   q("#l11rf").className="fig "+(exp===0?"green":"red");
+   q("#l11bars").innerHTML=items.map(it=>`<div class="barrow"><span>${it.k}：${it.t}</span><div class="trk"><div class="${it.done?"b":""}" style="width:${Math.max(2,it.v/mx*100)}%"></div></div><span class="v">${it.done?"已处置":"暴露 "+U().money(it.v)}</span></div>`).join("");
+   const vv=q("#l11v");
+   if(exp===0){vv.className="verdict good";vv.innerHTML="<b>爆炸半径已清零。</b>余额、合约管理权与历史授权全部处置完毕。";}
+   else{vv.className="verdict bad";vv.innerHTML=`<b>仍有 ${U().money(exp)} 隐性敞口未解除。</b>未处置项：<b>${left.join("、")}</b>。只转空账面余额或只停办公账号，不能消除链上权限与授权风险。`;}
+   root.querySelectorAll("#l11c .chk").forEach(c=>c.classList.toggle("active",c.querySelector("input").checked));};
+  q("#l11p").onchange=load;q("#l11c").onchange=e=>{items[+e.target.dataset.i].done=e.target.checked;draw();};load();}});
 
 L.forEach((o,i)=>{o.ord=i;H.docs.push(o);});
 })();

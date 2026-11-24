@@ -148,7 +148,7 @@ H.cases.push(
  myths:[["守护者私钥泄露","守护者没有被攻破。攻击者绕过了“验证守护者签名”这一步。"],["用户亏了 3 亿","Jump 补足后，用户的 wETH 恢复 1:1 支撑。损失由 Jump 承担，之后部分取回。"]],
  fixes:[["0","所有 sysvar 和程序账户在读取前校验地址与 owner。","① ②","用 Anchor 约束或静态分析覆盖全部指令。"],["0","安全补丁在主网部署后再公开合并。","①","发布流程中加入“私有修复分支”步骤。"],["1","按链设置出桥速率上限（Wormhole 后来上线 Governor）。","④","模拟大额出桥，超额部分进入延迟队列。"]],
  labs:["l1"],
- sources:[["Wormhole. Wormhole Incident Report 02/02/22","https://wormholecrypto.medium.com/wormhole-incident-report-02-02-22-ad9b8f21eec6"],["Kudelski Security. Quick Analysis of the Wormhole attack（2022-02）", "https://kudelskisecurity.com/research/quick-analysis-of-the-wormhole-attack"],["The Block. Jump Crypto and Oasis counter-exploit Wormhole hacker（2023-02-24）", ""]],
+ sources:[["Wormhole. Wormhole Incident Report 02/02/22","https://wormholecrypto.medium.com/wormhole-incident-report-02-02-22-ad9b8f21eec6"],["Kudelski Security. Quick Analysis of the Wormhole attack（2022-02）", "https://kudelskisecurity.com/research/quick-analysis-of-the-wormhole-attack"],["Web3 is Going Just Great. Per a court order, Oasis rewrites the rules for Jump Crypto（2023-02-24）", "https://www.web3isgoinggreat.com/?id=oasis-rewrites-the-rules-for-jump-crypto"]],
  limits:"攻击者身份未知。反向取回金额来自媒体对链上数据的统计。"
 },
 {
@@ -173,19 +173,19 @@ H.cases.push(
   OK --> Y["复制者 2…300+"]`,
  readpts:["漏洞是“默认值 = 有效值”的经典组合。0 既表示“没有记录”，又表示“已确认的根”。","攻击交易一旦上链，就是公开的攻击模板。这让损失从单人攻击变成群体哄抢。","局限：参与地址中哪些是白帽、哪些是攻击者，无法从链上区分。"],
  analogy:"门禁系统升级时，把“没有门卡”也登记成了一张有效门卡。第一个人发现后，排队的人只要说“我没卡”就能进门。",
- timeline:[["2022-06-21","Replica 升级上线","零值根被确认。"],["08-01 21:32 UTC","第一笔攻击交易","","hot"],["08-01 晚","数百个地址复制攻击","约 3 小时提走约 1.9 亿美元。","hot"],["08-02","Nomad 确认事件，公布归还地址",""],["08-04","Nomad 提出 10% 赏金","归还者视为白帽。","ok"],["2022 年内","约 3,200 万–3,700 万美元被归还","各来源口径不同。","ok"],["2023-08","美国加州北区起诉 Alexander Gurevich","指控其个人取走约 289 万美元。"],["2025-05-01","Gurevich 在以色列被捕","之后被引渡到美国。"]],
+ timeline:[["2022-06-21","Replica 升级上线","零值根被确认。"],["08-01 21:32 UTC","第一笔攻击交易","","hot"],["08-01 晚","数百个地址复制攻击","约 3 小时提走约 1.9 亿美元。","hot"],["08-02","Nomad 确认事件，公布归还地址",""],["08-04","Nomad 提出 10% 赏金","归还者视为白帽。","ok"],["2022 年内","约 3,200 万–3,700 万美元被归还","各来源口径不同。","ok"],["2023-08","美国加州北区起诉 Alexander Gurevich","指控其个人取走约 289 万美元。"],["2025-05-01","Gurevich 在以色列被捕",""],["2026-10-30","Gurevich（已更名 Alexander Block）正式被引渡至美国加州北区出庭","以色列最高法院驳回上诉。","ok"]],
  roots:[["升级 ⇄ 状态","初始化参数没有不变量检查","0x00 被写成可信根。"],["存储 ⇄ 语义","默认值与业务含义冲突","“没写过”与“已确认”无法区分。"],["桥 ⇄ 速率","没有速率上限","3 小时内资金被全部提空。"]],
  myths:[["这是一次高水平黑客攻击","第一笔交易之后，参与者只需复制数据。门槛极低，这正是损失扩大的原因。"],["审计没有发现","审计曾提到相关风险。问题出在升级参数与上线流程。"]],
  fixes:[["0","合约升级前在主网分叉上回放历史交易；初始化参数做不变量断言。","①","CI 中加入“零值根必须无效”的单元测试。"],["0","桥合约设置可快速触发的暂停开关。","③","演练：从告警到暂停小于 10 分钟。"],["1","按资产、按时段的提款上限。","③","单小时提款超过 TVL 的设定比例时自动暂停。"]],
  labs:["l1"],
- sources:[["Nomad. Nomad Bridge Hack: Root Cause Analysis（2022-08）","https://medium.com/nomad-xyz-blog/nomad-bridge-hack-root-cause-analysis-875ad2e5aacd"],["samczsun. Twitter 线程：Nomad 漏洞分析（2022-08-01）","https://twitter.com/samczsun/status/1554252024723546112"],["Rekt. Nomad Bridge – REKT（2022-08）","https://rekt.news/nomad-rekt/"]],
+ sources:[["Nomad. Nomad Bridge Hack: Root Cause Analysis（2022-08）","https://medium.com/nomad-xyz-blog/nomad-bridge-hack-root-cause-analysis-875ad2e5aacd"],["samczsun. Twitter 线程：Nomad 漏洞分析（2022-08-01）","https://twitter.com/samczsun/status/1554252024723546112"],["Rekt. Nomad Bridge – REKT（2022-08）","https://rekt.news/nomad-rekt/"],["U.S. DOJ. Israeli National Extradited to Face Charges for Stealing Nearly $3M in Nomad Bridge Exploit（2026-10-30）","https://www.justice.gov/opa/pr/israeli-national-extradited-face-charges-stealing-nearly-3m-virtual-currency-heist"]],
  limits:"损失与归还金额来自 Nomad 和第三方统计，各家口径相差数百万美元。"
 },
 {
  id:"c-mango", cut:4, name:"Mango Markets", sub:"用自己的钱抬价，再用抬起的价格借空金库", date:"2022-10-11", type:"DeFi", chain:"Solana", attr:"Avraham Eisenberg（本人公开承认）", ev:"P+M",
  loss:114,
  thesis:"攻击者没有利用代码漏洞。他在三个市场<em>买高 MNGO 现货</em>，预言机如实报出了新价格，Mango 按这个价格承认了他的浮盈，并让他用浮盈作抵押借走了金库里几乎所有资产。",
- figs:[["$1.14 亿","被借走的资产","red"],["~5 倍+","约 20 分钟内 MNGO 预言机价格涨幅","red"],["$4,700 万","DAO 投票后攻击者保留","warn"],["$6,700 万","归还 DAO","green"],["4 层","攻击路径跨越的信任域"]],
+ figs:[["$1.14 亿","被借走的资产","red"],["~23 倍","约 20 分钟内 MNGO 预言机价格涨幅（0.038 → 0.91 美元）","red"],["$4,700 万","DAO 投票后攻击者保留","warn"],["$6,700 万","归还 DAO","green"],["4 层","攻击路径跨越的信任域"]],
  steps:[
   {d:"链上",name:"准备两个账户",when:"10-11 ~22:00 UTC",ev:["fact"],what:["攻击者向两个 Mango 账户各存入约 500 万 USDC。"],how:"两个账户互为交易对手，盈亏在攻击者内部抵消。",block:"—"},
   {d:"合约",name:"自买自卖开仓",when:"10-11",ev:["fact"],what:["账户 A 卖出 4.83 亿 MNGO 永续合约。","账户 B 买入同等数量。成交价约 0.0382 美元。"],how:"在流动性很薄的市场上，攻击者自己做对手盘。",block:"单一账户、单一市场的持仓上限；低流动性资产的开仓限额。"},
@@ -205,9 +205,9 @@ H.cases.push(
   A -.->|"成本"| COST["买现货 + 两边保证金 约 1,000 万美元"]`,
  readpts:["这是一个正反馈环：买得越多，借得越多。只要买入成本小于可借金额，攻击就有利可图。","每一环都按设计工作。失效点是“低流动性资产的价格被当成可借款的硬抵押”。","局限：现货买入的精确成本没有公开统一口径。"],
  analogy:"一个人在冷清的拍卖会上用自己的两个号互相抬价，把一幅画抬到 1 亿，然后拿这幅画去银行抵押，借走 1 亿现金。",
- timeline:[["2022-10-11 ~22:00 UTC","攻击开始","","hot"],["~22:20","MNGO 预言机价格到达高点","借款随即完成。","hot"],["10-12","攻击者提出和解提案","",""],["10-15","DAO 通过和解","攻击者归还约 6,700 万美元。","ok"],["10-15","Eisenberg 公开承认参与，称其为“高利润交易策略”",""],["2022-12","Eisenberg 在波多黎各被捕",""],["2024-04","陪审团判定商品欺诈、操纵市场、电汇欺诈成立",""],["2025-05-23","SDNY 一审法官撤销全部定罪","电汇欺诈以审判地不当、缺乏重大虚假陈述改判无罪。检方已向第二巡回法院上诉。SEC、CFTC 民事诉讼仍在进行。"]],
+ timeline:[["2022-10-11 ~22:00 UTC","攻击开始","","hot"],["~22:20","MNGO 预言机价格到达高点","借款随即完成。","hot"],["10-12","攻击者提出和解提案","",""],["10-15","DAO 通过和解","攻击者归还约 6,700 万美元。","ok"],["10-15","Eisenberg 公开承认参与，称其为“高利润交易策略”",""],["2022-12","Eisenberg 在波多黎各被捕",""],["2024-04","陪审团判定商品欺诈、操纵市场、电汇欺诈成立",""],["2025-05-23","SDNY 一审法官推翻全部刑事定罪","商品欺诈与市场操纵因纽约审判地不当被撤销（vacated，检方可在适格地区重诉）；电汇欺诈因缺乏重大虚假陈述改判无罪（acquittal）。检方已向第二巡回法院上诉，SEC、CFTC 民事诉讼仍在进行。"]],
  roots:[["预言机 ⇄ 市场深度","价格来源太浅","几百万美元就能把价格推高数倍。"],["浮盈 ⇄ 抵押","未实现盈亏被当成硬资产","协议允许用账面利润借走真资产。"],["治理 ⇄ 攻击者","攻击者可以投票","借来的治理代币参与了针对自己的和解表决。"]],
- myths:[["预言机被黑了","预言机准确报告了市场价格。被操纵的是市场本身。"],["代码有漏洞","合约按设计运行。漏洞在风险参数和经济模型。"],["“代码即法律”，所以合法","撤销定罪的理由是审判地和缺乏虚假陈述，不是认定行为合法。检方已上诉。"]],
+ myths:[["预言机被黑了","预言机准确报告了市场价格。被操纵的是市场本身。"],["代码有漏洞","合约按设计运行。漏洞在风险参数和经济模型。"],["“代码即法律”，所以合法","商品欺诈与操纵仅因审判地不当被撤销（法庭同时认可存在操纵证据），并非认定行为合法。电汇欺诈无罪源于协议缺少明示规则与虚假陈述。"]],
  fixes:[["0","低流动性资产的抵押率、借款上限、持仓上限按市场深度设置。","② ⑤","用 1,000 万美元模拟拉盘，可借金额必须小于拉盘成本。"],["0","预言机使用 TWAP 与多源中位数；偏离阈值时暂停借贷。","③","在测试网把现货价格拉高 3 倍，借款功能必须暂停。"],["1","未实现盈亏不计入可借抵押品。","④","浮盈账户的可借额度只按已实现余额计算。"],["2","治理投票排除借入代币；和解类提案需要更高法定人数。","⑥","快照投票时检查代币是否来自借贷协议。"]],
  labs:["l6"],
  sources:[["The Block. Mango Markets proposes plan to pay back victims after $114 million hack（2022-10-17）", "https://www.theblock.co/news/defi/2022-10-17-mango-markets-proposes-plan-to-pay-back-victims-after-114-million-hack-177736"],["U.S. DOJ. Man Arrested for Alleged Theft of $110 Million from Mango Markets（2022-12-28）","https://www.justice.gov/usao-sdny/pr/man-arrested-alleged-theft-110-million-cryptocurrency-mango-markets"],["The Block. U.S. judge overturns fraud convictions of Mango Markets exploiter Eisenberg, determining improper venue（2025-05-24）", "https://www.theblock.co/news/regulation/2025-05-24-u-s-judge-overturns-fraud-convictions-of-mango-markets-exploiter-eisenberg-determining-improper-venue-355666"],["Rekt. Mango Markets – REKT（2022-10）","https://rekt.news/mango-markets-rekt/"]],

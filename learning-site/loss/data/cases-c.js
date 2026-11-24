@@ -23,13 +23,13 @@ H.cases.push(
   K3["离线备份钥匙"] -.->|"未参与"| TX`,
  readpts:["2-of-3 的两把在线钥匙都受 Bitfinex 身份控制。攻击者只需攻破一个身份。","联签服务商的独立性取决于它是否独立判断请求。","局限：限额被修改的具体方式没有公开。"],
  analogy:"金库要两把钥匙。第二把由保安公司保管，但保安公司只认老板的电话。小偷偷了老板的手机。",
- timeline:[["2016-08-02","约 119,756 BTC 被转出","","hot"],["08-07","全体用户分摊 36% 损失，发放 BFX 代币",""],["2017-04","BFX 代币全部赎回","","ok"],["2022-02-08","Lichtenstein、Morgan 被捕；查扣约 94,000 BTC","","ok"],["2023-08","两人认罪",""],["2024-11","Lichtenstein 被判 5 年",""]],
+ timeline:[["2016-08-02","约 119,756 BTC 被转出","司法文件口径为 119,754 BTC（约 7,100 万美元）。","hot"],["08-07","全体用户分摊 36% 损失，发放 BFX 代币",""],["2017-04","BFX 代币全部赎回","","ok"],["2022-02-08","Lichtenstein、Morgan 被捕；查扣约 94,000 BTC","","ok"],["2023-08","两人认罪",""],["2024-11","Lichtenstein 被判 5 年；Heather Morgan 被判 18 个月",""],["2025-01","美国司法部向法院建议将查扣 BTC 实物返还 Bitfinex","","ok"],["2026-01","Lichtenstein 依《第一步法案》获提前假释进入监管缓刑",""]],
  roots:[["身份 ⇄ 联签","两把钥匙由同一身份指挥","多签退化为单一身份控制。"],["策略 ⇄ 变更","限额可被即时修改","策略变更没有延迟和带外确认。"],["单地址 ⇄ 平台","限额按地址计","2,000 多个地址各自没超限，合计却是全部资产。"]],
  myths:[["BitGo 被黑了","BitGo 称自身未被入侵。它按收到的指令签名。"],["钱已经追回，所以没损失","查扣发生在 6 年后。期间用户承担了 36% 的折损。"]],
  fixes:[["0","至少一把签名钥匙的持有方独立判断请求，不只验证身份","③ ④","以主账户身份请求大额提现，联签方必须带外确认。"],["0","策略与限额变更延迟生效（例如 24 小时）并通知多方","③","修改限额后立即发起超额提现，必须失败。"],["1","按平台聚合计算提现速率","⑤","1 小时内全平台转出超过阈值时停签。"]],
  labs:["l3","l4"],
- sources:[["U.S. DOJ. Two Arrested for Alleged Conspiracy to Launder $4.5 Billion in Stolen Cryptocurrency（2022-02-08）","https://www.justice.gov/opa/pr/two-arrested-alleged-conspiracy-launder-45-billion-stolen-cryptocurrency"],["U.S. DOJ. Bitfinex Hacker and Wife Plead Guilty（2023-08-03）","https://www.justice.gov/opa/pr/bitfinex-hacker-and-wife-plead-guilty-money-laundering-conspiracy-involving-billions-stolen"],["Reuters. Bitfinex hack: BitGo says its systems were not breached（2016-08）", ""],["U.S. DOJ. Bitfinex Hacker Sentenced in Money Laundering Conspiracy Involving Billions in Stolen Cryptocurrency（2024-11-14）", "https://www.justice.gov/archives/opa/pr/bitfinex-hacker-sentenced-money-laundering-conspiracy-involving-billions-stolen"]],
- limits:"联签限额如何被修改，官方没有公开技术细节。"
+ sources:[["U.S. DOJ. Two Arrested for Alleged Conspiracy to Launder $4.5 Billion in Stolen Cryptocurrency（2022-02-08）","https://www.justice.gov/opa/pr/two-arrested-alleged-conspiracy-launder-45-billion-stolen-cryptocurrency"],["U.S. DOJ. Bitfinex Hacker and Wife Plead Guilty（2023-08-03）","https://www.justice.gov/opa/pr/bitfinex-hacker-and-wife-plead-guilty-money-laundering-conspiracy-involving-billions-stolen"],["Bitfinex Support. 2016 Security Breach Bitcoin Recovery FAQ（2022-02）","https://support.bitfinex.com/hc/en-us/articles/4417401349657-2016-Security-Breach-Bitcoin-Recovery-Frequently-Asked-Questions-FAQ"],["U.S. DOJ. Bitfinex Hacker Sentenced in Money Laundering Conspiracy Involving Billions in Stolen Cryptocurrency（2024-11-14）", "https://www.justice.gov/archives/opa/pr/bitfinex-hacker-sentenced-money-laundering-conspiracy-involving-billions-stolen"]],
+ limits:"联签限额如何被修改，官方没有公开技术细节。币量与估值存在 Bitfinex 口径（119,756 BTC / 约 7,200 万美元）与美国司法部口径（119,754 BTC / 约 7,100 万美元）两种写法。"
 },
 {
  id:"c-badger", name:"BadgerDAO", sub:"一个没人知道的 Cloudflare 密钥", date:"2021-12-02", type:"DeFi", chain:"Ethereum", attr:"未知", ev:"P", arch:"A", fam:["供应商","前端与界面","签名与密钥","监控与对账"],
@@ -209,7 +209,7 @@ H.cases.push(
  limits:"各池损失与归还金额来自多方统计，合计口径约 6,100 万–7,300 万美元。"
 },
 {
- id:"c-coinspaid", name:"CoinsPaid", sub:"六个月、三种入口，最后一次假面试成功", date:"2023-07-22", type:"支付", chain:"多链", attr:"Lazarus（受害方判断）", ev:"P", arch:"A", fam:["人员与终端","身份与会话","云与内部平台","签名与密钥"],
+ id:"c-coinspaid", name:"CoinsPaid", sub:"六个月、三种入口，最后一次假面试成功", date:"2023-07-22", type:"支付", chain:"多链", attr:"Lazarus / TraderTraitor（FBI 确认）", ev:"P", arch:"A", fam:["人员与终端","身份与会话","云与内部平台","签名与密钥"],
  loss:37.3,
  thesis:"攻击者花了半年试探：技术扫描、冒充合作方、收买员工。最后，一名员工在<em>假面试的“技术测试”</em>中安装了恶意代码。攻击者用他的权限进入基础设施，构造合法格式的热钱包提现请求。",
  figs:[["$3,730 万","热钱包损失","red"],["~6 个月","攻击者持续试探"],["$16,000–24,000","假 offer 的月薪","warn"],["2023-07-22","执行日"],["5 层","攻击路径跨越的信任域"]],
@@ -231,13 +231,13 @@ H.cases.push(
   R --> H["热钱包 3,730 万美元"]
   X["CoinsPaid 防线"]`,
  readpts:["前三条路被挡住，第四条路成功。攻击者有充足时间试错。","失败的尝试本身就是告警信号：同一团伙在半年内多次接触公司。","局限：图中未显示攻击者在基础设施内的具体操作。"],
- timeline:[["2023-03","攻击者开始多路试探",""],["2023-07","员工参加假面试并安装恶意代码",""],["2023-07-22","热钱包被提取约 3,730 万美元","","hot"],["2023-07-26","CoinsPaid 公告并归因 Lazarus",""]],
+ timeline:[["2023-03","攻击者开始多路试探",""],["2023-07","员工参加假面试并安装恶意代码",""],["2023-07-22","热钱包被提取约 3,730 万美元","","hot"],["2023-07-26","CoinsPaid 公告并归因 Lazarus",""],["2023-08-22","FBI 正式将 CoinsPaid（$37M）等事件归因朝鲜 TraderTraitor（Lazarus / APT38）","","ok"]],
  roots:[["员工 ⇄ 设备","工作设备可安装外部应用","面试测试在工作电脑上完成。"],["凭据 ⇄ 基础设施","单一员工凭据可触达提现系统","缺少设备绑定与第二因素。"],["请求 ⇄ 订单","提现请求不与订单对账","合法格式即被执行。"]],
  myths:[["一次性入侵","攻击者持续了约 6 个月，失败多次后才成功。"]],
  fixes:[["0","提现请求必须对应业务订单，签名端逐笔核对","⑤","无订单的提现请求必须被拒绝。"],["1","记录并关联所有社工接触尝试","①","同一来源多次接触时，提升全员告警等级。"],["1","面试测试只在隔离设备完成","② ③","红队投递假面试，跟踪员工报告率。"]],
  labs:["l1","l8"],
  sources:[["CoinsPaid. Lazarus hackers attack on CoinsPaid（2023-07）","https://coinspaid.com/tpost/coinspaid-hack-investigation"],["The Block. Lazarus Group suspected by CoinsPaid of $37 million hack（2023-07-26）", "https://www.theblock.co/news/regulation/2023-07-26-lazarus-group-suspected-by-coinspaid-of-37-million-hack-241607"]],
- limits:"归因来自受害方，未见执法确认。"
+ limits:"FBI 2023-08-22 公告确认朝鲜 TraderTraitor 归因（公告中将事发日期误写为 6 月 22 日，实际以 CoinsPaid 披露的 7 月 22 日为准）。"
 },
 {
  id:"c-multichain", name:"Multichain", sub:"所有 MPC 节点都在一个人的云账号里", date:"2023-07-06", type:"跨链桥", chain:"Fantom / Moonriver / Dogechain 等", attr:"疑似内部（未确认）", ev:"I+M", arch:"A", fam:["签名与密钥","阈值","云与内部平台"],
@@ -290,7 +290,7 @@ H.cases.push(
 },
 {
  id:"c-radiant", name:"Radiant Capital", sub:"三位签名者的屏幕显示正常", date:"2024-10-16", type:"DeFi", chain:"Arbitrum / BSC", attr:"UNC4736（Mandiant 研究判断，朝鲜）", ev:"P+I", arch:"A", fam:["人员与终端","前端与界面","签名与密钥"],
- loss:53,
+ loss:50,
  thesis:"Radiant 的多签需要 11 人中的 3 人签名。攻击者通过 Telegram 冒充前承包商，发来一个压缩的 PDF。<em>三位签名者的电脑被植入后门</em>：Safe 界面显示正常的排放参数调整，后台签名的是转移合约所有权。",
  figs:[["~$5,000 万","Arbitrum 与 BSC 借贷市场","red"],["3 / 11","多签阈值"],["~5 周","恶意软件潜伏"],["UNC4736","Mandiant 归因（研究）"],["6 层","攻击路径跨越的信任域"]],
  steps:[
@@ -316,13 +316,13 @@ H.cases.push(
   D-->>P: 所有权转给攻击者
   A->>P: 升级为恶意实现 提空`,
  readpts:["与 Bybit 的区别：Bybit 的篡改在供应商云端（S3 上的 JS），Radiant 的篡改在签名者本机。","签名失败重试是危险信号：恶意软件可以让第一次签名“失败”，再收集有效签名。","局限：后门在每台设备上的确切行为来自 Mandiant 分析。"],
- timeline:[["2024-09-11","Telegram 冒充前承包商发送文件",""],["2024-10-16","3 个签名到齐，所有权转移，约 5,000 万美元被盗","","hot"],["10-18","Radiant 发布初步复盘",""],["12-06","Radiant 发布含 Mandiant 结论的复盘","归因 UNC4736。"]],
+ timeline:[["2024-09-11","Telegram 冒充前承包商发送文件",""],["2024-10-16","3 个签名到齐，所有权转移，约 5,000 万美元被盗","另有约 5,300 万美元口径。","hot"],["10-18","Radiant 发布初步复盘",""],["12-06","Radiant 发布含 Mandiant 结论的更新","归因 UNC4736。"],["2026-06-01","Radiant Capital 宣布永久关停（wind down）","历经约 20 个月未能从该次攻击中恢复。","warn"]],
  roots:[["签名者 ⇄ 日常设备","签名设备也用于沟通","社工文件直接进入签名环境。"],["界面 ⇄ 数据","签名依赖本机界面","本机被控，界面即不可信。"],["所有权 ⇄ 时间","所有权转移立即生效","没有时间锁可撤回。"]],
  myths:[["Safe 有漏洞","Safe 合约按设计运行。篡改发生在签名者本机。"],["3/11 足够分散","3 名签名者的设备在同一个社工活动中被攻破。"]],
  fixes:[["0","签名设备专机专用，与日常沟通设备物理分离","① ②","签名设备上不安装 Telegram、邮件客户端。"],["0","所有权转移、升级等操作走时间锁","⑤","transferOwnership 后 48 小时内可撤销。"],["1","签名 SOP：第二台设备独立计算哈希；签名失败重试时暂停核查","③ ④","红队模拟“签名失败重试”，签名者必须暂停。"]],
  labs:["l2","l3"],
- sources:[["Radiant Capital. Radiant Post-Mortem（2024-12-06）","https://medium.com/@RadiantCapital/radiant-post-mortem-fecd6cd38081"],["Mandiant / Radiant. INLETDRIFT 与 UNC4736 分析（2024-12）","https://medium.com/@RadiantCapital/radiant-post-mortem-fecd6cd38081"],["Rekt. Radiant Capital - Rekt II（2024-10-17）", "https://rekt.news/radiant-capital-rekt2"]],
- limits:"归因为研究机构判断，未见执法确认。"
+ sources:[["Radiant Capital. Radiant Post-Mortem（2024-10-17）","https://medium.com/@RadiantCapital/radiant-post-mortem-fecd6cd38081"],["Radiant Capital. Incident Update（含 Mandiant 对 INLETDRIFT 与 UNC4736 分析，2024-12-06）","https://medium.com/@RadiantCapital/radiant-capital-incident-update-e56d8c23829e"],["Rekt. Radiant Capital - Rekt II（2024-10-17）", "https://rekt.news/radiant-capital-rekt2"],["The Defiant. Radiant Capital Winds Down After DPRK $50M Heist（2026-06-01）","https://thedefiant.io/news/defi/radiant-capital-winds-down-2m-husk-dprk-50m-heist"]],
+ limits:"归因为研究机构判断，未见执法确认。损失金额存在 5,000 万与 5,300 万美元两种口径。"
 },
 {
  id:"c-cetus", name:"Cetus", sub:"一个溢出检查写错，验证者冻结了攻击者", date:"2025-05-22", type:"DeFi", chain:"Sui", attr:"未知", ev:"P+I", arch:"B", fam:["合约","熔断"],
@@ -352,7 +352,7 @@ H.cases.push(
  myths:[["Sui Move 不安全","Move 语言没有缺陷。问题在一个库函数的检查条件。"],["资金都被冻结了","约 6,000 万美元已跨到以太坊。"]],
  fixes:[["0","数学库函数做形式化验证与边界值模糊测试","②","对 checked_* 系列函数输入 2^k 边界值，全部通过断言。"],["0","流动性变更前后做不变量检查","③","添加流动性后，池子真实资产增加必须 ≥ 份额价值。"],["1","第三方数学库纳入审计范围","②","审计报告列出全部依赖库及其覆盖情况。"]],
  labs:["l1"],
- sources:[["Cetus. Cetus Relaunch Incoming: Recovery Plan and the Road Ahead（2025-06-07）", "https://medium.com/@CetusProtocol/cetus-relaunch-incoming-recovery-plan-and-the-road-ahead-9fc0f8bd5c41"],["Sui. Response to the Cetus Incident – Onchain Community Vote（2025-05-27）", "https://www.sui.io/blog/cetus-incident-response-onchain-community-vote"],["Dedaub / Cyfrin. Cetus checked_shlw analysis（2025-05）","https://dedaub.com/blog/"]],
+ sources:[["Cetus. Cetus Relaunch Incoming: Recovery Plan and the Road Ahead（2025-06-07）", "https://medium.com/@CetusProtocol/cetus-relaunch-incoming-recovery-plan-and-the-road-ahead-9fc0f8bd5c41"],["Sui. Response to the Cetus Incident – Onchain Community Vote（2025-05-27）", "https://www.sui.io/blog/cetus-incident-response-onchain-community-vote"],["Dedaub. $200M Cetus AMM Hack: Sui Overflow Vulnerability Explained（2025-05-23）","https://dedaub.com/blog/the-cetus-amm-200m-hack-how-a-flawed-overflow-check-led-to-catastrophic-loss/"],["Cyfrin. Inside The $223M Cetus Exploit: Root Cause And Impact Analysis（2025-12-15）","https://www.cyfrin.io/blog/inside-the-223m-cetus-exploit-root-cause-and-impact-analysis"]],
  limits:"冻结与追回金额以 Cetus 与 Sui 公告为准。"
 }
 );

@@ -116,10 +116,10 @@ const G=[
   F --> V["买入治理代币"]
   V --> G["当场投票通过恶意提案"]
   G --> T["转走金库"]`,
- readpts:["上半条是价格操纵（Mango、Cream、Harvest、Tectonic），下半条是治理攻击（Beanstalk）。","两条都依赖同一个假设：“当前市场状态代表真实价值”。","Tectonic 2026：TONIC 被拉高约 100–300 倍后借空 9 个市场。Cronos 回滚 10,961 个区块恢复约 1.11 亿美元，又引出“回滚伦理”问题。"],
+ readpts:["上半条是价格操纵（Mango、Cream、Harvest、Tectonic），下半条是治理攻击（Beanstalk）。","两条都依赖同一个假设：“当前市场状态代表真实价值”。","无背书或被操纵的资产流入下游借贷协议时，风险会跨协议传染（KelpDAO 导致 Aave 等坏账，Curve 引发 CRV 抵押连环清算担忧）。","Tectonic 2026：TONIC 被拉高约 100–300 倍后借空 9 个市场。Cronos 回滚 10,961 个区块恢复约 1.11 亿美元，又引出“回滚伦理”问题。"],
  why:["没有代码漏洞，没有私钥泄露。","损失上限由风险参数决定。"],
  examples:[["Beanstalk 2022（$1.82 亿）","闪电贷取得 67% 投票权，emergencyCommit 在同一笔交易里执行恶意提案。第二批成章。"],["Cream 2021-10（$1.3 亿）","向 yUSD 金库“捐赠”抬高其价格，再用闪电贷循环借出。"],["Ostium 2026（$23.75M）","报价签名者失陷，攻击者以虚构价格开平仓。"]],
- controls:[["0","低流动性资产的抵押率、借款上限按市场深度设置","可借金额 < 拉盘成本，见 L6"],["0","TWAP + 多源中位数；偏离阈值时暂停借贷","现货拉高 3 倍，借款必须暂停"],["1","治理投票快照在提案前；借入代币不能投票","闪电贷代币投票必须无效"],["1","治理执行走时间锁","提案通过到执行 ≥ 24 小时"]],
+ controls:[["0","低流动性资产的抵押率、借款上限按市场深度设置","可借金额 < 拉盘成本，见 L6"],["0","TWAP + 多源中位数；偏离阈值时暂停借贷","现货拉高 3 倍，借款必须暂停"],["1","下游借贷协议对 LRT 与桥接资产设独立供给/借款上限，脱锚时自动暂停借贷","单一 LRT 无背书铸造或脱锚时，坏账被隔离在上限内（见 KelpDAO、Curve）"],["1","治理投票快照在提案前；借入代币不能投票","闪电贷代币投票必须无效"],["1","治理执行走时间锁","提案通过到执行 ≥ 24 小时"]],
  labs:["l6"]},
 {id:"g09",code:"G09",title:"链共识、重组与入账缺陷",techs:["T10","T11"],
  intro:"交易所把“链上看到了充值”当作“充值已确定”。如果链可以被重组，或者入账系统识别错了资产，平台就会给不存在的充值记账。",
@@ -194,11 +194,39 @@ H.docs.push({id:"d01",code:"D01",group:"p3",ord:1,title:"防御矩阵",wide:true
   <tr><td>立足</td><td>开发工具二进制被替换；异常外联；EDR 未覆盖的 macOS</td><td>Binance、Bybit</td></tr>
   <tr><td>横移</td><td>同一令牌出现在两台设备；非计划部署；安全管理面下发命令</td><td>Binance、Bitget</td></tr>
   <tr><td>取得签名能力</td><td>签名请求类型异常（升级、delegatecall、7702）；无对应订单的提现请求</td><td>Bybit、WazirX、Binance、Bitget</td></tr>
-  <tr><td>链上执行</td><td>数秒内多链大额转出；实现地址、Keeper、委托代码变化</td><td>全部</td></tr></tbody></table></div>`;}});
+  <tr><td>链上执行</td><td>数秒内多链大额转出；实现地址、Keeper、委托代码变化</td><td>全部</td></tr></tbody></table></div>
+  <h2>业务账务、变更窗口与现代研发 / AI 工具基线</h2>
+  <p class="note">以下三类防线针对“非黑客入侵型资损”“升级迁移窗口”和“2025–2026 现代研发工作流”，补齐上面攻击链矩阵之外的高频盲区。</p>
+  <div class="tbl-wrap"><table><thead><tr><th>防线维度</th><th>优先级</th><th>做什么</th><th>怎样验证</th><th>对应案例</th></tr></thead><tbody>
+  <tr><td rowspan="3"><b>业务账务与<br/>地址生命周期</b></td><td><span class="prio p0">P0</span></td><td>三账准实时对账（链上余额、钱包账本、业务总账），异常差额分钟级自动熔断</td><td>模拟无订单链上转出或无入账余额激增，5 分钟内告警并停签</td><td>Bitget、Kraken、Upbit</td></tr>
+  <tr><td><span class="prio p0">P0</span></td><td>营销、空投、发奖系统设单笔与活动总额硬上限，强制币种单位双人复核</td><td>构造超预算或单位错录的发奖批次，系统必须拦截</td><td>Bithumb（误发 BTC）</td></tr>
+  <tr><td><span class="prio p1">P1</span></td><td>钱包地址实行 Active → Deprecated → Retired 状态机；退役地址禁用自动记账但保留链上转入告警</td><td>向退役地址转入小额测试资产，不入账且 1 分钟内告警</td><td>CoinDCX（旧钱包）</td></tr>
+  <tr><td rowspan="3"><b>变更窗口与<br/>补丁管理</b></td><td><span class="prio p0">P0</span></td><td>热钱包迁移前先把旧钱包余额归集至冷钱包；变更期内收紧而非放宽告警，每笔转账绑定变更单号</td><td>迁移期间发起无变更单号的转出，必须被拒绝</td><td>BitoPro 2025</td></tr>
+  <tr><td><span class="prio p0">P0</span></td><td>高危安全修复走私有分支，主网部署后再公开合并；建立“合并 → 发布 → 节点部署 ≤ 72 小时”SLA</td><td>抽查最近 3 次安全修复的端到端部署耗时</td><td>Wormhole、Liquid Network</td></tr>
+  <tr><td><span class="prio p1">P1</span></td><td>合约升级前在主网分叉上回放历史交易，并对初始化参数与权限归属做不变量断言</td><td>CI 中“零值根初始化”测试必须失败</td><td>Nomad</td></tr>
+  <tr><td rowspan="3"><b>现代研发终端与<br/>AI 工具治理</b></td><td><span class="prio p0">P0</span></td><td>内部 AI 编码工具、Agent 与 MCP 按用户隔离身份与会话；终端执行、读凭证、生产部署强制人工确认</td><td>用员工 B 的 AI 会话访问员工 A 的工作区或触发部署，必须被拒绝</td><td>Binance 2026</td></tr>
+  <tr><td><span class="prio p0">P0</span></td><td>公司设备禁用 AirDrop 接收；IDE 强制 Workspace Trust 并禁用打开目录自动任务（tasks.json）；外部代码仅在一次性沙箱运行</td><td>打开含 folderOpen 自动任务的测试仓库，不得自动执行</td><td>WOO X、Drift、KelpDAO</td></tr>
+  <tr><td><span class="prio p1">P1</span></td><td>开发机零存放长期云/容器部署令牌；CI/CD 使用受保护分支与 OIDC 短时凭证</td><td>在临时分支触发 CI，不得输出生产云凭证</td><td>SwissBorg / Kiln、Binance</td></tr>
+  </tbody></table></div>
+  <h2>多链安全心智差异速查表</h2>
+  <div class="tbl-wrap"><table><thead><tr><th>链 / 生态</th><th>特有高危陷阱</th><th>必查防线</th><th>典型案例</th></tr></thead><tbody>
+  <tr><td><b>EVM（Ethereum / L2）</b></td><td>delegatecall 改写代理存储；EIP-7702 授权清扫；approve(max) 遗留授权；编译器字节码差异；ERC-4626 空池与舍入方向</td><td>Safe Guard 禁 delegatecall 与升级；策略层默认拒签 7702；对编译产物做字节码重入与舍入模糊测试；新池预存种子流动性</td><td>Bybit、WazirX、Binance、Curve / Vyper、Balancer v2</td></tr>
+  <tr><td><b>Solana</b></td><td>账户与 sysvar 未校验身份；单笔交易夹带多条 Authorize 指令；durable nonce 永不过期预签名</td><td>全部指令校验账户地址与 owner；签名端逐条解析全部指令并拦截 Authorize；管理员多签禁用 durable nonce</td><td>Wormhole、SwissBorg / Kiln、Drift</td></tr>
+  <tr><td><b>Move（Sui / Aptos）</b></td><td>语言防溢出不等于自定义位运算/共享数学库安全；充值入账未校验代币 type 参数</td><td>对 checked_* 等数学库做形式化验证与边界值模糊测试；入账严格校验合约地址与完整 type</td><td>Cetus、Upbit（假 APT）</td></tr>
+  <tr><td><b>BTC / 侧链 / 跨链桥</b></td><td>Range Proof 验证缓存键缺字段；PoW 51% 算力重组双花；DoS 迫使验证者故障切换到投毒 RPC</td><td>缓存键覆盖完整上下文；按算力成本动态设确认数与充值上限；≥ 3 个独立 DVN/RPC 且数据源不足时拒绝签名而非降级</td><td>Liquid Network、OKEx / ETC、KelpDAO</td></tr>
+  </tbody></table></div>`;}});
 
 /* ---------- D02 laundering ---------- */
-H.docs.push({id:"d02",code:"D02",group:"p3",ord:2,title:"洗钱路径与追回",render:()=>`<div class="eyebrow"><span>D02 · RECOVERY</span></div><h1>洗钱路径与追回</h1>
-<p class="thesis">资金离开后，防守方还有几张牌：<em>稳定币冻结、交易所冻结、链级冻结或回滚、法院命令、谈判与赏金、执法扣押</em>。每张牌都有时间窗口。</p>
+H.docs.push({id:"d02",code:"D02",group:"p3",ord:2,title:"应急止损、洗钱与追回",render:()=>`<div class="eyebrow"><span>D02 · RESPONSE &amp; RECOVERY</span></div><h1>应急止损、洗钱路径与追回</h1>
+<p class="thesis">告警响起后，前 10 分钟决定能否拦住主力资金；资金离开后，防守方还有几张牌：<em>稳定币冻结、交易所冻结、链级冻结或回滚、法院命令、谈判与赏金、执法扣押</em>。每张牌都有时间窗口。</p>
+<h2>0. 事中黄金 10 分钟止损分层</h2>
+<div class="tbl-wrap"><table><thead><tr><th>止损层级</th><th>切断的对象</th><th>常见误区</th><th>演练验收标准</th><th>对应案例</th></tr></thead><tbody>
+<tr><td><b>用户提现网关</b></td><td>正常用户端发起的提现请求</td><td>只关提现网关、没关签名服务，攻击者仍可通过内网工具直接调用签名</td><td>明确其仅能挡账户接管，不能挡签名服务被滥用</td><td>Bitget（告警后仍流出 2.4 亿）</td></tr>
+<tr><td><b>签名服务总开关</b></td><td>热/温钱包 MPC 或 HSM 对外签发交易</td><td>未按链、按钱包做一键停签开关，或依赖人工逐台下线</td><td>从告警到全链停签 &lt; 5 分钟</td><td>Bitget、Binance、G01</td></tr>
+<tr><td><b>链上合约 Pause / 速率熔断</b></td><td>协议放款、跨链铸造或批量提款</td><td>暂停窗口设了过期时间导致关键时刻无法暂停，或缺少速率上限</td><td>暂停权不设失效期；单小时流出超阈值自动暂停</td><td>Balancer v2、Nomad、Wormhole</td></tr>
+<tr><td><b>撤销链上委托与权限</b></td><td>EIP-7702 恶意委托、被盗管理员、approve(max)</td><td>以为关停服务器就能阻止链上清扫合约继续提币</td><td>提前演练零地址清除 7702 委托与替换合约 Admin</td><td>Binance（3h50m）、Wintermute、Radiant</td></tr>
+<tr><td><b>稳定币与交易所分钟级协同</b></td><td>攻击者尚未换出的 USDT/USDC 与首跳充币</td><td>等内部复盘清楚再通知发行方，错过 10–20 分钟换币窗口</td><td>10 分钟内同步地址至稳定币发行方、主流交易所与行业应急通道</td><td>Poly、Bitget、Bybit</td></tr>
+</tbody></table></div>
 <h2>1. 典型洗钱路径</h2>
 <div class="mmd-wrap" data-title="洗钱路径"><pre class="mmd">flowchart LR
   S["被盗资产<br/>稳定币 · LST · 长尾币"] -->|"数分钟内"| D["DEX 换成 ETH / BTC"]

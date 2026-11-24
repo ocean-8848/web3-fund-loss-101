@@ -22,7 +22,7 @@
 | `groups.js` | G01–G10 手法归纳，D01–D04 防御与附录 |
 | `events.js` | 全量事件库（213 条） |
 | `evsrc.js` | 事件库逐条来源链接与核对状态 |
-| `labs.js` | L1–L9 实验室 |
+| `labs.js` | L1–L11 实验室 |
 
 `labs/binance-1029.html` 是币安热钱包事件的交互复盘，L7、L8 引用。
 
