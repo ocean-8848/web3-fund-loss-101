@@ -61,7 +61,7 @@ sh tools/build.sh
 
 ## Slides
 
-总论、手法归纳、防御与附录（O/G/D 共 18 章，553 页）各有一组 3b1b 风格动画 slides，用来快速过知识点。做法参照 web3-101 课程视频的 PPT 场景，但没有配音：每页对应讲稿里的一句话，显示在画面下方，翻页时播放这一句的动画；时长按字数估算（`tools/make_slides.py` 的 `read_time`）。
+总论、手法归纳、防御与附录（O/G/D 共 18 章，553 页）各有一组 3b1b 风格动画 slides，用来快速过知识点。做法参照 web3-101 课程视频的 PPT 场景，但没有配音：每页对应讲稿里的一句话，显示在画面下方。翻页直接显示整页画面（场景时间轴停在这一句的句末），不等动画；「自动」按每句的阅读时间翻页，时长按字数估算（`tools/make_slides.py` 的 `read_time`）。
 
 - 一章一个目录 `src/slides/<章 id>/`；场景模板与助手函数（`at / IN / OUT / DRAW / ARROW / COUNT`）同课程视频，时间一律写成 `at(句号, 句内比例)`。规则见 `src/slides/AGENT.md`。
 - 屏幕上的事实只取本仓库源稿；手册标「待核实」的不上 slides。各章 `STORYBOARD.md` 列出知识点覆盖和未上 slides 的理由。
