@@ -113,7 +113,7 @@ function open(i,page){
     if(c.scenes&&window.gsap){
       st.innerHTML=c.scenes.map(s=>`<div class="sc">${s.html}</div>`).join("");
       let s0=0;const sc=[],pages=[];
-      c.scenes.forEach((s,si)=>{try{new Function(s.js)()}catch(e){console.error(s.id,e)}
+      c.scenes.forEach((s,si)=>{const sx=document.createElement("script");sx.textContent=`try{${s.js}\n}catch(e){console.error(${JSON.stringify(s.id)},e)}`;document.body.appendChild(sx);sx.remove();
         const el=st.children[si];sc.push({id:s.id,title:s.title,s:s0,d:s.d,el,tl:window.__timelines[s.id]});
         s.lines.forEach(([a,b,txt],li)=>{const end=li===s.lines.length-1?s.d-0.6:b;pages.push({t0:s0+a,t1:s0+Math.max(end,a+0.2)-0.02,txt,si})});
         s0+=s.d});
