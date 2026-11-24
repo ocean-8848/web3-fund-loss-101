@@ -26,13 +26,12 @@ def chapters():
     out = []
     for f in ("core.js", "groups.js", "defense.js"):
         src = open(os.path.join(HANDBOOK, "data", f), encoding="utf-8").read()
-        for m in re.finditer(r'\{id:"([ogda]\d\d)",code:', src):
+        for m in re.finditer(r'\{id:"([^"]+)",code:"([OGDA]\d\d)"', src):
             head = src[m.start(): m.start() + 400]
-            code = re.search(r'code:"([^"]+)"', head).group(1)
             title = re.search(r'title:"([^"]+)"', head).group(1)
-            out.append({"id": m.group(1), "code": code, "title": title, "group": GROUPS[m.group(1)[0]]})
-    order = "ogda"  # 总论 → 手法 → 防御与应急响应 → 附录
-    return sorted(out, key=lambda c: order.index(c["id"][0]))
+            out.append({"id": m.group(1), "code": m.group(2), "title": title, "group": GROUPS[m.group(2)[0].lower()]})
+    order = "OGDA"  # 总论 → 手法 → 防御与应急响应 → 附录
+    return sorted(out, key=lambda c: (order.index(c["code"][0]), c["code"]))
 
 
 def scene(ch, sc, lines):

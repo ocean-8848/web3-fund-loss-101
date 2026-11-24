@@ -1,0 +1,137 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 cards，id 前缀 cd- -->
+  <div id="root" data-composition-id="cards" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="cd-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="cd-all">
+        <!-- 固定骨架：发起 → 执行 → 效果 -->
+        <g id="cd-frame" class="h">
+          <text x="280" y="306" font-size="28" fill="#8a8f99" text-anchor="middle">谁发起</text>
+          <text x="920" y="306" font-size="28" fill="#8a8f99" text-anchor="middle">谁执行</text>
+          <text x="1580" y="306" font-size="28" fill="#8a8f99" text-anchor="middle">效果</text>
+          <rect x="120" y="330" width="320" height="120" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <rect id="cd-exb" x="700" y="330" width="440" height="120" rx="14" fill="#161a22" stroke="#B48EF0" stroke-width="3" />
+          <rect x="1360" y="330" width="440" height="120" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+          <path d="M452 390 H686 M1152 390 H1346" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#cd-arr)" />
+          <text x="120" y="604" font-size="30" font-weight="700" fill="#83C167">前提</text>
+          <text x="120" y="694" font-size="30" font-weight="700" fill="#8a8f99">怎样发起</text>
+          <path d="M120 750 H1800" stroke="#2a2f3a" stroke-width="2" />
+          <text x="120" y="820" font-size="30" font-weight="700" fill="#F0B90B">案例</text>
+        </g>
+        <g id="cd-env" class="h">
+          <rect x="452" y="364" width="64" height="44" rx="5" fill="#0f1117" stroke="#e8e6df" stroke-width="3" />
+          <path d="M452 366 L484 390 L516 366" stroke="#e8e6df" stroke-width="3" fill="none" />
+        </g>
+        <g id="cd-m0">
+          <text class="cd-e0 h" x="120" y="220" font-size="48" font-weight="700" fill="#e8e6df">① 稳定币冻结</text>
+          <g class="cd-e0 h"><rect x="1440" y="176" width="360" height="64" rx="32" fill="#132a30" stroke="#9CDCEB" stroke-width="2.5" /><text x="1620" y="219" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">窗口：分钟级</text></g>
+          <text class="cd-e0 h" x="280" y="408" font-size="30" font-weight="700" fill="#B48EF0" text-anchor="middle">受害方</text>
+          <text class="cd-e0 h" x="920" y="408" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">稳定币发行方</text>
+          <text class="cd-e0 h" x="1580" y="408" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">地址封禁，余额锁定</text>
+          <text class="cd-e0 h" x="300" y="604" font-size="30" fill="#e8e6df">资产仍是 USDT、USDC 等可冻结的稳定币</text>
+          <text class="cd-e0 h" x="300" y="694" font-size="30" fill="#e8e6df">提交被盗地址、交易哈希、时间线、报案号</text>
+          <text class="cd-e0 h" x="300" y="820" font-size="30" fill="#F0B90B">Poly（3,300 万 USDT）、Bitget（约 110 万）</text>
+        </g>
+        <g id="cd-m1">
+          <text class="cd-e1 h" x="120" y="220" font-size="48" font-weight="700" fill="#e8e6df">② 交易所冻结</text>
+          <g class="cd-e1 h"><rect x="1440" y="176" width="360" height="64" rx="32" fill="#132a30" stroke="#9CDCEB" stroke-width="2.5" /><text x="1620" y="219" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">窗口：小时到数月</text></g>
+          <text class="cd-e1 h" x="280" y="408" font-size="30" font-weight="700" fill="#B48EF0" text-anchor="middle">受害方</text>
+          <text class="cd-e1 h" x="920" y="408" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">各交易所安全团队</text>
+          <text class="cd-e1 h" x="1580" y="408" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">充值时冻结</text>
+          <text class="cd-e1 h" x="300" y="604" font-size="30" fill="#e8e6df">资金充到了有合规团队的交易所</text>
+          <text class="cd-e1 h" x="300" y="694" font-size="30" fill="#e8e6df">把攻击者地址同步给各家；交易所要求执法文书</text>
+          <text class="cd-e1 h" x="300" y="820" font-size="30" fill="#F0B90B">Bybit（约 3.8%）、Binance（28.5 亿，含拦截）</text>
+        </g>
+        <g id="cd-m2">
+          <text class="cd-e2 h" x="120" y="220" font-size="48" font-weight="700" fill="#e8e6df">③ 链级冻结</text>
+          <g class="cd-e2 h"><rect x="1440" y="176" width="360" height="64" rx="32" fill="#132a30" stroke="#9CDCEB" stroke-width="2.5" /><text x="1620" y="219" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">窗口：小时级</text></g>
+          <text class="cd-e2 h" x="280" y="408" font-size="30" font-weight="700" fill="#B48EF0" text-anchor="middle">受害方</text>
+          <text class="cd-e2 h" x="920" y="408" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">链的基金会 · 验证者</text>
+          <text class="cd-e2 h" x="1580" y="408" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">链上冻结</text>
+          <text class="cd-e2 h" x="300" y="604" font-size="30" fill="#e8e6df">链的验证者或治理有能力，也愿意冻结</text>
+          <text class="cd-e2 h" x="300" y="694" font-size="30" fill="#e8e6df">联系基金会或验证者；通常需要治理决议</text>
+          <text class="cd-e2 h" x="300" y="820" font-size="30" fill="#F0B90B">Cetus（Sui 验证者冻结约 1.62 亿）</text>
+        </g>
+        <g id="cd-m3">
+          <text class="cd-e3 h" x="120" y="220" font-size="48" font-weight="700" fill="#e8e6df">④ 链回滚</text>
+          <g class="cd-e3 h"><rect x="1440" y="176" width="360" height="64" rx="32" fill="#132a30" stroke="#9CDCEB" stroke-width="2.5" /><text x="1620" y="219" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">窗口：小时到天</text></g>
+          <text class="cd-e3 h" x="280" y="408" font-size="30" font-weight="700" fill="#B48EF0" text-anchor="middle">受害方 · 只能请求</text>
+          <text class="cd-e3 h" x="920" y="408" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">链的治理</text>
+          <text class="cd-e3 h" x="1580" y="408" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">回滚区块</text>
+          <text class="cd-e3 h" x="300" y="604" font-size="30" fill="#e8e6df">链有能力回滚，且社区接受</text>
+          <text class="cd-e3 h" x="300" y="694" font-size="30" fill="#e8e6df">由链的治理决定</text>
+          <text class="cd-e3 h" x="300" y="820" font-size="30" fill="#F0B90B">Tectonic（Cronos 回滚 10,961 个区块）、The DAO（硬分叉）</text>
+        </g>
+        <g id="cd-m4">
+          <text class="cd-e4 h" x="120" y="220" font-size="48" font-weight="700" fill="#e8e6df">⑤ 法院命令反向操作</text>
+          <g class="cd-e4 h"><rect x="1440" y="176" width="360" height="64" rx="32" fill="#132a30" stroke="#9CDCEB" stroke-width="2.5" /><text x="1620" y="219" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">窗口：数月</text></g>
+          <text class="cd-e4 h" x="280" y="408" font-size="30" font-weight="700" fill="#B48EF0" text-anchor="middle">受害方律师</text>
+          <text class="cd-e4 h" x="920" y="408" font-size="32" font-weight="700" fill="#8a8f99" text-anchor="middle">法院 → 有权方</text>
+          <text class="cd-e4 h" x="1580" y="408" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">反向操作取回</text>
+          <text class="cd-e4 h" x="300" y="604" font-size="30" fill="#e8e6df">资金在可升级合约等可被合法干预的位置</text>
+          <text class="cd-e4 h" x="300" y="694" font-size="30" fill="#e8e6df">律师申请法院命令，由有权方执行</text>
+          <text class="cd-e4 h" x="300" y="820" font-size="30" fill="#F0B90B">Wormhole（2023，约 1.4 亿）</text>
+        </g>
+        <g id="cd-m5">
+          <text class="cd-e5 h" x="120" y="220" font-size="48" font-weight="700" fill="#e8e6df">⑥ 谈判与赏金</text>
+          <g class="cd-e5 h"><rect x="1440" y="176" width="360" height="64" rx="32" fill="#132a30" stroke="#9CDCEB" stroke-width="2.5" /><text x="1620" y="219" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">窗口：天到周</text></g>
+          <text class="cd-e5 h" x="280" y="408" font-size="30" font-weight="700" fill="#B48EF0" text-anchor="middle">受害方</text>
+          <text class="cd-e5 h" x="920" y="408" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+          <text class="cd-e5 h" x="1580" y="408" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">归还资金</text>
+          <text class="cd-e5 h" x="300" y="604" font-size="30" fill="#e8e6df">不是受制裁的国家行为者，且有动机归还</text>
+          <text class="cd-e5 h" x="300" y="694" font-size="30" fill="#e8e6df">链上留言提出赏金；已采用 Safe Harbor 的按协议处理</text>
+          <text class="cd-e5 h" x="300" y="820" font-size="30" fill="#F0B90B">Poly、Euler、Nomad、GMX v1、Liquid Network</text>
+        </g>
+        <g id="cd-m6">
+          <text class="cd-e6 h" x="120" y="220" font-size="48" font-weight="700" fill="#e8e6df">⑦ 执法扣押</text>
+          <g class="cd-e6 h"><rect x="1440" y="176" width="360" height="64" rx="32" fill="#132a30" stroke="#9CDCEB" stroke-width="2.5" /><text x="1620" y="219" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">窗口：数月到数年</text></g>
+          <text class="cd-e6 h" x="280" y="408" font-size="30" font-weight="700" fill="#B48EF0" text-anchor="middle">受害方报案</text>
+          <text class="cd-e6 h" x="920" y="408" font-size="32" font-weight="700" fill="#8a8f99" text-anchor="middle">执法机构</text>
+          <text class="cd-e6 h" x="1580" y="408" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">扣押资产</text>
+          <text class="cd-e6 h" x="300" y="604" font-size="30" fill="#e8e6df">执法立案，并追踪到可扣押的资产</text>
+          <text class="cd-e6 h" x="300" y="694" font-size="30" fill="#e8e6df">报案，并持续提供线索</text>
+          <text class="cd-e6 h" x="300" y="820" font-size="30" fill="#F0B90B">Ronin（约 3,000 万）、Bitfinex（多年后追回）</text>
+        </g>
+        <!-- 进度：七张牌 -->
+        <g id="cd-dots" class="h">
+          <circle class="cd-d" cx="780" cy="960" r="10" fill="#3a4050" /><circle class="cd-d" cx="840" cy="960" r="10" fill="#3a4050" /><circle class="cd-d" cx="900" cy="960" r="10" fill="#3a4050" /><circle class="cd-d" cx="960" cy="960" r="10" fill="#3a4050" /><circle class="cd-d" cx="1020" cy="960" r="10" fill="#3a4050" /><circle class="cd-d" cx="1080" cy="960" r="10" fill="#3a4050" /><circle class="cd-d" cx="1140" cy="960" r="10" fill="#3a4050" />
+          <text x="740" y="970" font-size="28" fill="#8a8f99" text-anchor="end">七种手段</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const EXC = ["#B48EF0", "#B48EF0", "#58C4DD", "#58C4DD", "#8a8f99", "#FC6255", "#8a8f99"];
+      const dots = document.querySelectorAll("#cd-dots .cd-d");
+
+      tl.fromTo("#cd-frame", { opacity: 0 }, { opacity: 1, duration: 0.5 }, at(0, 0.02));
+      tl.fromTo("#cd-dots", { opacity: 0 }, { opacity: 1, duration: 0.5 }, at(0, 0.05));
+      for (let i = 0; i < 7; i++) {
+        if (i > 0) OUT("#cd-m" + (i - 1), at(i, 0), 0.3);
+        tl.to(dots[i], { attr: { fill: "#9CDCEB" }, duration: 0.3 }, at(i, 0.02));
+        if (i > 0) tl.to(dots[i - 1], { attr: { fill: "#5a6a70" }, duration: 0.3 }, at(i, 0.02));
+        tl.to("#cd-exb", { attr: { stroke: EXC[i] }, duration: 0.3 }, at(i, 0.05));
+        tl.fromTo(".cd-e" + i, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: "power3.out" }, at(i, 0.06));
+        tl.fromTo("#cd-env", { opacity: 1, x: 0 }, { x: 180, opacity: 0, duration: 0.7, ease: "power1.inOut", immediateRender: false }, at(i, 0.12));
+      }
+
+      tl.to("#cd-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["cards"] = tl;
+    })();
+  </script>
+</template>

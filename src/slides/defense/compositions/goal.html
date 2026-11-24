@@ -1,0 +1,124 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 goal，id 前缀 gl- -->
+  <div id="root" data-composition-id="goal" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="gl-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="gl-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="gl-all">
+        <g id="gl-top">
+          <g transform="translate(0,80)">
+          <!-- L0 攻击者 → 资产 -->
+          <g id="gl-atk" class="h">
+            <rect x="120" y="300" width="240" height="140" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="240" y="382" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+          </g>
+          <g id="gl-vault" class="h">
+            <rect x="1500" y="270" width="300" height="200" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <g fill="#F0B90B"><circle cx="1590" cy="370" r="26" /><circle cx="1650" cy="370" r="26" /><circle cx="1710" cy="370" r="26" /></g>
+            <text x="1650" y="520" font-size="30" fill="#F0B90B" text-anchor="middle">托管的资产</text>
+          </g>
+          <path id="gl-flow" class="dr h" pathLength="1" d="M370 370 H1488" stroke="#FC6255" stroke-width="4" fill="none" marker-end="url(#gl-arr)" />
+          <text id="gl-flowl" class="h" x="930" y="330" font-size="32" fill="#FC6255" text-anchor="middle">第 1–2 部分：钱是怎么丢的</text>
+          </g>
+          <text id="gl-t3" class="h" x="960" y="150" font-size="48" font-weight="700" fill="#83C167" text-anchor="middle">第 3 部分：怎么不丢，丢了怎么办</text>
+
+          <g transform="translate(0,80)">
+          <!-- L1 几道独立控制，一道失陷 -->
+          <g id="gl-g1" class="h"><rect x="692" y="280" width="20" height="180" rx="4" fill="#83C167" /></g>
+          <g id="gl-g1x" class="h"><rect x="692" y="280" width="20" height="180" rx="4" fill="#FC6255" /><path d="M672 330 L732 410 M732 330 L672 410" stroke="#FC6255" stroke-width="6" /></g>
+          <g id="gl-g2" class="h"><rect x="992" y="280" width="20" height="180" rx="4" fill="#83C167" /></g>
+          <g id="gl-g3" class="h"><rect x="1292" y="280" width="20" height="180" rx="4" fill="#83C167" /></g>
+          <path id="gl-a1" class="dr h" pathLength="1" d="M370 370 H660" stroke="#FC6255" stroke-width="4" fill="none" marker-end="url(#gl-arr)" />
+          <path id="gl-a2" class="dr h" pathLength="1" d="M744 370 H978" stroke="#FC6255" stroke-width="4" fill="none" marker-end="url(#gl-arr)" />
+          <text id="gl-g1l" class="h" x="702" y="505" font-size="28" fill="#FC6255" text-anchor="middle">失陷</text>
+          <text id="gl-g2l" class="h" x="1002" y="505" font-size="28" fill="#83C167" text-anchor="middle">拦住</text>
+          <text id="gl-g3l" class="h" x="1302" y="505" font-size="28" fill="#8a8f99" text-anchor="middle">还在</text>
+          <text id="gl-one" class="h" x="960" y="610" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="middle">单点失陷 ≠ 钱被转走</text>
+          </g>
+        </g>
+
+        <!-- L2 时间线 -->
+        <g id="gl-tline" transform="translate(0,60)">
+          <path id="gl-ax" class="dr" pathLength="1" d="M200 820 H1720" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="gl-k0" class="h"><circle cx="300" cy="820" r="12" fill="#FC6255" /><text x="300" y="880" font-size="30" fill="#FC6255" text-anchor="middle">资金转出</text></g>
+          <g id="gl-k1" class="h"><circle cx="740" cy="820" r="12" fill="#83C167" /><text x="740" y="880" font-size="30" fill="#e8e6df" text-anchor="middle">发现</text></g>
+          <g id="gl-k2" class="h"><circle cx="1160" cy="820" r="12" fill="#83C167" /><text x="1160" y="880" font-size="30" fill="#e8e6df" text-anchor="middle">止损</text></g>
+          <g id="gl-k3" class="h"><circle cx="1620" cy="820" r="12" fill="#9CDCEB" /><text x="1620" y="880" font-size="30" fill="#9CDCEB" text-anchor="middle">尽量追回</text></g>
+          <path id="gl-br" class="dr" pathLength="1" d="M300 770 V752 H1160 V770" stroke="#83C167" stroke-width="3" fill="none" />
+          <text id="gl-brl" class="h" x="730" y="732" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">分钟级</text>
+        </g>
+
+        <!-- L3 五章 -->
+        <g id="gl-ch">
+          <path id="gl-path" class="dr h" pathLength="1" d="M260 560 H1660" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="gl-c1" class="h"><circle cx="260" cy="560" r="56" fill="#13201a" stroke="#83C167" stroke-width="3" /><text class="mono" x="260" y="571" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">D01</text><text x="260" y="670" font-size="30" fill="#e8e6df" text-anchor="middle">防御总览</text></g>
+          <g id="gl-c2" class="h"><circle cx="610" cy="560" r="56" fill="#13201a" stroke="#83C167" stroke-width="3" /><text class="mono" x="610" y="571" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">D02</text><text x="610" y="670" font-size="30" fill="#e8e6df" text-anchor="middle">建设与加固</text></g>
+          <g id="gl-c3" class="h"><circle cx="960" cy="560" r="56" fill="#13201a" stroke="#83C167" stroke-width="3" /><text class="mono" x="960" y="571" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">D03</text><text x="960" y="670" font-size="30" fill="#e8e6df" text-anchor="middle">安全运营</text></g>
+          <g id="gl-c4" class="h"><circle cx="1310" cy="560" r="56" fill="#2a1616" stroke="#FC6255" stroke-width="3" /><text class="mono" x="1310" y="571" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">D04</text><text x="1310" y="670" font-size="30" fill="#e8e6df" text-anchor="middle">应急止损</text></g>
+          <g id="gl-c5" class="h"><circle cx="1660" cy="560" r="56" fill="#2a1616" stroke="#FC6255" stroke-width="3" /><text class="mono" x="1660" y="571" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">D05</text><text x="1660" y="670" font-size="30" fill="#e8e6df" text-anchor="middle">反洗钱与追回</text></g>
+          <g id="gl-b1" class="h"><path d="M200 460 V440 H1020 V460" stroke="#83C167" stroke-width="3" fill="none" /><text x="610" y="410" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">防御 · 日常建设与运营</text></g>
+          <g id="gl-b2" class="h"><path d="M1250 460 V440 H1720 V460" stroke="#FC6255" stroke-width="3" fill="none" /><text x="1485" y="410" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">应急响应 · 出事之后</text></g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0
+      IN("#gl-atk", at(0, 0.03), 0.6, { x: -30 });
+      IN("#gl-vault", at(0, 0.1), 0.6, { x: 30 });
+      ARROW("#gl-flow", at(0, 0.2), 0.8);
+      IN("#gl-flowl", at(0, 0.3));
+      IN("#gl-t3", at(0, 0.55), 0.7, { y: 20 });
+
+      // L1
+      OUT("#gl-flow", at(1, 0.0), 0.3); OUT("#gl-flowl", at(1, 0.0), 0.3);
+      IN("#gl-g1", at(1, 0.08), 0.4, { y: -20 }); IN("#gl-g2", at(1, 0.12), 0.4, { y: -20 }); IN("#gl-g3", at(1, 0.16), 0.4, { y: -20 });
+      ARROW("#gl-a1", at(1, 0.25), 0.5);
+      IN("#gl-g1x", at(1, 0.38), 0.3); OUT("#gl-g1", at(1, 0.38), 0.3);
+      IN("#gl-g1l", at(1, 0.4), 0.4);
+      ARROW("#gl-a2", at(1, 0.45), 0.5);
+      IN("#gl-g2l", at(1, 0.58), 0.4); IN("#gl-g3l", at(1, 0.6), 0.4);
+      IN("#gl-one", at(1, 0.68), 0.6, { y: 15 });
+
+      // L2
+      DRAW("#gl-ax", at(2, 0.03), 0.7);
+      IN("#gl-k0", at(2, 0.12), 0.4);
+      IN("#gl-k1", at(2, 0.25), 0.4);
+      IN("#gl-k2", at(2, 0.38), 0.4);
+      DRAW("#gl-br", at(2, 0.48), 0.6);
+      IN("#gl-brl", at(2, 0.55), 0.4);
+      IN("#gl-k3", at(2, 0.65), 0.4);
+
+      // L3
+      OUT("#gl-top", at(3, 0.0), 0.35); OUT("#gl-tline", at(3, 0.0), 0.35);
+      ARROW("#gl-path", at(3, 0.08), 0.8);
+      ["#gl-c1", "#gl-c2", "#gl-c3", "#gl-c4", "#gl-c5"].forEach((s, k) => IN(s, at(3, 0.1 + k * 0.06), 0.5, { y: 20 }));
+      IN("#gl-b1", at(3, 0.5), 0.5);
+      IN("#gl-b2", at(3, 0.62), 0.5);
+
+      tl.to("#gl-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["goal"] = tl;
+    })();
+  </script>
+</template>

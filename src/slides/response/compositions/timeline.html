@@ -1,0 +1,113 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 timeline，id 前缀 tm- -->
+  <div id="root" data-composition-id="timeline" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="tm-all">
+        <text id="tm-title" class="h" x="960" y="120" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">第一个小时到第一周</text>
+
+        <g transform="translate(0 70)">
+        <!-- 时间轴 -->
+        <path id="tm-ax" class="dr" pathLength="1" d="M120 310 H1800" stroke="#8a8f99" stroke-width="4" fill="none" />
+        <rect id="tm-s1" class="h" x="120" y="298" width="420" height="24" rx="4" fill="#83C167" />
+        <rect id="tm-s2" class="h" x="540" y="298" width="420" height="24" rx="4" fill="#83C167" />
+        <rect id="tm-s3" class="h" x="960" y="298" width="420" height="24" rx="4" fill="#83C167" />
+        <rect id="tm-s4" class="h" x="1380" y="298" width="420" height="24" rx="4" fill="#83C167" />
+        <g id="tm-tk" class="h" font-size="30" fill="#e8e6df" text-anchor="middle">
+          <path d="M540 290 V330 M960 290 V330 M1380 290 V330 M1800 290 V330" stroke="#8a8f99" stroke-width="4" />
+          <text x="540" y="268">10 分钟</text><text x="960" y="268">60 分钟</text><text x="1380" y="268">24 小时</text><text x="1790" y="268">7 天</text>
+        </g>
+        <g id="tm-t0" class="h">
+          <circle cx="120" cy="310" r="14" fill="#FC6255" />
+          <text x="120" y="268" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">T+0</text>
+        </g>
+        <text id="tm-nl" class="h" x="1800" y="380" font-size="28" fill="#8a8f99" text-anchor="end">刻度示意，非等比</text>
+        <g id="tm-intro" class="h">
+          <text x="120" y="560" font-size="40" fill="#e8e6df">T+0 <tspan fill="#8a8f99">=</tspan> <tspan fill="#FC6255" font-weight="700">告警产生的时刻</tspan></text>
+          <text x="120" y="650" font-size="36" fill="#e8e6df">每个时段写清三件事：<tspan fill="#83C167" font-weight="700">目标 · 必须完成 · 谁来做</tspan></text>
+        </g>
+
+        <!-- 四列 -->
+        <g id="tm-c1" class="h">
+          <text x="140" y="440" font-size="34" font-weight="700" fill="#83C167">切断资金继续流出</text>
+          <g font-size="28" fill="#e8e6df">
+            <text x="140" y="510">① 全链或受影响钱包停签</text>
+            <text x="140" y="562">② 合约暂停 · 速率熔断</text>
+            <text x="140" y="614">③ 关闭提现网关</text>
+            <text x="140" y="666">④ 独立渠道拉群 · 定指挥</text>
+          </g>
+          <path d="M140 720 H500" stroke="#2a2f3a" stroke-width="2" />
+          <text x="140" y="770" font-size="28" fill="#8a8f99">值班 · 钱包团队</text>
+        </g>
+        <g id="tm-c2" class="h">
+          <text x="560" y="440" font-size="34" font-weight="700" fill="#83C167">确认范围，冻结能冻的</text>
+          <g font-size="28" fill="#e8e6df">
+            <text x="560" y="510">① 列出受影响地址与资产</text>
+            <text x="560" y="562">② 撤销链上委托与权限</text>
+            <text x="560" y="614">③ 地址发给发行方、交易所</text>
+            <text x="560" y="666">④ 保全日志与终端镜像</text>
+          </g>
+          <path d="M560 720 H920" stroke="#2a2f3a" stroke-width="2" />
+          <text x="560" y="770" font-size="28" fill="#8a8f99">事件指挥 · 链上分析 · 安全</text>
+        </g>
+        <g id="tm-c3" class="h">
+          <text x="980" y="440" font-size="34" font-weight="700" fill="#83C167">控制局面，对外说明</text>
+          <g font-size="28" fill="#e8e6df">
+            <text x="980" y="510">① 首次对外公告</text>
+            <text x="980" y="562">② 报案</text>
+            <text x="980" y="614">③ 吊销凭证 · 轮换密钥</text>
+            <text x="980" y="666">④ 评估补足方案</text>
+          </g>
+          <path d="M980 720 H1340" stroke="#2a2f3a" stroke-width="2" />
+          <text x="980" y="770" font-size="28" fill="#8a8f99">沟通 · 法务 · 管理层</text>
+        </g>
+        <g id="tm-c4" class="h">
+          <text x="1400" y="440" font-size="34" font-weight="700" fill="#83C167">安全恢复，持续追踪</text>
+          <g font-size="28" fill="#e8e6df">
+            <text x="1400" y="510">① 达标后分阶段恢复</text>
+            <text x="1400" y="562">② 持续追踪资金</text>
+            <text x="1400" y="614">③ 复盘与改进</text>
+          </g>
+          <path d="M1400 720 H1760" stroke="#2a2f3a" stroke-width="2" />
+          <text x="1400" y="770" font-size="28" fill="#8a8f99">全体</text>
+        </g>
+      </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const DIM = (s, t) => tl.to(s, { opacity: 0.4, duration: 0.4 }, t);
+
+      // L0
+      IN("#tm-title", at(0, 0.02), 0.8, { y: 20 });
+      DRAW("#tm-ax", at(0, 0.1), 0.9);
+      IN("#tm-t0", at(0, 0.2), 0.5);
+      IN("#tm-tk", at(0, 0.3)); IN("#tm-nl", at(0, 0.4));
+      IN("#tm-intro", at(0, 0.5), 0.7, { y: 15 });
+
+      // L1–L4
+      OUT("#tm-intro", at(1, 0));
+      tl.set(["#tm-s1", "#tm-s2", "#tm-s3", "#tm-s4"], { opacity: 0 }, 0);
+      for (let i = 1; i <= 4; i++) {
+        if (i > 1) { DIM("#tm-c" + (i - 1), at(i, 0)); tl.to("#tm-s" + (i - 1), { attr: { fill: "#4a6b3c" }, duration: 0.4 }, at(i, 0)); }
+        tl.fromTo("#tm-s" + i, { opacity: 0, attr: { width: 0 } }, { opacity: 1, attr: { width: 420 }, duration: 0.8, ease: "power2.out", immediateRender: false }, at(i, 0.05));
+        IN("#tm-c" + i, at(i, 0.2), 0.7, { y: 20 });
+      }
+
+      tl.to("#tm-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["timeline"] = tl;
+    })();
+  </script>
+</template>

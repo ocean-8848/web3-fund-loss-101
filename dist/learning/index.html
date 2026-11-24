@@ -559,7 +559,9 @@ H.navTo=navTo;
 function slidesCta(d){const s=H.slides&&H.slides[d.id];return s?`<a class="slides-cta" href="slides.html#${d.id}"><b>▶ 看 Slides</b><span>${s.pages} 页动画，几分钟过完本章要点</span></a>`:""}
 function pager(d){const list=H.docs.filter(x=>!x.soon);const i=list.indexOf(d);if(i<0)return "";const p=list[i-1],n=list[i+1];
   return `<nav class="pager">${p?`<a href="#${p.id}"><span class="k">上一章</span><span class="t">${p.code} ${esc(p.title)}</span></a>`:"<span></span>"}${n?`<a class="next" href="#${n.id}"><span class="k">下一章</span><span class="t">${n.code} ${esc(n.title)}</span></a>`:""}</nav>`;}
-function route(){const id=(location.hash||"#home").slice(1);navTo(byId[id]?id:"home");}
+// 旧链接：2026-11 前第 3 部分是 D01 防御矩阵、D02 应急止损与追回、D03 事件库、D04 术语表
+const ALIAS={d01:"defense",d02:"response",d03:"a01",d04:"a02"};
+function route(){let id=(location.hash||"#home").slice(1);if(ALIAS[id]&&!byId[id]){id=ALIAS[id];history.replaceState(null,"","#"+id);}navTo(byId[id]?id:"home");}
 window.addEventListener("hashchange",route);
 $("#menuBtn").onclick=()=>document.body.classList.toggle("menu-open");
 
@@ -1286,6 +1288,8 @@ window.LearnLayer = L;
   const study = d => d && !d.soon && GROUPS[d.group];
   LearnLayer.init({
     key: 'losshb',
+    // 2026-11 第 3 部分重排：旧章节的学习进度迁到新位置
+    aliases: { d01: 'defense', d02: 'response', d03: 'a01', d04: 'a02' },
     name: 'Web3 资损 101',
     watch: '#main',
     root: () => document.getElementById('view'),

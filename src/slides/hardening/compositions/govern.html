@@ -1,0 +1,175 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 govern，id 前缀 go- -->
+  <div id="root" data-composition-id="govern" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="go-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="go-all">
+        <!-- L0 没有验证记录 = 没做 -->
+        <g id="go-s0">
+          <g id="go-card" class="h">
+            <rect x="460" y="240" width="1000" height="300" rx="18" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="510" y="310" font-size="36" font-weight="700" fill="#e8e6df">控制：热钱包余额上限</text>
+            <text x="510" y="390" font-size="30" fill="#e8e6df">配置：已上线</text>
+            <path d="M720 380 L734 394 L760 366" fill="none" stroke="#8a8f99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+            <text x="510" y="470" font-size="30" fill="#e8e6df">最近一次验证记录：<tspan fill="#FC6255" font-weight="700">无</tspan></text>
+          </g>
+          <g id="go-stamp" class="h">
+            <g transform="rotate(-10 1250 440)">
+              <rect x="1080" y="390" width="340" height="100" rx="10" fill="#0f1117" stroke="#FC6255" stroke-width="5" />
+              <text x="1250" y="458" font-size="52" font-weight="700" fill="#FC6255" text-anchor="middle">按没做算</text>
+            </g>
+          </g>
+          <text id="go-ev" class="h" x="960" y="650" font-size="30" fill="#8a8f99" text-anchor="middle">证据：演练日志、红队报告、配置截图或导出</text>
+        </g>
+
+        <!-- L1 负责人 -->
+        <g id="go-s1">
+          <g id="go-not" class="h">
+            <text x="960" y="200" font-size="32" fill="#8a8f99" text-anchor="middle">不是“安全团队负责一切”</text>
+          </g>
+          <g id="go-o" font-size="32">
+            <g class="h"><text x="820" y="341" fill="#e8e6df" text-anchor="end">终端与身份</text><text x="1100" y="341" fill="#83C167" font-weight="700">IT</text></g>
+            <g class="h"><text x="820" y="451" fill="#e8e6df" text-anchor="end">CI/CD</text><text x="1100" y="451" fill="#83C167" font-weight="700">平台团队</text></g>
+            <g class="h"><text x="820" y="561" fill="#e8e6df" text-anchor="end">策略层与停签</text><text x="1100" y="561" fill="#83C167" font-weight="700">钱包团队</text></g>
+            <g class="h"><text x="820" y="671" fill="#e8e6df" text-anchor="end">合约</text><text x="1100" y="671" fill="#83C167" font-weight="700">协议团队</text></g>
+          </g>
+          <g id="go-oa">
+            <path class="dr h" pathLength="1" d="M850 330 H1076" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#go-arr)" />
+            <path class="dr h" pathLength="1" d="M850 440 H1076" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#go-arr)" />
+            <path class="dr h" pathLength="1" d="M850 550 H1076" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#go-arr)" />
+            <path class="dr h" pathLength="1" d="M850 660 H1076" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#go-arr)" />
+          </g>
+        </g>
+
+        <!-- L2 验证节奏 -->
+        <g id="go-s2">
+          <g id="go-yr" class="h">
+            <path d="M400 270 V290 H1700 V270" fill="none" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="1050" y="250" font-size="30" fill="#8a8f99" text-anchor="middle">一年</text>
+          </g>
+          <g id="go-r0" class="h"><text x="140" y="410" font-size="34" font-weight="700" fill="#e8e6df">P0 每月</text><path d="M400 400 H1700" stroke="#3a3f4a" stroke-width="2" /></g>
+          <g id="go-r1" class="h"><text x="140" y="560" font-size="34" font-weight="700" fill="#e8e6df">P1 每季度</text><path d="M400 550 H1700" stroke="#3a3f4a" stroke-width="2" /></g>
+          <g id="go-r2" class="h"><text x="140" y="710" font-size="34" font-weight="700" fill="#e8e6df">P2 每年</text><path d="M400 700 H1700" stroke="#3a3f4a" stroke-width="2" /></g>
+          <g id="go-d0" fill="#83C167"></g>
+          <g id="go-d1" fill="#83C167"></g>
+          <g id="go-d2" fill="#83C167"></g>
+          <text id="go-cad" class="h" x="960" y="830" font-size="30" fill="#8a8f99" text-anchor="middle">结果进入 D03 §1 的指标</text>
+        </g>
+
+        <!-- L3 例外 -->
+        <g id="go-s3">
+          <text id="go-ph" class="h" x="960" y="300" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">一条策略的时间线</text>
+          <rect id="go-p0" x="200" y="480" width="0" height="60" rx="6" fill="#83C167" opacity="0.85" />
+          <rect id="go-p1" x="700" y="480" width="0" height="60" fill="#22252d" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="10 8" />
+          <rect id="go-p2" x="1200" y="480" width="0" height="60" rx="6" fill="#83C167" opacity="0.85" />
+          <text id="go-pl0" class="h" x="450" y="600" font-size="30" fill="#8a8f99" text-anchor="middle">策略启用</text>
+          <g id="go-pl1" class="h">
+            <text x="950" y="450" font-size="30" font-weight="700" fill="#F0B90B" text-anchor="middle">例外：审批人 + 到期时间</text>
+            <text x="950" y="600" font-size="30" fill="#8a8f99" text-anchor="middle">临时关闭</text>
+          </g>
+          <g id="go-pl2" class="h">
+            <path d="M1200 460 V560" stroke="#9CDCEB" stroke-width="5" />
+            <text x="1460" y="600" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">到期自动恢复</text>
+          </g>
+        </g>
+
+        <!-- L4 上线清单 -->
+        <g id="go-s4">
+          <text id="go-ch" class="h" x="960" y="200" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">上线检查清单：新钱包、新链、新协议</text>
+          <g id="go-bx">
+            <g class="h"><rect x="276" y="620" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M288 644 L297 654 L314 633" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="276" y="556" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M288 580 L297 590 L314 569" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="276" y="492" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M288 516 L297 526 L314 505" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="616" y="620" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M628 644 L637 654 L654 633" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="616" y="556" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M628 580 L637 590 L654 569" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="616" y="492" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M628 516 L637 526 L654 505" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="616" y="428" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M628 452 L637 462 L654 441" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="956" y="620" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M968 644 L977 654 L994 633" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="956" y="556" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M968 580 L977 590 L994 569" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="956" y="492" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M968 516 L977 526 L994 505" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="956" y="428" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M968 452 L977 462 L994 441" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="1296" y="620" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M1308 644 L1317 654 L1334 633" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="1296" y="556" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M1308 580 L1317 590 L1334 569" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="1296" y="492" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M1308 516 L1317 526 L1334 505" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="1296" y="428" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M1308 452 L1317 462 L1334 441" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="1636" y="620" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M1648 644 L1657 654 L1674 633" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="1636" y="556" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M1648 580 L1657 590 L1674 569" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <g class="h"><rect x="1636" y="492" width="48" height="48" rx="8" fill="#161a22" stroke="#83C167" stroke-width="3" /><path d="M1648 516 L1657 526 L1674 505" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+          </g>
+          <g id="go-cl" class="h" font-size="30" fill="#e8e6df" text-anchor="middle">
+            <text x="300" y="730">资金结构</text><text x="640" y="730">签名链</text><text x="980" y="730">人员、身份与平台</text><text x="1320" y="730">合约（如适用）</text><text x="1660" y="730">运营与响应</text>
+          </g>
+          <text id="go-cn" class="h" x="960" y="840" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">18 项，每项都要有“怎样验证”的记录</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      // 节奏点：P0 12 个、P1 4 个、P2 1 个
+      const NS = "http://www.w3.org/2000/svg";
+      const dots = (sel, n, y) => { const g = document.querySelector(sel); for (let k = 0; k < n; k++) { const c = document.createElementNS(NS, "circle"); c.setAttribute("cx", 400 + (1300 / n) * (k + 0.5)); c.setAttribute("cy", y); c.setAttribute("r", 14); c.setAttribute("opacity", 0); g.appendChild(c); } };
+      dots("#go-d0", 12, 400); dots("#go-d1", 4, 550); dots("#go-d2", 1, 700);
+
+      // L0
+      IN("#go-card", at(0, 0.05), 0.7, { y: 16 });
+      IN("#go-stamp", at(0, 0.45), 0.35, { scale: 1.6, svgOrigin: "1250 440" }, { scale: 1, ease: "back.out(2)" });
+      IN("#go-ev", at(0, 0.6));
+
+      // L1 负责人
+      OUT("#go-s0", at(1, 0.0), 0.4);
+      IN("#go-not", at(1, 0.05));
+      tl.fromTo("#go-o > g", { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.25 }, at(1, 0.15));
+      tl.fromTo("#go-oa path", { opacity: 0, strokeDashoffset: 1 }, { opacity: 1, strokeDashoffset: 0, duration: 0.4, stagger: 0.25 }, at(1, 0.2));
+
+      // L2 节奏
+      OUT("#go-s1", at(2, 0.0), 0.4);
+      IN("#go-yr", at(2, 0.05));
+      IN("#go-r0", at(2, 0.1)); IN("#go-r1", at(2, 0.14)); IN("#go-r2", at(2, 0.18));
+      tl.to("#go-d0 circle", { opacity: 1, duration: 0.15, stagger: 0.06 }, at(2, 0.22));
+      tl.to("#go-d1 circle", { opacity: 1, duration: 0.15, stagger: 0.12 }, at(2, 0.4));
+      tl.to("#go-d2 circle", { opacity: 1, duration: 0.2 }, at(2, 0.5));
+      IN("#go-cad", at(2, 0.6));
+
+      // L3 例外
+      OUT("#go-s2", at(3, 0.0), 0.4);
+      IN("#go-ph", at(3, 0.05));
+      tl.to("#go-p0", { attr: { width: 500 }, duration: 0.5, ease: "none" }, at(3, 0.1)); IN("#go-pl0", at(3, 0.15));
+      tl.to("#go-p1", { attr: { width: 500 }, duration: 0.5, ease: "none" }, at(3, 0.25)); IN("#go-pl1", at(3, 0.3));
+      IN("#go-pl2", at(3, 0.45), 0.4);
+      tl.to("#go-p2", { attr: { width: 520 }, duration: 0.5, ease: "none" }, at(3, 0.47));
+
+      // L4 清单
+      OUT("#go-s3", at(4, 0.0), 0.4);
+      IN("#go-ch", at(4, 0.05), 0.6, { y: 16 });
+      IN("#go-cl", at(4, 0.1));
+      tl.fromTo("#go-bx > g", { opacity: 0 }, { opacity: 1, duration: 0.15, stagger: 0.07 }, at(4, 0.15));
+      IN("#go-cn", at(4, 0.6));
+
+      tl.to("#go-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["govern"] = tl;
+    })();
+  </script>
+</template>

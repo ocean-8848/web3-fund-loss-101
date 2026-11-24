@@ -1,0 +1,86 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 windows，id 前缀 wn- -->
+  <div id="root" data-composition-id="windows" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="wn-all">
+        <text id="wn-title" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">时间窗口：越往后越难</text>
+        <g transform="translate(0 60)">
+        <text id="wn-rh1" class="h" x="160" y="190" font-size="28" fill="#8a8f99">攻击者在做</text>
+        <text id="wn-rh2" class="h" x="160" y="425" font-size="28" fill="#8a8f99">还能打的牌</text>
+        <path id="wn-ax" class="dr" pathLength="1" d="M160 370 H1760" stroke="#8a8f99" stroke-width="4" fill="none" />
+        <g id="wn-tk" class="h"><path d="M560 356 V384 M960 356 V384 M1360 356 V384" stroke="#8a8f99" stroke-width="4" /></g>
+        <rect id="wn-prog" x="160" y="365" width="0" height="10" rx="3" fill="#FC6255" />
+        <text id="wn-l0" class="h" x="360" y="340" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">分钟级</text>
+        <g id="wn-a0" class="h" font-size="28" fill="#FC6255" text-anchor="middle"><text x="360" y="236">可冻结稳定币</text><text x="360" y="276">换成 ETH、BTC</text></g>
+        <g id="wn-c0" class="h"><rect class="wn-cb0" x="180" y="450" width="360" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text class="wn-ct0" x="360" y="492" font-size="28" fill="#83C167" text-anchor="middle">稳定币发行方冻结</text><rect class="wn-cb0" x="180" y="534" width="360" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text class="wn-ct0" x="360" y="576" font-size="28" fill="#83C167" text-anchor="middle">前端与 RPC 屏蔽（有限）</text></g>
+        <text id="wn-l1" class="h" x="760" y="340" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">小时级</text>
+        <g id="wn-a1" class="h" font-size="28" fill="#FC6255" text-anchor="middle"><text x="760" y="236">跨链 · 无许可桥</text><text x="760" y="276">拆分到大量地址</text></g>
+        <g id="wn-c1" class="h"><rect class="wn-cb1" x="580" y="450" width="360" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text class="wn-ct1" x="760" y="492" font-size="28" fill="#83C167" text-anchor="middle">交易所首跳冻结</text><rect class="wn-cb1" x="580" y="534" width="360" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text class="wn-ct1" x="760" y="576" font-size="28" fill="#83C167" text-anchor="middle">链级冻结（部分链）</text></g>
+        <text id="wn-l2" class="h" x="1160" y="340" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">天到周</text>
+        <g id="wn-a2" class="h" font-size="28" fill="#FC6255" text-anchor="middle"><text x="1160" y="236">混币 · 多跳转移</text><text x="1160" y="276">部分资金长期不动</text></g>
+        <g id="wn-c2" class="h"><rect class="wn-cb2" x="980" y="450" width="360" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text class="wn-ct2" x="1160" y="492" font-size="28" fill="#83C167" text-anchor="middle">持续标记地址</text><rect class="wn-cb2" x="980" y="534" width="360" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text class="wn-ct2" x="1160" y="576" font-size="28" fill="#83C167" text-anchor="middle">交易所筛查</text><rect class="wn-cb2" x="980" y="618" width="360" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text class="wn-ct2" x="1160" y="660" font-size="28" fill="#83C167" text-anchor="middle">谈判与赏金</text></g>
+        <text id="wn-l3" class="h" x="1560" y="340" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">月到年</text>
+        <g id="wn-a3" class="h" font-size="28" fill="#FC6255" text-anchor="middle"><text x="1560" y="236">场外 · 中小交易所</text><text x="1560" y="276">地下钱庄变现</text></g>
+        <g id="wn-c3" class="h"><rect class="wn-cb3" x="1380" y="450" width="360" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text class="wn-ct3" x="1560" y="492" font-size="28" fill="#83C167" text-anchor="middle">执法扣押</text><rect class="wn-cb3" x="1380" y="534" width="360" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text class="wn-ct3" x="1560" y="576" font-size="28" fill="#83C167" text-anchor="middle">法院命令</text></g>
+        <text id="wn-hint" class="h" x="960" y="620" font-size="40" fill="#e8e6df" text-anchor="middle">资金每往前走一段，就有几张牌<tspan fill="#8a8f99">作废</tspan></text>
+        <g id="wn-coin" class="h">
+          <circle cx="160" cy="370" r="20" fill="#F0B90B" stroke="#FC6255" stroke-width="4" />
+        </g>
+        </g>
+        <!-- L5 比喻 -->
+        <g id="wn-car" font-size="32" font-weight="700" text-anchor="middle">
+          <g class="wn-an h"><text x="360" y="820" fill="#e8e6df">交警</text><text x="360" y="862" font-size="28" font-weight="400" fill="#8a8f99">= 稳定币冻结</text></g>
+          <g class="wn-an h"><text x="760" y="820" fill="#e8e6df">收费站</text><text x="760" y="862" font-size="28" font-weight="400" fill="#8a8f99">= 交易所</text></g>
+          <g class="wn-an h"><text x="1560" y="820" fill="#e8e6df">长期侦查</text><text x="1560" y="862" font-size="28" font-weight="400" fill="#8a8f99">= 执法</text></g>
+        </g>
+        <text id="wn-lim" class="h" x="960" y="960" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">链上每一步都公开可见：难点不在看到，在拦住</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const CLOSE = (i, t) => {
+        tl.to(".wn-cb" + i, { attr: { stroke: "#3a4050", fill: "#161a22" }, duration: 0.4 }, t);
+        tl.to(".wn-ct" + i, { attr: { fill: "#5a5f69" }, duration: 0.4 }, t);
+      };
+
+      // L0 时间轴
+      IN("#wn-title", at(0, 0.02), 0.8, { y: 20 });
+      DRAW("#wn-ax", at(0, 0.1), 0.8); IN("#wn-tk", at(0, 0.2));
+      tl.fromTo(["#wn-l0", "#wn-l1", "#wn-l2", "#wn-l3"], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.12 }, at(0, 0.25));
+      IN("#wn-coin", at(0, 0.45), 0.5);
+      IN("#wn-rh1", at(0, 0.5)); IN("#wn-rh2", at(0, 0.5));
+      IN("#wn-hint", at(0, 0.6), 0.7, { y: 15 });
+
+      // L1–L4 资金往前走，窗口逐个关闭
+      OUT("#wn-hint", at(1, 0));
+      for (let i = 0; i < 4; i++) {
+        const n = i + 1;
+        if (i > 0) CLOSE(i - 1, at(n, 0));
+        tl.to("#wn-coin", { x: 400 * (i + 1), duration: 1.0, ease: "power2.inOut" }, at(n, 0.05));
+        tl.to("#wn-prog", { attr: { width: 400 * (i + 1) }, duration: 1.0, ease: "power2.inOut" }, at(n, 0.05));
+        IN("#wn-a" + i, at(n, 0.15), 0.6, { y: -10 });
+        IN("#wn-c" + i, at(n, 0.4), 0.6, { y: 15 });
+      }
+
+      // L5 比喻
+      tl.fromTo(".wn-an", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.15 }, at(5, 0.05));
+      IN("#wn-lim", at(5, 0.45), 0.7, { y: 15 });
+
+      tl.to("#wn-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["windows"] = tl;
+    })();
+  </script>
+</template>

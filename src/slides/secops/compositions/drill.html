@@ -1,0 +1,90 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 drill，id 前缀 dl- -->
+  <div id="root" data-composition-id="drill" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="dl-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#FC6255" /></marker>
+        <marker id="dl-ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#83C167" /></marker>
+      </defs>
+      <g id="dl-all">
+        <text id="dl-title" class="h" x="100" y="120" font-size="44" font-weight="700" fill="#e8e6df">演练日历：控制要被证明有效</text>
+        <g id="dl-axis" class="h">
+          <path d="M480 210 H1380" stroke="#8a8f99" stroke-width="2" /><path d="M480 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M555 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M630 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M705 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M780 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M855 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M930 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M1005 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M1080 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M1155 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M1230 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M1305 205 V215" stroke="#8a8f99" stroke-width="2" /><path d="M1380 205 V215" stroke="#8a8f99" stroke-width="2" /><text x="518" y="190" font-size="28" fill="#8a8f99" text-anchor="middle">1</text><text x="668" y="190" font-size="28" fill="#8a8f99" text-anchor="middle">3</text><text x="892" y="190" font-size="28" fill="#8a8f99" text-anchor="middle">6</text><text x="1118" y="190" font-size="28" fill="#8a8f99" text-anchor="middle">9</text><text x="1342" y="190" font-size="28" fill="#8a8f99" text-anchor="middle">12</text>
+          <text x="1400" y="190" font-size="28" fill="#8a8f99">月</text>
+          <text x="1420" y="250" font-size="28" fill="#8a8f99">通过标准</text>
+        </g>
+        <g id="dl-r0" class="h">
+          <text x="100" y="310" font-size="30" fill="#e8e6df">停签演练 · 每月</text>
+          <path d="M480 300 H1380" stroke="#2a2f3a" stroke-width="2" />
+        </g>
+        <g id="dl-d0" class="h"><circle cx="518" cy="300" r="12" fill="#83C167" /><circle cx="592" cy="300" r="12" fill="#83C167" /><circle cx="668" cy="300" r="12" fill="#83C167" /><circle cx="742" cy="300" r="12" fill="#83C167" /><circle cx="818" cy="300" r="12" fill="#83C167" /><circle cx="892" cy="300" r="12" fill="#83C167" /><circle cx="968" cy="300" r="12" fill="#83C167" /><circle cx="1042" cy="300" r="12" fill="#83C167" /><circle cx="1118" cy="300" r="12" fill="#83C167" /><circle cx="1192" cy="300" r="12" fill="#83C167" /><circle cx="1268" cy="300" r="12" fill="#83C167" /><circle cx="1342" cy="300" r="12" fill="#83C167" /></g>
+        <text id="dl-c0" class="h" x="1420" y="310" font-size="28" fill="#83C167">告警 → 全链停签 ≤ 5 分钟</text>
+        <g id="dl-r1" class="h">
+          <text x="100" y="460" font-size="30" fill="#e8e6df">桌面推演 · 每季度</text>
+          <path d="M480 450 H1380" stroke="#2a2f3a" stroke-width="2" />
+        </g>
+        <g id="dl-d1" class="h"><circle cx="592" cy="450" r="15" fill="#58C4DD" /><circle cx="818" cy="450" r="15" fill="#58C4DD" /><circle cx="1042" cy="450" r="15" fill="#58C4DD" /><circle cx="1268" cy="450" r="15" fill="#58C4DD" /></g>
+        <text id="dl-c1" class="h" x="1420" y="460" font-size="28" fill="#58C4DD">找出至少一个缺口</text>
+        <g id="dl-r2" class="h">
+          <text x="100" y="610" font-size="30" fill="#e8e6df">红队 · 每年</text>
+          <path d="M480 600 H1380" stroke="#2a2f3a" stroke-width="2" />
+        </g>
+        <g id="dl-d2" class="h"><circle cx="1118" cy="600" r="22" fill="#FC6255" /></g>
+        <text id="dl-c2" class="h" x="1420" y="610" font-size="28" fill="#FC6255">资金离开前被拦住</text>
+        <g id="dl-r3" class="h">
+          <text x="100" y="760" font-size="30" fill="#e8e6df">同业复盘 · 一周内</text>
+          <path d="M480 750 H1380" stroke="#2a2f3a" stroke-width="2" />
+        </g>
+        <g id="dl-d3" class="h"><path d="M578 736 L592 761 H564 Z" fill="#B48EF0" /><path d="M750 736 L764 761 H736 Z" fill="#B48EF0" /><path d="M960 736 L974 761 H946 Z" fill="#B48EF0" /><path d="M1260 736 L1274 761 H1246 Z" fill="#B48EF0" /></g>
+        <text id="dl-c3" class="h" x="1420" y="760" font-size="28" fill="#B48EF0">我们这儿走得通吗？</text>
+        <g id="dl-gaps" class="h"><circle cx="839" cy="429" r="10" fill="#FC6255" /><text x="839" y="436" font-size="18" font-weight="700" fill="#0f1117" text-anchor="middle">!</text><circle cx="1146" cy="572" r="10" fill="#FC6255" /><text x="1146" y="579" font-size="18" font-weight="700" fill="#0f1117" text-anchor="middle">!</text><circle cx="978" cy="732" r="10" fill="#FC6255" /><text x="978" y="739" font-size="18" font-weight="700" fill="#0f1117" text-anchor="middle">!</text></g>
+        <path class="dr h dl-arr" pathLength="1" d="M818 474 Q833 700 905 874" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#dl-ar)" /><path class="dr h dl-arr" pathLength="1" d="M1118 630 Q1110 800 1060 874" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#dl-ar)" /><path class="dr h dl-arr" pathLength="1" d="M960 770 Q960 830 1000 874" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#dl-ar)" />
+        <g id="dl-d02" class="h">
+          <rect x="760" y="880" width="400" height="90" rx="14" fill="#13201a" stroke="#83C167" stroke-width="3" />
+          <text x="960" y="937" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">D02 控制清单</text>
+        </g>
+        <text id="dl-gl" class="h" x="740" y="937" font-size="28" fill="#FC6255" text-anchor="end">找到的缺口 →</text>
+        <path id="dl-back" class="dr h" pathLength="1" d="M1164 925 H1700 V820" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#dl-ag)" />
+        <text id="dl-backl" class="h" x="1430" y="905" font-size="28" fill="#83C167" text-anchor="middle">补上控制，再演练</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const ROW = (k, i) => {
+        IN(`#dl-r${k}`, at(i, 0.03), 0.4, { x: -20 });
+        tl.set(`#dl-d${k}`, { opacity: 1 }, at(i, 0.15));
+        tl.fromTo(`#dl-d${k} > *`, { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.08 }, at(i, 0.15));
+        IN(`#dl-c${k}`, at(i, 0.55), 0.5);
+      };
+
+      // L0
+      IN("#dl-title", at(0, 0.03), 0.6, { y: 15 });
+      IN("#dl-axis", at(0, 0.3), 0.6);
+      // L1–L4
+      ROW(0, 1); ROW(1, 2); ROW(2, 3); ROW(3, 4);
+      // L5 缺口 → D02
+      IN("#dl-gaps", at(5, 0.03), 0.4);
+      IN("#dl-d02", at(5, 0.1), 0.5, { y: 15 });
+      document.querySelectorAll(".dl-arr").forEach((p, k) => ARROW(p, at(5, 0.15 + k * 0.07), 0.6));
+      IN("#dl-gl", at(5, 0.4), 0.4);
+      ARROW("#dl-back", at(5, 0.5), 0.6);
+      IN("#dl-backl", at(5, 0.62), 0.4);
+
+      tl.to("#dl-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["drill"] = tl;
+    })();
+  </script>
+</template>

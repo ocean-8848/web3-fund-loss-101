@@ -1,0 +1,217 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 principles，id 前缀 pr- -->
+  <div id="root" data-composition-id="principles" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="pr-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="pr-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+        <marker id="pr-arrn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="pr-all">
+        <text id="pr-title" class="h" x="960" y="150" font-size="56" font-weight="700" fill="#e8e6df" text-anchor="middle">告警之后的第一个小时</text>
+
+        <!-- L0–L1 资金流出与止血 -->
+        <g id="pr-g0">
+          <g id="pr-hw" class="h">
+            <rect x="200" y="380" width="340" height="180" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="370" y="485" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">热钱包</text>
+          </g>
+          <g id="pr-atk" class="h">
+            <rect x="1380" y="380" width="340" height="180" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1550" y="485" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+          </g>
+          <path id="pr-flow" class="dr h" pathLength="1" d="M552 470 H1366" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#pr-arr)" />
+          <g id="pr-coins" fill="#F0B90B">
+            <circle class="h" cx="590" cy="440" r="11" /><circle class="h" cx="590" cy="440" r="11" /><circle class="h" cx="590" cy="440" r="11" /><circle class="h" cx="590" cy="440" r="11" /><circle class="h" cx="590" cy="440" r="11" />
+          </g>
+          <g id="pr-bell" class="h" stroke="#FC6255" stroke-width="4" fill="none" stroke-linejoin="round">
+            <path d="M934 352 Q934 296 960 296 Q986 296 986 352 L998 366 H922 Z" />
+            <path d="M952 376 Q960 386 968 376" />
+            <path d="M906 300 Q898 320 906 340 M1014 300 Q1022 320 1014 340" stroke-linecap="round" />
+          </g>
+          <text id="pr-bl" class="h" x="1040" y="345" font-size="30" font-weight="700" fill="#FC6255">告警</text>
+          <text id="pr-irr" class="h" x="960" y="700" font-size="38" fill="#e8e6df" text-anchor="middle">链上转账不可撤销 · 能挽回多少，看停得多快</text>
+          <!-- L1 止血闸 -->
+          <rect id="pr-gate" class="h" x="1150" y="400" width="22" height="140" rx="6" fill="#83C167" />
+          <text id="pr-gatel" class="h" x="1161" y="380" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">止血</text>
+        </g>
+        <g id="pr-g1">
+          <text id="pr-h1" class="h" x="960" y="150" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">原则一 · <tspan fill="#83C167">先止血，后调查</tspan></text>
+          <path id="pr-ax1" class="dr" pathLength="1" d="M300 830 H1700" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <text id="pr-t0" class="h" x="300" y="878" font-size="28" fill="#8a8f99" text-anchor="middle">T+0</text>
+          <rect id="pr-stop" class="h" x="300" y="650" width="560" height="60" rx="8" fill="#83C167" fill-opacity="0.22" stroke="#83C167" stroke-width="2.5" />
+          <text id="pr-stopl" class="h" x="322" y="691" font-size="30" font-weight="700" fill="#83C167">止血：停签 · 暂停 · 撤权</text>
+          <rect id="pr-inv" class="h" x="760" y="740" width="940" height="60" rx="8" fill="#8a8f99" fill-opacity="0.18" stroke="#8a8f99" stroke-width="2.5" />
+          <text id="pr-invl" class="h" x="782" y="781" font-size="30" fill="#e8e6df">调查：查入口、确认根因</text>
+          <text id="pr-nw" class="h" x="890" y="691" font-size="28" fill="#83C167">← 止损不用等根因确认</text>
+        </g>
+
+        <!-- L2 预先授权 -->
+        <g id="pr-g2">
+          <text id="pr-h2" class="h" x="960" y="150" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">原则二 · <tspan fill="#83C167">动作预先授权</tspan></text>
+          <g id="pr-duty" class="h">
+            <circle cx="300" cy="520" r="34" fill="none" stroke="#e8e6df" stroke-width="4" />
+            <path d="M240 630 C240 565 360 565 360 630 Z" fill="none" stroke="#e8e6df" stroke-width="4" stroke-linejoin="round" />
+            <text x="300" y="690" font-size="30" fill="#e8e6df" text-anchor="middle">值班人员</text>
+          </g>
+          <g id="pr-chain" class="h">
+            <path d="M330 470 L530 360 M740 340 H830 M1040 340 H1130 M1340 380 L1440 478" stroke="#8a8f99" stroke-width="3" fill="none" stroke-dasharray="10 8" />
+            <rect x="530" y="300" width="210" height="80" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="635" y="352" font-size="30" fill="#8a8f99" text-anchor="middle">审批 1</text>
+            <rect x="830" y="300" width="210" height="80" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="935" y="352" font-size="30" fill="#8a8f99" text-anchor="middle">审批 2</text>
+            <rect x="1130" y="300" width="210" height="80" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="1235" y="352" font-size="30" fill="#8a8f99" text-anchor="middle">审批 3</text>
+          </g>
+          <path id="pr-cx" class="dr" pathLength="1" d="M765 320 L805 360 M805 320 L765 360" stroke="#FC6255" stroke-width="6" fill="none" />
+          <text id="pr-cxl" class="h" x="785" y="285" font-size="28" fill="#FC6255" text-anchor="middle">不需要层层审批</text>
+          <path id="pr-direct" class="dr h" pathLength="1" d="M352 560 H1268" stroke="#83C167" stroke-width="4" fill="none" marker-end="url(#pr-arrg)" />
+          <text id="pr-dl" class="h" x="800" y="610" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">提前授权到个人</text>
+          <g id="pr-act" class="h">
+            <rect x="1280" y="480" width="440" height="170" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="1500" y="550" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">停签 · 暂停合约</text>
+            <text x="1500" y="602" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">吊销会话</text>
+          </g>
+        </g>
+
+        <!-- L3 宁可误停 -->
+        <g id="pr-g3">
+          <text id="pr-h3" class="h" x="960" y="150" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">原则三 · <tspan fill="#83C167">宁可误停</tspan></text>
+          <text id="pr-r1l" class="h" x="200" y="477" font-size="40" font-weight="700" fill="#8a8f99">误停</text>
+          <rect id="pr-r1" x="360" y="430" width="0" height="64" rx="8" fill="#8a8f99" />
+          <text id="pr-r1t" class="h" x="580" y="475" font-size="32" fill="#e8e6df">几小时提现延迟</text>
+          <text id="pr-r2l" class="h" x="200" y="657" font-size="40" font-weight="700" fill="#FC6255">漏停</text>
+          <rect id="pr-r2" x="360" y="610" width="0" height="64" rx="8" fill="#FC6255" opacity="0.9" />
+          <text id="pr-r2t" class="h" x="390" y="655" font-size="32" font-weight="700" fill="#0f1117">全部余额</text>
+          <text id="pr-r3" class="h" x="960" y="840" font-size="38" font-weight="700" fill="#83C167" text-anchor="middle">两种代价不对称：拿不准时，先停</text>
+        </g>
+
+        <!-- L4 独立渠道 -->
+        <g id="pr-g4">
+          <text id="pr-h4" class="h" x="960" y="150" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">原则四 · <tspan fill="#83C167">假设内部渠道已被监视</tspan></text>
+          <g id="pr-im" class="h">
+            <rect x="200" y="340" width="520" height="260" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <text x="460" y="400" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">内部 IM · 工单</text>
+            <rect x="240" y="440" width="230" height="26" rx="13" fill="#8a8f99" opacity="0.5" />
+            <rect x="240" y="484" width="180" height="26" rx="13" fill="#8a8f99" opacity="0.5" />
+            <rect x="240" y="528" width="210" height="26" rx="13" fill="#8a8f99" opacity="0.5" />
+          </g>
+          <g id="pr-eye" class="h" stroke="#FC6255" stroke-width="4" fill="none">
+            <path d="M540 497 Q610 445 680 497 Q610 549 540 497 Z" />
+            <circle cx="610" cy="497" r="14" fill="#FC6255" />
+          </g>
+          <text id="pr-eyel" class="h" x="460" y="660" font-size="30" fill="#FC6255" text-anchor="middle">攻击者可能还在内网</text>
+          <path id="pr-sw" class="dr h" pathLength="1" d="M736 470 H1184" stroke="#83C167" stroke-width="4" fill="none" marker-end="url(#pr-arrg)" />
+          <text id="pr-swl" class="h" x="960" y="440" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">处置细节改到这里谈</text>
+          <g id="pr-ind" class="h">
+            <rect x="1200" y="340" width="520" height="260" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="1460" y="455" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">独立应急渠道</text>
+            <text x="1460" y="510" font-size="28" fill="#8a8f99" text-anchor="middle">出事前就准备好</text>
+          </g>
+          <text id="pr-lat" class="h" x="960" y="800" font-size="32" fill="#e8e6df" text-anchor="middle">Binance、Bitget：攻击者在内部平台横移</text>
+        </g>
+
+        <!-- L5 证据与止血并行 -->
+        <g id="pr-g5">
+          <text id="pr-h5" class="h" x="960" y="150" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">原则五 · <tspan fill="#83C167">证据和止血并行</tspan></text>
+          <text id="pr-l1" class="h" x="200" y="432" font-size="36" font-weight="700" fill="#83C167">止血</text>
+          <rect id="pr-b1" x="360" y="385" width="0" height="70" rx="8" fill="#83C167" fill-opacity="0.22" stroke="#83C167" stroke-width="2.5" />
+          <text id="pr-b1t" class="h" x="390" y="432" font-size="30" fill="#83C167">停签 · 暂停 · 撤权</text>
+          <text id="pr-l2" class="h" x="200" y="572" font-size="36" font-weight="700" fill="#58C4DD">证据</text>
+          <rect id="pr-b2" x="360" y="525" width="0" height="70" rx="8" fill="#58C4DD" fill-opacity="0.18" stroke="#58C4DD" stroke-width="2.5" />
+          <text id="pr-b2t" class="h" x="390" y="572" font-size="30" fill="#58C4DD">导出日志 · 保全终端镜像</text>
+          <text id="pr-same" class="h" x="1420" y="505" font-size="28" fill="#8a8f99" text-anchor="middle">同时进行</text>
+          <g id="pr-no" class="h">
+            <path d="M560 740 L620 800 M620 740 L560 800" stroke="#FC6255" stroke-width="7" stroke-linecap="round" />
+            <rect x="660" y="715" width="560" height="110" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="940" y="785" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">为了“清理”重装机器</text>
+          </g>
+          <text id="pr-nol" class="h" x="1260" y="785" font-size="30" fill="#e8e6df">证据就没了</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const W = (s, w, t, d = 0.9) => tl.fromTo(s, { attr: { width: 0 } }, { attr: { width: w }, duration: d, ease: "power2.out", immediateRender: false }, t);
+
+      // L0 资金在流出
+      IN("#pr-title", at(0, 0.02), 0.8, { y: 20 });
+      IN("#pr-hw", at(0, 0.1)); IN("#pr-atk", at(0, 0.15));
+      ARROW("#pr-flow", at(0, 0.2), 0.6);
+      tl.fromTo("#pr-coins circle", { opacity: 1, x: 0 }, { x: 760, opacity: 0, duration: 0.9, ease: "none", stagger: 0.25, immediateRender: false }, at(0, 0.25));
+      IN("#pr-bell", at(0, 0.3), 0.4, { scale: 1.4, svgOrigin: "960 340" });
+      IN("#pr-bl", at(0, 0.35));
+      IN("#pr-irr", at(0, 0.55), 0.7, { y: 15 });
+
+      // L1 先止血
+      OUT("#pr-title", at(1, 0)); OUT("#pr-irr", at(1, 0));
+      IN("#pr-h1", at(1, 0.05), 0.6, { y: 15 });
+      IN("#pr-gate", at(1, 0.12), 0.4, { scaleY: 0, svgOrigin: "1161 540" }, { scaleY: 1 });
+      IN("#pr-gatel", at(1, 0.18));
+      tl.to("#pr-flow", { opacity: 0.35, duration: 0.4 }, at(1, 0.2));
+      DRAW("#pr-ax1", at(1, 0.25), 0.6); IN("#pr-t0", at(1, 0.3));
+      IN("#pr-stop", at(1, 0.35)); IN("#pr-stopl", at(1, 0.4));
+      IN("#pr-inv", at(1, 0.5)); IN("#pr-invl", at(1, 0.55));
+      IN("#pr-nw", at(1, 0.65), 0.6, { x: -15 });
+
+      // L2 预先授权
+      OUT("#pr-g0", at(2, 0)); OUT("#pr-g1", at(2, 0));
+      IN("#pr-h2", at(2, 0.08), 0.6, { y: 15 });
+      IN("#pr-duty", at(2, 0.12));
+      IN("#pr-chain", at(2, 0.2));
+      DRAW("#pr-cx", at(2, 0.4), 0.4); IN("#pr-cxl", at(2, 0.45));
+      ARROW("#pr-direct", at(2, 0.5), 0.6); IN("#pr-dl", at(2, 0.55));
+      IN("#pr-act", at(2, 0.62), 0.6, { x: 20 });
+
+      // L3 宁可误停
+      OUT("#pr-g2", at(3, 0));
+      IN("#pr-h3", at(3, 0.08), 0.6, { y: 15 });
+      IN("#pr-r1l", at(3, 0.12)); W("#pr-r1", 180, at(3, 0.15), 0.5); IN("#pr-r1t", at(3, 0.3));
+      IN("#pr-r2l", at(3, 0.35)); W("#pr-r2", 1360, at(3, 0.38), 1.0); IN("#pr-r2t", at(3, 0.55));
+      IN("#pr-r3", at(3, 0.68), 0.6, { y: 15 });
+
+      // L4 独立渠道
+      OUT("#pr-g3", at(4, 0));
+      IN("#pr-h4", at(4, 0.08), 0.6, { y: 15 });
+      IN("#pr-im", at(4, 0.12));
+      IN("#pr-eye", at(4, 0.25), 0.5, { scale: 1.5, svgOrigin: "610 497" }); IN("#pr-eyel", at(4, 0.3));
+      ARROW("#pr-sw", at(4, 0.42), 0.5); IN("#pr-swl", at(4, 0.48));
+      IN("#pr-ind", at(4, 0.5), 0.6, { x: 20 });
+      IN("#pr-lat", at(4, 0.65), 0.6, { y: 15 });
+
+      // L5 并行
+      OUT("#pr-g4", at(5, 0));
+      IN("#pr-h5", at(5, 0.08), 0.6, { y: 15 });
+      IN("#pr-l1", at(5, 0.12)); IN("#pr-l2", at(5, 0.12));
+      tl.set(["#pr-b1", "#pr-b2"], { attr: { width: 0 } }, 0);
+      tl.to(["#pr-b1", "#pr-b2"], { attr: { width: 1300 }, duration: 1.0, ease: "power2.out" }, at(5, 0.15));
+      IN("#pr-b1t", at(5, 0.25)); IN("#pr-b2t", at(5, 0.25));
+      IN("#pr-same", at(5, 0.4));
+      IN("#pr-no", at(5, 0.5), 0.6, { y: 15 });
+      IN("#pr-nol", at(5, 0.62));
+
+      tl.to("#pr-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["principles"] = tl;
+    })();
+  </script>
+</template>

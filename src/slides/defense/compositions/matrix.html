@@ -1,0 +1,85 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 matrix，id 前缀 mt- -->
+  <div id="root" data-composition-id="matrix" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="mt-all">
+        <text id="mt-title" class="h" x="960" y="110" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">防御矩阵：哪道控制能切断哪起事件</text>
+        <text id="mt-colh" class="h" x="951" y="196" font-size="28" fill="#8a8f99" text-anchor="middle">← 32 起案件 →</text>
+        <text id="mt-rowh" class="h" x="360" y="196" font-size="28" fill="#8a8f99" text-anchor="end">控制族</text>
+        <rect id="mt-top" class="h" x="100" y="224" width="1740" height="52" rx="8" fill="#F0B90B" fill-opacity="0.12" stroke="#F0B90B" stroke-width="2" />
+        <rect id="mt-sec" class="h" x="100" y="282" width="1740" height="160" rx="8" fill="#58C4DD" fill-opacity="0.08" stroke="#58C4DD" stroke-width="1.5" stroke-dasharray="8 6" />
+        <g id="mt-rows"></g>
+        <text id="mt-barh" class="h" x="1510" y="196" font-size="28" fill="#8a8f99">能切断的案件数</text>
+        <text id="mt-lim" class="h" x="960" y="985" font-size="30" fill="#8a8f99" text-anchor="middle"><tspan fill="#83C167">●</tspan> = 公开信息显示可以切断，不代表受害方当时没有部署</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+
+      // 数据：src/handbook/data/defense.js D01 的 12 个控制族 × 32 起案件（H.cases 顺序，famOf 现算），1 = ●
+      const FAM = ["人员与终端", "身份与会话", "云与内部平台", "供应商", "前端与界面", "签名与密钥", "阈值", "合约", "经济参数", "熔断", "余额", "监控与对账"];
+      const M = ["10100001010100000001001011100110", "00000001010100000001000011110010", "00000000011110001001100011110010", "00000001111011000000010000010000",
+        "00000000110001000000001000010000", "10100000111111001101111010010100", "00100000100000001000100000000110", "01011010000000110010000100001001",
+        "00000100000000110000000000000110", "01111000001100100010000100001101", "10000000011100000000010010000000", "01110000000111001100000001100001"];
+      const KEY = ["签名与密钥", "熔断", "余额"];
+      const NS = "http://www.w3.org/2000/svg", root = document.querySelector("#mt-rows");
+      const mk = (tag, a, parent) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; };
+      const cnt = M.map(r => [...r].filter(c => c === "1").length);
+      FAM.forEach((f, i) => {
+        const cy = 250 + i * 56, g = mk("g", { id: "mt-r" + i }, root);
+        const lab = mk("text", { x: 360, y: cy + 10, "font-size": 28, fill: "#e8e6df", "text-anchor": "end", class: "mt-lab h" + (KEY.includes(f) ? " mt-key" : " mt-oth") }, g);
+        lab.textContent = f;
+        [...M[i]].forEach((c, j) => {
+          const cx = 440 + j * 33;
+          mk("circle", { cx, cy, r: 3, fill: "#3a3f4a", class: "mt-emp h" }, g);
+          if (c === "1") mk("circle", { cx, cy, r: 10, fill: "#83C167", class: "mt-dot h" }, g);
+        });
+        mk("rect", { x: 1510, y: cy - 13, width: 0, height: 26, rx: 4, fill: "#58C4DD", "data-w": cnt[i] * 14, class: "mt-bar" + (KEY.includes(f) ? " mt-keyb" : "") }, g);
+        const n = mk("text", { x: 1522 + cnt[i] * 14, y: cy + 10, "font-size": 28, "font-weight": 700, fill: "#e8e6df", class: "mt-num h" }, g);
+        n.textContent = cnt[i];
+      });
+      const order = FAM.map((_, i) => i).sort((a, b) => cnt[b] - cnt[a] || a - b);
+
+      // L0 行 / 列
+      IN("#mt-title", at(0, 0.02), 0.8, { y: 20 });
+      tl.fromTo(".mt-emp", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.002 }, at(0, 0.2));
+      tl.fromTo(".mt-lab", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.04 }, at(0, 0.3));
+      IN("#mt-rowh", at(0, 0.35)); IN("#mt-colh", at(0, 0.55));
+
+      // L1 打点
+      tl.fromTo(".mt-dot", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.012 }, at(1, 0.05));
+
+      // L2 覆盖数排序
+      IN("#mt-barh", at(2, 0.02));
+      document.querySelectorAll(".mt-bar").forEach((b, k) => tl.to(b, { attr: { width: +b.getAttribute("data-w") }, duration: 0.5, ease: "power2.out" }, at(2, 0.02 + k * 0.015)));
+      IN(".mt-num", at(2, 0.2), 0.4);
+      order.forEach((ri, k) => tl.to("#mt-r" + ri, { y: (k - ri) * 56, duration: 0.9, ease: "power2.inOut" }, at(2, 0.3)));
+      IN("#mt-top", at(2, 0.62), 0.4);
+      IN("#mt-sec", at(2, 0.7), 0.4);
+
+      // L3 不依赖入口的三行
+      OUT("#mt-top", at(3, 0.0), 0.3); OUT("#mt-sec", at(3, 0.0), 0.3);
+      tl.to(".mt-key", { attr: { fill: "#83C167" }, duration: 0.4 }, at(3, 0.1));
+      tl.to(".mt-keyb", { attr: { fill: "#83C167" }, duration: 0.4 }, at(3, 0.1));
+      tl.to(".mt-oth", { opacity: 0.4, duration: 0.4 }, at(3, 0.1));
+
+      // L4 局限
+      IN("#mt-lim", at(4, 0.1), 0.7, { y: 15 });
+
+      tl.to("#mt-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["matrix"] = tl;
+    })();
+  </script>
+</template>

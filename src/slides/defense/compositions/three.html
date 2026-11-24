@@ -1,0 +1,141 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 three，id 前缀 tq- -->
+  <div id="root" data-composition-id="three" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="tq-arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#83C167" /></marker>
+        <marker id="tq-arn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" /></marker>
+        <marker id="tq-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#FC6255" /></marker>
+      </defs>
+      <g id="tq-all">
+        <!-- 列分隔 -->
+        <g id="tq-sep" class="h" stroke="#2a2f3a" stroke-width="2"><path d="M665 160 V960" /><path d="M1255 160 V960" /></g>
+        <text id="tq-h1" class="h" x="360" y="200" font-size="48" font-weight="700" fill="#8a8f99" text-anchor="middle">① 钱在哪</text>
+        <text id="tq-h2" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#8a8f99" text-anchor="middle">② 谁能动</text>
+        <text id="tq-h3" class="h" x="1560" y="200" font-size="48" font-weight="700" fill="#8a8f99" text-anchor="middle">③ 多久能停</text>
+
+        <!-- 列 1：钱包余额 -->
+        <g id="tq-c1">
+          <path id="tq-base1" class="dr" pathLength="1" d="M160 760 H620" stroke="#8a8f99" stroke-width="2" fill="none" />
+          <rect id="tq-hot" x="190" y="640" width="80" height="120" rx="4" fill="#F0B90B" />
+          <rect id="tq-warm" x="360" y="560" width="80" height="200" rx="4" fill="#F0B90B" opacity="0.8" />
+          <rect id="tq-cold" x="510" y="300" width="80" height="460" rx="4" fill="#F0B90B" opacity="0.6" />
+          <g id="tq-wl" class="h" font-size="28" fill="#e8e6df" text-anchor="middle"><text x="230" y="805">热</text><text x="400" y="805">温</text><text x="550" y="805">冷</text></g>
+          <rect id="tq-over" x="190" y="330" width="80" height="270" rx="4" fill="#FC6255" />
+          <g id="tq-cap" class="h"><path d="M170 600 H290" stroke="#83C167" stroke-width="4" stroke-dasharray="10 7" /><text x="160" y="610" font-size="28" fill="#83C167" text-anchor="end">上限</text></g>
+          <g id="tq-sweep">
+            <path id="tq-sw" class="dr h" pathLength="1" d="M285 628 Q380 380 548 292" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#tq-arg)" />
+            <text id="tq-swl" class="h" x="440" y="478" font-size="28" fill="#83C167" text-anchor="middle">超额归集</text>
+          </g>
+          <text id="tq-f1a" class="h mono" x="360" y="880" font-size="28" fill="#FC6255" text-anchor="middle">Coincheck · Bybit · Binance</text>
+          <text id="tq-f1b" class="h" x="360" y="925" font-size="28" fill="#FC6255" text-anchor="middle">损失主要由余额决定</text>
+        </g>
+
+        <!-- 列 2：谁能动 -->
+        <g id="tq-c2">
+          <g id="tq-n1" class="h"><rect x="735" y="290" width="130" height="70" rx="10" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="800" y="336" font-size="28" fill="#F0B90B" text-anchor="middle">钥匙</text></g>
+          <g id="tq-n2" class="h"><rect x="895" y="290" width="130" height="70" rx="10" fill="#161a22" stroke="#B48EF0" stroke-width="2.5" /><text x="960" y="336" font-size="28" fill="#B48EF0" text-anchor="middle">系统</text></g>
+          <g id="tq-n3" class="h"><rect x="1055" y="290" width="130" height="70" rx="10" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="1120" y="336" font-size="28" fill="#58C4DD" text-anchor="middle">角色</text></g>
+          <path id="tq-e1" class="dr h" pathLength="1" d="M800 362 L915 494" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#tq-arn)" />
+          <path id="tq-e2" class="dr h" pathLength="1" d="M960 362 V494" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#tq-arn)" />
+          <path id="tq-e3" class="dr h" pathLength="1" d="M1120 362 L1005 494" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#tq-arn)" />
+          <g id="tq-sig" class="h"><rect x="860" y="500" width="200" height="100" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="3" /><text x="960" y="562" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">签名</text></g>
+          <text id="tq-list" class="h" x="960" y="680" font-size="30" fill="#83C167" text-anchor="middle">列清单 · 写明到期</text>
+          <g id="tq-dev" class="h"><rect x="700" y="720" width="160" height="80" rx="10" fill="#2a1616" stroke="#FC6255" stroke-width="3" /><text x="780" y="771" font-size="30" fill="#FC6255" text-anchor="middle">开发机</text></g>
+          <path id="tq-devl" class="dr h" pathLength="1" d="M820 716 L922 610" stroke="#FC6255" stroke-width="4" fill="none" marker-end="url(#tq-arr)" />
+          <text id="tq-f2a" class="h mono" x="960" y="880" font-size="28" fill="#FC6255" text-anchor="middle">Bybit · Binance · Bitget</text>
+          <text id="tq-f2b" class="h" x="960" y="925" font-size="28" fill="#FC6255" text-anchor="middle">间接驱动签名系统</text>
+        </g>
+
+        <!-- 列 3：多久能停 -->
+        <g id="tq-c3">
+          <path id="tq-ax" class="dr" pathLength="1" d="M1300 520 H1830" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <path id="tq-red" class="dr" pathLength="1" d="M1330 520 H1800" stroke="#FC6255" stroke-width="10" fill="none" />
+          <g id="tq-t0" class="h"><circle cx="1330" cy="520" r="11" fill="#FC6255" /><text x="1330" y="575" font-size="28" fill="#FC6255" text-anchor="middle">异常转出</text></g>
+          <g id="tq-t1" class="h"><circle cx="1570" cy="520" r="11" fill="#F0B90B" /><text x="1570" y="575" font-size="28" fill="#F0B90B" text-anchor="middle">告警</text></g>
+          <g id="tq-t2" class="h"><circle cx="1800" cy="520" r="11" fill="#83C167" /><text x="1800" y="575" font-size="28" fill="#83C167" text-anchor="middle">停签</text></g>
+          <path id="tq-b1" class="dr" pathLength="1" d="M1340 488 V470 H1560 V488" stroke="#e8e6df" stroke-width="2.5" fill="none" />
+          <path id="tq-b2" class="dr" pathLength="1" d="M1580 488 V470 H1790 V488" stroke="#e8e6df" stroke-width="2.5" fill="none" />
+          <text id="tq-q1" class="h" x="1450" y="448" font-size="30" fill="#e8e6df" text-anchor="middle">? 分钟</text>
+          <text id="tq-q2" class="h" x="1685" y="448" font-size="30" fill="#e8e6df" text-anchor="middle">? 分钟</text>
+          <text id="tq-drill" class="h" x="1560" y="680" font-size="30" fill="#83C167" text-anchor="middle">有演练记录可查</text>
+          <text id="tq-r1" class="h" x="1450" y="448" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">数年</text>
+          <text id="tq-r2" class="h" x="1685" y="448" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">仍在流出</text>
+          <text id="tq-f3a" class="h" x="1560" y="880" font-size="28" fill="#FC6255" text-anchor="middle">Mt.Gox：数年未被发现</text>
+          <text id="tq-f3b" class="h" x="1560" y="925" font-size="28" fill="#FC6255" text-anchor="middle">Bitget：告警后仍流出约 2.4 亿</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const LIT = (s, t) => tl.to(s, { attr: { fill: "#e8e6df" }, duration: 0.4 }, t);
+      const GROW = (s, y, h, t, d = 0.8) => tl.fromTo(s, { attr: { y: 760, height: 0 } }, { attr: { y, height: h }, duration: d, ease: "power2.out" }, t);
+      tl.set("#tq-hot,#tq-warm,#tq-cold", { attr: { y: 760, height: 0 } }, 0);
+      tl.set("#tq-over", { attr: { y: 600, height: 0 } }, 0);
+
+      // L0
+      IN("#tq-h1", at(0, 0.05), 0.5, { y: 15 }); IN("#tq-h2", at(0, 0.15), 0.5, { y: 15 }); IN("#tq-h3", at(0, 0.25), 0.5, { y: 15 });
+      IN("#tq-sep", at(0, 0.4), 0.6);
+
+      // L1 钱在哪
+      LIT("#tq-h1", at(1, 0.02));
+      DRAW("#tq-base1", at(1, 0.05), 0.5);
+      GROW("#tq-hot", 640, 120, at(1, 0.1)); GROW("#tq-warm", 560, 200, at(1, 0.14)); GROW("#tq-cold", 300, 460, at(1, 0.18));
+      IN("#tq-wl", at(1, 0.2), 0.5);
+      IN("#tq-cap", at(1, 0.42), 0.5, { x: -20 });
+      ARROW("#tq-sw", at(1, 0.6), 0.7);
+      IN("#tq-swl", at(1, 0.68), 0.4);
+
+      // L2 答不上来：余额远超
+      OUT("#tq-sweep", at(2, 0.0), 0.3);
+      tl.to("#tq-over", { attr: { y: 330, height: 270 }, duration: 1.0, ease: "power2.inOut" }, at(2, 0.1));
+      IN("#tq-f1a", at(2, 0.35), 0.5); IN("#tq-f1b", at(2, 0.5), 0.5);
+
+      // L3 谁能动
+      LIT("#tq-h2", at(3, 0.02));
+      IN("#tq-sig", at(3, 0.05), 0.5);
+      IN("#tq-n1", at(3, 0.15), 0.4, { y: -15 }); ARROW("#tq-e1", at(3, 0.2), 0.4);
+      IN("#tq-n2", at(3, 0.27), 0.4, { y: -15 }); ARROW("#tq-e2", at(3, 0.32), 0.4);
+      IN("#tq-n3", at(3, 0.39), 0.4, { y: -15 }); ARROW("#tq-e3", at(3, 0.44), 0.4);
+      IN("#tq-list", at(3, 0.6), 0.5);
+
+      // L4 答不上来：开发机驱动签名
+      OUT("#tq-list", at(4, 0.0), 0.3);
+      IN("#tq-dev", at(4, 0.1), 0.5, { y: 20 });
+      ARROW("#tq-devl", at(4, 0.25), 0.5);
+      tl.to("#tq-sig rect", { attr: { stroke: "#FC6255" }, duration: 0.4 }, at(4, 0.4));
+      IN("#tq-f2a", at(4, 0.45), 0.5); IN("#tq-f2b", at(4, 0.58), 0.5);
+
+      // L5 多久能停
+      LIT("#tq-h3", at(5, 0.02));
+      DRAW("#tq-ax", at(5, 0.05), 0.6);
+      IN("#tq-t0", at(5, 0.12), 0.4); IN("#tq-t1", at(5, 0.2), 0.4); IN("#tq-t2", at(5, 0.28), 0.4);
+      DRAW("#tq-b1", at(5, 0.36), 0.4); IN("#tq-q1", at(5, 0.42), 0.4);
+      DRAW("#tq-b2", at(5, 0.48), 0.4); IN("#tq-q2", at(5, 0.54), 0.4);
+      IN("#tq-drill", at(5, 0.65), 0.5);
+
+      // L6 答不上来
+      OUT("#tq-drill", at(6, 0.0), 0.3); OUT("#tq-q1", at(6, 0.0), 0.3); OUT("#tq-q2", at(6, 0.0), 0.3);
+      DRAW("#tq-red", at(6, 0.08), 0.8);
+      IN("#tq-r1", at(6, 0.2), 0.4); IN("#tq-r2", at(6, 0.35), 0.4);
+      IN("#tq-f3a", at(6, 0.4), 0.5); IN("#tq-f3b", at(6, 0.55), 0.5);
+
+      tl.to("#tq-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["three"] = tl;
+    })();
+  </script>
+</template>

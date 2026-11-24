@@ -1,0 +1,193 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 contract，id 前缀 co- -->
+  <div id="root" data-composition-id="contract" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="co-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="co-all">
+        <!-- L0–L3 原型 B -->
+        <g id="co-b">
+          <text id="co-hb" class="h" x="960" y="130" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">原型 B：入口是代码</text>
+          <path id="co-ax" class="dr" pathLength="1" d="M200 220 H1720" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="co-m0" class="h"><circle id="co-c0" cx="400" cy="220" r="12" fill="#58C4DD" /><text x="400" y="282" font-size="30" fill="#8a8f99" text-anchor="middle">上线前</text><text x="400" y="336" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">测出来</text></g>
+          <g id="co-m1" class="h"><circle cx="960" cy="220" r="12" fill="#58C4DD" /><text x="960" y="282" font-size="30" fill="#8a8f99" text-anchor="middle">上线后</text><text x="960" y="336" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">限速</text></g>
+          <g id="co-m2" class="h"><circle cx="1520" cy="220" r="12" fill="#58C4DD" /><text x="1520" y="282" font-size="30" fill="#8a8f99" text-anchor="middle">被利用时</text><text x="1520" y="336" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">能暂停</text></g>
+          <rect id="co-hl" class="h" x="250" y="246" width="300" height="110" rx="14" fill="none" stroke="#83C167" stroke-width="2.5" />
+
+          <!-- L1 不变量 -->
+          <g id="co-inv" class="h">
+            <text x="140" y="450" font-size="30" fill="#8a8f99">核心不变量</text>
+            <text x="140" y="527" font-size="30" fill="#e8e6df">总资产</text>
+            <text x="140" y="617" font-size="30" fill="#e8e6df">总负债</text>
+            <text x="760" y="740" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">资产 ≥ 负债，任何调用后都成立</text>
+          </g>
+          <rect id="co-ba" x="300" y="490" width="0" height="56" rx="6" fill="#F0B90B" opacity="0.9" />
+          <rect id="co-bl" x="300" y="580" width="0" height="56" rx="6" fill="#8a8f99" opacity="0.9" />
+          <g id="co-fn" class="h">
+            <rect x="1060" y="410" width="720" height="340" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="2.5" />
+            <text x="1100" y="462" font-size="28" fill="#8a8f99">所有公开函数</text>
+            <g class="mono" font-size="30" fill="#e8e6df"><text x="1160" y="526">deposit()</text><text x="1160" y="586">withdraw()</text><text x="1160" y="646">borrow()</text><text x="1160" y="706">donateToReserves()</text></g>
+          </g>
+          <g id="co-ck" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <path class="h" d="M1102 516 L1114 528 L1136 504" /><path class="h" d="M1102 576 L1114 588 L1136 564" /><path class="h" d="M1102 636 L1114 648 L1136 624" /><path class="h" d="M1102 696 L1114 708 L1136 684" />
+          </g>
+          <text id="co-rare" class="h" x="1060" y="810" font-size="28" fill="#8a8f99">很少调用的也要测 · 案例：Euler（donateToReserves）</text>
+
+          <!-- L2 时间锁 -->
+          <g id="co-tlk">
+            <g id="co-u0" class="h"><rect x="140" y="560" width="300" height="100" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text x="290" y="620" font-size="30" font-weight="700" fill="#58C4DD" text-anchor="middle">升级 / 改参数</text></g>
+            <path id="co-ua" class="dr h" pathLength="1" d="M446 610 H552" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#co-arr)" />
+            <g id="co-u1" class="h"><rect x="560" y="560" width="220" height="100" rx="14" fill="#1b2027" stroke="#83C167" stroke-width="3" /><text x="670" y="620" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">多签</text></g>
+            <path id="co-ub" class="dr h" pathLength="1" d="M786 610 H892" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#co-arr)" />
+            <g id="co-u2" class="h">
+              <rect x="900" y="580" width="560" height="60" rx="10" fill="#22252d" stroke="#83C167" stroke-width="2.5" />
+              <text x="1180" y="550" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">时间锁：如 ≥ 24 小时</text>
+              <text x="1180" y="700" font-size="28" fill="#8a8f99" text-anchor="middle">期间公开待执行操作，监控告警</text>
+            </g>
+            <rect id="co-ufill" x="904" y="584" width="0" height="52" rx="7" fill="#83C167" opacity="0.5" />
+            <path id="co-uc" class="dr h" pathLength="1" d="M1466 610 H1572" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#co-arr)" />
+            <g id="co-u3" class="h"><rect x="1580" y="560" width="200" height="100" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text x="1680" y="620" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">执行</text></g>
+            <text id="co-uct" class="h" x="960" y="800" font-size="28" fill="#8a8f99" text-anchor="middle">升级、参数修改、角色变更都走这条路 · 案例：Poly、Nomad</text>
+          </g>
+
+          <!-- L3 速率上限 -->
+          <g id="co-rate">
+            <g id="co-gx" class="h">
+              <path d="M180 880 H1100 M180 880 V450" stroke="#8a8f99" stroke-width="3" fill="none" />
+              <text x="180" y="430" font-size="28" fill="#8a8f99">单位时间流出</text>
+              <path d="M180 600 H1100" stroke="#83C167" stroke-width="3" stroke-dasharray="12 10" fill="none" />
+              <text x="1100" y="582" font-size="28" fill="#83C167" text-anchor="end">流出上限</text>
+            </g>
+            <path id="co-gl" class="dr" pathLength="1" d="M180 840 L400 830 L600 820 L760 760 L840 610" stroke="#F0B90B" stroke-width="5" fill="none" />
+            <path id="co-gp" class="dr" pathLength="1" d="M840 610 L860 850 H1080" stroke="#9CDCEB" stroke-width="5" fill="none" />
+            <text id="co-gpl" class="h" x="900" y="800" font-size="32" font-weight="700" fill="#9CDCEB">自动暂停</text>
+            <g id="co-rt" class="h">
+              <text x="1220" y="520" font-size="30" fill="#e8e6df">提款 · 铸造 · 跨链放款</text>
+              <text x="1220" y="590" font-size="28" fill="#e8e6df">暂停权不设失效期</text>
+              <text x="1220" y="636" font-size="28" fill="#e8e6df">由独立多签持有</text>
+              <text x="1220" y="730" font-size="28" fill="#8a8f99">案例：Nomad、Wormhole、</text>
+              <text x="1220" y="772" font-size="28" fill="#8a8f99">Balancer v2</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- L4–L5 原型 C -->
+        <g id="co-c">
+          <text id="co-hc" class="h" x="960" y="130" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">原型 C：利用的是参数</text>
+          <g id="co-cost">
+            <g id="co-cl" class="h">
+              <text x="140" y="300" font-size="30" fill="#e8e6df">可借的钱</text>
+              <text x="140" y="410" font-size="30" fill="#e8e6df">操纵价格的成本</text>
+            </g>
+            <rect id="co-cb" x="420" y="265" width="0" height="56" rx="6" fill="#F0B90B" opacity="0.9" />
+            <rect id="co-cm" x="420" y="375" width="0" height="56" rx="6" fill="#FC6255" opacity="0.85" />
+            <text id="co-clt" class="h" x="960" y="510" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">按链上可成交深度，设抵押率与借款上限</text>
+            <text id="co-clv" class="h" x="960" y="570" font-size="28" fill="#8a8f99" text-anchor="middle">新资产上线先给小额上限 · 案例：Mango、Cream</text>
+          </g>
+          <!-- L5 预言机 -->
+          <g id="co-or">
+            <g id="co-src" class="h" font-size="30" fill="#e8e6df">
+              <text x="140" y="696">来源 1</text><text x="140" y="776">来源 2</text><text x="140" y="856">来源 3</text>
+            </g>
+            <rect id="co-s1" class="h" x="300" y="665" width="200" height="44" rx="6" fill="#58C4DD" opacity="0.8" />
+            <rect id="co-s2" class="h" x="300" y="745" width="210" height="44" rx="6" fill="#58C4DD" opacity="0.8" />
+            <rect id="co-s3" class="h" x="300" y="825" width="195" height="44" rx="6" fill="#58C4DD" opacity="0.8" />
+            <text id="co-x3" class="h" x="920" y="698" font-size="32" font-weight="700" fill="#FC6255">× 3</text>
+            <path id="co-oa" class="dr h" pathLength="1" d="M1010 766 H1092" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#co-arr)" />
+            <g id="co-med" class="h">
+              <rect x="1100" y="706" width="380" height="120" rx="14" fill="#14201a" stroke="#83C167" stroke-width="3" />
+              <text x="1290" y="758" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">时间加权 + 中位数</text>
+              <text x="1290" y="802" font-size="28" fill="#e8e6df" text-anchor="middle">偏离超阈值</text>
+            </g>
+            <path id="co-ob" class="dr h" pathLength="1" d="M1486 766 H1552" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#co-arr)" />
+            <g id="co-pause" class="h">
+              <rect x="1560" y="706" width="260" height="120" rx="14" fill="#152a30" stroke="#9CDCEB" stroke-width="3" />
+              <text x="1690" y="778" font-size="34" font-weight="700" fill="#9CDCEB" text-anchor="middle">借款暂停</text>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      // L0 三个时点
+      IN("#co-hb", at(0, 0.02), 0.6, { y: 16 });
+      DRAW("#co-ax", at(0, 0.1), 0.8);
+      IN("#co-m0", at(0, 0.25), 0.5, { y: 10 });
+      IN("#co-m1", at(0, 0.4), 0.5, { y: 10 });
+      IN("#co-m2", at(0, 0.55), 0.5, { y: 10 });
+
+      // L1 不变量
+      IN("#co-hl", at(1, 0.02), 0.4);
+      IN("#co-inv", at(1, 0.06));
+      tl.to("#co-ba", { attr: { width: 560 }, duration: 0.7, ease: "power2.out" }, at(1, 0.12));
+      tl.to("#co-bl", { attr: { width: 440 }, duration: 0.7, ease: "power2.out" }, at(1, 0.18));
+      IN("#co-fn", at(1, 0.3));
+      tl.fromTo("#co-ck path", { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.18 }, at(1, 0.42));
+      IN("#co-rare", at(1, 0.62));
+
+      // L2 时间锁（仍属“上线后”）
+      OUT(["#co-inv", "#co-ba", "#co-bl", "#co-fn", "#co-ck", "#co-rare"], at(2, 0.0), 0.35);
+      OUT("#co-hl", at(2, 0.0), 0.3);
+      IN("#co-u0", at(2, 0.08));
+      ARROW("#co-ua", at(2, 0.16), 0.3); IN("#co-u1", at(2, 0.2));
+      ARROW("#co-ub", at(2, 0.28), 0.3); IN("#co-u2", at(2, 0.32));
+      tl.to("#co-ufill", { attr: { width: 552 }, duration: 1.0, ease: "none" }, at(2, 0.38));
+      ARROW("#co-uc", at(2, 0.55), 0.3); IN("#co-u3", at(2, 0.58));
+      IN("#co-uct", at(2, 0.66));
+
+      // L3 速率上限 → 暂停
+      OUT("#co-tlk", at(3, 0.0), 0.35);
+      tl.set("#co-hl", { x: 560, attr: { width: 860 } }, at(3, 0.02));
+      tl.to("#co-hl", { opacity: 1, duration: 0.4 }, at(3, 0.03));
+      IN("#co-gx", at(3, 0.06));
+      DRAW("#co-gl", at(3, 0.12), 0.9);
+      DRAW("#co-gp", at(3, 0.35), 0.5);
+      IN("#co-gpl", at(3, 0.45));
+      IN("#co-rt", at(3, 0.5));
+
+      // L4 原型 C：成本 > 可借
+      OUT("#co-b", at(4, 0.0), 0.4);
+      IN("#co-hc", at(4, 0.08), 0.6, { y: 16 });
+      IN("#co-cl", at(4, 0.12));
+      tl.to("#co-cb", { attr: { width: 520 }, duration: 0.6, ease: "power2.out" }, at(4, 0.16));
+      tl.to("#co-cm", { attr: { width: 1300 }, duration: 0.9, ease: "power2.out" }, at(4, 0.24));
+      IN("#co-clt", at(4, 0.45), 0.6, { y: 10 });
+      IN("#co-clv", at(4, 0.58));
+
+      // L5 预言机
+      tl.to("#co-cost", { opacity: 0.35, duration: 0.4 }, at(5, 0.0));
+      IN("#co-src", at(5, 0.05));
+      IN(["#co-s1", "#co-s2", "#co-s3"], at(5, 0.08), 0.5);
+      tl.to("#co-s1", { attr: { width: 600, fill: "#FC6255" }, duration: 0.7, ease: "power2.inOut" }, at(5, 0.2));
+      IN("#co-x3", at(5, 0.32));
+      ARROW("#co-oa", at(5, 0.4), 0.3); IN("#co-med", at(5, 0.43));
+      ARROW("#co-ob", at(5, 0.55), 0.3); IN("#co-pause", at(5, 0.58), 0.5, { scale: 1.3, svgOrigin: "1690 766" });
+
+      tl.to("#co-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["contract"] = tl;
+    })();
+  </script>
+</template>

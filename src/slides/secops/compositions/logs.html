@@ -1,0 +1,111 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 logs，id 前缀 lg- -->
+  <div id="root" data-composition-id="logs" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="lg-all">
+        <text id="lg-h1" class="h" x="85" y="190" font-size="30" fill="#8a8f99">攻击阶段</text>
+        <text id="lg-h2" class="h" x="85" y="600" font-size="30" fill="#8a8f99">日志源</text>
+        <g id="lg-s0" class="h"><rect class="lg-sr" x="85" y="220" width="250" height="100" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text class="lg-st" x="210" y="282" font-size="32" font-weight="700" fill="#5a5f69" text-anchor="middle">入口</text><text class="lg-q" x="308" y="282" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">?</text></g>
+        <g id="lg-s1" class="h"><rect class="lg-sr" x="385" y="220" width="250" height="100" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text class="lg-st" x="510" y="282" font-size="32" font-weight="700" fill="#5a5f69" text-anchor="middle">立足</text><text class="lg-q" x="608" y="282" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">?</text></g>
+        <g id="lg-s2" class="h"><rect class="lg-sr" x="685" y="220" width="250" height="100" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text class="lg-st" x="810" y="282" font-size="32" font-weight="700" fill="#5a5f69" text-anchor="middle">横移</text><text class="lg-q" x="908" y="282" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">?</text></g>
+        <g id="lg-s3" class="h"><rect class="lg-sr" x="985" y="220" width="250" height="100" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text class="lg-st" x="1110" y="282" font-size="32" font-weight="700" fill="#5a5f69" text-anchor="middle">签名能力</text><text class="lg-q" x="1208" y="282" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">?</text></g>
+        <g id="lg-s4" class="h"><rect class="lg-sr" x="1285" y="220" width="250" height="100" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text class="lg-st" x="1410" y="282" font-size="32" font-weight="700" fill="#5a5f69" text-anchor="middle">链上执行</text><text class="lg-q" x="1508" y="282" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">?</text></g>
+        <g id="lg-s5" class="h"><rect class="lg-sr" x="1585" y="220" width="250" height="100" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text class="lg-st" x="1710" y="282" font-size="32" font-weight="700" fill="#5a5f69" text-anchor="middle">账实</text><text class="lg-q" x="1808" y="282" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">?</text></g>
+        <path id="lg-bedr1" class="dr lg-beam" pathLength="1" d="M360 626 L210 324" stroke="#83C167" stroke-width="3" stroke-opacity="0.75" fill="none" />
+        <path id="lg-bedr2" class="dr lg-beam" pathLength="1" d="M360 626 L510 324" stroke="#83C167" stroke-width="3" stroke-opacity="0.75" fill="none" />
+        <path id="lg-bid1" class="dr lg-beam" pathLength="1" d="M690 626 L810 324" stroke="#83C167" stroke-width="3" stroke-opacity="0.75" fill="none" />
+        <path id="lg-bcloud1" class="dr lg-beam" pathLength="1" d="M900 626 L810 324" stroke="#83C167" stroke-width="3" stroke-opacity="0.75" fill="none" />
+        <path id="lg-bsig1" class="dr lg-beam" pathLength="1" d="M1110 626 L1110 324" stroke="#83C167" stroke-width="3" stroke-opacity="0.75" fill="none" />
+        <path id="lg-bchain1" class="dr lg-beam" pathLength="1" d="M1410 626 L1410 324" stroke="#83C167" stroke-width="3" stroke-opacity="0.75" fill="none" />
+        <path id="lg-bbiz1" class="dr lg-beam" pathLength="1" d="M1710 626 L1710 324" stroke="#83C167" stroke-width="3" stroke-opacity="0.75" fill="none" />
+        <g id="lg-edr" class="h"><rect x="270" y="630" width="180" height="100" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="360" y="691" font-size="30" fill="#e8e6df" text-anchor="middle">终端 EDR</text></g>
+        <g id="lg-id" class="h"><rect x="600" y="630" width="180" height="100" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="690" y="691" font-size="30" fill="#e8e6df" text-anchor="middle">身份系统</text></g>
+        <g id="lg-cloud" class="h"><rect x="810" y="630" width="180" height="100" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="900" y="691" font-size="30" fill="#e8e6df" text-anchor="middle">云 · CI/CD</text></g>
+        <g id="lg-sig" class="h"><rect x="1000" y="630" width="220" height="100" rx="12" fill="#13201a" stroke="#83C167" stroke-width="4" /><text x="1110" y="672" font-size="28" font-weight="700" fill="#e8e6df" text-anchor="middle">签名与策略层</text><text x="1110" y="712" font-size="28" fill="#83C167" text-anchor="middle">永久保留</text></g>
+        <g id="lg-chain" class="h"><rect x="1320" y="630" width="180" height="100" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="1410" y="691" font-size="30" fill="#e8e6df" text-anchor="middle">链上</text></g>
+        <g id="lg-biz" class="h"><rect x="1620" y="630" width="180" height="100" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="1710" y="691" font-size="30" fill="#e8e6df" text-anchor="middle">业务账务</text></g>
+        <text id="lg-names" class="h mono" x="1110" y="790" font-size="28" fill="#FC6255" text-anchor="middle">Bybit · WazirX · Bitget</text>
+        <!-- L4 集中平台 -->
+        <g id="lg-dn">
+          <path class="dr lg-dn" pathLength="1" d="M360 734 L700 876" stroke="#8a8f99" stroke-width="2.5" fill="none" />
+          <path class="dr lg-dn" pathLength="1" d="M690 734 L800 876" stroke="#8a8f99" stroke-width="2.5" fill="none" />
+          <path class="dr lg-dn" pathLength="1" d="M900 734 L900 876" stroke="#8a8f99" stroke-width="2.5" fill="none" />
+          <path class="dr lg-dn" pathLength="1" d="M1110 734 L1010 876" stroke="#8a8f99" stroke-width="2.5" fill="none" />
+          <path class="dr lg-dn" pathLength="1" d="M1410 734 L1110 876" stroke="#8a8f99" stroke-width="2.5" fill="none" />
+          <path class="dr lg-dn" pathLength="1" d="M1710 734 L1220 876" stroke="#8a8f99" stroke-width="2.5" fill="none" />
+        </g>
+        <g id="lg-plat" class="h">
+          <rect x="560" y="880" width="800" height="90" rx="14" fill="#161a22" stroke="#83C167" stroke-width="3" />
+          <text x="960" y="937" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">安全数据平台 · 统一 UTC</text>
+        </g>
+        <g id="lg-srv" class="h">
+          <rect x="1500" y="880" width="220" height="90" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1610" y="937" font-size="28" fill="#FC6255" text-anchor="middle">失守的服务器</text>
+        </g>
+        <path id="lg-del" class="dr h" pathLength="1" d="M1496 925 H1440" stroke="#FC6255" stroke-width="4" stroke-dasharray="1" fill="none" />
+        <g id="lg-blk" class="h"><rect x="1418" y="890" width="12" height="70" rx="3" fill="#83C167" /><text x="1424" y="1010" font-size="28" fill="#83C167" text-anchor="middle">删不掉</text></g>
+        <!-- L5 盲区 -->
+        <text id="lg-blind" class="h" x="960" y="130" font-size="40" font-weight="700" fill="#F0B90B" text-anchor="middle">季度盲区检查：EDR 还在上报吗？</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const LIGHT = (i, t) => { tl.to(`#lg-s${i} .lg-sr`, { attr: { stroke: "#83C167" }, duration: 0.4 }, t); tl.to(`#lg-s${i} .lg-st`, { attr: { fill: "#e8e6df" }, duration: 0.4 }, t); OUT(`#lg-s${i} .lg-q`, t, 0.3); };
+      const DARK = (i, t) => { tl.to(`#lg-s${i} .lg-sr`, { attr: { stroke: "#3a3f4a" }, duration: 0.4 }, t); tl.to(`#lg-s${i} .lg-st`, { attr: { fill: "#5a5f69" }, duration: 0.4 }, t); tl.to(`#lg-s${i} .lg-q`, { opacity: 1, duration: 0.4 }, t); };
+
+      // L0 看不见
+      IN("#lg-h1", at(0, 0.03), 0.4);
+      for (let i = 0; i < 6; i++) IN(`#lg-s${i}`, at(0, 0.08 + i * 0.07), 0.4, { y: -15 });
+      IN("#lg-h2", at(0, 0.6), 0.4);
+
+      // L1 EDR、身份、云
+      IN("#lg-edr", at(1, 0.03), 0.4, { y: 20 }); DRAW("#lg-bedr1", at(1, 0.12), 0.5); DRAW("#lg-bedr2", at(1, 0.12), 0.5);
+      LIGHT(0, at(1, 0.25)); LIGHT(1, at(1, 0.25));
+      IN("#lg-id", at(1, 0.4), 0.4, { y: 20 }); IN("#lg-cloud", at(1, 0.45), 0.4, { y: 20 });
+      DRAW("#lg-bid1", at(1, 0.5), 0.5); DRAW("#lg-bcloud1", at(1, 0.5), 0.5);
+      LIGHT(2, at(1, 0.62));
+
+      // L2 签名与策略层
+      IN("#lg-sig", at(2, 0.03), 0.5, { y: 20 }); DRAW("#lg-bsig1", at(2, 0.15), 0.5);
+      LIGHT(3, at(2, 0.3));
+      IN("#lg-names", at(2, 0.45), 0.5);
+
+      // L3 链上、业务账务
+      IN("#lg-chain", at(3, 0.03), 0.4, { y: 20 }); DRAW("#lg-bchain1", at(3, 0.12), 0.5); LIGHT(4, at(3, 0.25));
+      IN("#lg-biz", at(3, 0.4), 0.4, { y: 20 }); DRAW("#lg-bbiz1", at(3, 0.5), 0.5); LIGHT(5, at(3, 0.62));
+
+      // L4 集中、删不掉
+      OUT("#lg-names", at(4, 0.0), 0.3);
+      tl.set("#lg-dn", { opacity: 1 }, 0);
+      tl.fromTo("#lg-dn path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, stagger: 0.05 }, at(4, 0.08));
+      IN("#lg-plat", at(4, 0.3), 0.5, { y: 15 });
+      IN("#lg-srv", at(4, 0.5), 0.4);
+      tl.fromTo("#lg-del", { opacity: 0 }, { opacity: 1, duration: 0.01 }, at(4, 0.6)); DRAW("#lg-del", at(4, 0.6), 0.3);
+      IN("#lg-blk", at(4, 0.7), 0.3);
+
+      // L5 盲区检查：EDR 断了
+      IN("#lg-blind", at(5, 0.05), 0.5, { y: -10 });
+      tl.to("#lg-edr rect", { attr: { stroke: "#FC6255", "stroke-dasharray": "10 8" }, duration: 0.3 }, at(5, 0.3));
+      tl.to("#lg-edr text", { attr: { fill: "#FC6255" }, duration: 0.3 }, at(5, 0.3));
+      OUT("#lg-bedr1", at(5, 0.35), 0.3); OUT("#lg-bedr2", at(5, 0.35), 0.3);
+      tl.to("#lg-dn path:first-child", { opacity: 0, duration: 0.3 }, at(5, 0.35));
+      DARK(0, at(5, 0.45)); DARK(1, at(5, 0.45));
+
+      tl.to("#lg-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["logs"] = tl;
+    })();
+  </script>
+</template>

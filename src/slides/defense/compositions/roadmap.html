@@ -1,0 +1,102 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 roadmap，id 前缀 rm- -->
+  <div id="root" data-composition-id="roadmap" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="rm-all">
+        <text id="rm-title" class="h" x="100" y="150" font-size="48" font-weight="700" fill="#e8e6df">先止血 → 再加固 → 再运营</text>
+        <g id="rm-s1" class="h">
+          <rect id="rm-b1" x="100" y="640" width="540" height="260" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+          <text x="130" y="692" font-size="34" font-weight="700" fill="#e8e6df">第 1 个月 · 止血</text>
+        </g>
+        <g id="rm-i1" class="h rm-items">
+          <text x="130" y="740" font-size="28" fill="#e8e6df">热钱包余额上限，超额自动归集</text>
+          <text x="130" y="780" font-size="28" fill="#e8e6df">按钱包、按链一键停签</text>
+          <text x="130" y="820" font-size="28" fill="#e8e6df">链上余额与账本每小时对账</text>
+          <text x="130" y="860" font-size="28" fill="#e8e6df">应急联系人清单</text>
+        </g>
+        <g id="rm-v1" class="h">
+          <rect x="100" y="570" width="540" height="56" rx="28" fill="#13201a" stroke="#83C167" stroke-width="2.5" />
+          <text x="370" y="608" font-size="28" font-weight="700" fill="#83C167" text-anchor="middle">验收：告警 → 全链停签 &lt; 5 分钟</text>
+        </g>
+        <g id="rm-s2" class="h">
+          <rect id="rm-b2" x="680" y="470" width="540" height="430" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+          <text x="710" y="522" font-size="34" font-weight="700" fill="#e8e6df">第 1 个季度 · 加固签名链</text>
+        </g>
+        <g id="rm-i2" class="h rm-items">
+          <text x="710" y="570" font-size="28" fill="#e8e6df">签名前独立策略层</text>
+          <text x="710" y="610" font-size="28" fill="#e8e6df">独立设备上解码交易</text>
+          <text x="710" y="650" font-size="28" fill="#e8e6df">多签签名者跨组织、跨设备</text>
+          <text x="710" y="690" font-size="28" fill="#e8e6df">外部代码隔离，部署只走 CI/CD</text>
+          <text x="710" y="730" font-size="28" fill="#e8e6df">全员抗钓鱼 MFA</text>
+        </g>
+        <g id="rm-v2" class="h">
+          <rect x="680" y="400" width="540" height="56" rx="28" fill="#13201a" stroke="#83C167" stroke-width="2.5" />
+          <text x="950" y="438" font-size="28" font-weight="700" fill="#83C167" text-anchor="middle">验收：开发机发起转出 → 被策略层拒绝</text>
+        </g>
+        <g id="rm-s3" class="h">
+          <rect id="rm-b3" x="1260" y="300" width="560" height="600" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+          <text x="1290" y="352" font-size="34" font-weight="700" fill="#e8e6df">第 1 年 · 运营与演练</text>
+        </g>
+        <g id="rm-i3" class="h rm-items">
+          <text x="1290" y="400" font-size="28" fill="#e8e6df">检测规则 + 7×24 值班</text>
+          <text x="1290" y="440" font-size="28" fill="#e8e6df">季度推演，月度停签演练</text>
+          <text x="1290" y="480" font-size="28" fill="#e8e6df">漏洞赏金与年度红队</text>
+          <text x="1290" y="520" font-size="28" fill="#e8e6df">不变量测试、升级时间锁</text>
+          <text x="1290" y="560" font-size="28" fill="#e8e6df">冻结与追回预案</text>
+        </g>
+        <g id="rm-v3" class="h">
+          <rect x="1260" y="230" width="560" height="56" rx="28" fill="#13201a" stroke="#83C167" stroke-width="2.5" />
+          <text x="1540" y="268" font-size="28" font-weight="700" fill="#83C167" text-anchor="middle">验收：发现时间、停签时间达标</text>
+        </g>
+        <text id="rm-end" class="h" x="100" y="330" font-size="44" font-weight="700" fill="#FC6255">没有验证记录 = 没做</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const LIT = (k, t) => tl.to(`#rm-b${k}`, { attr: { stroke: "#83C167", fill: "#13201a" }, duration: 0.5 }, t);
+
+      // L0 三级台阶
+      IN("#rm-title", at(0, 0.02), 0.6, { y: 15 });
+      IN("#rm-s1", at(0, 0.2), 0.5, { y: 30 }); IN("#rm-s2", at(0, 0.32), 0.5, { y: 30 }); IN("#rm-s3", at(0, 0.44), 0.5, { y: 30 });
+
+      // L1 第 1 个月
+      LIT(1, at(1, 0.03));
+      tl.fromTo("#rm-i1 text", { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.18 }, at(1, 0.1));
+      tl.set("#rm-i1", { opacity: 1 }, at(1, 0.1));
+      // L2 验收 1
+      IN("#rm-v1", at(2, 0.1), 0.5, { y: 15 });
+
+      // L3 第 1 个季度
+      LIT(2, at(3, 0.03));
+      tl.set("#rm-i2", { opacity: 1 }, at(3, 0.1));
+      tl.fromTo("#rm-i2 text", { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.15 }, at(3, 0.1));
+      // L4 验收 2
+      IN("#rm-v2", at(4, 0.1), 0.5, { y: 15 });
+
+      // L5 第 1 年
+      LIT(3, at(5, 0.03));
+      tl.set("#rm-i3", { opacity: 1 }, at(5, 0.1));
+      tl.fromTo("#rm-i3 text", { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.12 }, at(5, 0.1));
+      IN("#rm-v3", at(5, 0.6), 0.5, { y: 15 });
+
+      // L6 没有验证记录 = 没做
+      tl.to(".rm-items", { opacity: 0.3, duration: 0.4 }, at(6, 0.05));
+      IN("#rm-end", at(6, 0.2), 0.5, { x: -20 });
+
+      tl.to("#rm-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["roadmap"] = tl;
+    })();
+  </script>
+</template>

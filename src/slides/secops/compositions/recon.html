@@ -1,0 +1,143 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 recon，id 前缀 rc- -->
+  <div id="root" data-composition-id="recon" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="rc-all">
+        <!-- L0 链 -->
+        <g id="rc-top">
+          <g id="rc-blocks" class="h"><rect x="300" y="170" width="110" height="80" rx="8" fill="#14222a" stroke="#58C4DD" stroke-width="2.5" /><path d="M410 210 H470" stroke="#58C4DD" stroke-width="2.5" /><rect x="470" y="170" width="110" height="80" rx="8" fill="#14222a" stroke="#58C4DD" stroke-width="2.5" /><path d="M580 210 H640" stroke="#58C4DD" stroke-width="2.5" /><rect x="640" y="170" width="110" height="80" rx="8" fill="#14222a" stroke="#58C4DD" stroke-width="2.5" /><path d="M750 210 H810" stroke="#58C4DD" stroke-width="2.5" /><rect x="810" y="170" width="110" height="80" rx="8" fill="#14222a" stroke="#58C4DD" stroke-width="2.5" /><path d="M920 210 H980" stroke="#58C4DD" stroke-width="2.5" /><rect x="980" y="170" width="110" height="80" rx="8" fill="#14222a" stroke="#58C4DD" stroke-width="2.5" /><path d="M1090 210 H1150" stroke="#58C4DD" stroke-width="2.5" /><rect x="1150" y="170" width="110" height="80" rx="8" fill="#14222a" stroke="#58C4DD" stroke-width="2.5" /><path d="M1260 210 H1320" stroke="#58C4DD" stroke-width="2.5" /><rect x="1320" y="170" width="110" height="80" rx="8" fill="#14222a" stroke="#58C4DD" stroke-width="2.5" /><path d="M1430 210 H1490" stroke="#58C4DD" stroke-width="2.5" /><rect x="1490" y="170" width="110" height="80" rx="8" fill="#14222a" stroke="#58C4DD" stroke-width="2.5" /></g>
+          <text id="rc-tl" class="h" x="960" y="320" font-size="34" fill="#e8e6df" text-anchor="middle">最后一道能看见攻击的地方 · <tspan fill="#58C4DD">攻击者改不了的日志</tspan></text>
+        </g>
+        <!-- L1–L2 流出速率 -->
+        <g id="rc-chart">
+          <text id="rc-yl" class="h" x="220" y="430" font-size="28" fill="#8a8f99">单个热钱包 · 每 10 分钟流出</text>
+          <rect id="rc-base" class="h" x="220" y="800" width="930" height="70" fill="#8a8f99" fill-opacity="0.15" />
+          <text id="rc-basel" class="h" x="1170" y="845" font-size="28" fill="#8a8f99">基线</text>
+          <g id="rc-bars">
+          <rect class="rc-bar" x="240" y="840" width="60" height="60" rx="4" fill="#F0B90B" data-h="60" />
+          <rect class="rc-bar" x="330" y="820" width="60" height="80" rx="4" fill="#F0B90B" data-h="80" />
+          <rect class="rc-bar" x="420" y="830" width="60" height="70" rx="4" fill="#F0B90B" data-h="70" />
+          <rect class="rc-bar" x="510" y="810" width="60" height="90" rx="4" fill="#F0B90B" data-h="90" />
+          <rect class="rc-bar" x="600" y="835" width="60" height="65" rx="4" fill="#F0B90B" data-h="65" />
+          <rect class="rc-bar" x="690" y="825" width="60" height="75" rx="4" fill="#F0B90B" data-h="75" />
+          <rect class="rc-bar" x="780" y="815" width="60" height="85" rx="4" fill="#F0B90B" data-h="85" />
+          <rect class="rc-bar" x="870" y="830" width="60" height="70" rx="4" fill="#F0B90B" data-h="70" />
+          <rect class="rc-bar rc-spk" x="960" y="660" width="60" height="240" rx="4" fill="#FC6255" data-h="240" />
+          <rect class="rc-bar rc-spk" x="1050" y="480" width="60" height="420" rx="4" fill="#FC6255" data-h="420" />
+          </g>
+          <path id="rc-ax" class="dr" pathLength="1" d="M220 902 H1160" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <path id="rc-th1" class="dr" pathLength="1" d="M220 700 H1150" stroke="#F0B90B" stroke-width="3" stroke-dasharray="1" fill="none" />
+          <text id="rc-th1l" class="h" x="1170" y="710" font-size="30" fill="#F0B90B">阈值</text>
+          <text id="rc-th1m" class="h" x="1170" y="710" font-size="30" fill="#F0B90B">次告警</text>
+          <path id="rc-th2" class="dr" pathLength="1" d="M220 580 H1150" stroke="#FC6255" stroke-width="3" fill="none" />
+          <text id="rc-th2l" class="h" x="1170" y="590" font-size="30" fill="#FC6255">主告警</text>
+          <g id="rc-stop" class="h">
+            <rect x="1420" y="560" width="400" height="100" rx="14" fill="#13201a" stroke="#83C167" stroke-width="3" />
+            <text x="1620" y="623" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">自动停签该钱包</text>
+          </g>
+          <g id="rc-note" class="h">
+            <text x="1420" y="780" font-size="30" fill="#e8e6df">先观察，建立基线</text>
+            <text x="1420" y="830" font-size="30" fill="#e8e6df">绝对值 + 持仓比例</text>
+            <text x="1420" y="880" font-size="30" fill="#e8e6df">主、次两级</text>
+          </g>
+        </g>
+
+        <!-- L3–L6 三账 -->
+        <g id="rc-led">
+          <text id="rc-lt" class="h" x="160" y="380" font-size="38" font-weight="700" fill="#e8e6df">三账对账</text>
+          <g id="rc-n1" class="h"><rect x="160" y="430" width="400" height="160" rx="14" fill="#14222a" stroke="#58C4DD" stroke-width="3" /><text x="360" y="488" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">链上余额</text></g>
+          <rect id="rc-bar1" class="h" x="210" y="520" width="300" height="34" rx="5" fill="#F0B90B" />
+          <rect id="rc-diff" x="510" y="520" width="0" height="34" rx="5" fill="none" stroke="#FC6255" stroke-width="3" stroke-dasharray="7 5" />
+          <g id="rc-n2" class="h"><rect x="760" y="430" width="400" height="160" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" /><text x="960" y="488" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">钱包账本</text><rect x="810" y="520" width="300" height="34" rx="5" fill="#F0B90B" /></g>
+          <g id="rc-n3" class="h"><rect x="1360" y="430" width="400" height="160" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" /><text x="1560" y="488" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">业务总账</text><rect x="1410" y="520" width="300" height="34" rx="5" fill="#F0B90B" /></g>
+          <g id="rc-e1" class="h"><path d="M566 510 H754" stroke="#e8e6df" stroke-width="3" /><text x="660" y="495" font-size="28" fill="#8a8f99" text-anchor="middle">核对</text></g>
+          <g id="rc-e2" class="h"><path d="M1166 510 H1354" stroke="#e8e6df" stroke-width="3" /><text x="1260" y="495" font-size="28" fill="#8a8f99" text-anchor="middle">核对</text></g>
+          <text id="rc-f1" class="h" x="660" y="560" font-size="28" fill="#83C167" text-anchor="middle">热：实时</text>
+          <text id="rc-f2" class="h" x="1260" y="560" font-size="28" fill="#83C167" text-anchor="middle">每小时</text>
+          <g id="rc-wd" class="h">
+            <rect x="460" y="700" width="300" height="90" rx="12" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" />
+            <text x="610" y="756" font-size="30" fill="#e8e6df" text-anchor="middle">提现请求</text>
+            <path d="M766 745 H954" stroke="#e8e6df" stroke-width="3" />
+            <text x="860" y="728" font-size="28" fill="#83C167" text-anchor="middle">每笔</text>
+            <rect x="960" y="700" width="300" height="90" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" stroke-dasharray="10 7" />
+            <text x="1110" y="756" font-size="30" fill="#FC6255" text-anchor="middle">找不到订单</text>
+          </g>
+          <g id="rc-rej" class="h">
+            <rect x="1360" y="700" width="400" height="90" rx="12" fill="#13201a" stroke="#83C167" stroke-width="3" />
+            <text x="1560" y="756" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">拒绝并告警</text>
+          </g>
+          <text id="rc-diffl" class="h" x="360" y="640" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">差额</text>
+          <g id="rc-why" class="h">
+            <text x="960" y="900" font-size="32" fill="#e8e6df" text-anchor="middle">误发 · 记账错误 · 退役地址转入</text>
+            <text x="960" y="950" font-size="28" fill="#8a8f99" text-anchor="middle">不靠入侵的资损也会留下差额（Bithumb、CoinDCX）</text>
+          </g>
+          <g id="rc-end" class="h">
+            <text x="960" y="210" font-size="48" font-weight="700" fill="#83C167" text-anchor="middle">钱少了 = 一定有差额</text>
+            <text x="960" y="275" font-size="32" fill="#8a8f99" text-anchor="middle">不依赖攻击手法 · Mt.Gox 缺的正是这一步</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const bars = [...document.querySelectorAll("#rc-bars rect")];
+      bars.forEach(b => tl.set(b, { attr: { y: 900, height: 0 } }, 0));
+      const GROW = (b, t, d) => tl.to(b, { attr: { y: 900 - +b.getAttribute("data-h"), height: +b.getAttribute("data-h") }, duration: d, ease: "power2.out" }, t);
+
+      // L0 链
+      IN("#rc-blocks", at(0, 0.05), 0.8, { x: -40 });
+      IN("#rc-tl", at(0, 0.4), 0.6, { y: 15 });
+
+      // L1 流出速率 + 阈值 → 停签
+      IN("#rc-yl", at(1, 0.02), 0.4);
+      DRAW("#rc-ax", at(1, 0.05), 0.5);
+      bars.slice(0, 8).forEach((b, k) => GROW(b, at(1, 0.08 + k * 0.03), 0.4));
+      DRAW("#rc-th1", at(1, 0.3), 0.5); IN("#rc-th1l", at(1, 0.35), 0.4);
+      GROW(bars[8], at(1, 0.45), 0.4); GROW(bars[9], at(1, 0.52), 0.5);
+      IN("#rc-stop", at(1, 0.65), 0.5, { x: -20 });
+
+      // L2 基线、两级
+      IN("#rc-base", at(2, 0.05), 0.5); IN("#rc-basel", at(2, 0.05), 0.5);
+      OUT("#rc-th1l", at(2, 0.25), 0.3); IN("#rc-th1m", at(2, 0.35), 0.4);
+      DRAW("#rc-th2", at(2, 0.35), 0.5); IN("#rc-th2l", at(2, 0.42), 0.4);
+      IN("#rc-note", at(2, 0.55), 0.5);
+
+      // L3 三账
+      OUT("#rc-top", at(3, 0.0), 0.35); OUT("#rc-chart", at(3, 0.0), 0.35);
+      IN("#rc-lt", at(3, 0.08), 0.5);
+      IN("#rc-n1", at(3, 0.12), 0.5, { y: 20 }); IN("#rc-bar1", at(3, 0.12), 0.5, { y: 20 });
+      IN("#rc-n2", at(3, 0.22), 0.5, { y: 20 }); IN("#rc-e1", at(3, 0.32), 0.4);
+      IN("#rc-n3", at(3, 0.42), 0.5, { y: 20 }); IN("#rc-e2", at(3, 0.52), 0.4);
+
+      // L4 频率 + 提现对订单
+      IN("#rc-f1", at(4, 0.03), 0.4); IN("#rc-f2", at(4, 0.1), 0.4);
+      IN("#rc-wd", at(4, 0.25), 0.5, { y: 15 });
+      IN("#rc-rej", at(4, 0.55), 0.5, { x: -20 });
+
+      // L5 差额
+      tl.to("#rc-bar1", { attr: { width: 220 }, duration: 0.8, ease: "power2.inOut" }, at(5, 0.05));
+      tl.fromTo("#rc-diff", { attr: { x: 510, width: 0 } }, { attr: { x: 430, width: 80 }, duration: 0.8, ease: "power2.inOut", immediateRender: false }, at(5, 0.05));
+      IN("#rc-diffl", at(5, 0.3), 0.4);
+      IN("#rc-why", at(5, 0.45), 0.5, { y: 15 });
+
+      // L6
+      IN("#rc-end", at(6, 0.1), 0.6, { y: -15 });
+
+      tl.to("#rc-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["recon"] = tl;
+    })();
+  </script>
+</template>

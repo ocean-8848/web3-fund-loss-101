@@ -1,0 +1,106 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 chain，id 前缀 ch- -->
+  <div id="root" data-composition-id="chain" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ch-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#FC6255" /></marker>
+        <marker id="ch-arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#83C167" /></marker>
+      </defs>
+      <g id="ch-all">
+        <!-- 攻击链六步 -->
+        <g id="ch-n1" class="h ch-node"><rect x="75" y="250" width="270" height="130" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="210" y="305" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">入口</text><text x="210" y="352" font-size="28" fill="#8a8f99" text-anchor="middle">人·供应商·代码</text></g>
+        <g id="ch-n2" class="h ch-node"><rect x="375" y="250" width="270" height="130" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="510" y="305" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">立足</text><text x="510" y="352" font-size="28" fill="#8a8f99" text-anchor="middle">终端·服务器</text></g>
+        <g id="ch-n3" class="h ch-node"><rect x="675" y="250" width="270" height="130" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="810" y="305" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">横移</text><text x="810" y="352" font-size="28" fill="#8a8f99" text-anchor="middle">身份·云·内部平台</text></g>
+        <g id="ch-n4" class="h ch-node"><rect x="975" y="250" width="270" height="130" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="1110" y="305" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">取得签名能力</text><text x="1110" y="352" font-size="28" fill="#8a8f99" text-anchor="middle">密钥·签名服务</text></g>
+        <g id="ch-n5" class="h ch-node"><rect x="1275" y="250" width="270" height="130" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="1410" y="305" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">链上执行</text><text x="1410" y="352" font-size="28" fill="#8a8f99" text-anchor="middle">转出·升级·铸造</text></g>
+        <g id="ch-n6" class="h ch-node"><rect x="1575" y="250" width="270" height="130" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="1710" y="305" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">洗钱</text><text x="1710" y="352" font-size="28" fill="#8a8f99" text-anchor="middle">换币·跨链·混币</text></g>
+        <g id="ch-x" class="h" stroke="#FC6255" stroke-width="3" fill="none">
+          <path d="M347 315 H371" marker-end="url(#ch-arr)" /><path d="M647 315 H671" marker-end="url(#ch-arr)" /><path d="M947 315 H971" marker-end="url(#ch-arr)" /><path d="M1247 315 H1271" marker-end="url(#ch-arr)" /><path d="M1547 315 H1571" marker-end="url(#ch-arr)" />
+        </g>
+
+        <!-- L1 越靠左越早切断 -->
+        <g id="ch-left">
+          <path id="ch-la" class="dr h" pathLength="1" d="M1840 440 H96" stroke="#83C167" stroke-width="4" fill="none" marker-end="url(#ch-arg)" />
+          <text id="ch-lal" class="h" x="960" y="500" font-size="32" fill="#83C167" text-anchor="middle">越靠左，越早切断</text>
+        </g>
+
+        <!-- L2 D02 预防 -->
+        <g id="ch-p1" class="h"><path d="M510 384 V576" stroke="#83C167" stroke-width="2.5" stroke-dasharray="7 7" /><rect x="365" y="580" width="290" height="130" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="510" y="633" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">D02 §1–4</text><text x="510" y="680" font-size="28" fill="#e8e6df" text-anchor="middle">终端·MFA·CI/CD</text></g>
+        <g id="ch-p2" class="h"><path d="M1110 384 V576" stroke="#83C167" stroke-width="2.5" stroke-dasharray="7 7" /><rect x="965" y="580" width="290" height="130" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="1110" y="633" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">D02 §5–6</text><text x="1110" y="680" font-size="28" fill="#e8e6df" text-anchor="middle">余额上限·策略层</text></g>
+        <g id="ch-p3" class="h"><path d="M1410 384 V576" stroke="#83C167" stroke-width="2.5" stroke-dasharray="7 7" /><rect x="1265" y="580" width="290" height="130" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="1410" y="633" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">D02 §7–8</text><text x="1410" y="680" font-size="28" fill="#e8e6df" text-anchor="middle">不变量·时间锁·暂停</text></g>
+
+        <!-- L3 D03 贯穿、D04 止损 -->
+        <g id="ch-o" class="h"><rect x="75" y="760" width="1770" height="76" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="960" y="809" font-size="30" fill="#e8e6df" text-anchor="middle"><tspan fill="#83C167" font-weight="700">D03 安全运营</tspan>　检测 · 对账 · 演练，贯穿全程</text></g>
+        <g id="ch-r1" class="h"><path d="M1410 206 V246" stroke="#83C167" stroke-width="2.5" stroke-dasharray="7 7" /><rect x="1275" y="80" width="270" height="122" rx="12" fill="#13201a" stroke="#83C167" stroke-width="2.5" /><text x="1410" y="130" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">D04 止损</text><text x="1410" y="176" font-size="28" fill="#e8e6df" text-anchor="middle">停签·暂停·撤权</text></g>
+        <!-- L4 D05 追回 + 可挽回楔形 -->
+        <g id="ch-r2" class="h"><path d="M1710 206 V246" stroke="#9CDCEB" stroke-width="2.5" stroke-dasharray="7 7" /><rect x="1575" y="80" width="270" height="122" rx="12" fill="#142028" stroke="#9CDCEB" stroke-width="2.5" /><text x="1710" y="130" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">D05 追回</text><text x="1710" y="176" font-size="28" fill="#e8e6df" text-anchor="middle">冻结·协同·追回</text></g>
+        <g id="ch-w" class="h"><path d="M75 880 L1845 968 V990 H75 Z" fill="#83C167" opacity="0.35" /><text x="100" y="962" font-size="28" fill="#e8e6df">能挽回的部分：越往右越少</text></g>
+
+        <!-- L5–L7 标签 -->
+        <text id="ch-ta" class="h" x="75" y="150" font-size="40" font-weight="700" fill="#e8e6df">原型 A · 攻破人与签名链</text>
+        <text id="ch-tb" class="h" x="75" y="125" font-size="36" font-weight="700" fill="#e8e6df">原型 B · 攻破代码</text>
+        <text id="ch-tc" class="h" x="75" y="185" font-size="36" font-weight="700" fill="#e8e6df">原型 C · 攻破经济模型 → §8 参数上限</text>
+        <text id="ch-td" class="h" x="75" y="150" font-size="40" font-weight="700" fill="#83C167">不依赖知道入口在哪</text>
+        <text id="ch-q" class="h" x="210" y="230" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">?</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const ALL = ["#ch-n1", "#ch-n2", "#ch-n3", "#ch-n4", "#ch-n5", "#ch-n6", "#ch-x", "#ch-p1", "#ch-p2", "#ch-p3", "#ch-o", "#ch-r1", "#ch-r2", "#ch-w"];
+      const FOCUS = (keep, t) => { tl.to(ALL.filter(s => !keep.includes(s)).join(","), { opacity: 0.18, duration: 0.4 }, t); tl.to(keep.join(","), { opacity: 1, duration: 0.4 }, t); };
+
+      // L0 六步
+      ["#ch-n1", "#ch-n2", "#ch-n3", "#ch-n4", "#ch-n5", "#ch-n6"].forEach((s, k) => IN(s, at(0, 0.05 + k * 0.1), 0.5, { x: -20 }));
+      IN("#ch-x", at(0, 0.7), 0.4);
+
+      // L1
+      ARROW("#ch-la", at(1, 0.05), 0.9);
+      IN("#ch-lal", at(1, 0.4), 0.5);
+
+      // L2 预防
+      OUT("#ch-left", at(2, 0.0), 0.3);
+      IN("#ch-p1", at(2, 0.1), 0.5, { y: 20 }); IN("#ch-p2", at(2, 0.3), 0.5, { y: 20 }); IN("#ch-p3", at(2, 0.5), 0.5, { y: 20 });
+
+      // L3 检测 + 止损
+      IN("#ch-o", at(3, 0.05), 0.6, { y: 20 });
+      IN("#ch-r1", at(3, 0.4), 0.5, { y: -20 });
+
+      // L4 追回 + 楔形
+      IN("#ch-r2", at(4, 0.05), 0.5, { y: -20 });
+      IN("#ch-w", at(4, 0.35), 0.7);
+
+      // L5 原型 A
+      FOCUS(["#ch-n1", "#ch-n2", "#ch-n3", "#ch-n4", "#ch-p1", "#ch-p2", "#ch-r1"], at(5, 0.05));
+      IN("#ch-ta", at(5, 0.15), 0.5, { x: -20 });
+
+      // L6 原型 B / C
+      OUT("#ch-ta", at(6, 0.0), 0.3);
+      FOCUS(["#ch-n5", "#ch-p3", "#ch-r1"], at(6, 0.05));
+      IN("#ch-tb", at(6, 0.15), 0.5, { x: -20 });
+      IN("#ch-tc", at(6, 0.5), 0.5, { x: -20 });
+
+      // L7 不依赖入口
+      OUT("#ch-tb", at(7, 0.0), 0.3); OUT("#ch-tc", at(7, 0.0), 0.3);
+      FOCUS(["#ch-p2", "#ch-r1"], at(7, 0.05));
+      IN("#ch-td", at(7, 0.3), 0.5, { x: -20 });
+      IN("#ch-q", at(7, 0.45), 0.4, { y: -10 });
+
+      tl.to("#ch-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["chain"] = tl;
+    })();
+  </script>
+</template>

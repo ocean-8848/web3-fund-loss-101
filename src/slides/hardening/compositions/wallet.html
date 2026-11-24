@@ -1,0 +1,219 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 wallet，id 前缀 wa- -->
+  <div id="root" data-composition-id="wallet" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="wa-arry" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+        <marker id="wa-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="wa-all">
+        <text id="wa-head" class="h" x="960" y="140" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">签名链失守时，余额结构决定最多丢多少</text>
+
+        <!-- L0–L3 冷 / 温 / 热 -->
+        <g id="wa-tiers">
+          <g id="wa-tk" class="h">
+            <rect x="300" y="380" width="260" height="340" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <rect x="840" y="300" width="260" height="420" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <rect x="1380" y="220" width="260" height="500" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <g text-anchor="middle">
+              <text x="430" y="780" font-size="34" font-weight="700" fill="#e8e6df">热钱包</text>
+              <text x="430" y="824" font-size="28" fill="#8a8f99">在线 · 日常提现</text>
+              <text x="970" y="780" font-size="34" font-weight="700" fill="#e8e6df">温钱包</text>
+              <text x="970" y="824" font-size="28" fill="#8a8f99">人工审批补充热钱包</text>
+              <text x="1510" y="780" font-size="34" font-weight="700" fill="#e8e6df">冷钱包</text>
+              <text x="1510" y="824" font-size="28" fill="#8a8f99">离线签名 · 拆分地址</text>
+            </g>
+          </g>
+          <rect id="wa-fh" class="h" x="306" y="400" width="248" height="314" rx="6" fill="#F0B90B" opacity="0.85" />
+          <rect id="wa-fw" class="h" x="846" y="480" width="248" height="234" rx="6" fill="#F0B90B" opacity="0.85" />
+          <rect id="wa-fc" class="h" x="1386" y="400" width="248" height="314" rx="6" fill="#F0B90B" opacity="0.85" />
+
+          <!-- L1 上限 -->
+          <path id="wa-cap" class="dr" pathLength="1" d="M296 560 H564" stroke="#83C167" stroke-width="4" stroke-dasharray="1" fill="none" />
+          <g id="wa-capl" class="h" text-anchor="end">
+            <text x="282" y="552" font-size="32" font-weight="700" fill="#83C167">上限</text>
+            <text x="282" y="596" font-size="28" fill="#83C167">数小时提现量</text>
+          </g>
+
+          <!-- L2 超额归集 -->
+          <path id="wa-sw" class="dr h" pathLength="1" d="M520 392 C700 180 1200 180 1372 380" stroke="#83C167" stroke-width="3.5" fill="none" marker-end="url(#wa-arrg)" />
+          <text id="wa-swl" class="h" x="950" y="190" font-size="30" fill="#83C167" text-anchor="middle">超额自动归集 → 白名单地址</text>
+
+          <!-- L3 被掏空 -->
+          <g id="wa-loss" class="h">
+            <path d="M580 566 H596 V714 H580" fill="none" stroke="#FC6255" stroke-width="3" />
+            <text x="612" y="632" font-size="30" font-weight="700" fill="#FC6255">损失</text>
+            <text x="612" y="674" font-size="30" font-weight="700" fill="#FC6255">≤ 上限</text>
+          </g>
+          <text id="wa-emp" class="h" x="430" y="660" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">被掏空</text>
+        </g>
+
+        <!-- L4 新地址核实 -->
+        <g id="wa-s4">
+          <g id="wa-src" class="h">
+            <rect x="120" y="380" width="320" height="120" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="280" y="452" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">出账钱包</text>
+          </g>
+          <g id="wa-dst" class="h">
+            <rect x="1480" y="380" width="320" height="120" rx="14" fill="#1b2027" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="1640" y="452" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">新地址</text>
+          </g>
+          <path id="wa-big" class="dr h" pathLength="1" d="M452 440 H1468" stroke="#F0B90B" stroke-width="5" fill="none" marker-end="url(#wa-arry)" />
+          <text id="wa-bigl" class="h" x="960" y="418" font-size="30" fill="#F0B90B" text-anchor="middle">大额转出</text>
+          <path id="wa-ch1" class="dr h" pathLength="1" d="M280 372 V250 H692" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#wa-arrg)" />
+          <g id="wa-ch" class="h">
+            <rect x="700" y="196" width="520" height="108" rx="14" fill="#14201a" stroke="#83C167" stroke-width="3" />
+            <text x="960" y="242" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">另一个经批准的渠道</text>
+            <text x="960" y="286" font-size="28" fill="#e8e6df" text-anchor="middle">核实收款地址和金额</text>
+          </g>
+          <path id="wa-ch2" class="dr h" pathLength="1" d="M1228 250 H1640 V372" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#wa-arrg)" />
+          <path id="wa-small" class="dr h" pathLength="1" d="M452 590 H1468" stroke="#F0B90B" stroke-width="2.5" fill="none" marker-end="url(#wa-arry)" />
+          <g id="wa-coino"><circle id="wa-coin" class="h" cx="480" cy="590" r="12" fill="#F0B90B" /></g>
+          <text id="wa-smalll" class="h" x="960" y="650" font-size="30" fill="#F0B90B" text-anchor="middle">首次先小额试转</text>
+          <text id="wa-s4c" class="h" x="960" y="770" font-size="28" fill="#8a8f99" text-anchor="middle">CCSS 1.05 Level II · 案例：WazirX、Bybit</text>
+        </g>
+
+        <!-- L5 停签开关 -->
+        <g id="wa-s5">
+          <g id="wa-grid" class="h">
+            <text x="460" y="250" font-size="30" fill="#8a8f99" text-anchor="middle">每个钱包 × 每条链</text>
+            <g id="wa-pills" stroke="#83C167" stroke-width="2.5">
+              <rect x="210" y="290" width="120" height="50" rx="25" fill="#14201a" /><rect x="400" y="290" width="120" height="50" rx="25" fill="#14201a" /><rect x="590" y="290" width="120" height="50" rx="25" fill="#14201a" />
+              <rect x="210" y="380" width="120" height="50" rx="25" fill="#14201a" /><rect x="400" y="380" width="120" height="50" rx="25" fill="#14201a" /><rect x="590" y="380" width="120" height="50" rx="25" fill="#14201a" />
+              <rect x="210" y="470" width="120" height="50" rx="25" fill="#14201a" /><rect x="400" y="470" width="120" height="50" rx="25" fill="#14201a" /><rect x="590" y="470" width="120" height="50" rx="25" fill="#14201a" />
+            </g>
+            <g id="wa-knobs" fill="#83C167">
+              <circle cx="305" cy="315" r="18" /><circle cx="495" cy="315" r="18" /><circle cx="685" cy="315" r="18" />
+              <circle cx="305" cy="405" r="18" /><circle cx="495" cy="405" r="18" /><circle cx="685" cy="405" r="18" />
+              <circle cx="305" cy="495" r="18" /><circle cx="495" cy="495" r="18" /><circle cx="685" cy="495" r="18" />
+            </g>
+          </g>
+          <g id="wa-ms" class="h">
+            <rect id="wa-msp" x="880" y="360" width="240" height="90" rx="45" fill="#14201a" stroke="#83C167" stroke-width="3" />
+            <g id="wa-mko"><circle id="wa-mk" cx="1075" cy="405" r="32" fill="#83C167" /></g>
+            <text x="1000" y="510" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">全局总开关</text>
+          </g>
+          <g id="wa-ind" class="h">
+            <text x="1260" y="390" font-size="30" fill="#e8e6df">开关不依赖签名服务本身</text>
+            <text x="1260" y="436" font-size="28" fill="#8a8f99">由策略层或网络层执行</text>
+          </g>
+          <path id="wa-tax" class="dr" pathLength="1" d="M300 760 H1500" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="wa-t0" class="h"><path d="M300 744 V776" stroke="#FC6255" stroke-width="4" /><text x="300" y="822" font-size="30" fill="#FC6255" text-anchor="middle">告警</text></g>
+          <path id="wa-tspan" class="dr" pathLength="1" d="M300 760 H1500" stroke="#9CDCEB" stroke-width="6" fill="none" />
+          <g id="wa-t1" class="h"><path d="M1500 744 V776" stroke="#9CDCEB" stroke-width="4" /><text x="1500" y="822" font-size="30" fill="#9CDCEB" text-anchor="middle">全链停签</text></g>
+          <text id="wa-tl" class="h" x="900" y="726" font-size="40" font-weight="700" fill="#83C167" text-anchor="middle">&lt; 5 分钟</text>
+          <text id="wa-tc" class="h" x="900" y="880" font-size="28" fill="#8a8f99" text-anchor="middle">月度演练验证 · 详见 D04 · 案例：Bitget、Binance</text>
+        </g>
+
+        <!-- L6 出账硬上限 -->
+        <g id="wa-s6">
+          <g id="wa-bar" class="h">
+            <text x="120" y="426" font-size="30" fill="#e8e6df">发奖批次</text>
+            <rect x="400" y="380" width="1300" height="70" rx="8" fill="#22252d" stroke="#8a8f99" stroke-width="2.5" />
+          </g>
+          <rect id="wa-by" x="404" y="384" width="0" height="62" rx="5" fill="#F0B90B" opacity="0.9" />
+          <rect id="wa-br" x="1300" y="384" width="0" height="62" fill="#FC6255" opacity="0.55" />
+          <g id="wa-bcap" class="h">
+            <path d="M1300 360 V470" stroke="#83C167" stroke-width="5" />
+            <text x="1300" y="340" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">单笔 / 总额硬上限</text>
+          </g>
+          <text id="wa-blk" class="h" x="1700" y="512" font-size="30" font-weight="700" fill="#FC6255" text-anchor="end">超出部分：系统拦截</text>
+          <g id="wa-two" class="h">
+            <g fill="none" stroke="#83C167" stroke-width="3">
+              <circle cx="440" cy="610" r="20" /><path d="M405 680 C405 645 475 645 475 680" />
+              <circle cx="540" cy="610" r="20" /><path d="M505 680 C505 645 575 645 575 680" />
+            </g>
+            <text x="620" y="658" font-size="32" fill="#e8e6df">币种、单位：双人复核</text>
+          </g>
+          <text id="wa-s6c" class="h" x="400" y="780" font-size="28" fill="#8a8f99">验证：构造超预算或单位错录的批次，系统必须拦截 · 案例：Bithumb（误发 BTC）</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      // L0 三层钱包
+      IN("#wa-head", at(0, 0.02), 0.7, { y: 16 });
+      IN("#wa-tk", at(0, 0.15), 0.7, { y: 20 });
+      tl.fromTo("#wa-fh", { opacity: 1, attr: { y: 714, height: 0 } }, { attr: { y: 400, height: 314 }, duration: 0.8, ease: "power2.out" }, at(0, 0.35));
+      tl.fromTo("#wa-fw", { opacity: 1, attr: { y: 714, height: 0 } }, { attr: { y: 480, height: 234 }, duration: 0.8, ease: "power2.out" }, at(0, 0.42));
+      tl.fromTo("#wa-fc", { opacity: 1, attr: { y: 714, height: 0 } }, { attr: { y: 400, height: 314 }, duration: 0.8, ease: "power2.out" }, at(0, 0.49));
+
+      // L1 上限线
+      DRAW("#wa-cap", at(1, 0.05), 0.6);
+      IN("#wa-capl", at(1, 0.25));
+
+      // L2 超额归集
+      OUT("#wa-head", at(2, 0.0), 0.3);
+      ARROW("#wa-sw", at(2, 0.08), 0.8);
+      IN("#wa-swl", at(2, 0.2));
+      tl.to("#wa-fh", { attr: { y: 566, height: 148 }, duration: 0.9, ease: "power2.inOut" }, at(2, 0.3));
+      tl.to("#wa-fc", { attr: { y: 330, height: 384 }, duration: 0.9, ease: "power2.inOut" }, at(2, 0.35));
+
+      // L3 热钱包被掏空
+      tl.to("#wa-fh", { attr: { fill: "#FC6255" }, duration: 0.3 }, at(3, 0.05));
+      tl.to("#wa-fh", { attr: { y: 714, height: 0 }, duration: 0.9, ease: "power2.in" }, at(3, 0.2));
+      IN("#wa-loss", at(3, 0.3));
+      IN("#wa-emp", at(3, 0.5));
+
+      // L4 新地址核实
+      OUT("#wa-tiers", at(4, 0.0), 0.4);
+      IN("#wa-src", at(4, 0.08)); IN("#wa-dst", at(4, 0.08));
+      ARROW("#wa-big", at(4, 0.15), 0.5); IN("#wa-bigl", at(4, 0.2));
+      ARROW("#wa-ch1", at(4, 0.3), 0.4); IN("#wa-ch", at(4, 0.36)); ARROW("#wa-ch2", at(4, 0.44), 0.4);
+      ARROW("#wa-small", at(4, 0.55), 0.5);
+      tl.fromTo("#wa-coin", { opacity: 0 }, { opacity: 1, duration: 0.2 }, at(4, 0.55));
+      tl.to("#wa-coino", { x: 880, duration: 0.8, ease: "power1.inOut" }, at(4, 0.58));
+      IN("#wa-smalll", at(4, 0.62)); IN("#wa-s4c", at(4, 0.7));
+
+      // L5 停签
+      OUT("#wa-s4", at(5, 0.0), 0.4);
+      IN("#wa-grid", at(5, 0.06));
+      IN("#wa-ms", at(5, 0.12));
+      IN("#wa-ind", at(5, 0.2));
+      DRAW("#wa-tax", at(5, 0.22), 0.5); IN("#wa-t0", at(5, 0.25));
+      tl.to("#wa-mko", { x: -150, duration: 0.4, ease: "power2.inOut" }, at(5, 0.35));
+      tl.to("#wa-mk", { attr: { fill: "#9CDCEB" }, duration: 0.3 }, at(5, 0.35));
+      tl.to("#wa-msp", { attr: { stroke: "#9CDCEB", fill: "#152a30" }, duration: 0.3 }, at(5, 0.35));
+      tl.to("#wa-knobs circle", { x: -70, attr: { fill: "#9CDCEB" }, duration: 0.3, stagger: 0.04 }, at(5, 0.4));
+      tl.to("#wa-pills rect", { attr: { stroke: "#9CDCEB", fill: "#152a30" }, duration: 0.3, stagger: 0.04 }, at(5, 0.4));
+      DRAW("#wa-tspan", at(5, 0.35), 0.8); IN("#wa-t1", at(5, 0.55));
+      IN("#wa-tl", at(5, 0.6), 0.5, { y: 10 }); IN("#wa-tc", at(5, 0.7));
+
+      // L6 出账硬上限
+      OUT("#wa-s5", at(6, 0.0), 0.4);
+      IN("#wa-bar", at(6, 0.06));
+      IN("#wa-bcap", at(6, 0.12));
+      tl.to("#wa-by", { attr: { width: 896 }, duration: 0.7, ease: "power1.in" }, at(6, 0.18));
+      tl.to("#wa-br", { attr: { width: 200 }, duration: 0.4, ease: "power1.out" }, at(6, 0.18 + 0.7 / (L[6][1] - L[6][0])));
+      IN("#wa-blk", at(6, 0.4));
+      IN("#wa-two", at(6, 0.5));
+      IN("#wa-s6c", at(6, 0.62));
+
+      tl.to("#wa-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["wallet"] = tl;
+    })();
+  </script>
+</template>

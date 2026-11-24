@@ -1,0 +1,125 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 playbook，id 前缀 pb- -->
+  <div id="root" data-composition-id="playbook" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="pb-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="pb-all">
+        <text id="pb-title" class="h" x="960" y="120" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">六类场景的前三步</text>
+        <g id="pb-k0" class="pb-chip h"><rect id="pb-kb0" x="80" y="220" width="390" height="96" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text id="pb-kt0" x="110" y="278" font-size="30" fill="#e8e6df">A 热钱包异常转出</text></g><g id="pb-k1" class="pb-chip h"><rect id="pb-kb1" x="80" y="340" width="390" height="96" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text id="pb-kt1" x="110" y="398" font-size="30" fill="#e8e6df">B 多签被骗签</text></g><g id="pb-k2" class="pb-chip h"><rect id="pb-kb2" x="80" y="460" width="390" height="96" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text id="pb-kt2" x="110" y="518" font-size="30" fill="#e8e6df">C 合约漏洞被利用</text></g><g id="pb-k3" class="pb-chip h"><rect id="pb-kb3" x="80" y="580" width="390" height="96" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text id="pb-kt3" x="110" y="638" font-size="30" fill="#e8e6df">D 前端 / DNS 被篡改</text></g><g id="pb-k4" class="pb-chip h"><rect id="pb-kb4" x="80" y="700" width="390" height="96" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text id="pb-kt4" x="110" y="758" font-size="30" fill="#e8e6df">E 预言机 · 经济攻击</text></g><g id="pb-k5" class="pb-chip h"><rect id="pb-kb5" x="80" y="820" width="390" height="96" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text id="pb-kt5" x="110" y="878" font-size="30" fill="#e8e6df">F 终端失陷 · 未转出</text></g>
+        <g id="pb-tpl" class="h"><rect x="560" y="300" width="380" height="150" rx="14" fill="none" stroke="#83C167" stroke-width="2.5" stroke-dasharray="10 8" /><text x="750" y="386" font-size="32" fill="#83C167" text-anchor="middle">第 一 步</text><rect x="990" y="300" width="380" height="150" rx="14" fill="none" stroke="#83C167" stroke-width="2.5" stroke-dasharray="10 8" /><text x="1180" y="386" font-size="32" fill="#83C167" text-anchor="middle">第 二 步</text><rect x="1420" y="300" width="380" height="150" rx="14" fill="none" stroke="#83C167" stroke-width="2.5" stroke-dasharray="10 8" /><text x="1610" y="386" font-size="32" fill="#83C167" text-anchor="middle">第 三 步</text><rect x="560" y="560" width="1240" height="120" rx="14" fill="none" stroke="#FC6255" stroke-width="2.5" stroke-dasharray="10 8" /><text x="1180" y="632" font-size="32" fill="#FC6255" text-anchor="middle">最容易犯的错</text><text x="1180" y="800" font-size="34" fill="#e8e6df" text-anchor="middle">每类场景一张卡：<tspan fill="#83C167" font-weight="700">前三步</tspan> + <tspan fill="#FC6255" font-weight="700">不要做</tspan></text></g>
+        <g id="pb-s0">
+          <text class="pb-e0 h" x="560" y="250" font-size="40" font-weight="700" fill="#e8e6df">A · 热钱包异常转出</text>
+          <g class="pb-e0 h"><rect x="560" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="600" cy="342" r="22" fill="#83C167" /><text x="600" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">1</text><text x="636" y="352" font-size="30" font-weight="700" fill="#83C167">全链停签</text><text x="584" y="412" font-size="28" fill="#e8e6df">不只是关提现网关</text></g>
+          <path class="pb-e0 h" d="M948 375 H978" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e0 h"><rect x="990" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1030" cy="342" r="22" fill="#83C167" /><text x="1030" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">2</text><text x="1066" y="352" font-size="30" font-weight="700" fill="#83C167">盘点所有钱包余额</text><text x="1014" y="412" font-size="28" fill="#e8e6df">冷钱包也要查</text></g>
+          <path class="pb-e0 h" d="M1378 375 H1408" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e0 h"><rect x="1420" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1460" cy="342" r="22" fill="#83C167" /><text x="1460" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">3</text><text x="1496" y="352" font-size="30" font-weight="700" fill="#83C167">地址发给发行方</text><text x="1444" y="412" font-size="28" fill="#e8e6df">和交易所</text></g>
+          <g class="pb-e0 h"><rect x="560" y="560" width="1240" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><path d="M596 602.0 L632 638.0 M632 602.0 L596 638.0" stroke="#FC6255" stroke-width="6" stroke-linecap="round" />
+          <text x="664" y="631" font-size="30" font-weight="700" fill="#FC6255">不要只停被盗的那条链；不要在内部 IM 里讨论处置</text>
+          </g>
+          <text class="pb-e0 h" x="560" y="790" font-size="28" fill="#8a8f99">对应案例：Bitget、Binance、G01</text>
+          </g>
+<g id="pb-s1">
+          <text class="pb-e1 h" x="560" y="250" font-size="40" font-weight="700" fill="#e8e6df">B · 多签被骗签 / 界面被篡改</text>
+          <g class="pb-e1 h"><rect x="560" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="600" cy="342" r="22" fill="#83C167" /><text x="600" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">1</text><text x="636" y="352" font-size="30" font-weight="700" fill="#83C167">冻结所有待签交易</text><text x="584" y="412" font-size="28" fill="#e8e6df">签名者停签</text></g>
+          <path class="pb-e1 h" d="M948 375 H978" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e1 h"><rect x="990" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1030" cy="342" r="22" fill="#83C167" /><text x="1030" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">2</text><text x="1066" y="352" font-size="30" font-weight="700" fill="#83C167">核对是否被改</text><text x="1014" y="412" font-size="28" fill="#e8e6df">实现地址 · 模块 · Guard</text></g>
+          <path class="pb-e1 h" d="M1378 375 H1408" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e1 h"><rect x="1420" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1460" cy="342" r="22" fill="#83C167" /><text x="1460" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">3</text><text x="1496" y="352" font-size="30" font-weight="700" fill="#83C167">控制权已失</text><text x="1444" y="412" font-size="28" fill="#e8e6df">请上游或跨链桥暂停</text></g>
+          <g class="pb-e1 h"><rect x="560" y="560" width="1240" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><path d="M596 602.0 L632 638.0 M632 602.0 L596 638.0" stroke="#FC6255" stroke-width="6" stroke-linecap="round" />
+          <text x="664" y="631" font-size="30" font-weight="700" fill="#FC6255">不要用同一台设备、同一个界面“再签一笔修复交易”</text>
+          </g>
+          <text class="pb-e1 h" x="560" y="790" font-size="28" fill="#8a8f99">对应案例：Bybit、WazirX、Radiant</text>
+          </g>
+<g id="pb-s2">
+          <text class="pb-e2 h" x="560" y="250" font-size="40" font-weight="700" fill="#e8e6df">C · 合约漏洞正在被利用</text>
+          <g class="pb-e2 h"><rect x="560" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="600" cy="342" r="22" fill="#83C167" /><text x="600" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">1</text><text x="636" y="352" font-size="30" font-weight="700" fill="#83C167">暂停合约</text><text x="584" y="412" font-size="28" fill="#e8e6df">或触发速率熔断</text></g>
+          <path class="pb-e2 h" d="M948 375 H978" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e2 h"><rect x="990" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1030" cy="342" r="22" fill="#83C167" /><text x="1030" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">2</text><text x="1066" y="352" font-size="30" font-weight="700" fill="#83C167">拉起作战室</text><text x="1014" y="412" font-size="28" fill="#e8e6df">合约 · 审计方 · SEAL 911</text></g>
+          <path class="pb-e2 h" d="M1378 375 H1408" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e2 h"><rect x="1420" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1460" cy="342" r="22" fill="#83C167" /><text x="1460" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">3</text><text x="1496" y="352" font-size="30" font-weight="700" fill="#83C167">判断能否抢救</text><text x="1444" y="412" font-size="28" fill="#e8e6df">协议自救或白帽抢救</text></g>
+          <g class="pb-e2 h"><rect x="560" y="560" width="1240" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><path d="M596 602.0 L632 638.0 M632 602.0 L596 638.0" stroke="#FC6255" stroke-width="6" stroke-linecap="round" />
+          <text x="664" y="631" font-size="30" font-weight="700" fill="#FC6255">所有部署修好前，不要公开漏洞细节；不要只修一条链</text>
+          </g>
+          <text class="pb-e2 h" x="560" y="790" font-size="28" fill="#8a8f99">对应案例：Nomad、Wormhole、Euler</text>
+          </g>
+<g id="pb-s3">
+          <text class="pb-e3 h" x="560" y="250" font-size="40" font-weight="700" fill="#e8e6df">D · 前端、DNS 或依赖被篡改</text>
+          <g class="pb-e3 h"><rect x="560" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="600" cy="342" r="22" fill="#83C167" /><text x="600" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">1</text><text x="636" y="352" font-size="30" font-weight="700" fill="#83C167">下线前端</text><text x="584" y="412" font-size="28" fill="#e8e6df">或切到已知安全版本</text></g>
+          <path class="pb-e3 h" d="M948 375 H978" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e3 h"><rect x="990" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1030" cy="342" r="22" fill="#83C167" /><text x="1030" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">2</text><text x="1066" y="352" font-size="30" font-weight="700" fill="#83C167">公告用户停止交互</text><text x="1014" y="412" font-size="28" fill="#e8e6df">提醒撤销最近授权</text></g>
+          <path class="pb-e3 h" d="M1378 375 H1408" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e3 h"><rect x="1420" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1460" cy="342" r="22" fill="#83C167" /><text x="1460" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">3</text><text x="1496" y="352" font-size="30" font-weight="700" fill="#83C167">收回域名与 DNS</text><text x="1444" y="412" font-size="28" fill="#e8e6df">CDN · 排查构建流水线</text></g>
+          <g class="pb-e3 h"><rect x="560" y="560" width="1240" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><path d="M596 602.0 L632 638.0 M632 602.0 L596 638.0" stroke="#FC6255" stroke-width="6" stroke-linecap="round" />
+          <text x="664" y="631" font-size="30" font-weight="700" fill="#FC6255">不要只改 DNS 不查构建产物；确认干净前不恢复前端</text>
+          </g>
+          <text class="pb-e3 h" x="560" y="790" font-size="28" fill="#8a8f99">对应案例：Bybit（前端被替换）、G06</text>
+          </g>
+<g id="pb-s4">
+          <text class="pb-e4 h" x="560" y="250" font-size="40" font-weight="700" fill="#e8e6df">E · 预言机或经济攻击</text>
+          <g class="pb-e4 h"><rect x="560" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="600" cy="342" r="22" fill="#83C167" /><text x="600" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">1</text><text x="636" y="352" font-size="30" font-weight="700" fill="#83C167">暂停借贷</text><text x="584" y="412" font-size="28" fill="#e8e6df">或受影响市场</text></g>
+          <path class="pb-e4 h" d="M948 375 H978" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e4 h"><rect x="990" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1030" cy="342" r="22" fill="#83C167" /><text x="1030" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">2</text><text x="1066" y="352" font-size="30" font-weight="700" fill="#83C167">冻结相关资产</text><text x="1014" y="412" font-size="28" fill="#e8e6df">的供给与借款</text></g>
+          <path class="pb-e4 h" d="M1378 375 H1408" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e4 h"><rect x="1420" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1460" cy="342" r="22" fill="#83C167" /><text x="1460" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">3</text><text x="1496" y="352" font-size="30" font-weight="700" fill="#83C167">评估坏账</text><text x="1444" y="412" font-size="28" fill="#e8e6df">准备治理提案</text></g>
+          <g class="pb-e4 h"><rect x="560" y="560" width="1240" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><path d="M596 602.0 L632 638.0 M632 602.0 L596 638.0" stroke="#FC6255" stroke-width="6" stroke-linecap="round" />
+          <text x="664" y="631" font-size="30" font-weight="700" fill="#FC6255">价格恢复之前，不要重启市场</text>
+          </g>
+          <text class="pb-e4 h" x="560" y="790" font-size="28" fill="#8a8f99">对应案例：Mango、Cream、G08</text>
+          </g>
+<g id="pb-s5">
+          <text class="pb-e5 h" x="560" y="250" font-size="40" font-weight="700" fill="#e8e6df">F · 员工终端失陷，未见资金转出</text>
+          <g class="pb-e5 h"><rect x="560" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="600" cy="342" r="22" fill="#83C167" /><text x="600" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">1</text><text x="636" y="352" font-size="30" font-weight="700" fill="#83C167">隔离终端</text><text x="584" y="412" font-size="28" fill="#e8e6df">吊销其会话与令牌</text></g>
+          <path class="pb-e5 h" d="M948 375 H978" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e5 h"><rect x="990" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1030" cy="342" r="22" fill="#83C167" /><text x="1030" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">2</text><text x="1066" y="352" font-size="30" font-weight="700" fill="#83C167">查其能动用的权限</text><text x="1014" y="412" font-size="28" fill="#e8e6df">签名 · 部署 · 云权限</text></g>
+          <path class="pb-e5 h" d="M1378 375 H1408" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#pb-arrg)" />
+          <g class="pb-e5 h"><rect x="1420" y="300" width="380" height="150" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><circle cx="1460" cy="342" r="22" fill="#83C167" /><text x="1460" y="352" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">3</text><text x="1496" y="352" font-size="30" font-weight="700" fill="#83C167">预防性收紧策略层</text><text x="1444" y="412" font-size="28" fill="#e8e6df">降额度 · 停新白名单</text></g>
+          <g class="pb-e5 h"><rect x="560" y="560" width="1240" height="140" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><path d="M596 612.0 L632 648.0 M632 612.0 L596 648.0" stroke="#FC6255" stroke-width="6" stroke-linecap="round" />
+          <text x="664" y="616" font-size="30" font-weight="700" fill="#FC6255">不要因为“钱还没少”就降低级别</text><text x="664" y="664" font-size="28" fill="#e8e6df">TraderTraitor 通报：入侵后可能一周内就转移资产</text>
+          </g>
+          <text class="pb-e5 h" x="560" y="790" font-size="28" fill="#8a8f99">对应案例：Ronin、DMM、Bybit</text>
+          </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+
+      // L0 六类场景 + 卡片模板
+      IN("#pb-title", at(0, 0.02), 0.8, { y: 20 });
+      tl.fromTo(".pb-chip", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, stagger: 0.1 }, at(0, 0.12));
+      IN("#pb-tpl", at(0, 0.5), 0.7);
+
+      // L1–L6 逐类展开
+      for (let i = 0; i < 6; i++) {
+        const n = i + 1;
+        if (i === 0) OUT("#pb-tpl", at(n, 0));
+        else {
+          OUT("#pb-s" + (i - 1), at(n, 0));
+          tl.to("#pb-kb" + (i - 1), { attr: { stroke: "#3d5a32", fill: "#161a22" }, duration: 0.3 }, at(n, 0));
+          tl.to("#pb-kt" + (i - 1), { attr: { fill: "#8a8f99" }, duration: 0.3 }, at(n, 0));
+        }
+        tl.to("#pb-kb" + i, { attr: { stroke: "#83C167", fill: "#16241a", "stroke-width": 4 }, duration: 0.3 }, at(n, 0.03));
+        tl.fromTo(".pb-e" + i, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.09, ease: "power3.out" }, at(n, 0.08));
+      }
+
+      tl.to("#pb-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["playbook"] = tl;
+    })();
+  </script>
+</template>

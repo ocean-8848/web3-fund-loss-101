@@ -4,6 +4,8 @@
   const study = d => d && !d.soon && GROUPS[d.group];
   LearnLayer.init({
     key: 'losshb',
+    // 2026-11 第 3 部分重排：旧章节的学习进度迁到新位置
+    aliases: { d01: 'defense', d02: 'response', d03: 'a01', d04: 'a02' },
     name: 'Web3 资损 101',
     watch: '#main',
     root: () => document.getElementById('view'),

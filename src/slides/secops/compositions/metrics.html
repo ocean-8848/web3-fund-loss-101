@@ -1,0 +1,114 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 metrics，id 前缀 me- -->
+  <div id="root" data-composition-id="metrics" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="me-arn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" /></marker>
+      </defs>
+      <g id="me-all">
+        <!-- L0–L1 三件事 -->
+        <g id="me-three" transform="translate(0,110)">
+          <g id="me-sh" class="h">
+            <path d="M960 220 L1050 254 V340 Q1050 410 960 446 Q870 410 870 340 V254 Z" fill="#13201a" stroke="#83C167" stroke-width="4" stroke-linejoin="round" />
+            <text x="960" y="510" font-size="32" fill="#83C167" text-anchor="middle">D02 的控制</text>
+          </g>
+          <path id="me-crack" class="dr" pathLength="1" d="M962 232 L940 300 L978 340 L948 420" stroke="#FC6255" stroke-width="5" fill="none" />
+          <g id="me-eye" class="h">
+            <path d="M420 330 Q500 260 580 330 Q500 400 420 330 Z" fill="none" stroke="#83C167" stroke-width="4" />
+            <circle cx="500" cy="330" r="22" fill="#83C167" />
+            <text x="500" y="450" font-size="34" fill="#e8e6df" text-anchor="middle">尽早发现失效</text>
+          </g>
+          <g id="me-scale" class="h" stroke="#F0B90B" stroke-width="4" fill="none">
+            <path d="M1420 250 V400 M1340 270 H1500 M1360 270 L1330 340 H1390 Z M1480 270 L1450 340 H1510 Z M1380 400 H1460" stroke-linejoin="round" />
+            <text x="1420" y="450" font-size="34" fill="#e8e6df" stroke="none" text-anchor="middle">确认账实相符</text>
+          </g>
+          <g id="me-ok" class="h">
+            <circle cx="960" cy="640" r="52" fill="#13201a" stroke="#83C167" stroke-width="4" />
+            <path d="M932 642 L953 664 L990 618" stroke="#83C167" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+            <text x="960" y="750" font-size="34" fill="#e8e6df" text-anchor="middle">定期证明：今天还管用</text>
+          </g>
+        </g>
+
+        <!-- L2–L4 时间线 -->
+        <text id="me-title" class="h" x="960" y="200" font-size="56" font-weight="700" fill="#e8e6df" text-anchor="middle">多久发现 · 多久停住</text>
+        <path id="me-ax" class="dr" pathLength="1" d="M200 520 H1720" stroke="#8a8f99" stroke-width="3" fill="none" />
+        <g id="me-p0" class="h"><circle cx="300" cy="520" r="14" fill="#FC6255" /><text x="300" y="580" font-size="30" fill="#FC6255" text-anchor="middle">异常开始</text></g>
+        <g id="me-p1" class="h"><circle cx="900" cy="520" r="14" fill="#F0B90B" /><text x="900" y="580" font-size="30" fill="#F0B90B" text-anchor="middle">发现（告警）</text></g>
+        <g id="me-p2" class="h"><circle cx="1500" cy="520" r="14" fill="#83C167" /><text x="1500" y="580" font-size="30" fill="#83C167" text-anchor="middle">停住</text></g>
+        <path id="me-b1" class="dr" pathLength="1" d="M310 482 V462 H890 V482" stroke="#F0B90B" stroke-width="3" fill="none" />
+        <text id="me-b1l" class="h" x="600" y="436" font-size="36" font-weight="700" fill="#F0B90B" text-anchor="middle">发现时间</text>
+        <path id="me-b2" class="dr" pathLength="1" d="M910 482 V462 H1490 V482" stroke="#83C167" stroke-width="3" fill="none" />
+        <text id="me-b2l" class="h" x="1200" y="436" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">停签时间</text>
+        <g id="me-v1" class="h">
+          <text x="600" y="680" font-size="32" fill="#e8e6df" text-anchor="middle">链上异常 <tspan fill="#F0B90B" font-weight="700">≤ 1 分钟</tspan></text>
+          <text x="600" y="735" font-size="32" fill="#e8e6df" text-anchor="middle">终端与身份异常 <tspan fill="#F0B90B" font-weight="700">≤ 30 分钟</tspan></text>
+        </g>
+        <g id="me-v2" class="h">
+          <text x="1200" y="690" font-size="48" font-weight="700" fill="#83C167" text-anchor="middle">≤ 5 分钟</text>
+          <text x="1200" y="740" font-size="30" fill="#e8e6df" text-anchor="middle">告警 → 全链停签 / 合约暂停</text>
+        </g>
+
+        <!-- L5 其余指标 -->
+        <g id="me-log" class="h">
+          <rect x="120" y="855" width="200" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+          <text x="220" y="912" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">日志</text>
+        </g>
+        <path id="me-la" class="dr h" pathLength="1" d="M324 900 H380" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#me-arn)" />
+        <g id="me-ch" class="h">
+          <rect x="390" y="845" width="1410" height="110" rx="14" fill="none" stroke="#2a2f3a" stroke-width="2" stroke-dasharray="8 6" />
+          <text x="560" y="911" font-size="28" fill="#e8e6df" text-anchor="middle">对账差额 <tspan fill="#83C167">≤ 1 小时</tspan></text>
+          <text x="905" y="911" font-size="28" fill="#e8e6df" text-anchor="middle">P0 验证覆盖 <tspan fill="#83C167">100%</tspan></text>
+          <text x="1255" y="911" font-size="28" fill="#e8e6df" text-anchor="middle">演练完成 <tspan fill="#83C167">100%</tspan></text>
+          <text x="1610" y="911" font-size="28" fill="#e8e6df" text-anchor="middle">高危修复 <tspan fill="#83C167">≤ 72 小时</tspan></text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0
+      IN("#me-sh", at(0, 0.03), 0.6, { y: 20 });
+      DRAW("#me-crack", at(0, 0.2), 0.5);
+      IN("#me-eye", at(0, 0.4), 0.6, { x: 30 });
+      IN("#me-scale", at(0, 0.6), 0.6, { x: -30 });
+      // L1
+      IN("#me-ok", at(1, 0.1), 0.6, { y: -20 });
+
+      // L2 两个数
+      OUT("#me-three", at(2, 0.0), 0.35);
+      IN("#me-title", at(2, 0.08), 0.6, { y: 15 });
+      DRAW("#me-ax", at(2, 0.1), 0.7);
+      IN("#me-p0", at(2, 0.2), 0.4); IN("#me-p1", at(2, 0.3), 0.4); IN("#me-p2", at(2, 0.4), 0.4);
+      DRAW("#me-b1", at(2, 0.5), 0.5); IN("#me-b1l", at(2, 0.55), 0.4);
+      DRAW("#me-b2", at(2, 0.62), 0.5); IN("#me-b2l", at(2, 0.67), 0.4);
+
+      // L3 发现时间目标
+      tl.fromTo("#me-v1 text", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.4 }, at(3, 0.1));
+      tl.set("#me-v1", { opacity: 1 }, at(3, 0.1));
+      // L4 停签时间目标
+      IN("#me-v2", at(4, 0.1), 0.6, { y: 15 });
+
+      // L5 其余指标
+      IN("#me-log", at(5, 0.05), 0.5);
+      ARROW("#me-la", at(5, 0.15), 0.4);
+      IN("#me-ch", at(5, 0.25), 0.6, { x: -20 });
+
+      tl.to("#me-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["metrics"] = tl;
+    })();
+  </script>
+</template>

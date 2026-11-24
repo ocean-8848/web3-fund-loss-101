@@ -1,0 +1,246 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 vasp，id 前缀 vp- -->
+  <div id="root" data-composition-id="vasp" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="vp-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="vp-arrn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+        <marker id="vp-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="vp-all">
+        <!-- L0 漏斗 -->
+        <g id="vp-g0">
+          <text id="vp-t0" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">平台：整个行业的最后一道闸</text>
+          <g id="vp-paths" class="h" stroke="#FC6255" stroke-width="3" fill="none">
+            <path class="dr" pathLength="1" d="M160 300 C500 300 600 500 886 520" marker-end="url(#vp-arrr)" />
+            <path class="dr" pathLength="1" d="M160 430 C500 430 600 530 886 540" marker-end="url(#vp-arrr)" />
+            <path class="dr" pathLength="1" d="M160 560 C500 560 600 560 886 560" marker-end="url(#vp-arrr)" />
+            <path class="dr" pathLength="1" d="M160 690 C500 690 600 590 886 580" marker-end="url(#vp-arrr)" />
+            <path class="dr" pathLength="1" d="M160 820 C500 820 600 620 886 600" marker-end="url(#vp-arrr)" />
+          </g>
+          <text id="vp-pl" class="h" x="160" y="260" font-size="28" fill="#FC6255">被盗资金：跨链、混币、分散之后</text>
+          <g id="vp-ex" class="h">
+            <rect x="900" y="440" width="320" height="240" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="1060" y="550" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">交易所</text>
+            <text x="1060" y="596" font-size="28" fill="#8a8f99" text-anchor="middle">及其他 VASP</text>
+          </g>
+          <rect id="vp-gt" class="h" x="890" y="430" width="16" height="260" rx="5" fill="#83C167" />
+          <text id="vp-gtl" class="h" x="898" y="740" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">筛查</text>
+          <path id="vp-out" class="dr h" pathLength="1" d="M1232 560 H1488" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#vp-arrn)" />
+          <g id="vp-cash" class="h">
+            <rect x="1500" y="500" width="260" height="120" rx="14" fill="#22252d" stroke="#8a8f99" stroke-width="3" />
+            <text x="1630" y="572" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">变现</text>
+          </g>
+        </g>
+
+        <!-- L1 充值筛查 -->
+        <g id="vp-g1">
+          <text id="vp-t1" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">充值地址筛查 <tspan font-size="36" fill="#83C167">P0</tspan></text>
+          <g id="vp-dep" class="h">
+            <rect x="160" y="320" width="320" height="140" rx="14" fill="#22252d" stroke="#F0B90B" stroke-width="3" />
+            <text x="320" y="382" font-size="32" font-weight="700" fill="#F0B90B" text-anchor="middle">一笔充值</text>
+            <text x="320" y="426" font-size="28" fill="#8a8f99" text-anchor="middle">入账之前</text>
+          </g>
+          <path id="vp-d1" class="dr h" pathLength="1" d="M492 390 H628" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#vp-arrn)" />
+          <g id="vp-cmp" class="h">
+            <rect x="640" y="300" width="420" height="180" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="850" y="380" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">比对风险地址库</text>
+            <text x="850" y="428" font-size="28" fill="#8a8f99" text-anchor="middle">逐笔</text>
+          </g>
+          <g id="vp-src" class="h">
+            <path d="M720 590 V494" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#vp-arrg)" /><path d="M850 590 V494" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#vp-arrg)" /><path d="M980 590 V494" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#vp-arrg)" />
+            <rect x="560" y="600" width="620" height="64" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2" />
+            <text x="590" y="643" font-size="28" fill="#e8e6df">执法公开的被盗地址（如 Bybit 后 FBI 公布）</text>
+            <rect x="560" y="680" width="620" height="64" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2" />
+            <text x="590" y="723" font-size="28" fill="#e8e6df">同业共享的攻击者地址</text>
+            <rect x="560" y="760" width="620" height="64" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2" />
+            <text x="590" y="803" font-size="28" fill="#e8e6df">制裁名单</text>
+          </g>
+          <path id="vp-d2" class="dr h" pathLength="1" d="M1072 390 H1188" stroke="#9CDCEB" stroke-width="3" fill="none" marker-end="url(#vp-arrn)" />
+          <text id="vp-hit" class="h" x="1130" y="365" font-size="28" fill="#9CDCEB" text-anchor="middle">命中</text>
+          <g id="vp-hold" class="h">
+            <rect x="1200" y="300" width="560" height="180" rx="14" fill="#132a30" stroke="#9CDCEB" stroke-width="3" />
+            <text x="1480" y="380" font-size="32" font-weight="700" fill="#9CDCEB" text-anchor="middle">暂停入账</text>
+            <text x="1480" y="428" font-size="28" fill="#e8e6df" text-anchor="middle">人工复核</text>
+          </g>
+          <text id="vp-ver" class="h" x="1220" y="540" font-size="28" fill="#8a8f99">验证：用测试地址库充值，</text>
+          <text id="vp-ver2" class="h" x="1220" y="580" font-size="28" fill="#8a8f99">必须在入账前被拦截</text>
+        </g>
+
+        <!-- L2 冻结请求时限 -->
+        <g id="vp-g2">
+          <text id="vp-t2" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">冻结请求的内部时限 <tspan font-size="36" fill="#83C167">P0</tspan></text>
+          <g id="vp-rq" class="h">
+            <rect x="160" y="400" width="300" height="140" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="310" y="462" font-size="30" font-weight="700" fill="#B48EF0" text-anchor="middle">同业或受害方</text>
+            <text x="310" y="504" font-size="28" fill="#8a8f99" text-anchor="middle">发来冻结请求</text>
+          </g>
+          <path id="vp-q1" class="dr h" pathLength="1" d="M472 470 H588" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#vp-arrn)" />
+          <g id="vp-rc" class="h">
+            <rect x="600" y="400" width="300" height="140" rx="14" fill="#161a22" stroke="#83C167" stroke-width="3" />
+            <text x="750" y="462" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">7×24 接收人</text>
+            <text x="750" y="504" font-size="28" fill="#8a8f99" text-anchor="middle">随时有人接</text>
+          </g>
+          <path id="vp-q2" class="dr h" pathLength="1" d="M912 470 H1028" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#vp-arrn)" />
+          <g id="vp-fz" class="h">
+            <rect x="1040" y="400" width="340" height="140" rx="14" fill="#132a30" stroke="#9CDCEB" stroke-width="3" />
+            <text x="1210" y="462" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">① 先冻结</text>
+            <text x="1210" y="504" font-size="28" fill="#e8e6df" text-anchor="middle">已识别的地址</text>
+          </g>
+          <path id="vp-q3" class="dr h" pathLength="1" d="M1392 470 H1508" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#vp-arrn)" />
+          <g id="vp-doc" class="h">
+            <rect x="1520" y="400" width="240" height="140" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <text x="1640" y="480" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">② 再补材料</text>
+          </g>
+          <g id="vp-clk" class="h">
+            <circle cx="1000" cy="280" r="50" fill="none" stroke="#F0B90B" stroke-width="5" />
+            <path d="M1000 280 V244 M1000 280 L1026 294" stroke="#F0B90B" stroke-width="5" stroke-linecap="round" />
+            <text x="1074" y="292" font-size="34" font-weight="700" fill="#F0B90B">建议 15 分钟内</text>
+          </g>
+          <text id="vp-dr" class="h" x="960" y="680" font-size="30" fill="#8a8f99" text-anchor="middle">演练：模拟收到冻结请求，计时</text>
+        </g>
+
+        <!-- L3 Travel Rule -->
+        <g id="vp-g3">
+          <text id="vp-t3" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">Travel Rule <tspan font-size="34" fill="#8a8f99">· FATF 建议 16</tspan></text>
+          <g id="vp-va" class="h">
+            <rect x="200" y="330" width="360" height="160" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="380" y="422" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">VASP A</text>
+          </g>
+          <g id="vp-vb" class="h">
+            <rect x="1360" y="330" width="360" height="160" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="1540" y="422" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">VASP B</text>
+          </g>
+          <path id="vp-tr" class="dr h" pathLength="1" d="M572 380 H1346" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#vp-arrn)" />
+          <text id="vp-trl" class="h" x="960" y="356" font-size="28" fill="#F0B90B" text-anchor="middle">转账</text>
+          <path id="vp-ti" class="dr h" pathLength="1" d="M572 450 H1346" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#vp-arrg)" />
+          <g id="vp-pk" class="h">
+            <rect x="740" y="476" width="440" height="64" rx="10" fill="#16241a" stroke="#83C167" stroke-width="2.5" />
+            <text x="960" y="518" font-size="28" font-weight="700" fill="#83C167" text-anchor="middle">汇款人 · 收款人信息同行</text>
+          </g>
+          <g id="vp-nc" class="h">
+            <rect x="200" y="680" width="360" height="120" rx="14" fill="#22252d" stroke="#8a8f99" stroke-width="3" />
+            <text x="380" y="752" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">非托管钱包</text>
+            <path d="M572 740 H1346" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#vp-arrn)" />
+            <text x="960" y="716" font-size="28" fill="#8a8f99" text-anchor="middle">大额转入</text>
+            <rect x="1360" y="680" width="360" height="120" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="1540" y="752" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">额外尽调</text>
+          </g>
+        </g>
+
+        <!-- L4 FATF -->
+        <g id="vp-g4">
+          <text id="vp-t4" class="h" x="960" y="110" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">FATF 2026 第七次专项更新</text>
+          <text id="vp-f0" class="h" x="360" y="330" font-size="28" fill="#8a8f99">受访辖区</text>
+          <rect id="vp-fb" class="h" x="360" y="350" width="1200" height="80" rx="8" fill="#22252d" />
+          <rect id="vp-f1" x="360" y="350" width="0" height="80" rx="8" fill="#83C167" opacity="0.85" />
+          <text id="vp-f1l" class="h" x="390" y="403" font-size="32" font-weight="700" fill="#0f1117">83% 已为 Travel Rule 立法</text>
+          <rect id="vp-f2" x="360" y="460" width="0" height="64" rx="8" fill="#FC6255" opacity="0.8" />
+          <text id="vp-f2l" class="h" x="890" y="503" font-size="30" fill="#FC6255">其中近一半，还没有监管或执法行动</text>
+          <text id="vp-gap" class="h" x="960" y="660" font-size="32" fill="#e8e6df" text-anchor="middle">离岸 VASP 与 DeFi 仍是突出缺口</text>
+          <text id="vp-push" class="h" x="960" y="770" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">不能指望所有平台都会拦：受害方要把地址送到每一家</text>
+        </g>
+
+        <!-- L5 分开记账 -->
+        <g id="vp-g5">
+          <text id="vp-t5" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">追回之后：分开记账</text>
+          <g font-size="32" font-weight="700">
+            <g class="vp-row h"><rect x="560" y="230" width="800" height="76" rx="10" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="600" y="280" fill="#F0B90B">涉及金额</text></g>
+            <g class="vp-row h"><rect x="560" y="322" width="800" height="76" rx="10" fill="#161a22" stroke="#9CDCEB" stroke-width="2.5" /><text x="600" y="372" fill="#9CDCEB">冻结</text></g>
+            <g class="vp-row h"><rect x="560" y="414" width="800" height="76" rx="10" fill="#161a22" stroke="#83C167" stroke-width="2.5" /><text x="600" y="464" fill="#83C167">追回</text></g>
+            <g class="vp-row h"><rect x="560" y="506" width="800" height="76" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="600" y="556" fill="#e8e6df">补足</text></g>
+            <g class="vp-row h"><rect x="560" y="598" width="800" height="76" rx="10" fill="#161a22" stroke="#B48EF0" stroke-width="2.5" /><text x="600" y="648" fill="#B48EF0">赔付成本</text></g>
+          </g>
+          <g id="vp-own" class="h" font-size="28" fill="#8a8f99" text-anchor="end">
+            <text x="1330" y="278">各记一行</text><text x="1330" y="370">各记一行</text><text x="1330" y="462">各记一行</text><text x="1330" y="554">各记一行</text><text x="1330" y="646">各记一行</text>
+          </g>
+          <path id="vp-sep" class="dr" pathLength="1" d="M560 720 H1360" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="vp-net" class="h">
+            <text x="600" y="790" font-size="34" font-weight="700" fill="#e8e6df">净损失</text>
+            <text x="1330" y="790" font-size="34" font-weight="700" fill="#FC6255" text-anchor="end">追查结束才能确定</text>
+          </g>
+          <text id="vp-o00" class="h" x="960" y="900" font-size="30" fill="#8a8f99" text-anchor="middle">口径见 O00 · 结案后复盘进入 D02 清单</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const W = (s, w, t, d = 0.9) => tl.fromTo(s, { attr: { width: 0 } }, { attr: { width: w }, duration: d, ease: "power2.out", immediateRender: false }, t);
+
+      // L0 漏斗
+      IN("#vp-t0", at(0, 0.02), 0.8, { y: 20 });
+      IN("#vp-pl", at(0, 0.08));
+      IN("#vp-paths", at(0, 0.1), 0.01); DRAW("#vp-paths path", at(0, 0.1), 0.8);
+      IN("#vp-ex", at(0, 0.3), 0.6);
+      IN("#vp-gt", at(0, 0.45), 0.4, { scaleY: 0, svgOrigin: "898 690" }, { scaleY: 1 }); IN("#vp-gtl", at(0, 0.5));
+      ARROW("#vp-out", at(0, 0.55), 0.4); IN("#vp-cash", at(0, 0.6));
+
+      // L1 充值筛查
+      OUT("#vp-g0", at(1, 0));
+      IN("#vp-t1", at(1, 0.06), 0.6, { y: 15 });
+      IN("#vp-dep", at(1, 0.1)); ARROW("#vp-d1", at(1, 0.16), 0.3);
+      IN("#vp-cmp", at(1, 0.2));
+      IN("#vp-src", at(1, 0.28), 0.6, { y: 15 });
+      ARROW("#vp-d2", at(1, 0.42), 0.3); IN("#vp-hit", at(1, 0.45));
+      IN("#vp-hold", at(1, 0.48), 0.6, { x: 15 });
+      IN("#vp-ver", at(1, 0.62)); IN("#vp-ver2", at(1, 0.64));
+
+      // L2 15 分钟
+      OUT("#vp-g1", at(2, 0));
+      IN("#vp-t2", at(2, 0.06), 0.6, { y: 15 });
+      IN("#vp-rq", at(2, 0.1)); ARROW("#vp-q1", at(2, 0.16), 0.3); IN("#vp-rc", at(2, 0.2));
+      ARROW("#vp-q2", at(2, 0.28), 0.3); IN("#vp-fz", at(2, 0.32));
+      IN("#vp-clk", at(2, 0.36), 0.5, { scale: 1.3, svgOrigin: "1000 280" });
+      ARROW("#vp-q3", at(2, 0.46), 0.3); IN("#vp-doc", at(2, 0.5));
+      IN("#vp-dr", at(2, 0.62));
+
+      // L3 Travel Rule
+      OUT("#vp-g2", at(3, 0));
+      IN("#vp-t3", at(3, 0.06), 0.6, { y: 15 });
+      IN("#vp-va", at(3, 0.1)); IN("#vp-vb", at(3, 0.14));
+      ARROW("#vp-tr", at(3, 0.2), 0.5); IN("#vp-trl", at(3, 0.25));
+      ARROW("#vp-ti", at(3, 0.3), 0.5);
+      IN("#vp-pk", at(3, 0.4), 0.6, { x: -30 });
+      IN("#vp-nc", at(3, 0.58), 0.6, { y: 15 });
+
+      // L4 FATF
+      OUT("#vp-g3", at(4, 0));
+      IN("#vp-t4", at(4, 0.06), 0.6, { y: 15 });
+      IN("#vp-f0", at(4, 0.1)); IN("#vp-fb", at(4, 0.1));
+      W("#vp-f1", 996, at(4, 0.15), 0.9); IN("#vp-f1l", at(4, 0.3));
+      W("#vp-f2", 498, at(4, 0.38), 0.7); IN("#vp-f2l", at(4, 0.48));
+      IN("#vp-gap", at(4, 0.58)); IN("#vp-push", at(4, 0.66), 0.6, { y: 10 });
+
+      // L5 分开记账
+      OUT("#vp-g4", at(5, 0));
+      IN("#vp-t5", at(5, 0.06), 0.6, { y: 15 });
+      tl.fromTo(".vp-row", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.1 }, at(5, 0.1));
+      IN("#vp-own", at(5, 0.4));
+      DRAW("#vp-sep", at(5, 0.45), 0.4);
+      IN("#vp-net", at(5, 0.52)); IN("#vp-o00", at(5, 0.62));
+
+      tl.to("#vp-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["vasp"] = tl;
+    })();
+  </script>
+</template>

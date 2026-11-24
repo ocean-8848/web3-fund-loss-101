@@ -1,0 +1,151 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 firsthour，id 前缀 fh- -->
+  <div id="root" data-composition-id="firsthour" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="fh-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="fh-all">
+        <text id="fh-title" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">第一个小时的追回清单</text>
+
+        <!-- L0 赛跑 -->
+        <g id="fh-race">
+          <text id="fh-r1l" class="h" x="120" y="264" font-size="30" font-weight="700" fill="#FC6255">攻击者换币</text>
+          <rect id="fh-r1" x="400" y="232" width="0" height="44" rx="6" fill="#FC6255" opacity="0.85" />
+          <text id="fh-r1e" class="h" x="1430" y="264" font-size="28" fill="#FC6255">稳定币换完，冻结失效</text>
+          <path id="fh-dl" class="dr" pathLength="1" d="M1400 200 V400" stroke="#FC6255" stroke-width="3" stroke-dasharray="1" fill="none" />
+          <text id="fh-r2l" class="h" x="120" y="354" font-size="30" font-weight="700" fill="#83C167">冻结请求送出</text>
+          <rect id="fh-r2" x="400" y="322" width="0" height="44" rx="6" fill="#83C167" opacity="0.9" />
+          <text id="fh-r2e" class="h" x="1030" y="354" font-size="28" font-weight="700" fill="#83C167">← 要赶在这之前</text>
+        </g>
+
+        <!-- 时段轴 -->
+        <path id="fh-ax" class="dr" pathLength="1" d="M120 480 H1800" stroke="#8a8f99" stroke-width="3" fill="none" />
+        <g id="fh-k1" class="h"><path d="M120 466 V494 M760 466 V494" stroke="#83C167" stroke-width="4" /><text x="440" y="458" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">T+10 分钟内</text></g>
+        <g id="fh-k2" class="h"><path d="M820 466 V494 M1800 466 V494" stroke="#83C167" stroke-width="4" /><text x="1310" y="458" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">T+1 小时内</text></g>
+
+        <!-- L1 地址清单 -->
+        <g id="fh-card" class="h">
+          <rect x="120" y="520" width="640" height="250" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="3" />
+          <text x="150" y="568" font-size="30" font-weight="700" fill="#FC6255">攻击者地址 · 按链列出</text>
+          <text x="150" y="640" font-size="30" fill="#e8e6df">地址 A · USDT</text>
+          <rect x="500" y="606" width="220" height="48" rx="24" fill="#132a30" stroke="#9CDCEB" stroke-width="2" />
+          <text x="610" y="640" font-size="28" fill="#9CDCEB" text-anchor="middle">可冻结</text>
+          <text x="150" y="720" font-size="30" fill="#e8e6df">地址 B · ETH</text>
+          <rect x="500" y="686" width="220" height="48" rx="24" fill="#22252d" stroke="#8a8f99" stroke-width="2" />
+          <text x="610" y="720" font-size="28" fill="#8a8f99" text-anchor="middle">不可冻结</text>
+        </g>
+        <!-- L2 同步 -->
+        <g id="fh-sy" class="h" stroke="#83C167" stroke-width="3" fill="none">
+          <path class="dr" pathLength="1" d="M300 782 C300 800 210 800 210 818" marker-end="url(#fh-arrg)" />
+          <path class="dr" pathLength="1" d="M440 782 V818" marker-end="url(#fh-arrg)" />
+          <path class="dr" pathLength="1" d="M580 782 C580 800 650 800 650 818" marker-end="url(#fh-arrg)" />
+        </g>
+        <g font-size="28" font-weight="700" text-anchor="middle">
+          <g class="fh-to h"><rect x="120" y="830" width="180" height="64" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="210" y="872" fill="#B48EF0">发行方</text></g>
+          <g class="fh-to h"><rect x="350" y="830" width="180" height="64" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="440" y="872" fill="#B48EF0">交易所</text></g>
+          <g class="fh-to h"><rect x="560" y="830" width="200" height="64" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text x="660" y="872" fill="#83C167">应急渠道</text></g>
+        </g>
+        <text id="fh-hash" class="h" x="120" y="950" font-size="28" fill="#8a8f99">附交易哈希与时间</text>
+
+        <!-- L3 报案 -->
+        <g id="fh-rep" class="h">
+          <rect x="820" y="520" width="460" height="410" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+          <text x="850" y="572" font-size="34" font-weight="700" fill="#e8e6df">报案</text>
+          <text x="850" y="620" font-size="28" fill="#8a8f99">本地警方网络犯罪部门</text>
+          <text x="850" y="660" font-size="28" fill="#8a8f99">涉美：FBI IC3</text>
+        </g>
+        <g font-size="28" fill="#F0B90B" text-anchor="middle">
+          <g class="fh-at h"><rect x="850" y="690" width="110" height="52" rx="8" fill="#22252d" stroke="#F0B90B" stroke-width="2" /><text x="905" y="726">地址</text></g>
+          <g class="fh-at h"><rect x="975" y="690" width="190" height="52" rx="8" fill="#22252d" stroke="#F0B90B" stroke-width="2" /><text x="1070" y="726">币种与金额</text></g>
+          <g class="fh-at h"><rect x="850" y="758" width="160" height="52" rx="8" fill="#22252d" stroke="#F0B90B" stroke-width="2" /><text x="930" y="794">交易哈希</text></g>
+          <g class="fh-at h"><rect x="1025" y="758" width="100" height="52" rx="8" fill="#22252d" stroke="#F0B90B" stroke-width="2" /><text x="1075" y="794">时间</text></g>
+          <g class="fh-at h"><rect x="850" y="826" width="400" height="52" rx="8" fill="#22252d" stroke="#F0B90B" stroke-width="2" /><text x="1050" y="862">接触渠道：域名 · 电话 · 账号</text></g>
+        </g>
+
+        <!-- L4 追踪与公开 -->
+        <g id="fh-trk" class="h">
+          <rect x="1340" y="520" width="460" height="220" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="3" />
+          <text x="1370" y="570" font-size="30" font-weight="700" fill="#58C4DD">追踪公司 · 持续标记</text>
+          <g stroke="#8a8f99" stroke-width="2.5" fill="none">
+            <path d="M1400 660 L1490 620 L1580 650 L1670 610 M1490 620 L1530 700 M1580 650 L1700 690" />
+          </g>
+          <g fill="#FC6255">
+            <circle cx="1400" cy="660" r="10" /><circle cx="1490" cy="620" r="10" /><circle cx="1580" cy="650" r="10" /><circle cx="1670" cy="610" r="10" /><circle cx="1530" cy="700" r="10" /><circle cx="1700" cy="690" r="10" />
+          </g>
+        </g>
+        <g id="fh-tags" fill="#83C167">
+          <circle class="h" cx="1400" cy="660" r="16" fill="none" stroke="#83C167" stroke-width="3" /><circle class="h" cx="1490" cy="620" r="16" fill="none" stroke="#83C167" stroke-width="3" /><circle class="h" cx="1580" cy="650" r="16" fill="none" stroke="#83C167" stroke-width="3" /><circle class="h" cx="1670" cy="610" r="16" fill="none" stroke="#83C167" stroke-width="3" /><circle class="h" cx="1530" cy="700" r="16" fill="none" stroke="#83C167" stroke-width="3" /><circle class="h" cx="1700" cy="690" r="16" fill="none" stroke="#83C167" stroke-width="3" />
+        </g>
+        <g id="fh-pub" class="h">
+          <rect x="1340" y="770" width="460" height="160" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+          <path d="M1376 830 H1396 L1432 806 V880 L1396 856 H1376 Z" fill="none" stroke="#83C167" stroke-width="3" stroke-linejoin="round" />
+          <text x="1460" y="836" font-size="30" font-weight="700" fill="#83C167">公开攻击者地址</text>
+          <text x="1460" y="880" font-size="28" fill="#8a8f99">先和法务确认</text>
+        </g>
+
+        <!-- L5 二次诈骗 -->
+        <g id="fh-warn" class="h">
+          <rect x="120" y="170" width="1680" height="240" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="160" y="226" font-size="36" font-weight="700" fill="#FC6255">提防二次诈骗</text>
+          <path d="M168 266 l22 22 M190 266 l-22 22" stroke="#FC6255" stroke-width="5" stroke-linecap="round" />
+          <text x="210" y="288" font-size="30" fill="#e8e6df">收预付费的“资金追回服务”</text>
+          <text x="210" y="338" font-size="30" fill="#e8e6df">IC3 本身不与非执法机构合作追回资金</text>
+          <text x="210" y="388" font-size="30" fill="#e8e6df">自称安全团队、SEAL 911 成员私信：按 D04 的暗语方法核实</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const W = (s, w, t, d = 0.9) => tl.fromTo(s, { attr: { width: 0 } }, { attr: { width: w }, duration: d, ease: "power2.out", immediateRender: false }, t);
+
+      // L0 赛跑
+      IN("#fh-title", at(0, 0.02), 0.8, { y: 20 });
+      IN("#fh-r1l", at(0, 0.1)); W("#fh-r1", 1000, at(0, 0.12), 1.4);
+      DRAW("#fh-dl", at(0, 0.3), 0.4); IN("#fh-r1e", at(0, 0.35));
+      IN("#fh-r2l", at(0, 0.3)); W("#fh-r2", 600, at(0, 0.32), 0.9);
+      IN("#fh-r2e", at(0, 0.6), 0.5, { x: 15 });
+
+      // L1 T+10 地址清单
+      DRAW("#fh-ax", at(1, 0.02), 0.6); IN("#fh-k1", at(1, 0.1));
+      IN("#fh-card", at(1, 0.2), 0.7, { y: 15 });
+
+      // L2 同步给三方
+      IN("#fh-sy", at(2, 0.05), 0.01); DRAW("#fh-sy path", at(2, 0.05), 0.5);
+      tl.fromTo(".fh-to", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.1 }, at(2, 0.25));
+      IN("#fh-hash", at(2, 0.55));
+
+      // L3 报案
+      IN("#fh-k2", at(3, 0.02));
+      IN("#fh-rep", at(3, 0.1), 0.6, { y: 15 });
+      tl.fromTo(".fh-at", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.1 }, at(3, 0.3));
+
+      // L4 追踪与公开
+      IN("#fh-trk", at(4, 0.05), 0.6, { y: 15 });
+      tl.fromTo("#fh-tags circle", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.1 }, at(4, 0.25));
+      IN("#fh-pub", at(4, 0.5), 0.6, { y: 15 });
+
+      // L5 二次诈骗
+      OUT("#fh-race", at(5, 0));
+      IN("#fh-warn", at(5, 0.1), 0.6, { y: -15 });
+
+      tl.to("#fh-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["firsthour"] = tl;
+    })();
+  </script>
+</template>

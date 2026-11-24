@@ -1,6 +1,7 @@
 /* 第 3 部分 防御与应急响应 D01–D05
    D01 防御总览 → D02 安全建设与加固 → D03 安全运营（以上是“防御”：日常建设与运营）
    → D04 应急止损 → D05 反洗钱与追回（以上是“应急响应”：出事之后）
+   id 用语义名（defense / hardening / secops / response / recovery），不用 d01–d05：旧版的 #d01–#d04 是另外几章，由 index.html 的 ALIAS 跳到新位置。
    写法：每条做法写清“做什么 / 怎样配置 / 谁负责 / 怎样验证 / 对应案例”。案例事实只引用本手册已有的案件章与事件库；
    外部框架与指南列在各章末尾的“参考”，带链接。 */
 (function(){
@@ -10,7 +11,7 @@ const esc=s=>H.util.esc(s); // H.util 由 index.html 主脚本定义，数据文
 const T=(head,rows,cls="")=>`<div class="tbl-wrap"><table${cls?` class="${cls}"`:""}><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 const P=n=>`<span class="prio p${n}">P${n}</span>`;
 const pts=(title,items)=>`<div class="readpts"><b>${title}</b><ul>${items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
-const S=(n,t,d)=>H.secHead(n,t,d);
+const S=(n,t,d)=>H.secHead(n,t,d).replace('<div class="sec-head"',`<div class="sec-head" data-sec="${+n}"`);
 // 可勾选的检查清单（勾选状态只存在本机浏览器）
 const CHECK=(key,groups)=>`<div class="panel pad checklist" data-key="${key}">${groups.map(([g,items])=>`<h3 style="margin-top:4px">${g}</h3>${items.map((x,i)=>`<label class="chk"><input type="checkbox" data-i="${esc(g)}-${i}"><span>${x[0]}<small>${x[1]}</small></span><span class="st">${x[2]||""}</span></label>`).join("")}`).join("")}<p class="note" style="margin:8px 0 0"><span class="ck-n"></span> · 勾选只保存在本机浏览器</p></div>`;
 const afterCheck=root=>{root.querySelectorAll(".checklist").forEach(box=>{const k="loss101.ck."+box.dataset.key;let st={};try{st=JSON.parse(localStorage.getItem(k)||"{}")}catch(e){}
@@ -19,10 +20,32 @@ const afterCheck=root=>{root.querySelectorAll(".checklist").forEach(box=>{const 
 // 参考：[标题, 发布方 · 日期, URL, 本章用到的要点]
 const REFS=list=>list&&list.length?`<ol class="note src">${list.map(r=>`<li><a href="${r[2]}" target="_blank" rel="noopener">${esc(r[0])}</a> · ${esc(r[1])}${r[3]?`<br/>${r[3]}`:""}</li>`).join("")}</ol>`:`<p class="note">参考整理中。</p>`;
 const REF={}; // 由文件末尾按章填入
-H.defense={T,P,pts,CHECK,afterCheck,REFS,REF};
+// 交叉引用：把正文里的“D02 §5”“§6”“D04”变成可点击链接，点击跳到对应章的对应小节
+const IDS={D01:"defense",D02:"hardening",D03:"secops",D04:"response",D05:"recovery"};
+let pendingSec=null;
+const goSec=(root,n)=>{const h=root.querySelector(`.sec-head[data-sec="${n}"]`);if(h)window.scrollTo(0,h.getBoundingClientRect().top+window.scrollY-72);}; // 72 = 顶栏高度 + 余量
+const xref=(root,code)=>{
+  const SKIP="a,button,pre,code,svg,h1,h2,.mmd-wrap,.eyebrow,.sec-no,.checklist .st";
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>/§|D0[1-5]/.test(n.nodeValue)&&!(n.parentElement&&n.parentElement.closest(SKIP))?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT});
+  const nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+  const re=/(D0[1-5])?(\s?§(\d+)(?:–\d+)?)?/g;
+  for(const node of nodes){const t=node.nodeValue;let last=code,out=[],i=0,m;re.lastIndex=0;
+    while((m=re.exec(t))){if(!m[0]){re.lastIndex++;continue;}
+      const tgt=m[1]||last;if(m[1])last=m[1];const sec=m[3]||"";
+      out.push(document.createTextNode(t.slice(i,m.index)));
+      const a=document.createElement("a");a.href="#"+IDS[tgt];a.className="xref";if(sec)a.dataset.sec=sec;a.textContent=m[0].trim();
+      if(m[0].startsWith(" ")||m[0].startsWith("\u00a0"))out.push(document.createTextNode(" "));
+      out.push(a);i=m.index+m[0].length;}
+    if(!out.length)continue;out.push(document.createTextNode(t.slice(i)));const f=document.createDocumentFragment();out.forEach(n=>f.appendChild(n));node.replaceWith(f);}
+  root.querySelectorAll("a.xref").forEach(a=>a.onclick=e=>{const id=a.getAttribute("href").slice(1),sec=a.dataset.sec;
+    if(id===IDS[code]){e.preventDefault();if(sec)goSec(root,sec);else window.scrollTo(0,0);}else if(sec)pendingSec=sec;});
+  if(pendingSec){const n=pendingSec;pendingSec=null;requestAnimationFrame(()=>goSec(root,n));}
+};
+const AFTER=code=>root=>{afterCheck(root);xref(root,code);};
+H.defense={T,P,pts,CHECK,afterCheck,REFS,REF,xref};
 
 /* ================= D01 防御总览 ================= */
-D.push({id:"d01",code:"D01",group:"p3",ord:1,title:"防御总览：从攻击链到防线",wide:true,render:()=>{
+D.push({id:"defense",code:"D01",group:"p3",ord:1,title:"防御总览：从攻击链到防线",wide:true,render:()=>{
   const C=[["人员与终端","面试作业、外部项目只在一次性虚拟机中运行；EDR 覆盖开发机（含 macOS）","D02 §1"],
   ["身份与会话","抗钓鱼 MFA；会话与令牌绑定设备、短时有效；部署令牌不落终端","D02 §2"],
   ["云与内部平台","生产部署只走 CI/CD；安全与运维管理面与钱包网段隔离；AI 工具按用户隔离","D02 §3"],
@@ -32,9 +55,9 @@ D.push({id:"d01",code:"D01",group:"p3",ord:1,title:"防御总览：从攻击链�
   ["阈值","按独立组织计算阈值；临时授权带到期时间","D02 §6"],
   ["合约","不变量测试覆盖所有公开函数；sysvar / 账户校验；升级前主网分叉回放","D02 §7"],
   ["经济参数","低流动性资产的抵押与借款上限；TWAP；治理时间锁","D02 §8"],
-  ["熔断","按钱包、链一键停签；桥暂停开关；速率上限","D02 §5、D04"],
+  ["熔断","按钱包、链一键停签；桥暂停开关；速率上限","D02 §5、D04 §3"],
   ["余额","热钱包余额 ≤ 数小时提现量；冷钱包按金额拆分","D02 §5"],
-  ["监控与对账","链上余额与账本实时对账；委托代码、实现地址、Keeper 变更告警","D03"]];
+  ["监控与对账","链上余额与账本实时对账；委托代码、实现地址、Keeper 变更告警","D03 §4"]];
   const cs=H.cases;const ARCHF={"c-coincheck":["人员与终端","签名与密钥","余额"],"c-poly":["合约","熔断","监控与对账"],"c-ronin":["人员与终端","签名与密钥","阈值","熔断","监控与对账"],"c-wormhole":["合约","熔断","监控与对账"],"c-nomad":["合约","熔断"],"c-mango":["经济参数"],"c-euler":["合约"],"c-dmm":["人员与终端","身份与会话","供应商"],"c-wazirx":["供应商","前端与界面","签名与密钥","阈值"],"c-bybit":["人员与终端","身份与会话","云与内部平台","供应商","前端与界面","签名与密钥","余额"],"c-bitget":["云与内部平台","供应商","签名与密钥","熔断","余额"],"c-binance":["人员与终端","身份与会话","云与内部平台","签名与密钥","熔断","余额","监控与对账"]};const famOf=c=>c.fam||ARCHF[c.id]||[];
   const cov=Object.fromEntries(C.map(r=>[r[0],cs.filter(c=>famOf(c).includes(r[0])).length]));const top=C.map(r=>r[0]).sort((a,b)=>cov[b]-cov[a]);
   const ctr=cs.filter(c=>famOf(c).includes("合约")),ctrX=C.map(r=>r[0]).filter(f=>f!=="合约"&&f!=="熔断").map(f=>[f,ctr.filter(c=>famOf(c).includes(f))]).filter(x=>x[1].length);
@@ -82,24 +105,24 @@ D.push({id:"d01",code:"D01",group:"p3",ord:1,title:"防御总览：从攻击链�
 
   ${S("05","从哪开始：按阶段落地","资源有限时，按“先止血、再加固、再运营”的顺序做。每个阶段都有可验证的交付物；没有验证记录的控制，按没做算。")}
   ${T(["阶段","目标","必须交付","验收方式","展开"],[
-   [`<b>第 1 个月</b><br/>止血`,"即使明天被入侵，损失也有上限","① 每个热钱包设余额上限，超额部分自动归集到冷钱包<br/>② 按钱包、按链的一键停签开关，并预先授权谁能按<br/>③ 链上余额与账本至少每小时对账一次<br/>④ 应急联系人清单：稳定币发行方、主要交易所、行业应急渠道、执法","演练：从模拟告警到全链停签 &lt; 5 分钟；超额余额归集有日志","D02 §5、D03 §4、D04"],
+   [`<b>第 1 个月</b><br/>止血`,"即使明天被入侵，损失也有上限","① 每个热钱包设余额上限，超额部分自动归集到冷钱包<br/>② 按钱包、按链的一键停签开关，并预先授权谁能按<br/>③ 链上余额与账本至少每小时对账一次<br/>④ 应急联系人清单：稳定币发行方、主要交易所、行业应急渠道、执法","演练：从模拟告警到全链停签 &lt; 5 分钟；超额余额归集有日志","D02 §5、D03 §4、D04 §3"],
    [`<b>第 1 个季度</b><br/>加固签名链`,"单个员工、单台机器、单个供应商失陷，都签不出异常交易","① 签名前独立策略层：目标白名单，拒绝升级 / delegatecall / 7702，额度与频率上限<br/>② 签名者在独立设备上解码交易<br/>③ 多签签名者跨组织、跨设备<br/>④ 开发机隔离外部代码，生产部署只走 CI/CD<br/>⑤ 全员抗钓鱼 MFA（硬件密钥 / 通行密钥）","红队用一台已控制的开发机尝试发起转出，必须被策略层拒绝并告警","D02 §1–4、§6"],
-   [`<b>第 1 年</b><br/>运营与演练`,"分钟级发现，季度级验证","① 覆盖全部攻击阶段的检测规则与 7×24 值班<br/>② 季度桌面推演，月度停签演练<br/>③ 漏洞赏金与年度红队<br/>④ 合约：不变量测试、升级时间锁、暂停权与速率上限<br/>⑤ 冻结与追回预案，法务与执法联系渠道","指标达标：发现时间、停签时间、演练频率（D03 §8）","D02 §7–8、D03、D05"]])}
+   [`<b>第 1 年</b><br/>运营与演练`,"分钟级发现，季度级验证","① 覆盖全部攻击阶段的检测规则与 7×24 值班<br/>② 季度桌面推演，月度停签演练<br/>③ 漏洞赏金与年度红队<br/>④ 合约：不变量测试、升级时间锁、暂停权与速率上限<br/>⑤ 冻结与追回预案，法务与执法联系渠道","指标达标：发现时间、停签时间（D03 §1），演练按计划完成（D03 §8）","D02 §7–8、D03 §8、D05"]])}
 
   ${S("06","按角色的阅读路线","")}
   ${T(["你的角色","先读","重点"],[
-   ["安全负责人 / CISO","D01 → D03 → D04 → D02 上线清单","防线排序、指标、演练、预授权"],
+   ["安全负责人 / CISO","D01 → D03 → D04 → D02 §11 上线清单","防线排序、指标、演练、预授权"],
    ["钱包与签名团队","D02 §5–6 → D03 §3–4 → D04 §4","余额结构、策略层、停签开关"],
    ["研发与 DevOps","D02 §1–4 → D03 §2","终端、身份、CI/CD、供应链"],
-   ["合约与协议团队","D02 §7–8 → D04 场景 C → D05 §5","不变量、升级流程、暂停与谈判"],
+   ["合约与协议团队","D02 §7–8 → D04 §5 场景 C → D05 §5","不变量、升级流程、暂停与谈判"],
    ["风控、合规与法务","D05 → D04 §5–6 → O00","冻结与追回、反洗钱、对外口径"]])}
 
   ${S("07","参考框架","本部分的做法与下列框架对齐。框架回答“应该覆盖什么”，本部分回答“在加密资产场景下具体怎么做”。")}
-  ${REFS(REF.d01)}`;}});
+  ${REFS(REF.d01)}`;},after:AFTER("D01")});
 
 /* ================= D02 安全建设与加固 ================= */
 const H5=["优先级","做什么","怎样落地","怎样验证","案例"];
-D.push({id:"d02",code:"D02",group:"p3",ord:2,title:"安全建设与加固",wide:true,render:()=>`<div class="eyebrow"><span>D02 · HARDENING</span><span>防御 · 日常建设</span></div><h1>安全建设与加固：按控制族落地</h1>
+D.push({id:"hardening",code:"D02",group:"p3",ord:2,title:"安全建设与加固",wide:true,render:()=>`<div class="eyebrow"><span>D02 · HARDENING</span><span>防御 · 日常建设</span></div><h1>安全建设与加固：按控制族落地</h1>
   <p class="thesis">这一章把 D01 的每个控制族展开成可执行的做法。每条都写清<em>做什么、怎样落地、怎样验证</em>。优先级：${P(0)} 本月就做，${P(1)} 本季度做，${P(2)} 持续改进。</p>
   ${pts("怎么用这一章",["先看 §5、§6：它们不依赖知道入口在哪，见效最快。","再按团队分工看 §1–4（研发与 DevOps）、§7–8（合约与协议）。","最后用 §11 的上线清单逐项勾选。每项都要有“怎样验证”的记录，没有验证记录的按没做算。"])}
 
@@ -193,7 +216,7 @@ D.push({id:"d02",code:"D02",group:"p3",ord:2,title:"安全建设与加固",wide:
   ${T(["要素","做法"],[
    ["负责人","每个控制族指定一个团队负责（不是“安全团队负责一切”）：终端与身份归 IT，CI/CD 归平台，策略层与停签归钱包团队，合约归协议团队"],
    ["证据","每个控制保留最近一次验证的记录：演练日志、红队报告、配置截图或导出"],
-   ["复核节奏","P0 控制每月验证一次，P1 每季度，P2 每年；结果进入 D03 §8 的指标"],
+   ["复核节奏","P0 控制每月验证一次，P1 每季度，P2 每年；结果进入 D03 §1 的指标"],
    ["例外","任何例外（如临时关闭某条策略）必须有到期时间和审批人，到期自动恢复"]])}
 
   ${S("11","上线检查清单","新钱包、新链、新协议上线前逐项勾选。勾选只保存在你的浏览器里，可当作个人工作清单。")}
@@ -205,10 +228,10 @@ D.push({id:"d02",code:"D02",group:"p3",ord:2,title:"安全建设与加固",wide:
    ["运营与响应",[["链上余额与账本对账已接入告警","见 D03 §4","D03"],["应急联系人清单已更新","发行方、交易所、行业应急渠道、执法","D04"],["本季度停签演练已完成","记录发现与停签时间","D03 §8"]]]])}
 
   ${S("12","参考","")}
-  ${REFS(REF.d02)}`,after:root=>afterCheck(root)});
+  ${REFS(REF.d02)}`,after:AFTER("D02")});
 
 /* ================= D03 安全运营 ================= */
-D.push({id:"d03",code:"D03",group:"p3",ord:3,title:"安全运营：检测、对账与演练",wide:true,render:()=>`<div class="eyebrow"><span>D03 · SECURITY OPERATIONS</span><span>防御 · 日常运营</span></div><h1>安全运营：检测、对账与演练</h1>
+D.push({id:"secops",code:"D03",group:"p3",ord:3,title:"安全运营：检测、对账与演练",wide:true,render:()=>`<div class="eyebrow"><span>D03 · SECURITY OPERATIONS</span><span>防御 · 日常运营</span></div><h1>安全运营：检测、对账与演练</h1>
   <p class="thesis">D02 的控制会失效。安全运营要做三件事：<em>尽早发现失效、确认资金账实相符、定期证明控制还管用</em>。衡量运营好坏只看两个数：从异常开始到发现要多久，从发现到停住要多久。</p>
 
   ${S("01","运营目标与指标","先定指标，再配工具和人。下面的目标值是建议起点，按自身业务量调整，但每一项都要能从日志里算出来。")}
@@ -267,7 +290,7 @@ D.push({id:"d03",code:"D03",group:"p3",ord:3,title:"安全运营：检测、对�
    ["<b>SEV2</b>","签名请求被策略层拒绝（高危类型）；特权账号异常；合约权限变化","15 分钟","值班、安全负责人、相关团队","停签单个钱包、吊销会话、冻结账号"],
    ["<b>SEV3</b>","终端告警、钓鱼上报、可疑招聘","4 小时","安全团队","隔离终端、调查"],
    ["<b>SEV4</b>","配置偏差、日志源中断","1 个工作日","负责团队","修复并记录"]])}
-  ${pts("值班落地",["7×24 值班，每班至少两人可操作停签开关；值班表与备用联系人放在不依赖公司内网的地方。","“宁可误停”：SEV1 的停签不需要先确认是否真的被攻击。误停的成本是几小时提现延迟，漏停的成本是全部余额。","每次 SEV1 / SEV2 都写复盘（见 D04 §7），复盘结论回到 D02 的控制清单。"])}
+  ${pts("值班落地",["7×24 值班，每班至少两人可操作停签开关；值班表与备用联系人放在不依赖公司内网的地方。","“宁可误停”：SEV1 的停签不需要先确认是否真的被攻击。误停的成本是几小时提现延迟，漏停的成本是全部余额。","每次 SEV1 / SEV2 都写复盘（见 D04 §8），复盘结论回到 D02 的控制清单。"])}
 
   ${S("07","威胁情报与行业协同","大额事件背后的团伙会反复使用同一套手法。别人的事故是你的预警。")}
   ${T(["做什么","怎么做"],[
@@ -286,10 +309,10 @@ D.push({id:"d03",code:"D03",group:"p3",ord:3,title:"安全运营：检测、对�
    ["密钥恢复演练","每年","用冷钱包备份在隔离环境中恢复","按仪式完成，记录完整"]])}
 
   ${S("09","参考","")}
-  ${REFS(REF.d03)}`});
+  ${REFS(REF.d03)}`,after:AFTER("D03")});
 
 /* ================= D04 应急止损 ================= */
-D.push({id:"d04",code:"D04",group:"p3",ord:4,title:"应急止损",wide:true,render:()=>`<div class="eyebrow"><span>D04 · INCIDENT RESPONSE</span><span>应急响应 · 事中止损</span></div><h1>应急止损：告警之后的第一个小时</h1>
+D.push({id:"response",code:"D04",group:"p3",ord:4,title:"应急止损",wide:true,render:()=>`<div class="eyebrow"><span>D04 · INCIDENT RESPONSE</span><span>应急响应 · 事中止损</span></div><h1>应急止损：告警之后的第一个小时</h1>
   <p class="thesis">链上转账不可撤销。告警之后，能挽回多少取决于<em>多快停住签名、暂停合约、撤销权限</em>，以及多快把攻击者地址交给稳定币发行方和交易所。这一章把第一个小时拆成可以照着执行的步骤。</p>
 
   ${S("01","五条原则","这五条要在出事前写进制度，并让每个值班人员都知道。")}
@@ -369,10 +392,10 @@ D.push({id:"d04",code:"D04",group:"p3",ord:4,title:"应急止损",wide:true,rend
   ${pts("落地要点",["复盘在事件结束后两周内完成，不追究个人，只找控制缺口。","每条改进都要有负责人和截止日期，并在下一次演练中验证。"])}
 
   ${S("09","参考","")}
-  ${REFS(REF.d04)}`});
+  ${REFS(REF.d04)}`,after:AFTER("D04")});
 
 /* ================= D05 反洗钱与追回 ================= */
-D.push({id:"d05",code:"D05",group:"p3",ord:5,title:"反洗钱与追回",wide:true,render:()=>`<div class="eyebrow"><span>D05 · AML &amp; RECOVERY</span><span>应急响应 · 事后追回</span></div><h1>反洗钱与追回：资金离开之后</h1>
+D.push({id:"recovery",code:"D05",group:"p3",ord:5,title:"反洗钱与追回",wide:true,render:()=>`<div class="eyebrow"><span>D05 · AML &amp; RECOVERY</span><span>应急响应 · 事后追回</span></div><h1>反洗钱与追回：资金离开之后</h1>
   <p class="thesis">资金离开后，防守方还有几张牌：<em>稳定币冻结、交易所冻结、链级冻结或回滚、法院命令、谈判与赏金、执法扣押</em>。每张牌都有时间窗口，越往后越难。这一章分两个视角：受害方怎么追，资金经过的平台怎么拦。</p>
 
   ${S("01","时间窗口","攻击者洗钱的节奏决定了每张牌什么时候还能打。")}
@@ -435,7 +458,7 @@ D.push({id:"d05",code:"D05",group:"p3",ord:5,title:"反洗钱与追回",wide:tru
    ["结案条件","冻结资产已返还或进入司法程序；剩余资金的追踪交给执法与追踪公司；复盘完成并进入 D02 清单"]])}
 
   ${S("08","参考","")}
-  ${REFS(REF.d05)}`,after:root=>afterCheck(root)});
+  ${REFS(REF.d05)}`,after:AFTER("D05")});
 
 /* ================= 参考（2026-11-24 核验链接） ================= */
 const R={

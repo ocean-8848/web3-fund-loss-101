@@ -1,0 +1,74 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 rules，id 前缀 ru- -->
+  <div id="root" data-composition-id="rules" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ru-arn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" /></marker>
+      </defs>
+      <g id="ru-all"><g transform="translate(0,80)">
+        <g id="ru-n0" class="h"><rect class="ru-nr" x="130" y="150" width="260" height="90" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="260" y="207" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">入口</text></g>
+        <path id="ru-k0" class="h" d="M242 290 L256 304 L280 276" stroke="#83C167" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        <g id="ru-n1" class="h"><rect class="ru-nr" x="480" y="150" width="260" height="90" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="610" y="207" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">立足</text></g>
+        <path id="ru-k1" class="h" d="M592 290 L606 304 L630 276" stroke="#83C167" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        <g id="ru-n2" class="h"><rect class="ru-nr" x="830" y="150" width="260" height="90" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="960" y="207" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">横移</text></g>
+        <path id="ru-k2" class="h" d="M942 290 L956 304 L980 276" stroke="#83C167" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        <g id="ru-n3" class="h"><rect class="ru-nr" x="1180" y="150" width="260" height="90" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="1310" y="207" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">签名能力</text></g>
+        <path id="ru-k3" class="h" d="M1292 290 L1306 304 L1330 276" stroke="#83C167" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        <g id="ru-n4" class="h"><rect class="ru-nr" x="1530" y="150" width="260" height="90" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="1660" y="207" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">链上执行</text></g>
+        <path id="ru-k4" class="h" d="M1642 290 L1656 304 L1680 276" stroke="#83C167" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        <!-- 指针：随阶段移动 -->
+        <g id="ru-pto"><path id="ru-pt" class="h" d="M260 330 L245 360 H275 Z" fill="#F0B90B" /></g>
+        <g id="ru-frame" class="h">
+          <rect x="80" y="400" width="560" height="250" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+          <rect x="700" y="400" width="560" height="250" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+          <rect x="1320" y="400" width="520" height="250" rx="14" fill="#13201a" stroke="#83C167" stroke-width="2.5" />
+          <text x="360" y="460" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">信号</text>
+          <text x="980" y="460" font-size="30" font-weight="700" fill="#58C4DD" text-anchor="middle">规则示例</text>
+          <text x="1580" y="460" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">自动动作</text>
+          <path d="M644 525 H694" stroke="#8a8f99" stroke-width="3" marker-end="url(#ru-arn)" />
+          <path d="M1264 525 H1314" stroke="#8a8f99" stroke-width="3" marker-end="url(#ru-arn)" />
+        </g>
+        <text id="ru-pre" class="h" x="1580" y="740" font-size="30" fill="#83C167" text-anchor="middle">提前定好，不等告警响了再讨论</text>
+        <g id="ru-t0" class="h"><text x="360" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">高薪邀约</text><text x="360" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">外部“面试作业”</text><text x="980" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">开发机上 node / python</text><text x="980" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">启动的进程连接新域名</text><text x="1580" y="545" font-size="30" fill="#83C167" text-anchor="middle">隔离终端</text><text x="1580" y="595" font-size="30" fill="#83C167" text-anchor="middle">通知安全团队</text><text x="960" y="740" font-size="28" fill="#8a8f99" text-anchor="middle">出现在：Ronin、DMM、Bybit、Binance</text></g>
+        <g id="ru-t1" class="h"><text x="360" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">开发工具二进制被替换</text><text x="360" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">异常外联</text><text x="980" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">系统或开发工具</text><text x="980" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">二进制哈希变化</text><text x="1580" y="545" font-size="30" fill="#83C167" text-anchor="middle">隔离终端</text><text x="1580" y="595" font-size="30" fill="#83C167" text-anchor="middle">吊销该用户所有会话</text><text x="960" y="740" font-size="28" fill="#8a8f99" text-anchor="middle">出现在：Binance、Bybit</text></g>
+        <g id="ru-t2" class="h"><text x="360" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">同一令牌出现在两台设备</text><text x="360" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">非计划部署</text><text x="980" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">同一会话用在两个设备指纹</text><text x="980" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">生产部署不在变更窗口内</text><text x="1580" y="545" font-size="30" fill="#83C167" text-anchor="middle">吊销会话</text><text x="1580" y="595" font-size="30" fill="#83C167" text-anchor="middle">冻结相关特权，通知值班</text><text x="960" y="740" font-size="28" fill="#8a8f99" text-anchor="middle">出现在：Binance、Bitget</text></g>
+        <g id="ru-t3" class="h"><text x="360" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">升级 / delegatecall / 7702</text><text x="360" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">无对应订单的提现</text><text x="980" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">任何被拒绝的高危请求</text><text x="980" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">提现找不到订单号</text><text x="1580" y="545" font-size="30" fill="#83C167" text-anchor="middle">自动停签该钱包</text><text x="1580" y="595" font-size="30" fill="#83C167" text-anchor="middle">呼叫值班</text><text x="960" y="740" font-size="28" fill="#8a8f99" text-anchor="middle">出现在：Bybit、WazirX、Binance、Bitget</text></g>
+        <g id="ru-t4" class="h"><text x="360" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">数秒内多链大额转出</text><text x="360" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">实现地址、委托代码变化</text><text x="980" y="545" font-size="30" fill="#e8e6df" text-anchor="middle">单钱包单位时间流出超阈值</text><text x="980" y="595" font-size="30" fill="#e8e6df" text-anchor="middle">实现地址或管理员变化</text><text x="1580" y="545" font-size="30" fill="#83C167" text-anchor="middle">自动停签 / 合约暂停</text><text x="1580" y="595" font-size="30" fill="#83C167" text-anchor="middle">升级为最高级别事件</text><text x="960" y="740" font-size="28" fill="#8a8f99" text-anchor="middle">出现在：全部案件</text></g>
+      </g></g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const X = [260, 610, 960, 1310, 1660];
+
+      // L0 框架
+      for (let i = 0; i < 5; i++) IN(`#ru-n${i}`, at(0, 0.03 + i * 0.06), 0.4, { y: -15 });
+      IN("#ru-frame", at(0, 0.35), 0.6, { y: 20 });
+      IN("#ru-pre", at(0, 0.65), 0.5);
+
+      // L1–L5 逐阶段
+      for (let k = 0; k < 5; k++) {
+        const i = k + 1;
+        if (k === 0) { OUT("#ru-pre", at(i, 0.0), 0.3); IN("#ru-pt", at(i, 0.05), 0.3); }
+        else { OUT(`#ru-t${k - 1}`, at(i, 0.0), 0.3); IN(`#ru-k${k - 1}`, at(i, 0.05), 0.3); tl.to(`#ru-n${k - 1} .ru-nr`, { attr: { fill: "#161a22" }, duration: 0.3 }, at(i, 0.05)); }
+        tl.to("#ru-pto", { x: X[k] - 260, duration: 0.5, ease: "power2.inOut" }, at(i, 0.05));
+        tl.to(`#ru-n${k} .ru-nr`, { attr: { fill: "#3a1c1c" }, duration: 0.3 }, at(i, 0.1));
+        tl.fromTo(`#ru-t${k}`, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out", immediateRender: false }, at(i, 0.18));
+      }
+
+      tl.to("#ru-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["rules"] = tl;
+    })();
+  </script>
+</template>

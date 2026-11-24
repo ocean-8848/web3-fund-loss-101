@@ -1,0 +1,193 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 bounty，id 前缀 bt- -->
+  <div id="root" data-composition-id="bounty" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="bt-arrn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+        <marker id="bt-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="bt-all">
+        <text id="bt-title" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">谈判与赏金：先确认边界</text>
+
+        <!-- L0 制裁核查 -->
+        <g id="bt-g0">
+          <text id="bt-nk" class="h" x="960" y="290" font-size="30" fill="#8a8f99" text-anchor="middle">大额事件常被归因于朝鲜相关团伙</text>
+          <g id="bt-coin" class="h" fill="#F0B90B" stroke="#0f1117" stroke-width="3">
+            <ellipse cx="280" cy="500" rx="70" ry="22" /><ellipse cx="280" cy="474" rx="70" ry="22" /><ellipse cx="280" cy="448" rx="70" ry="22" />
+            <text x="280" y="580" font-size="30" font-weight="700" fill="#F0B90B" stroke="none" text-anchor="middle">赏金</text>
+          </g>
+          <path id="bt-a1" class="dr h" pathLength="1" d="M372 470 H628" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#bt-arrn)" />
+          <g id="bt-gate" class="h">
+            <rect x="640" y="380" width="380" height="180" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="830" y="460" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">制裁名单核查</text>
+            <text x="830" y="508" font-size="28" fill="#e8e6df" text-anchor="middle">法务先确认</text>
+          </g>
+          <path id="bt-a2" class="dr h" pathLength="1" d="M1032 470 H1288" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#bt-arrn)" />
+          <g id="bt-atk" class="h">
+            <rect x="1300" y="400" width="340" height="140" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1470" y="482" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+          </g>
+          <text id="bt-ill" class="h" x="960" y="680" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">向受制裁主体付款违法</text>
+          <text id="bt-ill2" class="h" x="960" y="740" font-size="30" fill="#e8e6df" text-anchor="middle">确认之前，不承诺任何赏金</text>
+        </g>
+
+        <!-- L1 链上喊话 -->
+        <g id="bt-g1">
+          <g id="bt-vc" class="h">
+            <rect x="160" y="300" width="400" height="140" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="360" y="362" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">受害合约</text>
+            <text x="360" y="406" font-size="28" fill="#8a8f99" text-anchor="middle">或官方地址</text>
+          </g>
+          <path id="bt-msg" class="dr h" pathLength="1" d="M572 370 H1348" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#bt-arrg)" />
+          <text id="bt-msgl" class="h" x="960" y="345" font-size="28" fill="#83C167" text-anchor="middle">链上消息</text>
+          <g id="bt-at2" class="h">
+            <rect x="1360" y="300" width="400" height="140" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1560" y="382" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者地址</text>
+          </g>
+          <g id="bt-bub" class="h">
+            <path d="M640 500 H1280 V760 H990 L960 790 L930 760 H640 Z" fill="#161a22" stroke="#83C167" stroke-width="2.5" stroke-linejoin="round" transform="rotate(180 960 645)" />
+            <text x="700" y="590" font-size="32" fill="#e8e6df">归还地址</text>
+            <text x="700" y="650" font-size="32" fill="#e8e6df">赏金比例</text>
+            <text x="700" y="710" font-size="32" fill="#e8e6df">截止时间</text>
+          </g>
+          <g id="bt-pub" class="h">
+            <path d="M700 860 H720 L756 836 V910 L720 886 H700 Z" fill="none" stroke="#83C167" stroke-width="3" stroke-linejoin="round" />
+            <text x="790" y="886" font-size="32" fill="#83C167">同时公开发布，留下记录</text>
+          </g>
+        </g>
+
+        <!-- L2–L3 Safe Harbor -->
+        <g id="bt-g2">
+          <text id="bt-sh" class="h" x="160" y="240" font-size="34" font-weight="700" fill="#83C167">Safe Harbor <tspan font-size="28" font-weight="400" fill="#8a8f99">· 事前采用 SEAL 的白帽安全港协议</tspan></text>
+          <g id="bt-pr" class="h">
+            <rect x="160" y="290" width="340" height="120" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="330" y="362" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">协议</text>
+          </g>
+          <path id="bt-s1" class="dr h" pathLength="1" d="M512 350 H628" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#bt-arrg)" />
+          <g id="bt-dao" class="h">
+            <rect x="640" y="300" width="300" height="100" rx="50" fill="#16241a" stroke="#83C167" stroke-width="2.5" />
+            <text x="790" y="362" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">DAO 投票</text>
+          </g>
+          <path id="bt-s2" class="dr h" pathLength="1" d="M952 350 H1068" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#bt-arrg)" />
+          <g id="bt-reg" class="h">
+            <rect x="1080" y="300" width="300" height="100" rx="50" fill="#16241a" stroke="#83C167" stroke-width="2.5" />
+            <text x="1230" y="362" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">链上登记</text>
+          </g>
+          <g id="bt-ok" class="h">
+            <rect x="1460" y="296" width="300" height="108" rx="12" fill="none" stroke="#83C167" stroke-width="4" transform="rotate(-6 1610 350)" />
+            <text x="1610" y="362" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle" transform="rotate(-6 1610 350)">已采用</text>
+          </g>
+          <!-- L3 白帽抢救 -->
+          <g id="bt-ct" class="h">
+            <rect x="160" y="560" width="340" height="140" rx="14" fill="#132530" stroke="#FC6255" stroke-width="3" />
+            <text x="330" y="622" font-size="30" font-weight="700" fill="#58C4DD" text-anchor="middle">漏洞被利用的</text>
+            <text x="330" y="664" font-size="30" font-weight="700" fill="#58C4DD" text-anchor="middle">合约</text>
+          </g>
+          <path id="bt-r1" class="dr h" pathLength="1" d="M512 630 H628" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#bt-arrg)" />
+          <text id="bt-r1l" class="h" x="570" y="600" font-size="28" fill="#83C167" text-anchor="middle">抢救</text>
+          <g id="bt-wh" class="h">
+            <rect x="640" y="560" width="300" height="140" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="790" y="642" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">白帽</text>
+          </g>
+          <path id="bt-r2" class="dr h" pathLength="1" d="M952 630 H1028" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#bt-arrg)" />
+          <rect id="bt-bg" x="1040" y="596" width="0" height="68" rx="8" fill="#83C167" />
+          <rect id="bt-by" x="1724" y="596" width="0" height="68" rx="8" fill="#F0B90B" />
+          <text id="bt-bgl" class="h" x="1070" y="641" font-size="28" font-weight="700" fill="#0f1117">退回协议登记的资产回收地址</text>
+          <g id="bt-byl" class="h">
+            <path d="M1762 676 V716" stroke="#F0B90B" stroke-width="3" />
+            <text x="1800" y="756" font-size="28" font-weight="700" fill="#F0B90B" text-anchor="end">赏金：按比例，设上限（惯例 10%）</text>
+          </g>
+          <text id="bt-nb" class="h" x="160" y="860" font-size="30" fill="#e8e6df">白帽自己发起攻击不受保护，也不能与制裁对象有往来</text>
+        </g>
+
+        <!-- L4 混币器状态 -->
+        <g id="bt-g4">
+          <text id="bt-tc" class="h" x="960" y="270" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="middle">Tornado Cash 的制裁状态</text>
+          <path id="bt-ax" class="dr" pathLength="1" d="M300 500 H1620" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <rect id="bt-band" x="500" y="488" width="0" height="24" fill="#FC6255" opacity="0.6" />
+          <g id="bt-y1" class="h">
+            <circle cx="500" cy="500" r="14" fill="#FC6255" />
+            <text x="500" y="450" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">2022-08</text>
+            <text x="500" y="570" font-size="28" fill="#e8e6df" text-anchor="middle">OFAC 制裁</text>
+          </g>
+          <g id="bt-y2" class="h">
+            <circle cx="1300" cy="500" r="14" fill="#83C167" />
+            <text x="1300" y="450" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">2025-03</text>
+            <text x="1300" y="570" font-size="28" fill="#e8e6df" text-anchor="middle">移出 SDN 名单</text>
+          </g>
+          <text id="bt-cof" class="h" x="960" y="700" font-size="30" fill="#8a8f99" text-anchor="middle">但其联合创始人之一的朝鲜相关制裁标签仍保留</text>
+          <text id="bt-now" class="h" x="960" y="800" font-size="38" font-weight="700" fill="#83C167" text-anchor="middle">处理经过混币器的资金：按当时有效的名单判断</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const W = (s, w, t, d = 0.9, x) => tl.fromTo(s, { attr: x == null ? { width: 0 } : { width: 0, x } }, { attr: x == null ? { width: w } : { width: w, x: x - w }, duration: d, ease: "power2.out", immediateRender: false }, t);
+
+      // L0 制裁核查
+      IN("#bt-title", at(0, 0.02), 0.8, { y: 20 });
+      IN("#bt-coin", at(0, 0.1), 0.6, { y: 15 });
+      ARROW("#bt-a1", at(0, 0.2), 0.4);
+      IN("#bt-gate", at(0, 0.28), 0.5, { scale: 0.9, svgOrigin: "830 470" });
+      ARROW("#bt-a2", at(0, 0.38), 0.4); IN("#bt-atk", at(0, 0.42));
+      IN("#bt-nk", at(0, 0.5));
+      IN("#bt-ill", at(0, 0.58), 0.6, { y: 15 }); IN("#bt-ill2", at(0, 0.66));
+
+      // L1 链上喊话
+      OUT("#bt-g0", at(1, 0));
+      IN("#bt-vc", at(1, 0.06)); IN("#bt-at2", at(1, 0.1));
+      ARROW("#bt-msg", at(1, 0.15), 0.6); IN("#bt-msgl", at(1, 0.2));
+      IN("#bt-bub", at(1, 0.3), 0.6, { y: 15 });
+      IN("#bt-pub", at(1, 0.6), 0.6, { x: -15 });
+
+      // L2 Safe Harbor 事前采用
+      OUT("#bt-g1", at(2, 0)); OUT("#bt-title", at(2, 0));
+      IN("#bt-sh", at(2, 0.06), 0.6, { y: 10 });
+      IN("#bt-pr", at(2, 0.12));
+      ARROW("#bt-s1", at(2, 0.2), 0.3); IN("#bt-dao", at(2, 0.24));
+      ARROW("#bt-s2", at(2, 0.34), 0.3); IN("#bt-reg", at(2, 0.38));
+      IN("#bt-ok", at(2, 0.5), 0.4, { scale: 1.5, svgOrigin: "1610 350" });
+
+      // L3 白帽抢救与赏金
+      IN("#bt-ct", at(3, 0.04));
+      ARROW("#bt-r1", at(3, 0.12), 0.3); IN("#bt-r1l", at(3, 0.14));
+      IN("#bt-wh", at(3, 0.18));
+      ARROW("#bt-r2", at(3, 0.26), 0.3);
+      W("#bt-bg", 676, at(3, 0.3), 0.8);
+      W("#bt-by", 76, at(3, 0.42), 0.5);
+      IN("#bt-bgl", at(3, 0.45)); IN("#bt-byl", at(3, 0.55));
+      IN("#bt-nb", at(3, 0.65), 0.6, { y: 10 });
+
+      // L4 混币器
+      OUT("#bt-g2", at(4, 0));
+      IN("#bt-tc", at(4, 0.06), 0.6, { y: 15 });
+      DRAW("#bt-ax", at(4, 0.1), 0.6);
+      IN("#bt-y1", at(4, 0.18));
+      W("#bt-band", 800, at(4, 0.25), 0.8);
+      IN("#bt-y2", at(4, 0.4));
+      IN("#bt-cof", at(4, 0.5));
+      IN("#bt-now", at(4, 0.62), 0.6, { y: 15 });
+
+      tl.to("#bt-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["bounty"] = tl;
+    })();
+  </script>
+</template>

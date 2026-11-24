@@ -1,0 +1,222 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 signing，id 前缀 si- -->
+  <div id="root" data-composition-id="signing" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="si-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+        <marker id="si-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="si-all">
+        <!-- L0–L3 签名链 -->
+        <g id="si-chain">
+          <g id="si-biz" class="h">
+            <rect id="si-bizr" x="100" y="300" width="300" height="130" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="250" y="378" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">业务系统</text>
+          </g>
+          <path id="si-a0" class="dr h" pathLength="1" d="M406 365 H1172" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#si-arr)" />
+          <g id="si-mpc" class="h">
+            <rect x="1180" y="300" width="300" height="130" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="1330" y="355" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">MPC / 多签</text>
+            <g stroke="#F0B90B" stroke-width="4" fill="none" stroke-linecap="round"><circle cx="1300" cy="392" r="11" /><path d="M1311 392 H1352 M1340 392 V402 M1350 392 V400" /></g>
+          </g>
+          <path id="si-a1" class="dr h" pathLength="1" d="M1486 365 H1612" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#si-arr)" />
+          <g id="si-on" class="h">
+            <rect x="1620" y="300" width="220" height="130" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="1730" y="378" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">链上</text>
+          </g>
+          <g id="si-what" class="h" text-anchor="middle">
+            <text x="1330" y="490" font-size="28" fill="#83C167">保护：钥匙不被偷</text>
+            <text x="1330" y="536" font-size="28" fill="#FC6255">不判断：该不该签</text>
+          </g>
+
+          <!-- L1 策略层 -->
+          <g id="si-pol" class="h">
+            <rect x="600" y="250" width="400" height="340" rx="16" fill="#14201a" stroke="#83C167" stroke-width="3.5" />
+            <text x="800" y="312" font-size="38" font-weight="700" fill="#83C167" text-anchor="middle">策略层</text>
+            <text x="800" y="356" font-size="28" fill="#e8e6df" text-anchor="middle">另一个团队 · 另一套设施</text>
+          </g>
+          <g id="si-rules" class="h">
+            <path d="M630 386 H970" stroke="#2f4a35" stroke-width="2" />
+            <text x="800" y="432" font-size="28" fill="#e8e6df" text-anchor="middle">白名单 · 额度 · 频率</text>
+            <text x="800" y="490" font-size="28" fill="#FC6255" text-anchor="middle">默认拒绝：升级</text>
+            <text x="800" y="540" font-size="28" fill="#FC6255" text-anchor="middle"><tspan class="mono">delegatecall · 7702</tspan></text>
+          </g>
+
+          <!-- L3 红队 -->
+          <path id="si-red" class="dr h" pathLength="1" d="M406 365 H592" stroke="#FC6255" stroke-width="5" fill="none" marker-end="url(#si-arrr)" />
+          <text id="si-redl" class="h" x="250" y="480" font-size="28" fill="#FC6255" text-anchor="middle">红队控制的业务主机</text>
+          <path id="si-rej" class="dr h" pathLength="1" d="M800 598 V692" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#si-arrr)" />
+          <text id="si-rejl" class="h" x="822" y="656" font-size="30" font-weight="700" fill="#FC6255">拒绝</text>
+          <g id="si-alert" class="h">
+            <rect x="600" y="700" width="400" height="96" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="800" y="760" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">告警 + 人工复核</text>
+          </g>
+          <text id="si-case1" class="h" x="1100" y="760" font-size="28" fill="#8a8f99">案例：Bybit、WazirX、Binance、Bitget</text>
+        </g>
+
+        <!-- L4 解码与哈希比对 -->
+        <g id="si-dec">
+          <g id="si-d1" class="h">
+            <rect x="100" y="230" width="460" height="320" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="130" y="284" font-size="32" font-weight="700" fill="#e8e6df">独立设备上解码</text>
+            <g font-size="28" fill="#c9ccd3"><text x="130" y="346">目标</text><text x="130" y="398">方法</text><text x="130" y="450">参数</text><text x="130" y="502">金额</text></g>
+            <g fill="#3a3f4a"><rect x="230" y="326" width="290" height="24" rx="4" /><rect x="230" y="378" width="230" height="24" rx="4" /><rect x="230" y="430" width="270" height="24" rx="4" /><rect x="230" y="482" width="180" height="24" rx="4" /></g>
+          </g>
+          <g id="si-d2" class="h">
+            <rect x="700" y="230" width="460" height="200" rx="16" fill="#14201a" stroke="#83C167" stroke-width="3" />
+            <text x="930" y="284" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">独立工具重算哈希</text>
+            <g fill="#83C167"><rect x="760" y="340" width="40" height="40" rx="4" /><rect x="810" y="340" width="40" height="40" rx="4" opacity="0.5" /><rect x="860" y="340" width="40" height="40" rx="4" /><rect x="910" y="340" width="40" height="40" rx="4" opacity="0.3" /><rect x="960" y="340" width="40" height="40" rx="4" opacity="0.7" /><rect x="1010" y="340" width="40" height="40" rx="4" /><rect x="1060" y="340" width="40" height="40" rx="4" opacity="0.5" /></g>
+          </g>
+          <g id="si-d3" class="h">
+            <rect x="1360" y="230" width="460" height="200" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="1590" y="284" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">硬件钱包屏幕</text>
+            <g fill="#83C167"><rect x="1420" y="340" width="40" height="40" rx="4" /><rect x="1470" y="340" width="40" height="40" rx="4" opacity="0.5" /><rect x="1520" y="340" width="40" height="40" rx="4" /><rect x="1570" y="340" width="40" height="40" rx="4" opacity="0.3" /><rect x="1620" y="340" width="40" height="40" rx="4" opacity="0.7" /><rect x="1670" y="340" width="40" height="40" rx="4" /><rect x="1720" y="340" width="40" height="40" rx="4" opacity="0.5" /></g>
+          </g>
+          <text id="si-eq" class="h" x="1260" y="356" font-size="64" font-weight="700" fill="#83C167" text-anchor="middle">=</text>
+          <text id="si-eql" class="h" x="1260" y="500" font-size="30" fill="#83C167" text-anchor="middle">逐字比对完整哈希，一致才签</text>
+
+          <!-- L5 红旗 -->
+          <g id="si-flags" class="h">
+            <rect x="100" y="600" width="1720" height="290" rx="16" fill="#161a22" stroke="#FC6255" stroke-width="2.5" />
+            <text class="mono" x="150" y="664" font-size="30" fill="#e8e6df">operation = 1</text>
+            <text x="560" y="664" font-size="30" fill="#FC6255">← 委托调用 DELEGATECALL</text>
+            <text class="mono" x="150" y="730" font-size="30" fill="#e8e6df">approve(...)</text>
+            <text x="560" y="730" font-size="30" fill="#FC6255">← 意外的授权</text>
+            <text class="mono" x="150" y="796" font-size="30" fill="#e8e6df">MultiSend(...)</text>
+            <text x="560" y="796" font-size="30" fill="#FC6255">← 本应单笔，却是批量</text>
+            <text x="150" y="860" font-size="28" fill="#8a8f99">照 SEAL 的 Safe 交易核验步骤 · 案例：Bybit、WazirX、Radiant</text>
+          </g>
+          <g id="si-stamp" class="h">
+            <g transform="rotate(-10 1560 730)">
+              <rect x="1440" y="680" width="240" height="100" rx="10" fill="#0f1117" stroke="#FC6255" stroke-width="5" />
+              <text x="1560" y="748" font-size="56" font-weight="700" fill="#FC6255" text-anchor="middle">拒签</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- L6 阈值按组织算 -->
+        <g id="si-ms">
+          <text id="si-msh" class="h" x="960" y="150" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">阈值按独立组织算，不按人数</text>
+          <text id="si-msn" class="h" x="960" y="210" font-size="28" fill="#8a8f99" text-anchor="middle">示意：5 个席位，阈值 3</text>
+          <g id="si-bad" class="h">
+            <circle cx="420" cy="480" r="170" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="420" y="370" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">组织 A</text>
+            <g fill="#F0B90B"><circle cx="350" cy="480" r="24" /><circle cx="420" cy="480" r="24" /><circle cx="490" cy="480" r="24" /></g>
+            <circle cx="800" cy="480" r="110" fill="#1b2027" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="800" y="425" font-size="30" fill="#e8e6df" text-anchor="middle">组织 B</text>
+            <g fill="#F0B90B"><circle cx="765" cy="490" r="24" /><circle cx="835" cy="490" r="24" /></g>
+            <text x="560" y="740" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">A 一家就凑齐 3 席</text>
+          </g>
+          <g id="si-good" class="h">
+            <circle cx="1150" cy="480" r="110" fill="#14201a" stroke="#83C167" stroke-width="2.5" />
+            <text x="1150" y="425" font-size="30" fill="#e8e6df" text-anchor="middle">组织 A</text>
+            <g fill="#F0B90B"><circle cx="1115" cy="490" r="24" /><circle cx="1185" cy="490" r="24" /></g>
+            <circle cx="1420" cy="480" r="110" fill="#14201a" stroke="#83C167" stroke-width="2.5" />
+            <text x="1420" y="425" font-size="30" fill="#e8e6df" text-anchor="middle">组织 B</text>
+            <g fill="#F0B90B"><circle cx="1385" cy="490" r="24" /><circle cx="1455" cy="490" r="24" /></g>
+            <circle cx="1690" cy="480" r="110" fill="#14201a" stroke="#83C167" stroke-width="2.5" />
+            <text x="1690" y="425" font-size="30" fill="#e8e6df" text-anchor="middle">组织 C</text>
+            <g fill="#F0B90B"><circle cx="1690" cy="490" r="24" /></g>
+            <text x="1420" y="740" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">任一组织都凑不齐阈值</text>
+          </g>
+          <text id="si-msc" class="h" x="960" y="850" font-size="28" fill="#8a8f99" text-anchor="middle">同时按独立设备、独立网络计算 · 案例：Ronin、Harmony Horizon 桥、Multichain</text>
+        </g>
+
+        <!-- L7 临时授权到期 -->
+        <g id="si-tmp">
+          <text id="si-tmph" class="h" x="960" y="250" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">临时授权：签名权限、白名单、额度</text>
+          <path id="si-tax" class="dr" pathLength="1" d="M300 520 H1620" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <rect id="si-tb" x="300" y="490" width="0" height="60" rx="8" fill="#83C167" opacity="0.8" />
+          <g id="si-t0" class="h"><text x="300" y="610" font-size="30" fill="#e8e6df" text-anchor="middle">创建：必填到期时间</text></g>
+          <g id="si-t1" class="h">
+            <path d="M1100 460 V580" stroke="#9CDCEB" stroke-width="5" />
+            <text x="1100" y="440" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">到期 → 自动撤销</text>
+          </g>
+          <text id="si-tc" class="h" x="960" y="740" font-size="28" fill="#8a8f99" text-anchor="middle">验证：不存在没有到期时间的临时授权 · 案例：Ronin</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      // L0 MPC 只管钥匙
+      IN("#si-biz", at(0, 0.03));
+      ARROW("#si-a0", at(0, 0.12), 0.6);
+      IN("#si-mpc", at(0, 0.2));
+      ARROW("#si-a1", at(0, 0.3), 0.4);
+      IN("#si-on", at(0, 0.34));
+      IN("#si-what", at(0, 0.5), 0.6, { y: 10 });
+
+      // L1 策略层
+      IN("#si-pol", at(1, 0.05), 0.7, { scale: 0.85, svgOrigin: "800 420" });
+
+      // L2 规则
+      IN("#si-rules", at(2, 0.1), 0.7, { y: 12 });
+
+      // L3 红队
+      OUT("#si-what", at(3, 0.0), 0.3);
+      tl.to("#si-bizr", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(3, 0.05));
+      IN("#si-redl", at(3, 0.08));
+      ARROW("#si-red", at(3, 0.15), 0.4);
+      ARROW("#si-rej", at(3, 0.35), 0.4);
+      IN("#si-rejl", at(3, 0.4));
+      IN("#si-alert", at(3, 0.45));
+      IN("#si-case1", at(3, 0.6));
+
+      // L4 解码与哈希
+      OUT("#si-chain", at(4, 0.0), 0.4);
+      IN("#si-d1", at(4, 0.08), 0.6, { y: 16 });
+      IN("#si-d2", at(4, 0.22), 0.6, { y: 16 });
+      IN("#si-d3", at(4, 0.36), 0.6, { y: 16 });
+      IN("#si-eq", at(4, 0.5), 0.4, { scale: 1.6, svgOrigin: "1260 340" });
+      IN("#si-eql", at(4, 0.58));
+
+      // L5 红旗
+      IN("#si-flags", at(5, 0.05), 0.6, { y: 16 });
+      IN("#si-stamp", at(5, 0.55), 0.35, { scale: 1.6, svgOrigin: "1560 730" }, { ease: "back.out(2)" });
+
+      // L6 阈值
+      OUT("#si-dec", at(6, 0.0), 0.4);
+      IN("#si-msh", at(6, 0.06), 0.6, { y: 16 });
+      IN("#si-msn", at(6, 0.12));
+      IN("#si-bad", at(6, 0.2), 0.6);
+      IN("#si-good", at(6, 0.45), 0.6);
+      IN("#si-msc", at(6, 0.62));
+
+      // L7 临时授权
+      OUT("#si-ms", at(7, 0.0), 0.4);
+      IN("#si-tmph", at(7, 0.06), 0.6, { y: 16 });
+      DRAW("#si-tax", at(7, 0.1), 0.6);
+      IN("#si-t0", at(7, 0.15));
+      tl.to("#si-tb", { attr: { width: 800 }, duration: 0.9, ease: "none" }, at(7, 0.2));
+      IN("#si-t1", at(7, 0.45), 0.4, { y: -10 });
+      tl.to("#si-tb", { attr: { fill: "#9CDCEB" }, opacity: 0.35, duration: 0.4 }, at(7, 0.55));
+      IN("#si-tc", at(7, 0.62));
+
+      tl.to("#si-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["signing"] = tl;
+    })();
+  </script>
+</template>

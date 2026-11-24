@@ -1,0 +1,158 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 command，id 前缀 cm- -->
+  <div id="root" data-composition-id="command" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="cm-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+        <marker id="cm-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="cm-arrn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="cm-all">
+        <text id="cm-title" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">事件指挥与联络</text>
+
+        <g id="cm-org">
+          <!-- 角色环（先写，指挥节点盖在上面） -->
+          <g id="cm-spokes" class="h" stroke="#3a4050" stroke-width="3">
+            <path d="M560 420 V278 M664 480 L730 428 M664 600 L730 652 M560 660 V802 M456 600 L390 652 M456 480 L390 428" />
+          </g>
+          <g font-size="30" font-weight="700" text-anchor="middle">
+            <g class="cm-role h"><rect x="430" y="182" width="260" height="96" rx="12" fill="#161a22" stroke="#B48EF0" stroke-width="2.5" /><text x="560" y="224" fill="#e8e6df">钱包与签名</text><text x="560" y="262" font-size="28" font-weight="400" fill="#8a8f99">停签 · 撤权 · 盘点</text></g>
+            <g class="cm-role h"><rect x="730" y="332" width="260" height="96" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="860" y="374" fill="#e8e6df">合约与协议</text><text x="860" y="412" font-size="28" font-weight="400" fill="#8a8f99">暂停 · 修复</text></g>
+            <g class="cm-role h"><rect x="730" y="652" width="260" height="96" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="860" y="694" fill="#e8e6df">链上分析</text><text x="860" y="732" font-size="28" font-weight="400" fill="#8a8f99">追踪 · 标记地址</text></g>
+            <g class="cm-role h"><rect x="430" y="802" width="260" height="96" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="560" y="844" fill="#e8e6df">安全与取证</text><text x="560" y="882" font-size="28" font-weight="400" fill="#8a8f99">保全 · 查入口</text></g>
+            <g class="cm-role h"><rect x="130" y="652" width="260" height="96" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="260" y="694" fill="#e8e6df">沟通</text><text x="260" y="732" font-size="28" font-weight="400" fill="#8a8f99">公告 · 用户</text></g>
+            <g class="cm-role h"><rect x="130" y="332" width="260" height="96" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="260" y="374" fill="#e8e6df">法务与合规</text><text x="260" y="412" font-size="28" font-weight="400" fill="#8a8f99">报案 · 制裁合规</text></g>
+          </g>
+          <g id="cm-ic" class="h">
+            <circle cx="560" cy="540" r="120" fill="#16241a" stroke="#83C167" stroke-width="4" />
+            <text x="560" y="532" font-size="38" font-weight="700" fill="#83C167" text-anchor="middle">事件指挥</text>
+            <text x="560" y="580" font-size="28" fill="#e8e6df" text-anchor="middle">只有一个人</text>
+          </g>
+          <g id="cm-duty" class="h" font-size="34" fill="#e8e6df">
+            <text x="1000" y="470">决定<tspan fill="#83C167" font-weight="700">停什么、何时恢复</tspan></text>
+            <text x="1000" y="540">分派任务</text>
+            <text x="1000" y="610">维护带时间戳的事件时间线</text>
+          </g>
+          <path id="cm-dl" class="dr" pathLength="1" d="M690 540 H960" stroke="#83C167" stroke-width="3" fill="none" />
+
+          <!-- 外部联络 -->
+          <text id="cm-exl" class="h" x="1480" y="196" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">外部联络清单 · 出事前更新</text>
+          <path id="cm-bus" class="dr" pathLength="1" d="M680 540 H1100 M1100 275 V825 M1100 275 H1160 M1100 385 H1160 M1100 495 H1160 M1100 605 H1160 M1100 715 H1160 M1100 825 H1160" stroke="#83C167" stroke-width="3" fill="none" />
+          <g font-size="30" font-weight="700">
+            <g class="cm-ex h"><rect x="1160" y="230" width="640" height="90" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="1190" y="286" fill="#B48EF0">稳定币发行方 <tspan font-size="28" font-weight="400" fill="#8a8f99">冻结未换出的稳定币</tspan></text></g>
+            <g class="cm-ex h"><rect x="1160" y="340" width="640" height="90" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="1190" y="396" fill="#B48EF0">交易所安全团队 <tspan font-size="28" font-weight="400" fill="#8a8f99">充值时冻结</tspan></text></g>
+            <g class="cm-ex h"><rect id="cm-sealb" x="1160" y="450" width="640" height="90" rx="12" fill="#16241a" stroke="#83C167" stroke-width="2.5" /><text x="1190" y="506" fill="#83C167">SEAL 911 <tspan font-size="28" font-weight="400" fill="#8a8f99">7×24 应急热线</tspan></text></g>
+            <g class="cm-ex h"><rect x="1160" y="560" width="640" height="90" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="1190" y="616" fill="#58C4DD">链上分析与追踪公司 <tspan font-size="28" font-weight="400" fill="#8a8f99">大规模追踪</tspan></text></g>
+            <g class="cm-ex h"><rect x="1160" y="670" width="640" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="1190" y="726" fill="#e8e6df">执法机构 <tspan font-size="28" font-weight="400" fill="#8a8f99">报案 · 冻结与扣押</tspan></text></g>
+            <g class="cm-ex h"><rect x="1160" y="780" width="640" height="90" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="1190" y="836" fill="#58C4DD">审计方与白帽 <tspan font-size="28" font-weight="400" fill="#8a8f99">修复 · 抢救资金</tspan></text></g>
+          </g>
+        </g>
+
+        <!-- L3–L5 SEAL 911 -->
+        <g id="cm-s">
+          <text id="cm-t2" class="h" x="960" y="110" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">SEAL 911：怎么找，怎么防冒充</text>
+          <g id="cm-me" class="h">
+            <rect x="160" y="300" width="300" height="120" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="310" y="372" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">受害方</text>
+          </g>
+          <path id="cm-a2" class="dr h" pathLength="1" d="M472 360 H748" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#cm-arrg)" />
+          <text id="cm-a2l" class="h" x="630" y="340" font-size="28" fill="#83C167" text-anchor="middle">开工单</text>
+          <text id="cm-247" class="h" x="960" y="276" font-size="28" fill="#8a8f99" text-anchor="middle">志愿者 · 7×24</text>
+          <g id="cm-bot" class="h">
+            <rect x="760" y="300" width="400" height="120" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="960" y="352" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">SEAL 911</text>
+            <text class="mono" x="960" y="398" font-size="28" fill="#e8e6df" text-anchor="middle">@seal_911_bot</text>
+          </g>
+          <path id="cm-a3" class="dr h" pathLength="1" d="M1172 360 H1448" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#cm-arrg)" />
+          <text id="cm-a3l" class="h" x="1310" y="408" font-size="28" fill="#83C167" text-anchor="middle">接到可信专家</text>
+          <g id="cm-exp" class="h">
+            <rect x="1460" y="300" width="300" height="120" rx="14" fill="#161a22" stroke="#83C167" stroke-width="3" />
+            <text x="1610" y="372" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">安全专家</text>
+          </g>
+          <!-- 防冒充 -->
+          <g id="cm-fake" class="h">
+            <rect x="760" y="640" width="400" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="960" y="692" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">自称 SEAL 911 成员</text>
+            <text x="960" y="736" font-size="28" fill="#e8e6df" text-anchor="middle">私信你</text>
+          </g>
+          <path id="cm-a1" class="dr h" pathLength="1" d="M310 432 V700 H748" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#cm-arrg)" />
+          <text id="cm-a1l" class="h" x="334" y="580" font-size="28" fill="#F0B90B">① 先发一句不可猜的暗语</text>
+          <text id="cm-a2n" class="h" x="562" y="340" font-size="28" fill="#83C167" text-anchor="middle">②</text>
+          <path id="cm-a4" class="dr h" pathLength="1" d="M960 628 V432" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#cm-arrg)" />
+          <text id="cm-a4l" class="h" x="984" y="540" font-size="28" fill="#F0B90B">③ 在工单里复述暗语</text>
+          <text id="cm-ok" class="h" x="1190" y="714" font-size="30" font-weight="700" fill="#83C167">对得上，才是真成员</text>
+          <!-- 转介 -->
+          <path id="cm-a5" class="dr h" pathLength="1" d="M1610 432 V838" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#cm-arrn)" />
+          <text id="cm-a5l" class="h" x="1588" y="800" font-size="28" fill="#8a8f99" text-anchor="end">大规模追踪：转介</text>
+          <g id="cm-co" class="h">
+            <rect x="1440" y="850" width="340" height="100" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="3" />
+            <text x="1610" y="912" font-size="30" font-weight="700" fill="#58C4DD" text-anchor="middle">商业追踪公司</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 事件指挥
+      IN("#cm-title", at(0, 0.02), 0.8, { y: 20 });
+      IN("#cm-ic", at(0, 0.12), 0.6, { scale: 0.7, svgOrigin: "560 540" });
+      DRAW("#cm-dl", at(0, 0.3), 0.4);
+      tl.fromTo("#cm-duty text", { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.15 }, at(0, 0.35));
+      tl.set("#cm-duty", { opacity: 1 }, at(0, 0.35));
+
+      // L1 六个角色
+      OUT("#cm-duty", at(1, 0)); OUT("#cm-dl", at(1, 0));
+      IN("#cm-spokes", at(1, 0.1), 0.5);
+      tl.fromTo(".cm-role", { opacity: 0, scale: 0.85, svgOrigin: "560 540" }, { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1, ease: "power3.out" }, at(1, 0.15));
+
+      // L2 外部联络
+      IN("#cm-exl", at(2, 0.05));
+      DRAW("#cm-bus", at(2, 0.1), 0.7);
+      tl.fromTo(".cm-ex", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.45, stagger: 0.1 }, at(2, 0.25));
+
+      // L3 SEAL 911
+      OUT("#cm-org", at(3, 0)); OUT("#cm-title", at(3, 0));
+      IN("#cm-t2", at(3, 0.08), 0.6, { y: 15 });
+      IN("#cm-me", at(3, 0.12));
+      ARROW("#cm-a2", at(3, 0.2), 0.4); IN("#cm-a2l", at(3, 0.25));
+      IN("#cm-bot", at(3, 0.3)); IN("#cm-247", at(3, 0.38));
+      ARROW("#cm-a3", at(3, 0.45), 0.4); IN("#cm-a3l", at(3, 0.5));
+      IN("#cm-exp", at(3, 0.55));
+
+      // L4 暗语
+      IN("#cm-fake", at(4, 0.05), 0.6, { y: 15 });
+      ARROW("#cm-a1", at(4, 0.18), 0.6); IN("#cm-a1l", at(4, 0.25));
+      IN("#cm-a2n", at(4, 0.38));
+      ARROW("#cm-a4", at(4, 0.45), 0.4); IN("#cm-a4l", at(4, 0.5));
+      IN("#cm-ok", at(4, 0.62), 0.5, { x: -10 });
+
+      // L5 转介
+      ARROW("#cm-a5", at(5, 0.08), 0.6); IN("#cm-a5l", at(5, 0.2));
+      IN("#cm-co", at(5, 0.3), 0.6, { y: 15 });
+
+      tl.to("#cm-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["command"] = tl;
+    })();
+  </script>
+</template>

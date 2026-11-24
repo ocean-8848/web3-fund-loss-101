@@ -16,6 +16,14 @@
    - D01–D05：`src/handbook/data/defense.js`；A01、A02：`src/handbook/data/groups.js` 中对应的 `H.docs.push({id:"a0x"...})` 及其用到的数据。
    - 要统计数字（件数、金额合计、年份分布）就用 node 读数据文件现算，不要估。
 
+## 第 3 部分（D01–D05）的补充要求
+
+- 章节 id（也就是 slides 目录名）是语义名：D01 `defense`、D02 `hardening`、D03 `secops`、D04 `response`、D05 `recovery`。目录写成 `src/slides/<id>/`，`narration.json` 的 `"id"` 和 `tools/snap_slides.py` 的参数都用这个 id。
+- 这一部分讲“怎么做”，画面要把做法画出来：防线排在攻击链上、签名请求经过策略层被拒、余额上限截断损失、告警到停签的时间线、事件指挥与各角色的分工、冻结请求在各方之间流转、时间窗口逐个关闭。少用表格截图式的画面。
+- 每条做法尽量讲清“做什么 → 怎样验证”；数字（如“告警到全链停签 &lt; 5 分钟”）照正文写。
+- 外部框架（NIST、CCSS、SEAL 等）只按正文里的说法引用，不额外补充。
+- 旧 D01 防御矩阵、D02 应急止损与追回的场景在 `src/slides/_retired/` 下，可以复用画面写法（矩阵点阵、止损分层、洗钱路径），但讲稿与事实以新正文为准。
+
 ## 产出（每章）
 
 ```
