@@ -1,0 +1,68 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 concl，id 前缀 cn- -->
+  <div id="root" data-composition-id="concl" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="cn-all">
+        <text id="cn-head" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">结论标签 · 贴在每一步上</text>
+        <rect id="cn-bx0" class="h" x="160" y="400" width="280" height="150" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+        <rect id="cn-bx1" class="h" x="600" y="400" width="280" height="150" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" stroke-dasharray="14 8" />
+        <rect id="cn-bx2" class="h" x="1040" y="400" width="280" height="150" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" stroke-dasharray="4 8" />
+        <rect id="cn-bx3" class="h" x="1480" y="400" width="280" height="150" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" stroke-dasharray="2 10" />
+        <g id="cn-ar" class="h" stroke="#8a8f99" stroke-width="3"><path d="M448 475 H592" /><path d="M888 475 H1032" /><path d="M1328 475 H1472" /></g>
+        <g id="cn-c0" class="h"><text x="300" y="370" font-size="40" font-weight="700" fill="#83C167" text-anchor="middle">事实</text><text x="300" y="500" font-size="72" font-weight="700" fill="#83C167" text-anchor="middle">✓</text><text x="300" y="620" font-size="28" fill="#e8e6df" text-anchor="middle">原始披露明确说明</text></g>
+        <g id="cn-c1" class="h"><text x="740" y="370" font-size="40" font-weight="700" fill="#58C4DD" text-anchor="middle">推论</text><text x="740" y="500" font-size="72" font-weight="700" fill="#58C4DD" text-anchor="middle">⇒</text><text x="740" y="620" font-size="28" fill="#e8e6df" text-anchor="middle">由结果和</text><text x="740" y="662" font-size="28" fill="#e8e6df" text-anchor="middle">时间顺序推出</text></g>
+        <g id="cn-c2" class="h"><text x="1180" y="370" font-size="40" font-weight="700" fill="#c9ccd3" text-anchor="middle">假设</text><text x="1180" y="500" font-size="72" font-weight="700" fill="#c9ccd3" text-anchor="middle">≈</text><text x="1180" y="620" font-size="28" fill="#e8e6df" text-anchor="middle">技术上可行</text><text x="1180" y="662" font-size="28" fill="#e8e6df" text-anchor="middle">没有直接证据</text></g>
+        <g id="cn-c3" class="h"><text x="1620" y="370" font-size="40" font-weight="700" fill="#8a8f99" text-anchor="middle">未知</text><text x="1620" y="500" font-size="72" font-weight="700" fill="#8a8f99" text-anchor="middle">?</text><text x="1620" y="620" font-size="28" fill="#e8e6df" text-anchor="middle">公开资料不足</text></g>
+        <g id="cn-fill">
+          <g id="cn-chip" class="h"><rect x="1500" y="780" width="240" height="64" rx="32" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="1620" y="823" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">常见手法</text></g>
+        </g>
+        <path id="cn-x" class="dr" pathLength="1" d="M1490 770 L1750 854" stroke="#FC6255" stroke-width="5" fill="none" />
+        <text id="cn-no" class="h" x="1420" y="823" font-size="34" font-weight="700" fill="#83C167" text-anchor="end">不要用常见手法补齐未知</text>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      IN("#cn-head", at(0, 0.02));
+      for (let i = 0; i < 4; i++) IN("#cn-bx" + i, at(0, 0.08 + i * 0.05), 0.4, { y: 14 });
+      IN("#cn-ar", at(0, 0.25), 0.4);
+      tl.to("#cn-bx0", { attr: { stroke: "#83C167" }, duration: 0.4 }, at(0, 0.45));
+      IN("#cn-c0", at(0, 0.5), 0.6, { y: 10 });
+
+      tl.to("#cn-bx1", { attr: { stroke: "#58C4DD" }, duration: 0.4 }, at(1, 0.05));
+      IN("#cn-c1", at(1, 0.15), 0.6, { y: 10 });
+      tl.to("#cn-bx2", { attr: { stroke: "#c9ccd3" }, duration: 0.4 }, at(2, 0.05));
+      IN("#cn-c2", at(2, 0.15), 0.6, { y: 10 });
+
+      IN("#cn-c3", at(3, 0.05), 0.6, { y: 10 });
+      IN("#cn-chip", at(3, 0.25), 0.4);
+      tl.fromTo("#cn-fill", { y: 0 }, { y: -150, duration: 0.6, ease: "power2.out", immediateRender: false }, at(3, 0.3));
+      tl.to("#cn-fill", { y: 0, duration: 0.5, ease: "power2.in" }, at(3, 0.45));
+      DRAW("#cn-x", at(3, 0.58), 0.3);
+      IN("#cn-no", at(3, 0.62), 0.5, { x: 16 });
+
+      tl.to("#cn-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["concl"] = tl;
+    })();
+  </script>
+</template>

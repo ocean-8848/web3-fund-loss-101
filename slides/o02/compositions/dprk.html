@@ -1,0 +1,75 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 dprk，id 前缀 dk- -->
+  <div id="root" data-composition-id="dprk" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="dk-all">
+        <text id="dk-head" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">归因到朝鲜相关团伙的损失份额</text>
+        <text id="dk-ex" class="h" x="960" y="270" font-size="32" fill="#8a8f99" text-anchor="middle">排除 <tspan class="mono">Binance</tspan> 事件后</text>
+        <rect id="dk-tot" class="h" x="160" y="440" width="1600" height="90" rx="8" fill="#22252d" stroke="#8a8f99" stroke-width="2" />
+        <rect id="dk-red" x="160" y="440" width="0" height="90" rx="8" fill="#FC6255" />
+        <rect id="dk-enf" class="h" x="160" y="440" width="801.8" height="90" rx="8" fill="#FC6255" />
+        <text id="dk-pa" class="h" x="184" y="506" font-size="56" font-weight="700" fill="#0f1117">62%</text>
+        <text id="dk-pb" class="h" x="184" y="506" font-size="56" font-weight="700" fill="#0f1117">44%</text>
+        <text id="dk-la" class="h" x="160" y="410" font-size="34" font-weight="700" fill="#FC6255">朝鲜相关 · 33 起</text>
+        <text id="dk-lb" class="h" x="160" y="410" font-size="34" font-weight="700" fill="#FC6255">朝鲜相关 · 32 起</text>
+        <text id="dk-ta" class="h" x="1760" y="410" font-size="30" fill="#8a8f99" text-anchor="end">全部 · $193.4 亿</text>
+        <text id="dk-tb" class="h" x="1760" y="410" font-size="30" fill="#8a8f99" text-anchor="end">全部 · $130 亿</text>
+        <g id="dk-b1" class="h" stroke="#FC6255" stroke-width="3" fill="none"><path id="dk-b1p" d="M160 548 V562 H962 V548" /></g>
+        <text id="dk-ea" class="h" x="160" y="604" font-size="32" font-weight="700" fill="#FC6255">执法确认 · 11 起 · $96.9 亿</text>
+        <text id="dk-eb" class="h" x="160" y="604" font-size="32" font-weight="700" fill="#FC6255">执法确认 · 10 起 · $33.5 亿</text>
+        <g id="dk-o" class="h"><path d="M968 548 V562 H1153 V548 M968 562 V636" stroke="#e89a92" stroke-width="2.5" fill="none" /><text x="982" y="666" font-size="30" fill="#e89a92">其余含研究判断</text></g>
+        <text id="dk-warn" class="h" x="960" y="820" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">研究判断 <tspan fill="#FC6255">≠</tspan> 执法结论</text>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      IN("#dk-head", at(0, 0.02));
+      IN("#dk-tot", at(0, 0.08), 0.5);
+      IN("#dk-ta", at(0, 0.15), 0.5);
+      tl.to("#dk-red", { attr: { width: 993.2 }, duration: 1.0, ease: "power2.out" }, at(0, 0.25));
+      IN("#dk-la", at(0, 0.35)); IN("#dk-pa", at(0, 0.55), 0.5);
+
+      // L1 执法确认只占一部分
+      tl.to("#dk-red", { opacity: 0.45, duration: 0.4 }, at(1, 0.05));
+      IN("#dk-enf", at(1, 0.1), 0.5);
+      IN("#dk-b1", at(1, 0.25), 0.4); IN("#dk-ea", at(1, 0.3));
+      IN("#dk-o", at(1, 0.55), 0.5);
+
+      // L2 等级不同
+      IN("#dk-warn", at(2, 0.1), 0.6, { y: 20 });
+
+      // L3 排除 Binance：44%
+      OUT("#dk-warn", at(3, 0.0), 0.3); OUT("#dk-o", at(3, 0.0), 0.3);
+      IN("#dk-ex", at(3, 0.05), 0.4);
+      OUT("#dk-pa", at(3, 0.05), 0.2); OUT("#dk-la", at(3, 0.05), 0.2); OUT("#dk-ta", at(3, 0.05), 0.2); OUT("#dk-ea", at(3, 0.05), 0.2);
+      tl.to("#dk-red", { attr: { width: 697.3 }, duration: 0.9, ease: "power2.inOut" }, at(3, 0.12));
+      tl.to("#dk-enf", { attr: { width: 412.5 }, duration: 0.9, ease: "power2.inOut" }, at(3, 0.12));
+      tl.to("#dk-b1p", { attr: { d: "M160 548 V562 H572 V548" }, duration: 0.9, ease: "power2.inOut" }, at(3, 0.12));
+      IN("#dk-pb", at(3, 0.45), 0.5); IN("#dk-lb", at(3, 0.45)); IN("#dk-tb", at(3, 0.45)); IN("#dk-eb", at(3, 0.5));
+
+      tl.to("#dk-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["dprk"] = tl;
+    })();
+  </script>
+</template>

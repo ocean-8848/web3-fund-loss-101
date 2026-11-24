@@ -1,0 +1,90 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 gate，id 前缀 gt- -->
+  <div id="root" data-composition-id="gate" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="gt-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" /></marker>
+      </defs>
+      <g id="gt-all">
+        <g id="gt-st"></g>
+        <g id="gt-gates"></g>
+        <g id="gt-newo"><g id="gt-new" class="h">
+          <rect x="860" y="250" width="200" height="70" rx="35" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" />
+          <text x="960" y="296" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">新词？</text>
+        </g></g>
+        <text id="gt-q" class="h" x="960" y="860" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">它在哪一站起作用？谁能用它，谁能挡住它？</text>
+      </g>
+
+      <!-- 术语卡 -->
+      <g id="gt-t1" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#83C167" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">SRI <tspan font-size="28" font-weight="400" fill="#8a8f99">子资源完整性</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">浏览器校验外部脚本的哈希</text></g>
+      <g id="gt-t2" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#83C167" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">Safe Guard</text><text x="100" y="160" font-size="28" fill="#e8e6df">Safe 钱包的交易前置检查合约</text></g>
+      <g id="gt-t3" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#83C167" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">时间锁 / 熔断</text><text x="100" y="160" font-size="28" fill="#e8e6df">先等一等；出事就停</text></g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const NS = "http://www.w3.org/2000/svg";
+      const mk = (tag, a, p, txt) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; p.appendChild(e); return e; };
+      const TERM = (n, prev) => { if (prev) OUT("#gt-t" + prev, at(n, 0.0), 0.3); IN("#gt-t" + n, at(n, 0.05), 0.5, { x: -20 }); };
+
+      const S = [["人与入口", "#e8e6df"], ["钥匙与签名", "#F0B90B"], ["合约与代码", "#58C4DD"], ["跨链与价格", "#58C4DD"], ["资金去向", "#FC6255"]];
+      const gs = document.querySelector("#gt-st"), gg = document.querySelector("#gt-gates");
+      const st = [], ar = [], boxes = [];
+      S.forEach((s, i) => {
+        const cx = 240 + 360 * i, g = mk("g", { opacity: 0 }, gs);
+        boxes.push(mk("rect", { x: cx - 140, y: 480, width: 280, height: 150, rx: 16, fill: "#161a22", stroke: s[1], "stroke-width": 2.5 }, g));
+        mk("text", { x: cx, y: 567, "font-size": 36, "font-weight": 700, fill: s[1], "text-anchor": "middle" }, g, s[0]);
+        st.push(g);
+        if (i < 4) ar.push(mk("path", { d: `M${cx + 148} 555 H${cx + 212}`, stroke: "#8a8f99", "stroke-width": 3, fill: "none", "marker-end": "url(#gt-arr)", class: "dr h", pathLength: 1 }, gs));
+      });
+      // 闸门：位置、名称、说明
+      const G = [[420, "SRI", "脚本哈希不符就拒绝"], [780, "Safe Guard", "交易前拦特定操作"], [1140, "时间锁", "通过后先等一段"], [1500, "熔断", "异常时停签停交易"]];
+      const gates = G.map(g => {
+        const e = mk("g", { opacity: 0 }, gg);
+        mk("rect", { x: g[0] - 9, y: 440, width: 18, height: 230, rx: 6, fill: "#83C167" }, e);
+        mk("text", { x: g[0], y: 730, "font-size": 34, "font-weight": 700, fill: "#83C167", "text-anchor": "middle" }, e, g[1]);
+        mk("text", { x: g[0], y: 776, "font-size": 28, fill: "#c9ccd3", "text-anchor": "middle" }, e, g[2]);
+        return e;
+      });
+
+      // L0 链
+      st.forEach((g, i) => IN(g, at(0, 0.05) + i * 0.12, 0.5, { y: 20 }));
+      ar.forEach((a, i) => ARROW(a, at(0, 0.2) + i * 0.12, 0.4));
+
+      // L1 SRI
+      TERM(1);
+      IN(gates[0], at(1, 0.15), 0.5, { y: -40 });
+      // L2 Safe Guard
+      TERM(2, 1);
+      IN(gates[1], at(2, 0.15), 0.5, { y: -40 });
+      // L3 时间锁 + 熔断
+      TERM(3, 2);
+      IN(gates[2], at(3, 0.12), 0.5, { y: -40 });
+      IN(gates[3], at(3, 0.5), 0.5, { y: -40 });
+
+      // L4 新词落站
+      OUT("#gt-t3", at(4, 0.0), 0.3);
+      IN("#gt-new", at(4, 0.05), 0.5, { y: -20 });
+      tl.to("#gt-newo", { y: 120, duration: 0.6, ease: "power2.in" }, at(4, 0.3));
+      tl.to("#gt-newo", { opacity: 0, duration: 0.2 }, at(4, 0.3) + 0.55);
+      tl.to(boxes[2], { attr: { "stroke-width": 7 }, duration: 0.3 }, at(4, 0.3) + 0.6);
+      IN("#gt-q", at(4, 0.6));
+
+      tl.to("#gt-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["gate"] = tl;
+    })();
+  </script>
+</template>

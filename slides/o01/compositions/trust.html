@@ -1,0 +1,106 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 trust，id 前缀 tr- -->
+  <div id="root" data-composition-id="trust" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="tr-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="tr-all">
+        <!-- L1 十二个信任域 -->
+        <text id="tr-head" class="h" x="960" y="200" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">12 个信任域</text>
+        <g id="tr-g0" class="h"><rect id="tr-gr0" x="80" y="250" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="210" y="306" font-size="30" fill="#8a8f99" text-anchor="middle">社工/人</text></g>
+        <g id="tr-g1" class="h"><rect id="tr-gr1" x="380" y="250" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="510" y="306" font-size="30" fill="#8a8f99" text-anchor="middle">终端</text></g>
+        <g id="tr-g2" class="h"><rect id="tr-gr2" x="680" y="250" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="810" y="306" font-size="30" fill="#8a8f99" text-anchor="middle">身份/会话</text></g>
+        <g id="tr-g3" class="h"><rect id="tr-gr3" x="980" y="250" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="1110" y="306" font-size="30" fill="#8a8f99" text-anchor="middle">云/内部平台</text></g>
+        <g id="tr-g4" class="h"><rect id="tr-gr4" x="1280" y="250" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="1410" y="306" font-size="30" fill="#8a8f99" text-anchor="middle">供应商</text></g>
+        <g id="tr-g5" class="h"><rect id="tr-gr5" x="1580" y="250" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="1710" y="306" font-size="30" fill="#8a8f99" text-anchor="middle">前端/界面</text></g>
+        <g id="tr-g6" class="h"><rect id="tr-gr6" x="80" y="380" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="210" y="436" font-size="30" fill="#8a8f99" text-anchor="middle">签名/密钥</text></g>
+        <g id="tr-g7" class="h"><rect id="tr-gr7" x="380" y="380" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="510" y="436" font-size="30" fill="#8a8f99" text-anchor="middle">治理</text></g>
+        <g id="tr-g8" class="h"><rect id="tr-gr8" x="680" y="380" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="810" y="436" font-size="30" fill="#8a8f99" text-anchor="middle">合约</text></g>
+        <g id="tr-g9" class="h"><rect id="tr-gr9" x="980" y="380" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="1110" y="436" font-size="30" fill="#8a8f99" text-anchor="middle">预言机/市场</text></g>
+        <g id="tr-g10" class="h"><rect id="tr-gr10" x="1280" y="380" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="1410" y="436" font-size="30" fill="#8a8f99" text-anchor="middle">跨链</text></g>
+        <g id="tr-g11" class="h"><rect id="tr-gr11" x="1580" y="380" width="260" height="90" rx="12" fill="#161a22" stroke="#3a3f4a" stroke-width="2.5" /><text x="1710" y="436" font-size="30" fill="#8a8f99" text-anchor="middle">链上</text></g>
+
+        <!-- L0 攻击链 -->
+        <g id="tr-atk" class="h">
+          <circle cx="150" cy="720" r="62" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="150" y="731" font-size="28" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+        </g>
+        <g id="tr-c0" class="h"><rect x="327" y="675" width="230" height="90" rx="12" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text x="442" y="731" font-size="32" fill="#e8e6df" text-anchor="middle">社工/人</text></g>
+        <g id="tr-c1" class="h"><rect x="672" y="675" width="230" height="90" rx="12" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text x="787" y="731" font-size="32" fill="#e8e6df" text-anchor="middle">终端</text></g>
+        <g id="tr-c2" class="h"><rect x="1017" y="675" width="230" height="90" rx="12" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text x="1132" y="731" font-size="32" fill="#e8e6df" text-anchor="middle">身份/会话</text></g>
+        <g id="tr-c3" class="h"><rect x="1362" y="675" width="230" height="90" rx="12" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text x="1477" y="731" font-size="32" fill="#e8e6df" text-anchor="middle">签名/密钥</text></g>
+        <g id="tr-fund" class="h">
+          <circle cx="1770" cy="720" r="62" fill="#2a2410" stroke="#F0B90B" stroke-width="3" />
+          <text x="1770" y="731" font-size="30" font-weight="700" fill="#F0B90B" text-anchor="middle">资金</text>
+        </g>
+        <path id="tr-a0" class="dr h" pathLength="1" d="M220 720 H319" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#tr-arr)" />
+        <path id="tr-a1" class="dr h" pathLength="1" d="M565 720 H664" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#tr-arr)" />
+        <path id="tr-a2" class="dr h" pathLength="1" d="M910 720 H1009" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#tr-arr)" />
+        <path id="tr-a3" class="dr h" pathLength="1" d="M1255 720 H1354" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#tr-arr)" />
+        <path id="tr-a4" class="dr h" pathLength="1" d="M1600 720 H1700" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#tr-arr)" />
+
+        <!-- L2 上游已验证 -->
+        <g id="tr-chk" class="h" font-size="32" font-weight="700" fill="#8a8f99" text-anchor="middle"><text x="266" y="672" >✓</text><text x="610" y="672" >✓</text><text x="956" y="672" >✓</text><text x="1300" y="672" >✓</text><text x="1646" y="672" >✓</text></g>
+        <text id="tr-cap1" class="h" x="960" y="860" font-size="36" fill="#e8e6df" text-anchor="middle">每一关都默认：<tspan fill="#8a8f99">上游已经验证过</tspan></text>
+        <circle id="tr-dot" class="h" cx="150" cy="720" r="16" fill="#FC6255" />
+
+        <!-- L3 切断点 -->
+        <g id="tr-cut" stroke="#83C167" stroke-width="6" stroke-linecap="round" fill="none"><path class="h" d="M254 752 L282 688" /><path class="h" d="M598 752 L626 688" /><path class="h" d="M944 752 L972 688" /><path class="h" d="M1288 752 L1316 688" /><path class="h" d="M1634 752 L1662 688" /></g>
+        <text id="tr-cap2" class="h" x="960" y="860" font-size="40" font-weight="700" fill="#83C167" text-anchor="middle">每跨一个域，就多一个可以切断的位置</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 攻击者沿一串信任关系走向资金
+      IN("#tr-atk", at(0, 0.02), 0.6, { scale: 0.6, svgOrigin: "150 720" }, { scale: 1 });
+      for (let i = 0; i < 4; i++) {
+        ARROW("#tr-a" + i, at(0, 0.12 + i * 0.13), 0.4);
+        IN("#tr-c" + i, at(0, 0.18 + i * 0.13), 0.5, { y: 16 });
+      }
+      ARROW("#tr-a4", at(0, 0.66), 0.4);
+      IN("#tr-fund", at(0, 0.72), 0.5, { scale: 0.6, svgOrigin: "1770 720" }, { scale: 1 });
+
+      // L1 12 个信任域
+      IN("#tr-head", at(1, 0.02));
+      for (let i = 0; i < 12; i++) IN("#tr-g" + i, at(1, 0.08 + i * 0.035), 0.5, { y: -14 });
+      ["#tr-gr0", "#tr-gr1", "#tr-gr2", "#tr-gr6"].forEach((s, k) =>
+        tl.to(s, { attr: { stroke: "#e8e6df", "stroke-width": 4 }, duration: 0.4 }, at(1, 0.6 + k * 0.04)));
+
+      // L2 每一跳都利用“上游已验证”
+      const d2 = L[2][1] - L[2][0];
+      IN("#tr-dot", at(2, 0.02), 0.2);
+      tl.to("#tr-dot", { x: 1620, duration: d2 * 0.6, ease: "none" }, at(2, 0.05));
+      IN("#tr-chk", at(2, 0.15), 0.6);
+      IN("#tr-cap1", at(2, 0.3));
+      OUT("#tr-dot", at(2, 0.66), 0.3);
+
+      // L3 每一跳都是切断点
+      OUT("#tr-chk", at(3, 0.0), 0.3);
+      OUT("#tr-cap1", at(3, 0.0), 0.3);
+      tl.fromTo("#tr-cut path", { opacity: 0, scale: 0.3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.35, stagger: 0.15, ease: "back.out(2)" }, at(3, 0.12));
+      tl.to("#tr-a0, #tr-a1, #tr-a2, #tr-a3, #tr-a4", { opacity: 0.35, duration: 0.4 }, at(3, 0.15));
+      IN("#tr-cap2", at(3, 0.4));
+
+      tl.to("#tr-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["trust"] = tl;
+    })();
+  </script>
+</template>

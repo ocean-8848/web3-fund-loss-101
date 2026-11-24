@@ -1,0 +1,95 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 families，id 前缀 fa- -->
+  <div id="root" data-composition-id="families" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="fa-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="fa-all">
+        <text id="fa-title" class="h" x="960" y="120" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">六种形态，一个结果</text>
+        <g id="fa-hub" class="h">
+          <rect id="fa-hubb" x="800" y="460" width="320" height="160" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="960" y="530" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">合约放款给</text>
+          <text x="960" y="586" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">不该得到的人</text>
+        </g>
+        <g id="fa-n1" class="h">
+          <rect x="80" y="200" width="560" height="150" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="110" y="256" font-size="34" font-weight="700" fill="#58C4DD">重入</text>
+          <text x="110" y="300" font-size="28" fill="#e8e6df">The DAO · Fei Rari</text>
+          <text x="110" y="336" font-size="28" fill="#e8e6df">Curve · GMX v1</text>
+        </g>
+        <path id="fa-n1a" class="dr h" pathLength="1" d="M650 275 C720 275 720 500 788 500" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#fa-arr)" />
+        <g id="fa-n2" class="h">
+          <rect x="80" y="465" width="560" height="150" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="110" y="521" font-size="34" font-weight="700" fill="#58C4DD">舍入与精度</text>
+          <text x="110" y="565" font-size="28" fill="#e8e6df">Balancer v2 · KyberSwap</text>
+          <text x="110" y="601" font-size="28" fill="#e8e6df">Hundred · zkLend</text>
+        </g>
+        <path id="fa-n2a" class="dr h" pathLength="1" d="M650 540 C720 540 720 540 788 540" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#fa-arr)" />
+        <g id="fa-n3" class="h">
+          <rect x="80" y="730" width="560" height="150" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="110" y="786" font-size="34" font-weight="700" fill="#58C4DD">访问控制与初始化</text>
+          <text x="110" y="830" font-size="28" fill="#e8e6df">Parity · Nomad · Poly</text>
+        </g>
+        <path id="fa-n3a" class="dr h" pathLength="1" d="M650 805 C720 805 720 580 788 580" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#fa-arr)" />
+        <g id="fa-n4" class="h">
+          <rect x="1280" y="200" width="560" height="150" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1310" y="256" font-size="34" font-weight="700" fill="#58C4DD">输入校验</text>
+          <text x="1310" y="300" font-size="28" fill="#e8e6df">Wormhole · Qubit</text>
+          <text x="1310" y="336" font-size="28" fill="#e8e6df">Socket · LI.FI</text>
+        </g>
+        <path id="fa-n4a" class="dr h" pathLength="1" d="M1270 275 C1200 275 1200 500 1132 500" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#fa-arr)" />
+        <g id="fa-n5" class="h">
+          <rect x="1280" y="465" width="560" height="150" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1310" y="521" font-size="34" font-weight="700" fill="#58C4DD">溢出与检查错误</text>
+          <text x="1310" y="565" font-size="28" fill="#e8e6df">Cetus · Truebit</text>
+        </g>
+        <path id="fa-n5a" class="dr h" pathLength="1" d="M1270 540 C1200 540 1200 540 1132 540" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#fa-arr)" />
+        <g id="fa-n6" class="h">
+          <rect x="1280" y="730" width="560" height="150" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1310" y="786" font-size="34" font-weight="700" fill="#58C4DD">缺失不变量</text>
+          <text x="1310" y="830" font-size="28" fill="#e8e6df">Euler</text>
+        </g>
+        <path id="fa-n6a" class="dr h" pathLength="1" d="M1270 805 C1200 805 1200 580 1132 580" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#fa-arr)" />
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...("x" in from ? { x: 0 } : {}), ...("y" in from ? { y: 0 } : {}), ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const PULSE = t => tl.fromTo("#fa-hubb", { attr: { "stroke-width": 3 } }, { attr: { "stroke-width": 7 }, duration: 0.25, yoyo: true, repeat: 1, immediateRender: false }, t);
+
+      IN("#fa-title", at(0, 0.05), 0.8, { y: 20 });
+      IN("#fa-hub", at(0, 0.35), 0.6, { scale: 0.8, svgOrigin: "960 540" }, { scale: 1 });
+
+      const nodes = [["#fa-n1", 1, -40], ["#fa-n2", 2, -40], ["#fa-n3", 3, -40], ["#fa-n4", 4, 40]];
+      nodes.forEach(([s, i, dx]) => {
+        IN(s, at(i, 0.05), 0.6, { x: dx });
+        ARROW(s + "a", at(i, 0.35), 0.6);
+        PULSE(at(i, 0.5));
+      });
+      IN("#fa-n5", at(5, 0.05), 0.6, { x: 40 });
+      ARROW("#fa-n5a", at(5, 0.25), 0.6);
+      IN("#fa-n6", at(5, 0.45), 0.6, { x: 40 });
+      ARROW("#fa-n6a", at(5, 0.6), 0.6);
+      PULSE(at(5, 0.72));
+
+      tl.to("#fa-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["families"] = tl;
+    })();
+  </script>
+</template>

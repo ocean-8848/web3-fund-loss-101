@@ -1,0 +1,99 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 chase，id 前缀 cs- -->
+  <div id="root" data-composition-id="chase" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="cs-all">
+        <text id="cs-title" class="h" x="960" y="120" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">打个比方：追一辆逃逸的车</text>
+        <g id="cs-scene">
+          <g id="cs-road" class="h">
+            <rect x="100" y="560" width="1720" height="90" rx="8" fill="#22252d" />
+            <path d="M120 605 H1800" stroke="#8a8f99" stroke-width="3" stroke-dasharray="30 24" />
+            <path d="M600 540 V670 M1200 540 V670" stroke="#3a3f4a" stroke-width="2" stroke-dasharray="6 6" />
+          </g>
+          <!-- 交警 -->
+          <g id="cs-p" class="h">
+            <rect x="260" y="380" width="180" height="100" rx="14" fill="#132530" stroke="#9CDCEB" stroke-width="3" />
+            <text x="350" y="442" font-size="34" font-weight="700" fill="#9CDCEB" text-anchor="middle">交警</text>
+            <text x="350" y="710" font-size="28" fill="#8a8f99" text-anchor="middle">前 10 分钟</text>
+            <text x="350" y="770" font-size="32" font-weight="700" fill="#9CDCEB" text-anchor="middle">= 稳定币冻结</text>
+          </g>
+          <!-- 收费站 -->
+          <g id="cs-t" class="h">
+            <rect x="840" y="370" width="140" height="120" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="910" y="442" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">收费站</text>
+            <text x="900" y="710" font-size="28" fill="#8a8f99" text-anchor="middle">出了城</text>
+            <text x="900" y="770" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">= 交易所</text>
+          </g>
+          <rect id="cs-bar" class="h" x="1000" y="540" width="16" height="130" rx="4" fill="#B48EF0" />
+          <!-- 侦查 -->
+          <g id="cs-d" class="h">
+            <circle cx="1620" cy="420" r="40" fill="none" stroke="#c9ccd3" stroke-width="5" />
+            <path d="M1648 448 L1690 490" stroke="#c9ccd3" stroke-width="8" stroke-linecap="round" />
+            <text x="1500" y="710" font-size="28" fill="#8a8f99" text-anchor="middle">换了车牌</text>
+            <text x="1500" y="770" font-size="32" font-weight="700" fill="#c9ccd3" text-anchor="middle">= 执法，长期侦查</text>
+          </g>
+          <!-- 车 -->
+          <g id="cs-carO">
+            <g id="cs-car" class="h">
+              <path d="M150 560 L175 528 H245 L270 560 Z" fill="#FC6255" />
+              <rect x="130" y="556" width="160" height="40" rx="10" fill="#FC6255" />
+              <circle cx="165" cy="598" r="14" fill="#0f1117" stroke="#e8e6df" stroke-width="3" />
+              <circle cx="255" cy="598" r="14" fill="#0f1117" stroke="#e8e6df" stroke-width="3" />
+              <rect id="cs-plate" x="186" y="566" width="48" height="20" rx="3" fill="#e8e6df" />
+            </g>
+          </g>
+        </g>
+        <!-- L4 局限 -->
+        <g id="cs-eye" class="h">
+          <path d="M890 260 Q960 200 1030 260 Q960 320 890 260 Z" fill="none" stroke="#58C4DD" stroke-width="4" />
+          <circle cx="960" cy="260" r="18" fill="#58C4DD" />
+        </g>
+        <text id="cs-l1" class="h" x="960" y="870" font-size="36" fill="#e8e6df" text-anchor="middle">比喻的局限：链上每一步都公开可见</text>
+        <text id="cs-l2" class="h" x="960" y="950" font-size="44" font-weight="700" fill="#83C167" text-anchor="middle">难点不在“看到”，在“拦住”</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+
+      // L0
+      IN("#cs-title", at(0, 0.02), 0.8, { y: 20 });
+      IN("#cs-road", at(0, 0.2));
+      IN("#cs-car", at(0, 0.35), 0.5, { x: -40 });
+
+      // L1 交警
+      tl.to("#cs-carO", { x: 360, duration: 1.0, ease: "power2.inOut" }, at(1, 0.05));
+      IN("#cs-p", at(1, 0.35), 0.6, { y: 15 });
+
+      // L2 收费站
+      tl.to("#cs-carO", { x: 680, duration: 1.0, ease: "power2.inOut" }, at(2, 0.05));
+      IN("#cs-t", at(2, 0.3), 0.6, { y: 15 });
+      IN("#cs-bar", at(2, 0.45), 0.4, { scaleY: 0, svgOrigin: "1008 670" }, { scaleY: 1 });
+
+      // L3 换车牌
+      tl.to("#cs-carO", { x: 1280, duration: 1.0, ease: "power2.inOut" }, at(3, 0.05));
+      tl.to("#cs-plate", { attr: { fill: "#F0B90B" }, duration: 0.3 }, at(3, 0.4));
+      IN("#cs-d", at(3, 0.45), 0.6, { y: 15 });
+
+      // L4 局限
+      tl.to("#cs-scene", { opacity: 0.35, duration: 0.5 }, at(4, 0.02));
+      IN("#cs-eye", at(4, 0.1), 0.5, { scale: 0.5, svgOrigin: "960 260" }, { scale: 1 });
+      IN("#cs-l1", at(4, 0.15));
+      IN("#cs-l2", at(4, 0.45), 0.7, { y: 15 });
+
+      tl.to("#cs-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["chase"] = tl;
+    })();
+  </script>
+</template>

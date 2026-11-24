@@ -1,0 +1,118 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 map，id 前缀 mp- -->
+  <div id="root" data-composition-id="map" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="mp-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#e8e6df" />
+        </marker>
+        <marker id="mp-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+        <marker id="mp-arrd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="mp-all">
+        <g id="mp-head" class="h">
+          <text x="960" y="130" font-size="56" font-weight="700" fill="#e8e6df" text-anchor="middle">内部人员、流程缺陷与争议事件</text>
+          <text x="960" y="190" font-size="30" fill="#8a8f99" text-anchor="middle">G10 · 不是一种手法，是三类事件</text>
+        </g>
+
+        <!-- L1 内部人员 → 合法权限 → 结果 -->
+        <g id="mp-in" class="h">
+          <rect x="120" y="290" width="460" height="160" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="350" y="358" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">内部人员</text>
+          <text x="350" y="412" font-size="28" fill="#e8e6df" text-anchor="middle">收买 · 离职未收权 · 卧底</text>
+        </g>
+        <path id="mp-a1" class="dr h" pathLength="1" d="M592 370 H768" stroke="#e8e6df" stroke-width="3" fill="none" marker-end="url(#mp-arr)" />
+        <g id="mp-perm" class="h">
+          <rect id="mp-permb" x="780" y="290" width="360" height="160" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="960" y="384" font-size="40" font-weight="700" fill="#B48EF0" text-anchor="middle">合法权限</text>
+        </g>
+        <path id="mp-a2" class="dr h" pathLength="1" d="M1152 370 H1368" stroke="#e8e6df" stroke-width="3" fill="none" marker-end="url(#mp-arr)" />
+        <g id="mp-out" class="h">
+          <rect x="1380" y="290" width="420" height="160" rx="14" fill="#22252d" stroke="#F0B90B" stroke-width="3" />
+          <text x="1590" y="384" font-size="36" font-weight="700" fill="#F0B90B" text-anchor="middle">数据泄露 / 资金转移</text>
+        </g>
+
+        <!-- L2 流程缺陷 -->
+        <g id="mp-pr" class="h">
+          <rect x="120" y="520" width="460" height="160" rx="14" fill="#1b1f27" stroke="#8a8f99" stroke-width="3" />
+          <text x="350" y="588" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="middle">流程缺陷</text>
+          <text x="350" y="642" font-size="28" fill="#8a8f99" text-anchor="middle">旧地址 · 二次审核 · 迁移</text>
+        </g>
+        <path id="mp-a3" class="dr h" pathLength="1" d="M592 600 C1000 600 1520 600 1590 462" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#mp-arrd)" />
+
+        <!-- L3 阻断 / 争议 -->
+        <g id="mp-bk" class="h">
+          <rect id="mp-bkb" x="120" y="750" width="460" height="160" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+          <text x="350" y="818" font-size="40" font-weight="700" fill="#83C167" text-anchor="middle">阻断 / 争议</text>
+          <text x="350" y="872" font-size="28" fill="#e8e6df" text-anchor="middle">成功阻断 · 性质有争议</text>
+        </g>
+        <path id="mp-a4" class="dr h" pathLength="1" d="M592 830 C820 830 930 760 950 462" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#mp-arrg)" />
+        <text id="mp-a4l" class="h" x="1000" y="730" font-size="28" fill="#83C167">检测在「立足」「横移」阶段生效</text>
+
+        <!-- L4 计数 -->
+        <g id="mp-cnt" class="h">
+          <text x="1490" y="740" font-size="28" fill="#8a8f99">收录事件</text>
+          <text x="1490" y="815" font-size="72" font-weight="700" fill="#FC6255"><tspan id="mp-n">0</tspan><tspan font-size="36" fill="#e8e6df"> 起</tspan></text>
+        </g>
+        <g id="mp-sum" class="h">
+          <text x="1490" y="880" font-size="28" fill="#8a8f99">已披露损失合计</text>
+          <text x="1490" y="950" font-size="64" font-weight="700" fill="#F0B90B">$5.31 亿</text>
+        </g>
+
+        <!-- L5 -->
+        <text id="mp-les" class="h" x="960" y="1010" font-size="40" font-weight="700" fill="#83C167" text-anchor="middle">阻断的案例，和失败的案例一样有价值</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      IN("#mp-head", at(0, 0.05), 0.8, { y: 20 });
+
+      IN("#mp-in", at(1, 0.05), 0.7, { x: -30 });
+      ARROW("#mp-a1", at(1, 0.3), 0.5);
+      IN("#mp-perm", at(1, 0.4));
+      ARROW("#mp-a2", at(1, 0.55), 0.5);
+      IN("#mp-out", at(1, 0.65));
+
+      IN("#mp-pr", at(2, 0.05), 0.7, { x: -30 });
+      ARROW("#mp-a3", at(2, 0.3), 0.9);
+
+      IN("#mp-bk", at(3, 0.05), 0.7, { x: -30 });
+      ARROW("#mp-a4", at(3, 0.3), 0.8);
+      IN("#mp-a4l", at(3, 0.55));
+      tl.fromTo("#mp-permb", { attr: { stroke: "#B48EF0" } }, { attr: { stroke: "#83C167" }, duration: 0.4, immediateRender: false }, at(3, 0.6));
+
+      IN("#mp-cnt", at(4, 0.05));
+      COUNT("#mp-n", 0, 23, at(4, 0.1), 1.0);
+      IN("#mp-sum", at(4, 0.45), 0.7, { y: 20 });
+
+      tl.fromTo("#mp-bkb", { attr: { "stroke-width": 3 } }, { attr: { "stroke-width": 7 }, duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(5, 0.05));
+      IN("#mp-les", at(5, 0.25), 0.8, { y: 20 });
+
+      tl.to("#mp-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["map"] = tl;
+    })();
+  </script>
+</template>

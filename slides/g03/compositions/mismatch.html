@@ -1,0 +1,130 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 mismatch，id 前缀 mm- -->
+  <div id="root" data-composition-id="mismatch" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="mm-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="mm-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="mm-all">
+        <!-- L0 看到的 vs 实际签的 -->
+        <g id="mm-sg" class="h">
+          <rect x="120" y="380" width="360" height="300" rx="16" fill="#161a22" stroke="#e8e6df" stroke-width="3" />
+          <text x="300" y="432" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">签名者</text>
+          <rect x="160" y="460" width="280" height="100" rx="8" fill="#142016" stroke="#83C167" stroke-width="2.5" />
+          <text x="300" y="520" font-size="28" fill="#83C167" text-anchor="middle">转账到温钱包</text>
+          <text x="300" y="640" font-size="28" fill="#8a8f99" text-anchor="middle">看到的</text>
+        </g>
+        <g id="mm-ch" class="h">
+          <rect x="1500" y="420" width="320" height="220" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1660" y="474" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">链上</text>
+          <text x="1660" y="536" font-size="28" fill="#8a8f99" text-anchor="middle">实际签的</text>
+          <text x="1660" y="594" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">升级 / 改权限</text>
+        </g>
+        <text id="mm-neq" class="h" x="990" y="560" font-size="96" font-weight="700" fill="#FC6255" text-anchor="middle">≠</text>
+
+        <!-- L1 中间环节 -->
+        <g id="mm-zone" class="h">
+          <rect x="640" y="410" width="700" height="260" rx="16" fill="none" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="12 10" />
+          <text x="990" y="720" font-size="28" fill="#8a8f99" text-anchor="middle">签名者与链之间</text>
+        </g>
+        <path id="mm-a1" class="h" d="M488 540 H630" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#mm-arrg)" />
+        <path id="mm-a2" class="h" d="M1348 540 H1490" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#mm-arr)" />
+        <text id="mm-tam" class="h" x="990" y="556" font-size="44" font-weight="700" fill="#FC6255" text-anchor="middle">篡改</text>
+        <!-- L2 四种环节 -->
+        <g id="mm-segs" font-size="28" text-anchor="middle">
+          <g class="h"><rect x="660" y="430" width="320" height="100" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="820" y="490" fill="#e8e6df">网页前端</text></g>
+          <g class="h"><rect x="1000" y="430" width="320" height="100" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="1160" y="490" fill="#e8e6df">托管商界面</text></g>
+          <g class="h"><rect x="660" y="550" width="320" height="100" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="820" y="610" fill="#e8e6df">供应商交易构造 API</text></g>
+          <g class="h"><rect x="1000" y="550" width="320" height="100" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="1160" y="610" fill="#e8e6df">通信通道</text></g>
+        </g>
+
+        <!-- L3 真实私钥、有效签名 -->
+        <g id="mm-key" class="h">
+          <g stroke="#F0B90B" stroke-width="5" fill="none" stroke-linecap="round">
+            <circle cx="210" cy="740" r="16" /><path d="M226 740 H270 M256 740 V752 M268 740 V750" />
+          </g>
+          <text x="290" y="750" font-size="28" fill="#F0B90B">真实私钥</text>
+        </g>
+        <g id="mm-ok" class="h">
+          <g transform="rotate(-8 1660 700)">
+            <rect x="1550" y="668" width="220" height="64" rx="8" fill="#0f1117" stroke="#83C167" stroke-width="3.5" />
+            <text x="1660" y="712" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">签名有效</text>
+          </g>
+        </g>
+
+        <!-- L4 攻击者不接触受害方 -->
+        <g id="mm-atk" class="h">
+          <rect x="840" y="210" width="300" height="100" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="990" y="272" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+        </g>
+        <path id="mm-ad" class="dr h" pathLength="1" d="M990 318 V400" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#mm-arr)" />
+        <g id="mm-vic" class="h">
+          <rect x="1440" y="800" width="380" height="110" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="1630" y="868" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">受害方系统</text>
+        </g>
+        <path id="mm-no" class="h" d="M1148 260 C1420 260 1430 640 1440 790" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="10 8" fill="none" />
+        <g id="mm-nox" class="h" stroke="#FC6255" stroke-width="5" stroke-linecap="round"><path d="M1330 360 L1360 390 M1360 360 L1330 390" /></g>
+        <text id="mm-nol" class="h" x="1630" y="960" font-size="28" fill="#8a8f99" text-anchor="middle">不需要接触</text>
+      </g>
+      <g id="mm-term" class="h">
+        <rect x="70" y="56" width="560" height="132" rx="14" fill="#161a22" stroke="#B48EF0" stroke-width="2.5" />
+        <text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">盲签 <tspan font-size="28" font-weight="400" fill="#8a8f99">Blind signing</tspan></text>
+        <text x="100" y="160" font-size="28" fill="#e8e6df">看到的内容 ≠ 实际签名的数据</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      IN("#mm-sg", at(0, 0.05), 0.7, { x: -20 });
+      IN("#mm-ch", at(0, 0.25), 0.7, { x: 20 });
+      IN("#mm-neq", at(0, 0.45), 0.4, { scale: 1.6, svgOrigin: "990 530" }, { scale: 1 });
+      IN("#mm-term", at(0, 0.55));
+
+      // L1
+      OUT("#mm-neq", at(1, 0.0), 0.3);
+      IN("#mm-zone", at(1, 0.1), 0.6);
+      IN("#mm-a1", at(1, 0.2), 0.4, { x: -15 });
+      IN("#mm-a2", at(1, 0.3), 0.4, { x: -15 });
+      IN("#mm-tam", at(1, 0.45), 0.4, { scale: 1.5, svgOrigin: "990 540" }, { scale: 1 });
+
+      // L2
+      OUT("#mm-tam", at(2, 0.0), 0.3);
+      IN("#mm-segs > g", at(2, 0.08), 0.5, { y: 10 }, { stagger: 0.2 });
+
+      // L3
+      IN("#mm-key", at(3, 0.08), 0.5);
+      IN("#mm-ok", at(3, 0.3), 0.35, { scale: 1.6, svgOrigin: "1660 700" }, { scale: 1, ease: "back.out(2)" });
+
+      // L4
+      IN("#mm-atk", at(4, 0.05), 0.5, { y: -15 });
+      ARROW("#mm-ad", at(4, 0.2), 0.4);
+      IN("#mm-vic", at(4, 0.3), 0.5);
+      IN("#mm-no", at(4, 0.4), 0.4);
+      IN("#mm-nox", at(4, 0.5), 0.3, { scale: 1.6, svgOrigin: "1345 375" }, { scale: 1 });
+      IN("#mm-nol", at(4, 0.55), 0.4);
+
+      tl.to("#mm-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#mm-term", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["mismatch"] = tl;
+    })();
+  </script>
+</template>

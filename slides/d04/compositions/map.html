@@ -1,0 +1,85 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 map，id 前缀 mp- -->
+  <div id="root" data-composition-id="map" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="mp-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="mp-all">
+        <g id="mp-big" class="h">
+          <text x="960" y="290" font-size="150" font-weight="700" fill="#e8e6df" text-anchor="middle">46</text>
+          <text x="960" y="356" font-size="34" fill="#8a8f99" text-anchor="middle">个术语 · 一个概念只用一个词</text>
+        </g>
+        <text id="mp-title" class="h" x="100" y="200" font-size="52" font-weight="700" fill="#e8e6df">46 个词，挂到一条攻击链上</text>
+        <g id="mp-st"></g>
+        <g id="mp-def" class="h">
+          <rect x="100" y="830" width="1720" height="100" rx="14" fill="#161a22" stroke="#83C167" stroke-width="2.5" />
+          <text x="136" y="893" font-size="34" font-weight="700" fill="#83C167">防御闸门</text>
+          <text x="560" y="892" font-size="30" fill="#e8e6df">SRI · Safe Guard · 时间锁 · 熔断</text>
+        </g>
+        <g id="mp-dots"></g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const NS = "http://www.w3.org/2000/svg";
+      const mk = (tag, a, p, txt) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; p.appendChild(e); return e; };
+
+      // 五站：名称、颜色、术语数、举例
+      const S = [["人与入口", "#e8e6df", 8, ["社会工程", "会话令牌", "SIM 换卡"]],
+                 ["钥匙与签名", "#F0B90B", 10, ["私钥", "盲签", "多签"]],
+                 ["合约与代码", "#58C4DD", 9, ["delegatecall", "代理合约", "EIP-7702"]],
+                 ["跨链与价格", "#58C4DD", 10, ["跨链桥", "预言机", "闪电贷"]],
+                 ["资金去向", "#FC6255", 5, ["Tornado Cash", "THORChain", "Lazarus"]]];
+      const gs = document.querySelector("#mp-st"), gd = document.querySelector("#mp-dots");
+      const boxes = [], arrows = [], names = [], exs = [], targets = [];
+      S.forEach((s, i) => {
+        const cx = 240 + 360 * i;
+        boxes.push(mk("rect", { x: cx - 140, y: 420, width: 280, height: 150, rx: 16, fill: "#161a22", stroke: s[1], "stroke-width": 2.5, opacity: 0 }, gs));
+        names.push(mk("text", { x: cx, y: 482, "font-size": 36, "font-weight": 700, fill: s[1], "text-anchor": "middle", opacity: 0 }, gs, s[0]));
+        const ge = mk("g", { opacity: 0 }, gs);
+        s[3].forEach((t, k) => mk("text", { x: cx, y: 640 + k * 50, "font-size": 30, fill: "#c9ccd3", "text-anchor": "middle" }, ge, t));
+        exs.push(ge);
+        if (i < 4) arrows.push(mk("path", { d: `M${cx + 148} 495 H${cx + 212}`, stroke: "#8a8f99", "stroke-width": 3, fill: "none", "marker-end": "url(#mp-arr)", class: "dr h", pathLength: 1 }, gs));
+        for (let k = 0; k < s[2]; k++) targets.push([cx - (s[2] - 1) * 11 + k * 22, 535, s[1]]);
+      });
+      for (let k = 0; k < 4; k++) targets.push([400 + k * 30, 880, "#83C167"]);
+      const dots = targets.map((t, i) => mk("circle", { cx: 300 + (i * 373) % 1320, cy: 440 + (i * 211) % 340, r: 10, fill: "#8a8f99", opacity: 0 }, gd));
+
+      // L0 一堆词
+      IN("#mp-big", at(0, 0.02), 0.8, { y: 20 });
+      tl.fromTo(dots, { opacity: 0, scale: 0.4, svgOrigin: "960 600" }, { opacity: 1, scale: 1, duration: 0.4, stagger: 0.03, immediateRender: false }, at(0, 0.25));
+
+      // L1 五站 + 归位
+      OUT("#mp-big", at(1, 0.0), 0.4);
+      IN("#mp-title", at(1, 0.08));
+      boxes.forEach((b, i) => IN(b, at(1, 0.15) + i * 0.12, 0.5, { y: 20 }));
+      arrows.forEach((a, i) => ARROW(a, at(1, 0.3) + i * 0.12, 0.4));
+      dots.forEach((c, i) => tl.to(c, { attr: { cx: targets[i][0], cy: targets[i][1], fill: targets[i][2] }, duration: 0.9, ease: "power2.inOut" }, at(1, 0.35) + (i % 12) * 0.03));
+
+      // L2 站名、举例、防御
+      names.forEach((n, i) => IN(n, at(2, 0.03) + i * 0.1, 0.5));
+      exs.forEach((e, i) => IN(e, at(2, 0.1) + i * 0.1, 0.5, { y: 10 }));
+      IN("#mp-def", at(2, 0.62), 0.6, { y: 15 });
+
+      tl.to("#mp-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["map"] = tl;
+    })();
+  </script>
+</template>

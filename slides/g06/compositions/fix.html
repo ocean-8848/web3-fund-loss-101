@@ -1,0 +1,81 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 fix，id 前缀 gx- -->
+  <div id="root" data-composition-id="fix" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="gx-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#58C4DD" />
+        </marker>
+      </defs>
+      <g id="gx-all">
+        <g id="gx-chart">
+          <text id="gx-tot" class="h" x="960" y="150" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">14 起 · 已披露损失合计 <tspan fill="#FC6255">$1.59 亿</tspan></text>
+          <g font-size="30">
+            <g class="gx-r h"><text x="560" y="278" fill="#e8e6df" text-anchor="end">BadgerDAO</text><rect class="gx-b" data-w="1000" x="590" y="250" width="1000" height="40" rx="5" fill="#FC6255" /><text x="1606" y="280" fill="#e8e6df">$1.2 亿</text></g>
+            <g class="gx-r h"><text x="560" y="354" fill="#e8e6df" text-anchor="end">BigONE</text><rect class="gx-b" data-w="225" x="590" y="326" width="225" height="40" rx="5" fill="#FC6255" /><text x="831" y="356" fill="#e8e6df">$27M</text></g>
+            <g class="gx-r h"><text x="560" y="430" fill="#e8e6df" text-anchor="end">Trust Wallet 扩展</text><rect class="gx-b" data-w="71" x="590" y="402" width="71" height="40" rx="5" fill="#FC6255" /><text x="677" y="432" fill="#e8e6df">$8.5M</text></g>
+            <g class="gx-r h"><text x="560" y="506" fill="#e8e6df" text-anchor="end">CoW Swap（域名）</text><rect class="gx-b" data-w="10" x="590" y="478" width="10" height="40" rx="5" fill="#FC6255" /><text x="616" y="508" fill="#e8e6df">$1.2M</text></g>
+            <g class="gx-r h"><text x="560" y="582" fill="#e8e6df" text-anchor="end">Aerodrome（DNS）</text><rect class="gx-b" data-w="6" x="590" y="554" width="6" height="40" rx="5" fill="#FC6255" /><text x="612" y="584" fill="#e8e6df">$0.7M</text></g>
+            <g class="gx-r h"><text x="560" y="658" fill="#e8e6df" text-anchor="end">Ledger Connect Kit</text><rect class="gx-b" data-w="5" x="590" y="630" width="5" height="40" rx="5" fill="#FC6255" /><text x="611" y="660" fill="#e8e6df">$0.6M</text></g>
+            <g class="gx-r h"><text x="560" y="734" fill="#e8e6df" text-anchor="end">Curve（DNS）</text><rect class="gx-b" data-w="5" x="590" y="706" width="5" height="40" rx="5" fill="#FC6255" /><text x="611" y="736" fill="#e8e6df">$0.6M</text></g>
+            <g id="gx-unk" class="gx-r h"><text x="560" y="810" fill="#8a8f99" text-anchor="end">金额未披露</text>
+              <g fill="none" stroke="#8a8f99" stroke-width="2" stroke-dasharray="6 6"><rect x="590" y="780" width="56" height="44" rx="6" /><rect x="662" y="780" width="56" height="44" rx="6" /><rect x="734" y="780" width="56" height="44" rx="6" /><rect x="806" y="780" width="56" height="44" rx="6" /></g>
+              <g fill="#8a8f99" font-size="28" text-anchor="middle"><text x="618" y="812">?</text><text x="690" y="812">?</text><text x="762" y="812">?</text><text x="834" y="812">?</text></g>
+              <text x="890" y="812" fill="#8a8f99">4 起</text></g>
+          </g>
+          <text id="gx-foot" class="h" x="590" y="890" font-size="28" fill="#8a8f99">另有 3 起不足 $0.1M</text>
+          <text id="gx-wide" class="h" x="1180" y="620" font-size="34" font-weight="700" fill="#e8e6df">影响面大，单笔可能小</text>
+        </g>
+
+        <text id="gx-ph" class="h" x="960" y="330" font-size="30" fill="#8a8f99" text-anchor="middle">代码从上游一路走到用户签名</text>
+        <g id="gx-nodes"><g class="gx-n h"><rect x="100" y="400" width="280" height="110" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" /><text x="240" y="467" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle"><tspan class="mono">npm</tspan> 依赖</text></g><g class="gx-n h"><rect x="470" y="400" width="280" height="110" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" /><text x="610" y="467" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">构建</text></g><g class="gx-n h"><rect x="840" y="400" width="280" height="110" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" /><text x="980" y="467" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">CDN / 域名</text></g><g class="gx-n h"><rect x="1210" y="400" width="280" height="110" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" /><text x="1350" y="467" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">浏览器</text></g><g class="gx-n h"><rect x="1580" y="400" width="280" height="110" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" /><text x="1720" y="467" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">钱包签名</text></g></g>
+        <g fill="none" stroke="#58C4DD" stroke-width="3"><path class="dr h gx-ar" pathLength="1" d="M388 455 H462" marker-end="url(#gx-arr)" /><path class="dr h gx-ar" pathLength="1" d="M758 455 H832" marker-end="url(#gx-arr)" /><path class="dr h gx-ar" pathLength="1" d="M1128 455 H1202" marker-end="url(#gx-arr)" /><path class="dr h gx-ar" pathLength="1" d="M1498 455 H1572" marker-end="url(#gx-arr)" /></g>
+        <g id="gx-c1" class="h"><path d="M240 518 V572" stroke="#83C167" stroke-width="3" /><rect x="90" y="580" width="300" height="120" rx="14" fill="#161f15" stroke="#83C167" stroke-width="2.5" /><text x="240" y="628" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P1 · 锁定版本</text><text x="240" y="674" font-size="28" fill="#e8e6df" text-anchor="middle">新版本 72h 后进构建</text></g><g id="gx-c2" class="h"><path d="M610 518 V572" stroke="#83C167" stroke-width="3" /><rect x="460" y="580" width="300" height="120" rx="14" fill="#161f15" stroke="#83C167" stroke-width="2.5" /><text x="610" y="628" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P0 · 产物签名</text><text x="610" y="674" font-size="28" fill="#e8e6df" text-anchor="middle">构建结果可校验</text></g><g id="gx-c4" class="h"><path d="M1350 518 V572" stroke="#83C167" stroke-width="3" /><rect x="1200" y="580" width="300" height="120" rx="14" fill="#161f15" stroke="#83C167" stroke-width="2.5" /><text x="1350" y="628" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P0 · SRI</text><text x="1350" y="674" font-size="28" fill="#e8e6df" text-anchor="middle">被篡改就拒绝加载</text></g><g id="gx-c3" class="h"><path d="M980 518 V572" stroke="#83C167" stroke-width="3" /><rect x="830" y="580" width="300" height="120" rx="14" fill="#161f15" stroke="#83C167" stroke-width="2.5" /><text x="980" y="628" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P0 · 注册商锁</text><text x="980" y="674" font-size="28" fill="#e8e6df" text-anchor="middle">硬件 MFA · 每季度查</text></g><g id="gx-c5" class="h"><path d="M1720 518 V572" stroke="#83C167" stroke-width="3" /><rect x="1550" y="580" width="300" height="120" rx="14" fill="#161f15" stroke="#83C167" stroke-width="2.5" /><text x="1700" y="628" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P1 · 钱包警告</text><text x="1700" y="674" font-size="28" fill="#e8e6df" text-anchor="middle">无限授权显著提示</text></g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+
+      // L0 条形图
+      IN("#gx-tot", at(0, 0.02), 0.8, { y: 16 });
+      tl.fromTo(".gx-r:not(#gx-unk)", { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.1 }, at(0, 0.15));
+      tl.fromTo(".gx-b", { attr: { width: 0 } }, { attr: { width: (i, el) => +el.dataset.w }, duration: 0.7, ease: "power2.out", stagger: 0.1 }, at(0, 0.15));
+
+      // L1 影响面大、单笔小、4 起未披露
+      IN("#gx-wide", at(1, 0.05), 0.6, { x: -16 });
+      IN("#gx-unk", at(1, 0.35));
+      IN("#gx-foot", at(1, 0.5));
+
+      // L2 管道 + 依赖锁定
+      OUT("#gx-chart", at(2, 0.0));
+      IN("#gx-ph", at(2, 0.05));
+      tl.fromTo(".gx-n", { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.08 }, at(2, 0.08));
+      tl.fromTo(".gx-ar", { opacity: 0 }, { opacity: 1, duration: 0.01 }, at(2, 0.2)); DRAW(".gx-ar", at(2, 0.2), 0.4);
+      IN("#gx-c1", at(2, 0.45), 0.6, { y: -12 });
+
+      // L3 产物签名 + SRI
+      IN("#gx-c2", at(3, 0.1), 0.6, { y: -12 });
+      IN("#gx-c4", at(3, 0.4), 0.6, { y: -12 });
+      // L4 注册商锁 + 硬件 MFA
+      IN("#gx-c3", at(4, 0.1), 0.6, { y: -12 });
+      // L5 钱包警告
+      IN("#gx-c5", at(5, 0.1), 0.6, { y: -12 });
+
+      tl.to("#gx-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["fix"] = tl;
+    })();
+  </script>
+</template>

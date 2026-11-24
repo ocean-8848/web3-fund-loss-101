@@ -1,0 +1,123 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 dns，id 前缀 dn- -->
+  <div id="root" data-composition-id="dns" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="dn-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#58C4DD" />
+        </marker>
+        <marker id="dn-arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="dn-all">
+        <text id="dn-h1" class="h" x="960" y="160" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">Squarespace · 2024</text>
+        <text id="dn-h2" class="h" x="960" y="160" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">CoW Swap · 2026</text>
+
+        <g id="dn-user" class="h">
+          <rect x="100" y="470" width="240" height="120" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="220" y="542" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">用户</text>
+        </g>
+        <path id="dn-a0" class="dr h" pathLength="1" d="M348 530 H432" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#dn-arr)" />
+        <!-- L1 多个前端 -->
+        <g id="dn-stack" class="h" fill="#2a1616" stroke="#FC6255" stroke-width="2.5">
+          <rect x="468" y="442" width="320" height="120" rx="14" /><rect x="454" y="456" width="320" height="120" rx="14" />
+        </g>
+        <g id="dn-dom" class="h">
+          <rect id="dn-domr" x="440" y="470" width="320" height="120" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="600" y="542" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">域名</text>
+        </g>
+        <text id="dn-stl" class="h" x="600" y="640" font-size="28" fill="#FC6255" text-anchor="middle">多个 DeFi 前端</text>
+        <path id="dn-a1" class="dr h" pathLength="1" d="M796 530 H852" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#dn-arr)" />
+        <g id="dn-dns" class="h">
+          <rect id="dn-dnsr" x="860" y="470" width="320" height="120" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1020" y="542" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle"><tspan class="mono">DNS</tspan> 记录</text>
+        </g>
+        <path id="dn-ok" class="dr h" pathLength="1" d="M1188 510 C1240 510 1240 355 1292 355" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#dn-arr)" />
+        <g id="dn-off" class="h">
+          <rect x="1300" y="300" width="360" height="110" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1480" y="367" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">官方前端</text>
+        </g>
+        <path id="dn-bad" class="dr h" pathLength="1" d="M1188 550 C1240 550 1240 705 1292 705" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#dn-arr2)" />
+        <g id="dn-ph" class="h">
+          <rect x="1300" y="650" width="360" height="110" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1480" y="717" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">钓鱼站</text>
+        </g>
+
+        <!-- 注册商 -->
+        <g id="dn-reg" class="h">
+          <rect id="dn-regr" x="440" y="250" width="320" height="110" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="600" y="317" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">域名注册商</text>
+        </g>
+        <path id="dn-rl" class="dr h" pathLength="1" d="M600 368 V430" stroke="#B48EF0" stroke-width="2.5" fill="none" stroke-dasharray="1" />
+        <text id="dn-mfa" class="h" x="784" y="318" font-size="30" font-weight="700" fill="#FC6255">迁移后没有 MFA</text>
+        <g id="dn-doc" class="h">
+          <rect x="300" y="272" width="48" height="62" rx="5" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <path d="M310 290 H338 M310 303 H338 M310 316 H328" stroke="#FC6255" stroke-width="2.5" />
+          <text x="282" y="315" font-size="28" fill="#FC6255" text-anchor="end">伪造身份文件</text>
+        </g>
+        <path id="dn-da" class="dr h" pathLength="1" d="M356 303 H432" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#dn-arr2)" />
+
+        <!-- L3 -->
+        <g id="dn-ct" class="h">
+          <rect x="860" y="800" width="320" height="110" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1020" y="867" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">合约</text>
+          <text x="1020" y="960" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">没有受影响</text>
+        </g>
+        <text id="dn-loss" class="h" x="1480" y="830" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">访问用户损失约 $1.2M</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 DNS 被改，指向钓鱼站
+      IN("#dn-user", at(0, 0.02));
+      ARROW("#dn-a0", at(0, 0.08), 0.3);
+      IN("#dn-dom", at(0, 0.12));
+      ARROW("#dn-a1", at(0, 0.2), 0.3);
+      IN("#dn-dns", at(0, 0.25));
+      ARROW("#dn-ok", at(0, 0.3), 0.4);
+      IN("#dn-off", at(0, 0.35));
+      tl.to("#dn-dnsr", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(0, 0.5));
+      tl.to("#dn-ok", { opacity: 0.2, duration: 0.3 }, at(0, 0.5));
+      ARROW("#dn-bad", at(0, 0.55), 0.4);
+      IN("#dn-ph", at(0, 0.6));
+
+      // L1 Squarespace：迁移后无 MFA，多个前端
+      IN("#dn-h1", at(1, 0.02), 0.8, { y: 16 });
+      IN("#dn-reg", at(1, 0.12));
+      DRAW("#dn-rl", at(1, 0.2), 0.3);
+      tl.to("#dn-regr", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(1, 0.3));
+      IN("#dn-mfa", at(1, 0.32));
+      IN("#dn-stack", at(1, 0.5));
+      IN("#dn-stl", at(1, 0.55));
+
+      // L2 CoW Swap：伪造身份文件
+      OUT("#dn-h1", at(2, 0.0)); OUT("#dn-mfa", at(2, 0.0)); OUT("#dn-stack", at(2, 0.0)); OUT("#dn-stl", at(2, 0.0));
+      IN("#dn-h2", at(2, 0.1), 0.8, { y: 16 });
+      IN("#dn-doc", at(2, 0.25), 0.6, { x: -20 });
+      ARROW("#dn-da", at(2, 0.45), 0.4);
+
+      // L3 合约没事，用户受损
+      IN("#dn-ct", at(3, 0.05));
+      IN("#dn-loss", at(3, 0.35), 0.6, { y: 10 });
+
+      tl.to("#dn-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["dns"] = tl;
+    })();
+  </script>
+</template>

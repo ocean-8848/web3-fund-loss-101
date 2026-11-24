@@ -1,0 +1,70 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 biz，id 前缀 bz- -->
+  <div id="root" data-composition-id="biz" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="bz-all">
+        <text id="bz-head" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">按业务类型 · 损失合计</text>
+        <g id="bz-r0" class="h"><text x="380" y="300" font-size="32" fill="#e8e6df" text-anchor="end"><tspan class="mono">CEX</tspan></text><rect id="bz-b0" x="420" y="268" width="0" height="44" rx="4" fill="#B48EF0" /><text id="bz-v0" x="1840" y="300" font-size="28" fill="#e8e6df" text-anchor="end">106 起 · $123.1 亿</text></g>
+        <g id="bz-r1" class="h"><text x="380" y="378" font-size="32" fill="#e8e6df" text-anchor="end">桥</text><rect id="bz-b1" x="420" y="346" width="0" height="44" rx="4" fill="#58C4DD" /><text id="bz-v1" x="1840" y="378" font-size="28" fill="#e8e6df" text-anchor="end">22 起 · $29.6 亿</text></g>
+        <g id="bz-r2" class="h"><text x="380" y="456" font-size="32" fill="#e8e6df" text-anchor="end"><tspan class="mono">DeFi</tspan></text><rect id="bz-b2" x="420" y="424" width="0" height="44" rx="4" fill="#58C4DD" /><text id="bz-v2" x="1840" y="456" font-size="28" fill="#e8e6df" text-anchor="end">50 起 · $25.2 亿</text></g>
+        <g id="bz-r3" class="h"><text x="380" y="534" font-size="32" fill="#e8e6df" text-anchor="end">钱包</text><rect id="bz-b3" x="420" y="502" width="0" height="44" rx="4" fill="#8a8f99" /><text id="bz-v3" x="1840" y="534" font-size="28" fill="#e8e6df" text-anchor="end">6 起 · $5.77 亿</text></g>
+        <g id="bz-r4" class="h"><text x="380" y="612" font-size="32" fill="#e8e6df" text-anchor="end">其他</text><rect id="bz-b4" x="420" y="580" width="0" height="44" rx="4" fill="#8a8f99" /><text id="bz-v4" x="1840" y="612" font-size="28" fill="#e8e6df" text-anchor="end">5 起 · $3.82 亿</text></g>
+        <g id="bz-r5" class="h"><text x="380" y="690" font-size="32" fill="#e8e6df" text-anchor="end">关联服务</text><rect id="bz-b5" x="420" y="658" width="0" height="44" rx="4" fill="#B48EF0" /><text id="bz-v5" x="1840" y="690" font-size="28" fill="#e8e6df" text-anchor="end">17 起 · $2.81 亿</text></g>
+        <g id="bz-r6" class="h"><text x="380" y="768" font-size="32" fill="#e8e6df" text-anchor="end">基础设施</text><rect id="bz-b6" x="420" y="736" width="0" height="44" rx="4" fill="#8a8f99" /><text id="bz-v6" x="1840" y="768" font-size="28" fill="#e8e6df" text-anchor="end">4 起 · $1.61 亿</text></g>
+        <g id="bz-r7" class="h"><text x="380" y="846" font-size="32" fill="#e8e6df" text-anchor="end">支付</text><rect id="bz-b7" x="420" y="814" width="0" height="44" rx="4" fill="#8a8f99" /><text id="bz-v7" x="1840" y="846" font-size="28" fill="#e8e6df" text-anchor="end">3 起 · $1.47 亿</text></g>
+        <rect id="bz-bin" class="h" x="905.0" y="268" width="515.0" height="44" rx="4" fill="#FC6255" />
+        <rect id="bz-ghost" class="h" x="905.0" y="268" width="515.0" height="44" rx="4" fill="none" stroke="#FC6255" stroke-width="2.5" stroke-dasharray="10 8" />
+        <text id="bz-binl" class="h" x="1163" y="248" font-size="28" font-weight="700" fill="#FC6255" text-anchor="middle">排除 <tspan class="mono">Binance</tspan> $63.4 亿</text>
+        <text id="bz-v0b" class="h" x="1840" y="300" font-size="28" font-weight="700" fill="#B48EF0" text-anchor="end">105 起 · $59.7 亿</text>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      const W = [1000.0, 240.6, 204.4, 46.9, 31.1, 22.8, 13.0, 11.9];
+      IN("#bz-head", at(0, 0.02));
+      for (let i = 0; i < 8; i++) {
+        IN("#bz-r" + i, at(0, 0.06 + i * 0.03), 0.4);
+        tl.to("#bz-b" + i, { attr: { width: W[i] }, duration: 0.8, ease: "power2.out" }, at(0, 0.1 + i * 0.03));
+      }
+      tl.fromTo("#bz-b0", { attr: { stroke: "#e8e6df", "stroke-width": 0 } }, { attr: { "stroke-width": 5 }, duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(0, 0.55));
+      tl.to("#bz-v0", { attr: { fill: "#B48EF0", "font-weight": 700 }, duration: 0.3 }, at(0, 0.55));
+
+      // L1 桥、DeFi
+      tl.to("#bz-r3, #bz-r4, #bz-r5, #bz-r6, #bz-r7", { opacity: 0.35, duration: 0.4 }, at(1, 0.05));
+      tl.to("#bz-v1, #bz-v2", { attr: { fill: "#58C4DD", "font-weight": 700 }, duration: 0.3 }, at(1, 0.15));
+      tl.fromTo("#bz-b1, #bz-b2", { attr: { stroke: "#e8e6df", "stroke-width": 0 } }, { attr: { "stroke-width": 4 }, duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(1, 0.2));
+
+      // L2 排除 Binance
+      IN("#bz-bin", at(2, 0.05), 0.3);
+      tl.to("#bz-b0", { attr: { width: 485.0 }, duration: 0.01 }, at(2, 0.05));
+      IN("#bz-ghost", at(2, 0.3), 0.3);
+      OUT("#bz-bin", at(2, 0.3), 0.5);
+      IN("#bz-binl", at(2, 0.35));
+      OUT("#bz-v0", at(2, 0.4), 0.3); IN("#bz-v0b", at(2, 0.5), 0.4);
+
+      tl.to("#bz-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["biz"] = tl;
+    })();
+  </script>
+</template>

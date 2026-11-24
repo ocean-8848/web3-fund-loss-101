@@ -1,0 +1,94 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 speed，id 前缀 sp- -->
+  <div id="root" data-composition-id="speed" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="sp-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#58C4DD" />
+        </marker>
+      </defs>
+      <g id="sp-all"><g transform="translate(0 120)">
+        <g id="sp-b0" class="h"><rect id="sp-r0" x="80" y="300" width="260" height="100" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="3" /><text x="210" y="362" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">入口</text></g>
+        <g id="sp-b1" class="h"><rect id="sp-r1" x="380" y="300" width="260" height="100" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" /><text x="510" y="362" font-size="34" font-weight="700" fill="#8a8f99" text-anchor="middle">立足</text></g>
+        <g id="sp-b2" class="h"><rect id="sp-r2" x="680" y="300" width="260" height="100" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" /><text x="810" y="362" font-size="34" font-weight="700" fill="#8a8f99" text-anchor="middle">横移</text></g>
+        <g id="sp-b3" class="h"><rect id="sp-r3" x="980" y="300" width="260" height="100" rx="14" fill="#161a22" stroke="#B48EF0" stroke-width="3" /><text x="1110" y="362" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">取得签名能力</text></g>
+        <g id="sp-b4" class="h"><rect id="sp-r4" x="1280" y="300" width="260" height="100" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="3" /><text x="1410" y="362" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">链上执行</text></g>
+        <g id="sp-b5" class="h"><rect id="sp-r5" x="1580" y="300" width="260" height="100" rx="14" fill="#161a22" stroke="#F0B90B" stroke-width="3" /><text x="1710" y="362" font-size="34" font-weight="700" fill="#F0B90B" text-anchor="middle">变现</text></g>
+        <g id="sp-ar" class="h" stroke="#8a8f99" stroke-width="3"><path d="M344 350 H376" /><path d="M644 350 H676" /><path d="M944 350 H976" /><path d="M1244 350 H1276" /><path d="M1544 350 H1576" /></g>
+
+        <!-- L0 CEX / 钱包：走完六步 -->
+        <path id="sp-route" class="dr" pathLength="1" d="M210 470 H1710" stroke="#B48EF0" stroke-width="5" fill="none" stroke-linecap="round" />
+        <g id="sp-rdots" fill="#B48EF0"><circle class="h" cx="210" cy="470" r="10" /><circle class="h" cx="510" cy="470" r="10" /><circle class="h" cx="810" cy="470" r="10" /><circle class="h" cx="1110" cy="470" r="10" /><circle class="h" cx="1410" cy="470" r="10" /><circle class="h" cx="1710" cy="470" r="10" /></g>
+        <text id="sp-rl" class="h" x="190" y="536" font-size="32" fill="#B48EF0"><tspan class="mono">CEX</tspan> · 钱包：走完六步，<tspan font-weight="700">数周～数月</tspan></text>
+
+        <!-- L1 合约类：直接跳步 -->
+        <path id="sp-jump" class="dr h" pathLength="1" d="M210 292 C210 150 1110 150 1110 292" stroke="#58C4DD" stroke-width="4" fill="none" marker-end="url(#sp-arr)" />
+        <text id="sp-jl" class="h" x="660" y="140" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">合约类：直接跳步</text>
+        <text id="sp-jn" class="h mono" x="660" y="262" font-size="28" fill="#e8e6df" text-anchor="middle">Poly · Wormhole · Nomad · Euler</text>
+
+        <!-- L2 代码缺陷 = 放款权 -->
+        <text id="sp-key" class="h" x="1480" y="250" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">代码缺陷 = 放款权</text>
+
+        <!-- L3 链上执行：几秒～几小时 -->
+        <text id="sp-fast" class="h" x="1410" y="536" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">几秒～几小时</text>
+
+        <!-- L4 检测 vs 熔断 -->
+        <path id="sp-br1" class="dr" pathLength="1" d="M80 600 V624 H1240 V600" stroke="#83C167" stroke-width="3" fill="none" />
+        <path id="sp-br2" class="dr" pathLength="1" d="M1280 600 V624 H1540 V600" stroke="#83C167" stroke-width="3" fill="none" />
+        <text id="sp-slow" class="h" x="660" y="696" font-size="40" font-weight="700" fill="#83C167" text-anchor="middle">慢阶段：靠检测</text>
+        <text id="sp-brk" class="h" x="1410" y="696" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">快阶段：靠预设熔断</text>
+      </g></g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const PULSE = (s, t, c) => tl.to(s, { attr: { "stroke-width": 7 }, duration: 0.3, yoyo: true, repeat: 1 }, t);
+
+      // L0 六阶段 + 紫色全程路线
+      for (let i = 0; i < 6; i++) IN("#sp-b" + i, at(0, 0.02 + i * 0.04), 0.4, { y: 14 });
+      IN("#sp-ar", at(0, 0.2), 0.4);
+      DRAW("#sp-route", at(0, 0.3), 1.2);
+      tl.fromTo("#sp-rdots circle", { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.18 }, at(0, 0.32));
+      IN("#sp-rl", at(0, 0.55));
+
+      // L1 合约类跳步
+      ARROW("#sp-jump", at(1, 0.08), 0.9);
+      IN("#sp-jl", at(1, 0.3));
+      IN("#sp-jn", at(1, 0.45));
+      tl.to("#sp-b1, #sp-b2", { opacity: 0.35, duration: 0.5 }, at(1, 0.5));
+
+      // L2 代码缺陷本身就是放款权
+      tl.to("#sp-r3", { attr: { stroke: "#58C4DD" }, duration: 0.4 }, at(2, 0.1));
+      PULSE("#sp-r3", at(2, 0.1));
+      IN("#sp-key", at(2, 0.3), 0.6, { x: -20 });
+
+      // L3 链上执行很快
+      tl.to("#sp-b1, #sp-b2", { opacity: 1, duration: 0.4 }, at(3, 0.0));
+      tl.to("#sp-r4", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(3, 0.1));
+      PULSE("#sp-r4", at(3, 0.1));
+      IN("#sp-fast", at(3, 0.3), 0.4, { scale: 1.4, svgOrigin: "1410 525" }, { scale: 1 });
+
+      // L4 检测 vs 熔断
+      DRAW("#sp-br1", at(4, 0.05), 0.6);
+      IN("#sp-slow", at(4, 0.2));
+      DRAW("#sp-br2", at(4, 0.4), 0.5);
+      IN("#sp-brk", at(4, 0.5));
+
+      tl.to("#sp-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["speed"] = tl;
+    })();
+  </script>
+</template>

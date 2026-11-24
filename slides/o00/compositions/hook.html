@@ -1,0 +1,94 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 hook，id 前缀 ho- -->
+  <div id="root" data-composition-id="hook" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ho-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#e8e6df" />
+        </marker>
+      </defs>
+      <g id="ho-all">
+        <text id="ho-title" class="h" x="960" y="160" font-size="64" font-weight="700" fill="#e8e6df" text-anchor="middle">两次事故，定下十年基调</text>
+
+        <!-- 时间轴 2014–2026：x = 300 + (year-2014) * 116.7 -->
+        <path id="ho-axis" class="dr" pathLength="1" d="M180 540 H1760" stroke="#8a8f99" stroke-width="3" fill="none" />
+        <g id="ho-ticks" class="h" fill="#8a8f99" font-size="28" text-anchor="middle">
+          <path d="M300 530 V550 M533 530 V550 M767 530 V550 M1000 530 V550 M1233 530 V550 M1467 530 V550 M1700 530 V550" stroke="#8a8f99" stroke-width="3" />
+          <text x="300" y="590">2014</text><text x="533" y="516">2016</text><text x="1000" y="590">2020</text><text x="1700" y="590">2026</text>
+        </g>
+
+        <!-- L1 Mt.Gox：钥匙 -->
+        <circle id="ho-d1" class="h" cx="300" cy="540" r="14" fill="#B48EF0" />
+        <path id="ho-s1" class="dr" pathLength="1" d="M300 526 V448" stroke="#B48EF0" stroke-width="3" fill="none" />
+        <g id="ho-key" class="h" stroke="#B48EF0" stroke-width="5" fill="none" stroke-linecap="round">
+          <circle cx="300" cy="350" r="26" />
+          <path d="M300 376 V438 M300 410 H318 M300 426 H322" />
+        </g>
+        <text id="ho-n1" class="h" x="360" y="370" font-size="44" font-weight="700" fill="#B48EF0">Mt.Gox</text>
+        <text id="ho-c1" class="h" x="360" y="424" font-size="32" fill="#e8e6df">托管方的钥匙，就是用户的钱</text>
+
+        <!-- L2 The DAO：代码 -->
+        <circle id="ho-d2" class="h" cx="533" cy="540" r="14" fill="#58C4DD" />
+        <path id="ho-s2" class="dr" pathLength="1" d="M533 554 V650" stroke="#58C4DD" stroke-width="3" fill="none" />
+        <text id="ho-code" class="h mono" x="533" y="722" font-size="54" font-weight="700" fill="#58C4DD" text-anchor="middle">{ }</text>
+        <text id="ho-n2" class="h" x="610" y="712" font-size="44" font-weight="700" fill="#58C4DD">The DAO</text>
+        <text id="ho-c2" class="h" x="610" y="766" font-size="32" fill="#e8e6df">合约的一个顺序错误，也是钱</text>
+
+        <!-- L3 两条线展开 -->
+        <path id="ho-t1" class="dr" pathLength="1" d="M314 540 C380 470 420 468 480 468 H1700" stroke="#B48EF0" stroke-width="6" fill="none" stroke-linecap="round" />
+        <path id="ho-t2" class="dr" pathLength="1" d="M547 540 C600 620 640 625 700 625 H1700" stroke="#58C4DD" stroke-width="6" fill="none" stroke-linecap="round" />
+        <g id="ho-dots1" fill="#B48EF0">
+          <circle class="h" cx="900" cy="468" r="9" /><circle class="h" cx="1080" cy="468" r="9" /><circle class="h" cx="1290" cy="468" r="9" /><circle class="h" cx="1420" cy="468" r="9" /><circle class="h" cx="1600" cy="468" r="9" />
+        </g>
+        <g id="ho-dots2" fill="#58C4DD">
+          <circle class="h" cx="820" cy="625" r="9" /><circle class="h" cx="1010" cy="625" r="9" /><circle class="h" cx="1150" cy="625" r="9" /><circle class="h" cx="1350" cy="625" r="9" /><circle class="h" cx="1530" cy="625" r="9" />
+        </g>
+        <text id="ho-l1" class="h" x="1700" y="436" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="end">钥匙线：私钥、签名、托管</text>
+        <text id="ho-l2" class="h" x="1700" y="680" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="end">代码线：合约逻辑、执行顺序</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+
+      IN("#ho-title", at(0, 0.05), 0.8, { y: 20 });
+      DRAW("#ho-axis", at(0, 0.3), 1.2);
+      IN("#ho-ticks", at(0, 0.55));
+
+      IN("#ho-d1", at(1, 0.05), 0.4, { scale: 0, svgOrigin: "300 540" }, { scale: 1 });
+      DRAW("#ho-s1", at(1, 0.15), 0.4);
+      IN("#ho-key", at(1, 0.25), 0.6, { y: 20 });
+      IN("#ho-n1", at(1, 0.35));
+      IN("#ho-c1", at(1, 0.55));
+
+      IN("#ho-d2", at(2, 0.05), 0.4, { scale: 0, svgOrigin: "533 540" }, { scale: 1 });
+      DRAW("#ho-s2", at(2, 0.15), 0.4);
+      IN("#ho-code", at(2, 0.25), 0.6, { y: -20 });
+      IN("#ho-n2", at(2, 0.35));
+      IN("#ho-c2", at(2, 0.55));
+
+      tl.to("#ho-title", { opacity: 0.35, duration: 0.5 }, at(3, 0));
+      DRAW("#ho-t1", at(3, 0.05), 1.6);
+      DRAW("#ho-t2", at(3, 0.15), 1.6);
+      tl.fromTo("#ho-dots1 circle", { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.15 }, at(3, 0.3));
+      tl.fromTo("#ho-dots2 circle", { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.15 }, at(3, 0.38));
+      IN("#ho-l1", at(3, 0.6));
+      IN("#ho-l2", at(3, 0.68));
+
+      tl.to("#ho-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

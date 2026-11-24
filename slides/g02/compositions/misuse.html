@@ -1,0 +1,120 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 misuse，id 前缀 ms- -->
+  <div id="root" data-composition-id="misuse" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ms-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="ms-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="ms-all">
+        <!-- L0 两件事 -->
+        <g id="ms-src" class="h">
+          <rect x="100" y="440" width="300" height="160" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="250" y="532" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">签名能力</text>
+        </g>
+        <path id="ms-up" class="dr h" pathLength="1" d="M408 490 C470 490 470 330 532 330" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#ms-arrg)" />
+        <path id="ms-dn" class="dr h" pathLength="1" d="M408 550 C470 550 470 730 532 730" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#ms-arrg)" />
+        <g id="ms-t1" class="h">
+          <rect x="540" y="260" width="320" height="140" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="700" y="344" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">私钥泄露</text>
+        </g>
+        <g id="ms-t2" class="h">
+          <rect x="540" y="660" width="320" height="140" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="700" y="744" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">签名能力被滥用</text>
+        </g>
+        <text id="ms-neq" class="h" x="700" y="552" font-size="72" font-weight="700" fill="#e8e6df" text-anchor="middle">≠</text>
+
+        <!-- 链上转出 -->
+        <g id="ms-ch" class="h">
+          <rect x="1540" y="460" width="300" height="140" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1690" y="542" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">链上转出</text>
+        </g>
+
+        <!-- L1 泄露：私钥被拿走 -->
+        <path id="ms-a1" class="dr h" pathLength="1" d="M868 330 H990" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#ms-arr)" />
+        <g id="ms-atk" class="h">
+          <rect x="1000" y="260" width="400" height="140" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1240" y="344" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者直接签名</text>
+        </g>
+        <path id="ms-a2" class="dr h" pathLength="1" d="M1408 330 C1480 330 1480 500 1530 510" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#ms-arr)" />
+
+        <!-- L2 滥用：私钥完好，系统照签 -->
+        <path id="ms-b1" class="dr h" pathLength="1" d="M868 730 H990" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#ms-arr)" />
+        <g id="ms-sys" class="h">
+          <rect x="1000" y="660" width="400" height="140" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <g stroke="#83C167" stroke-width="5" fill="none" stroke-linecap="round">
+            <circle cx="1060" cy="706" r="14" /><path d="M1074 706 H1110 M1098 706 V716 M1108 706 V714" />
+          </g>
+          <text x="1130" y="716" font-size="28" fill="#83C167">私钥完好</text>
+          <text x="1200" y="770" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">签了不该签的</text>
+        </g>
+        <path id="ms-b2" class="dr h" pathLength="1" d="M1408 730 C1480 730 1480 560 1530 550" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#ms-arr)" />
+        <!-- 钥匙：从签名能力移到攻击者（写在攻击者框之后） -->
+        <g id="ms-keyo">
+          <g id="ms-key" class="h" stroke="#F0B90B" stroke-width="5" fill="none" stroke-linecap="round">
+            <circle cx="220" cy="572" r="13" /><path d="M233 572 H268 M257 572 V582 M266 572 V580" />
+          </g>
+        </g>
+
+        <!-- L3 例子 -->
+        <text id="ms-ex" class="h" x="1200" y="860" font-size="30" fill="#B48EF0" text-anchor="middle">Binance 热钱包事件 · Bitget</text>
+        <!-- L4 局限 -->
+        <g id="ms-lim" class="h">
+          <rect x="1000" y="120" width="800" height="90" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="10 8" />
+          <text x="1400" y="177" font-size="30" fill="#e8e6df" text-anchor="middle">多数事件只公开“私钥受影响”</text>
+        </g>
+        <text id="ms-limq" class="h" x="1200" y="236" font-size="28" fill="#8a8f99" text-anchor="middle">如何受影响：未公开</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      IN("#ms-src", at(0, 0.02), 0.6);
+      IN("#ms-key", at(0, 0.1), 0.4);
+      ARROW("#ms-up", at(0, 0.2), 0.5); ARROW("#ms-dn", at(0, 0.2), 0.5);
+      IN("#ms-t1", at(0, 0.35), 0.5, { x: -20 });
+      IN("#ms-t2", at(0, 0.45), 0.5, { x: -20 });
+      IN("#ms-neq", at(0, 0.6), 0.4, { scale: 1.6, svgOrigin: "700 530" }, { scale: 1 });
+
+      // L1 泄露
+      IN("#ms-ch", at(1, 0.02), 0.5);
+      ARROW("#ms-a1", at(1, 0.1), 0.4);
+      IN("#ms-atk", at(1, 0.18), 0.5, { x: -20 });
+      tl.to("#ms-keyo", { x: 830, y: -242, duration: 1.0, ease: "power2.inOut" }, at(1, 0.3));
+      ARROW("#ms-a2", at(1, 0.6), 0.5);
+
+      // L2 滥用
+      ARROW("#ms-b1", at(2, 0.05), 0.4);
+      IN("#ms-sys", at(2, 0.15), 0.6, { x: -20 });
+      ARROW("#ms-b2", at(2, 0.5), 0.5);
+
+      // L3
+      IN("#ms-ex", at(3, 0.1), 0.6, { y: 10 });
+      tl.fromTo("#ms-sys rect", { attr: { "stroke-width": 3 } }, { attr: { "stroke-width": 6 }, duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(3, 0.4));
+
+      // L4 局限
+      IN("#ms-lim", at(4, 0.05), 0.6, { y: -10 });
+      IN("#ms-limq", at(4, 0.35), 0.6);
+
+      tl.to("#ms-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["misuse"] = tl;
+    })();
+  </script>
+</template>

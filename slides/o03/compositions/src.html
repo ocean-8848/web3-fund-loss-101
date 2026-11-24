@@ -1,0 +1,86 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 src，id 前缀 sr- -->
+  <div id="root" data-composition-id="src" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="sr-ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" /></marker></defs>
+      <g id="sr-all">
+        <g id="sr-doc" class="h">
+          <path d="M90 320 H170 L200 350 V470 H90 Z" fill="#161a22" stroke="#e8e6df" stroke-width="3" /><path d="M170 320 V350 H200" fill="none" stroke="#e8e6df" stroke-width="3" />
+          <path d="M110 380 H180 M110 410 H180 M110 440 H160" stroke="#8a8f99" stroke-width="3" />
+          <text x="145" y="512" font-size="28" fill="#e8e6df" text-anchor="middle">原始材料</text>
+        </g>
+        <path id="sr-ax" class="dr h" pathLength="1" d="M240 260 H1830" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#sr-ag)" />
+        <text id="sr-axl" class="h" x="1830" y="232" font-size="28" fill="#8a8f99" text-anchor="end">离原始材料越来越远</text>
+        <g id="sr-bp" class="h"><circle cx="420" cy="370" r="50" fill="#161a22" stroke="#83C167" stroke-width="3.5" /><text class="mono" x="420" y="388" font-size="52" font-weight="700" fill="#83C167" text-anchor="middle">P</text></g>
+        <g id="sr-dp" class="h" text-anchor="middle"><text x="420" y="472" font-size="32" font-weight="700" fill="#83C167">原始披露</text><text x="420" y="520" font-size="28" fill="#e8e6df">平台 · 供应商 · 监管 · 司法</text><text x="420" y="570" font-size="28" font-weight="700" fill="#FC6255">≠ 独立验证</text></g>
+        <text id="sr-dp2" class="h" x="420" y="620" font-size="28" fill="#e8e6df" text-anchor="middle">受害方可能低估责任</text>
+        <g id="sr-bi" class="h"><circle cx="880" cy="370" r="50" fill="#161a22" stroke="#58C4DD" stroke-width="3.5" /><text class="mono" x="880" y="388" font-size="52" font-weight="700" fill="#58C4DD" text-anchor="middle">I</text></g>
+        <g id="sr-di" class="h" text-anchor="middle"><text x="880" y="472" font-size="32" font-weight="700" fill="#58C4DD">调查机构研究</text><text class="mono" x="880" y="520" font-size="28" fill="#e8e6df">Chainalysis · TRM · Elliptic</text>
+          <rect x="780" y="550" width="160" height="34" rx="4" fill="#F0B90B" /><rect x="940" y="550" width="48" height="34" rx="4" fill="#F0B90B" opacity="0.3" stroke="#F0B90B" stroke-width="2" stroke-dasharray="6 4" />
+          <text x="880" y="634" font-size="28" font-weight="700" fill="#F0B90B">金额可差 10–30%</text></g>
+        <g id="sr-bm" class="h"><circle cx="1300" cy="370" r="50" fill="#161a22" stroke="#c9ccd3" stroke-width="3.5" /><text class="mono" x="1300" y="388" font-size="52" font-weight="700" fill="#c9ccd3" text-anchor="middle">M</text></g>
+        <g id="sr-dm" class="h" text-anchor="middle"><text x="1300" y="472" font-size="32" font-weight="700" fill="#c9ccd3">媒体 / 二手转引</text>
+          <circle cx="1300" cy="540" r="26" fill="none" stroke="#8a8f99" stroke-width="3" /><path d="M1300 540 V522 M1300 540 H1314" stroke="#8a8f99" stroke-width="3" />
+          <text x="1300" y="612" font-size="28" fill="#e8e6df">分钟级时间点</text><text x="1300" y="652" font-size="28" fill="#e8e6df">常只见于二手复盘</text></g>
+        <g id="sr-bc" class="h"><circle cx="1680" cy="370" r="50" fill="#161a22" stroke="#8a8f99" stroke-width="3.5" stroke-dasharray="8 6" /><text class="mono" x="1680" y="388" font-size="52" font-weight="700" fill="#8a8f99" text-anchor="middle">C</text></g>
+        <text id="sr-dc" class="h" x="1680" y="472" font-size="32" font-weight="700" fill="#8a8f99" text-anchor="middle">仅索引线索</text>
+        <path id="sr-back" class="dr h" pathLength="1" d="M1680 494 V720 H145 V545" stroke="#8a8f99" stroke-width="3" stroke-linejoin="round" fill="none" marker-end="url(#sr-ag)" />
+        <text id="sr-backl" class="h" x="890" y="704" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">回到原始材料核实</text>
+        <g id="sr-card" class="h">
+          <rect x="560" y="780" width="800" height="170" rx="14" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" />
+          <text x="600" y="840" font-size="32" fill="#e8e6df">字段 A</text><text x="600" y="910" font-size="32" fill="#e8e6df">字段 B</text>
+          <text x="1320" y="840" font-size="30" fill="#8a8f99" text-anchor="end">来自 <tspan class="mono" font-weight="700" fill="#83C167">P</tspan></text>
+          <text x="1320" y="910" font-size="30" fill="#8a8f99" text-anchor="end">来自 <tspan class="mono" font-weight="700" fill="#58C4DD">I</tspan></text>
+          <path d="M600 866 H1320" stroke="#2a2f3a" stroke-width="2" />
+        </g>
+        <text id="sr-cardl" class="h" x="960" y="1010" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">事件标 <tspan class="mono" fill="#83C167">P</tspan><tspan class="mono">+</tspan><tspan class="mono" fill="#58C4DD">I</tspan>：不同字段，来自不同证据</text>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      IN("#sr-doc", at(0, 0.02), 0.5);
+      ARROW("#sr-ax", at(0, 0.08), 0.8); IN("#sr-axl", at(0, 0.2), 0.5);
+      IN("#sr-bp", at(0, 0.25), 0.5, { scale: 0.6, svgOrigin: "420 370" }, { scale: 1 });
+      IN("#sr-dp", at(0, 0.4), 0.6, { y: -10 });
+
+      IN("#sr-dp2", at(1, 0.15), 0.6, { y: -10 });
+
+      IN("#sr-bi", at(2, 0.05), 0.5, { scale: 0.6, svgOrigin: "880 370" }, { scale: 1 });
+      IN("#sr-di", at(2, 0.25), 0.6, { y: -10 });
+
+      IN("#sr-bm", at(3, 0.05), 0.5, { scale: 0.6, svgOrigin: "1300 370" }, { scale: 1 });
+      IN("#sr-dm", at(3, 0.25), 0.6, { y: -10 });
+
+      IN("#sr-bc", at(4, 0.05), 0.5, { scale: 0.6, svgOrigin: "1680 370" }, { scale: 1 });
+      IN("#sr-dc", at(4, 0.15), 0.5);
+      ARROW("#sr-back", at(4, 0.25), 1.0); IN("#sr-backl", at(4, 0.5), 0.5);
+
+      IN("#sr-card", at(5, 0.05), 0.6, { y: 20 });
+      IN("#sr-cardl", at(5, 0.35), 0.6);
+
+      tl.to("#sr-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["src"] = tl;
+    })();
+  </script>
+</template>

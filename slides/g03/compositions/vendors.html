@@ -1,0 +1,154 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 vendors，id 前缀 vd- -->
+  <div id="root" data-composition-id="vendors" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="vd-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="vd-all">
+        <!-- Radiant -->
+        <g id="vd-ra">
+          <text id="vd-rh" class="h" x="960" y="160" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">Radiant 2024 · <tspan fill="#F0B90B">约 $50M</tspan></text>
+          <g id="vd-lap" class="h" fill="none" stroke="#e8e6df" stroke-width="3">
+            <rect x="200" y="420" width="160" height="100" rx="8" /><path d="M176 534 H384" stroke-width="5" stroke-linecap="round" />
+            <rect x="460" y="420" width="160" height="100" rx="8" /><path d="M436 534 H644" stroke-width="5" stroke-linecap="round" />
+            <rect x="720" y="420" width="160" height="100" rx="8" /><path d="M696 534 H904" stroke-width="5" stroke-linecap="round" />
+          </g>
+          <g id="vd-bugs" fill="#FC6255">
+            <circle class="h" cx="280" cy="470" r="16" /><circle class="h" cx="540" cy="470" r="16" /><circle class="h" cx="800" cy="470" r="16" />
+          </g>
+          <text id="vd-lapl" class="h" x="540" y="610" font-size="32" fill="#e8e6df" text-anchor="middle">3 名签名者的设备：<tspan fill="#FC6255" font-weight="700">恶意软件</tspan></text>
+          <path id="vd-ra1" class="dr h" pathLength="1" d="M920 470 H1110" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#vd-arr)" />
+          <g id="vd-safe" class="h">
+            <rect x="1120" y="360" width="600" height="220" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="1420" y="420" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">Safe 界面</text>
+            <rect x="1170" y="450" width="500" height="80" rx="10" fill="#142016" stroke="#83C167" stroke-width="2.5" />
+            <text x="1420" y="502" font-size="30" fill="#83C167" text-anchor="middle">显示：正常交易</text>
+          </g>
+          <g id="vd-swap" class="h">
+            <rect x="1170" y="640" width="500" height="80" rx="10" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+            <text x="1420" y="692" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">后台：替换后的待签交易</text>
+          </g>
+          <text id="vd-man" class="h" x="960" y="860" font-size="30" fill="#8a8f99" text-anchor="middle">Mandiant 归因：UNC4736</text>
+        </g>
+
+        <!-- Kiln -->
+        <g id="vd-ki">
+          <text id="vd-kh" class="h" x="960" y="160" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">SwissBorg / Kiln 2025 · <tspan fill="#F0B90B">约 $41.5M</tspan></text>
+          <g id="vd-k1" class="h">
+            <rect x="120" y="400" width="300" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="270" y="456" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">GitHub 令牌</text>
+            <text x="270" y="496" font-size="28" fill="#FC6255" text-anchor="middle">失窃</text>
+          </g>
+          <g id="vd-k2" class="h">
+            <path d="M428 460 H510" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#vd-arr)" />
+            <rect x="520" y="400" width="200" height="120" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <text class="mono" x="620" y="472" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">CI</text>
+            <path d="M728 460 H810" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#vd-arr)" />
+            <rect x="820" y="400" width="320" height="120" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <text x="980" y="470" font-size="30" fill="#e8e6df" text-anchor="middle">基础设施凭据</text>
+            <path d="M1148 460 H1230" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#vd-arr)" />
+          </g>
+          <g id="vd-k3" class="h">
+            <rect id="vd-k3r" x="1240" y="400" width="340" height="120" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="1410" y="470" font-size="30" font-weight="700" fill="#58C4DD" text-anchor="middle">交易构造 API</text>
+          </g>
+          <path id="vd-kret" class="dr h" pathLength="1" d="M1410 528 V612" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#vd-arr)" />
+          <g id="vd-tx" class="h">
+            <rect x="1160" y="620" width="500" height="170" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+            <text class="mono" x="1200" y="684" font-size="32" fill="#e8e6df">unstake</text>
+          </g>
+          <text id="vd-tx2" class="h" x="1200" y="748" font-size="30" font-weight="700" fill="#FC6255">+ 提款权限转移</text>
+          <text id="vd-pt" class="h" x="1410" y="360" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">篡改点：API，不是网页前端</text>
+          <g id="vd-fe" class="h">
+            <rect x="320" y="640" width="400" height="110" rx="14" fill="none" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="10 8" />
+            <text x="520" y="706" font-size="30" fill="#8a8f99" text-anchor="middle">网页前端：未被改</text>
+          </g>
+        </g>
+
+        <!-- Fortress Trust -->
+        <g id="vd-fo">
+          <text id="vd-fh" class="h" x="960" y="160" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">Fortress Trust 2023 · <tspan fill="#F0B90B">约 $13.5M</tspan></text>
+          <g id="vd-f1" class="h">
+            <rect x="140" y="420" width="460" height="160" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="370" y="490" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">第三方云工具供应商</text>
+            <text x="370" y="540" font-size="28" fill="#FC6255" text-anchor="middle">受影响</text>
+          </g>
+          <path id="vd-fa1" class="dr h" pathLength="1" d="M608 500 H752" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#vd-arr)" />
+          <g id="vd-f2" class="h">
+            <rect x="760" y="420" width="400" height="160" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="960" y="490" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">托管商</text>
+            <text x="960" y="540" font-size="28" fill="#e8e6df" text-anchor="middle">托管客户资产</text>
+          </g>
+          <path id="vd-fa2" class="dr h" pathLength="1" d="M1168 500 H1352" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#vd-arr)" />
+          <g id="vd-f3" class="h">
+            <rect x="1360" y="420" width="400" height="160" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1560" y="514" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">被转走</text>
+          </g>
+          <g id="vd-fc" fill="#F0B90B">
+            <circle class="h" cx="1180" cy="530" r="11" /><circle class="h" cx="1180" cy="530" r="11" /><circle class="h" cx="1180" cy="530" r="11" />
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 Radiant
+      IN("#vd-rh", at(0, 0.02), 0.7, { y: 15 });
+      IN("#vd-lap", at(0, 0.15), 0.6);
+      IN("#vd-bugs circle", at(0, 0.35), 0.3, { scale: 2, svgOrigin: "540 470" }, { scale: 1, stagger: 0.15 });
+      IN("#vd-lapl", at(0, 0.6), 0.5);
+      // L1
+      ARROW("#vd-ra1", at(1, 0.02), 0.4);
+      IN("#vd-safe", at(1, 0.1), 0.6, { x: -20 });
+      IN("#vd-swap", at(1, 0.35), 0.6, { y: -30 });
+      IN("#vd-man", at(1, 0.6), 0.5);
+
+      // L2 Kiln
+      OUT("#vd-ra", at(2, 0.0), 0.4);
+      IN("#vd-kh", at(2, 0.08), 0.7, { y: 15 });
+      IN("#vd-k1", at(2, 0.25), 0.6, { x: -20 });
+      // L3
+      IN("#vd-k2", at(3, 0.05), 0.6, { x: -20 });
+      IN("#vd-k3", at(3, 0.3), 0.6, { x: -20 });
+      // L4
+      ARROW("#vd-kret", at(4, 0.05), 0.4);
+      IN("#vd-tx", at(4, 0.15), 0.5);
+      IN("#vd-tx2", at(4, 0.4), 0.5, { x: -15 });
+      // L5
+      IN("#vd-pt", at(5, 0.05), 0.5);
+      tl.to("#vd-k3r", { attr: { stroke: "#FC6255", "stroke-width": 5 }, duration: 0.4 }, at(5, 0.1));
+      IN("#vd-fe", at(5, 0.35), 0.5);
+
+      // L6 Fortress
+      OUT("#vd-ki", at(6, 0.0), 0.4);
+      IN("#vd-fh", at(6, 0.08), 0.6, { y: 15 });
+      IN("#vd-f1", at(6, 0.18), 0.5, { x: -20 });
+      ARROW("#vd-fa1", at(6, 0.3), 0.4);
+      IN("#vd-f2", at(6, 0.35), 0.5, { x: -20 });
+      ARROW("#vd-fa2", at(6, 0.45), 0.4);
+      IN("#vd-f3", at(6, 0.5), 0.5, { x: -20 });
+      tl.fromTo("#vd-fc circle", { opacity: 1, x: 0 }, { x: 380, opacity: 0, duration: 0.8, ease: "power1.in", stagger: 0.15, immediateRender: false }, at(6, 0.5));
+
+      tl.to("#vd-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["vendors"] = tl;
+    })();
+  </script>
+</template>

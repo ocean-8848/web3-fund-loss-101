@@ -1,0 +1,83 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 cards，id 前缀 cd- -->
+  <div id="root" data-composition-id="cards" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="cd-all">
+        <text id="cd-title" class="h" x="960" y="120" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">资金离开后，防守方还有几张牌</text>
+        <rect id="cd-panel" class="h" x="360" y="200" width="1200" height="560" rx="20" fill="#161a22" stroke="#2f3542" stroke-width="2.5" />
+        <g id="cd-hint" class="h">
+          <text x="960" y="495" font-size="40" fill="#8a8f99" text-anchor="middle">每张牌都有时间窗口</text>
+        </g>
+        <g id="cd-faces"></g>
+        <g id="cd-deck"></g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+
+      // 数据：data/groups.js D02「2. 追回手段」表
+      const K = [
+        ["稳定币冻结", "#9CDCEB", "窗口：分钟级", "Poly（3,300 万 USDT）、Bitget（约 110 万）", "快，只对未换出的稳定币有效", "发行方的中心化权力"],
+        ["交易所冻结", "#B48EF0", "窗口：充值时", "Bybit（约 3.8%）、Binance（28.5 亿，含拦截）", "依赖行业情报共享", "—"],
+        ["链级冻结", "#58C4DD", "", "Cetus（Sui 验证者冻结约 1.62 亿）", "大额有效", "验证者能否冻结用户资产"],
+        ["链回滚", "#58C4DD", "", "Tectonic（Cronos 回滚 10,961 个区块）、The DAO（硬分叉）", "可恢复大部分", "不可篡改性"],
+        ["法院命令反向操作", "#B48EF0", "", "Wormhole（2023，约 1.4 亿）", "依赖攻击者把资金放在可升级合约中", "—"],
+        ["谈判与赏金", "#83C167", "", "Poly、Euler、Nomad、GMX v1、Liquid Network", "对“非国家行为者”有效", "是否等于向攻击者付费"],
+        ["执法扣押", "#8a8f99", "可能跨越数年", "Ronin（约 3,000 万）、Bitfinex（多年后追回）", "慢，可能跨越数年", "—"]
+      ];
+      const SHORT = ["稳定币冻结", "交易所冻结", "链级冻结", "链回滚", "法院命令", "谈判与赏金", "执法扣押"];
+      const NS = "http://www.w3.org/2000/svg";
+      const mk = (tag, a, p, txt) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; p.appendChild(e); return e; };
+      const deck = document.querySelector("#cd-deck"), faces = document.querySelector("#cd-faces");
+      K.forEach((k, i) => {
+        const x = 230 + i * 220;
+        const g = mk("g", { id: "cd-k" + i, class: "cd-k h" }, deck);
+        mk("rect", { id: "cd-kb" + i, x, y: 840, width: 190, height: 110, rx: 12, fill: "#161a22", stroke: k[1], "stroke-width": 2.5 }, g);
+        mk("text", { x: x + 95, y: 905, "font-size": 28, fill: "#e8e6df", "text-anchor": "middle" }, g, SHORT[i]);
+        const f = mk("g", { id: "cd-f" + i, class: "h" }, faces);
+        mk("text", { x: 420, y: 290, "font-size": 52, "font-weight": 700, fill: k[1] }, f, k[0]);
+        if (k[2]) {
+          const w = k[2].length * 30 + 40;
+          mk("rect", { x: 1500 - w, y: 246, width: w, height: 56, rx: 28, fill: "#22252d", stroke: "#F0B90B", "stroke-width": 2 }, f);
+          mk("text", { x: 1500 - w / 2, y: 284, "font-size": 30, fill: "#F0B90B", "text-anchor": "middle" }, f, k[2]);
+        }
+        [["案例", k[3], "#e8e6df"], ["效果", k[4], "#83C167"], ["争议", k[5], "#FC6255"]].forEach((r, j) => {
+          const y = 420 + j * 110;
+          mk("text", { x: 420, y, "font-size": 28, fill: "#8a8f99" }, f, r[0]);
+          mk("text", { x: 520, y, "font-size": 32, fill: r[1] === "—" ? "#8a8f99" : r[2] }, f, r[1]);
+        });
+      });
+
+      // L0
+      IN("#cd-title", at(0, 0.02), 0.8, { y: 20 });
+      tl.fromTo(".cd-k", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.08 }, at(0, 0.2));
+      IN("#cd-panel", at(0, 0.45)); IN("#cd-hint", at(0, 0.55));
+
+      // L1–L7 逐张翻开
+      for (let i = 0; i < 7; i++) {
+        const t = at(i + 1, 0.02);
+        if (i === 0) OUT("#cd-hint", t, 0.3);
+        else { OUT("#cd-f" + (i - 1), t, 0.3); tl.to("#cd-k" + (i - 1), { y: 0, opacity: 0.45, duration: 0.35 }, t); }
+        tl.to("#cd-k" + i, { y: -24, duration: 0.4, ease: "power2.out" }, t);
+        tl.to("#cd-kb" + i, { attr: { "stroke-width": 5 }, duration: 0.3 }, t);
+        tl.set("#cd-f" + i, { opacity: 1 }, at(i + 1, 0.1));
+        tl.fromTo("#cd-f" + i + " > *", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.06 }, at(i + 1, 0.1));
+      }
+
+      tl.to("#cd-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["cards"] = tl;
+    })();
+  </script>
+</template>

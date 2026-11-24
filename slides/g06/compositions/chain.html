@@ -1,0 +1,104 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 chain，id 前缀 ch- -->
+  <div id="root" data-composition-id="chain" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ch-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="ch-all">
+        <!-- L1 上游 -->
+        <g id="ch-up" font-size="30" text-anchor="middle">
+          <g class="ch-b h"><rect x="130" y="250" width="330" height="90" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="2.5" /><text x="295" y="306" fill="#e8e6df"><tspan class="mono">npm</tspan> 包维护者</text></g>
+          <g class="ch-b h"><rect x="560" y="250" width="330" height="90" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="2.5" /><text x="725" y="306" fill="#e8e6df">域名注册商 / DNS</text></g>
+          <g class="ch-b h"><rect x="990" y="250" width="330" height="90" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="2.5" /><text x="1155" y="306" fill="#e8e6df">CDN / Cloudflare API</text></g>
+          <g class="ch-b h"><rect x="1420" y="250" width="330" height="90" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="2.5" /><text x="1585" y="306" fill="#e8e6df">扩展商店发布密钥</text></g>
+        </g>
+        <text id="ch-upl" class="h" x="1790" y="230" font-size="28" fill="#8a8f99" text-anchor="end">上游</text>
+        <g id="ch-conv" fill="none" stroke="#58C4DD" stroke-width="2.5">
+          <path class="dr ch-cv" pathLength="1" d="M295 344 L930 462" /><path class="dr ch-cv" pathLength="1" d="M725 344 L945 462" />
+          <path class="dr ch-cv" pathLength="1" d="M1155 344 L975 462" /><path class="dr ch-cv" pathLength="1" d="M1585 344 L990 462" />
+        </g>
+        <text id="ch-phl" class="h" x="160" y="432" font-size="30" font-weight="700" fill="#FC6255">被钓鱼 / 凭据泄露</text>
+
+        <!-- L0 用户加载的代码 -->
+        <g id="ch-fe" class="h">
+          <rect id="ch-fer" x="710" y="470" width="500" height="104" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="960" y="534" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">用户加载的前端代码</text>
+        </g>
+        <g id="ch-tags" font-size="30" font-weight="700" fill="#FC6255">
+          <text id="ch-t1" class="h" x="1250" y="510">替换收款地址</text>
+          <text id="ch-t2" class="h" x="1250" y="560">请求无限授权</text>
+        </g>
+
+        <!-- L2 下游用户 -->
+        <g fill="none" stroke="#FC6255" stroke-width="2"><path class="dr ch-fl" pathLength="1" d="M960 578 L300 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L409 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L518 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L627 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L736 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L845 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L954 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L1063 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L1172 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L1281 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L1390 750" /><path class="dr ch-fl" pathLength="1" d="M960 578 L1499 750" /></g>
+        <g id="ch-users" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5"><circle class="ch-u h" cx="300" cy="780" r="26" /><circle class="ch-u h" cx="409" cy="780" r="26" /><circle class="ch-u h" cx="518" cy="780" r="26" /><circle class="ch-u h" cx="627" cy="780" r="26" /><circle class="ch-u h" cx="736" cy="780" r="26" /><circle class="ch-u h" cx="845" cy="780" r="26" /><circle class="ch-u h" cx="954" cy="780" r="26" /><circle class="ch-u h" cx="1063" cy="780" r="26" /><circle class="ch-u h" cx="1172" cy="780" r="26" /><circle class="ch-u h" cx="1281" cy="780" r="26" /><circle class="ch-u h" cx="1390" cy="780" r="26" /><circle class="ch-u h" cx="1499" cy="780" r="26" /></g>
+        <text id="ch-ul" class="h" x="300" y="850" font-size="28" fill="#8a8f99">所有下游用户，同时受影响</text>
+        <text id="ch-off" class="h" x="1500" y="850" font-size="28" fill="#B48EF0" text-anchor="end">都在“官方”页面上签名</text>
+
+        <!-- L4 资产转出 -->
+        <g id="ch-out" class="h">
+          <rect x="1600" y="900" width="250" height="90" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1725" y="956" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">资产转出</text>
+        </g>
+        <g fill="#F0B90B"><circle class="ch-k h" cx="300" cy="780" r="9" /><circle class="ch-k h" cx="409" cy="780" r="9" /><circle class="ch-k h" cx="518" cy="780" r="9" /><circle class="ch-k h" cx="627" cy="780" r="9" /><circle class="ch-k h" cx="736" cy="780" r="9" /><circle class="ch-k h" cx="845" cy="780" r="9" /><circle class="ch-k h" cx="954" cy="780" r="9" /><circle class="ch-k h" cx="1063" cy="780" r="9" /><circle class="ch-k h" cx="1172" cy="780" r="9" /><circle class="ch-k h" cx="1281" cy="780" r="9" /><circle class="ch-k h" cx="1390" cy="780" r="9" /><circle class="ch-k h" cx="1499" cy="780" r="9" /></g>
+      </g>
+      <g id="ch-term" class="h">
+        <rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+        <text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">供应链攻击 <tspan font-size="28" font-weight="400" fill="#8a8f99">Supply Chain</tspan></text>
+        <text x="100" y="160" font-size="28" fill="#e8e6df">控制代码分发，而不是钱包</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+
+      // L0 用户加载的代码
+      IN("#ch-term", at(0, 0.02));
+      IN("#ch-fe", at(0, 0.2), 0.8, { y: 20 });
+      tl.fromTo(".ch-u", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.04 }, at(0, 0.45));
+      tl.to(".ch-fl", { strokeDashoffset: 0, duration: 0.5, stagger: 0.03, attr: { stroke: "#58C4DD" } }, at(0, 0.45));
+
+      // L1 上游
+      tl.fromTo(".ch-b", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.15 }, at(1, 0.05));
+      IN("#ch-upl", at(1, 0.3));
+      DRAW(".ch-cv", at(1, 0.5), 0.6);
+
+      // L2 上游被改，下游全中
+      IN("#ch-phl", at(2, 0.02));
+      tl.to(".ch-b rect", { attr: { stroke: "#FC6255" }, duration: 0.3, stagger: 0.1 }, at(2, 0.05));
+      tl.to(".ch-cv", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(2, 0.3));
+      tl.to("#ch-fer", { attr: { stroke: "#FC6255", fill: "#2a1616" }, duration: 0.3 }, at(2, 0.4));
+      tl.to(".ch-fl", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(2, 0.45));
+      tl.to(".ch-u", { attr: { stroke: "#FC6255" }, duration: 0.2, stagger: 0.03 }, at(2, 0.5));
+      IN("#ch-ul", at(2, 0.6));
+
+      // L3 替换地址 / 无限授权
+      IN("#ch-t1", at(3, 0.1), 0.6, { x: -16 });
+      IN("#ch-t2", at(3, 0.35), 0.6, { x: -16 });
+
+      // L4 签名 → 资产转出
+      IN("#ch-off", at(4, 0.02));
+      IN("#ch-out", at(4, 0.15));
+      tl.fromTo(".ch-k", { opacity: 1, x: 0, y: 0 }, { x: (i) => 1610 - (300 + i * 109), y: 160, opacity: 0, duration: 0.8, ease: "power1.in", stagger: 0.07, immediateRender: false }, at(4, 0.2));
+
+      tl.to("#ch-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#ch-term", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["chain"] = tl;
+    })();
+  </script>
+</template>

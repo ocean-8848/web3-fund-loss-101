@@ -1,0 +1,153 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 cases，id 前缀 cq- -->
+  <div id="root" data-composition-id="cases" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="cq-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="cq-all">
+        <!-- 案例 1 Gate.io / StatCounter -->
+        <g id="cq-a">
+          <text id="cq-a-head" class="h" x="960" y="190" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">Gate.io · 2018</text>
+          <g id="cq-a-js" class="h">
+            <rect id="cq-a-jsr" x="100" y="400" width="400" height="130" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="300" y="456" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">第三方统计 JS</text>
+            <text class="mono" x="300" y="502" font-size="28" fill="#8a8f99" text-anchor="middle">StatCounter</text>
+          </g>
+          <text id="cq-a-poi" class="h" x="300" y="380" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">被投毒</text>
+          <path id="cq-a-bus" class="dr" pathLength="1" d="M300 538 V720 H1460" stroke="#58C4DD" stroke-width="2.5" fill="none" />
+          <g id="cq-a-vs" fill="none" stroke="#58C4DD" stroke-width="2.5">
+            <path class="dr cq-v" pathLength="1" d="M780 720 V650" /><path class="dr cq-v" pathLength="1" d="M1120 720 V650" /><path class="dr cq-v" pathLength="1" d="M1460 720 V650" />
+          </g>
+          <g id="cq-a-pages">
+            <g class="cq-pg h"><rect x="640" y="300" width="280" height="340" rx="12" fill="#131820" stroke="#8a8f99" stroke-width="2.5" /><text x="780" y="352" font-size="30" fill="#e8e6df" text-anchor="middle">首页</text>
+              <g fill="#22252d"><rect x="670" y="400" width="220" height="26" rx="5" /><rect x="670" y="450" width="170" height="26" rx="5" /><rect x="670" y="500" width="200" height="26" rx="5" /></g></g>
+            <g class="cq-pg h"><rect x="980" y="300" width="280" height="340" rx="12" fill="#131820" stroke="#8a8f99" stroke-width="2.5" /><text x="1120" y="352" font-size="30" fill="#e8e6df" text-anchor="middle">交易页</text>
+              <g fill="#22252d"><rect x="1010" y="400" width="220" height="26" rx="5" /><rect x="1010" y="450" width="170" height="26" rx="5" /><rect x="1010" y="500" width="200" height="26" rx="5" /></g></g>
+            <g class="cq-pg h"><rect id="cq-a-wr" x="1320" y="300" width="280" height="340" rx="12" fill="#131820" stroke="#8a8f99" stroke-width="2.5" /><text x="1460" y="352" font-size="30" fill="#e8e6df" text-anchor="middle">提现页</text>
+              <text x="1460" y="432" font-size="28" fill="#8a8f99" text-anchor="middle">BTC 收款地址</text>
+              <rect id="cq-a-fld" x="1340" y="460" width="240" height="64" rx="8" fill="#22252d" stroke="#8a8f99" stroke-width="2" /></g>
+          </g>
+          <text id="cq-a-v1" class="h" x="1460" y="503" font-size="28" fill="#e8e6df" text-anchor="middle">用户的地址</text>
+          <text id="cq-a-v2" class="h" x="1460" y="503" font-size="28" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者地址</text>
+          <text id="cq-a-only" class="h" x="1460" y="600" font-size="28" fill="#FC6255" text-anchor="middle">只改这一页</text>
+        </g>
+
+        <!-- 案例 2 Ledger Connect Kit -->
+        <g id="cq-b">
+          <text id="cq-b-head" class="h" x="960" y="190" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">Ledger Connect Kit · 2023</text>
+          <g id="cq-b-acc" class="h">
+            <rect id="cq-b-accr" x="100" y="430" width="360" height="120" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="280" y="502" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">前员工 <tspan class="mono">npm</tspan> 账号</text>
+          </g>
+          <text id="cq-b-ph" class="h" x="280" y="410" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">被钓鱼</text>
+          <path id="cq-b-a1" class="dr h" pathLength="1" d="M468 490 H592" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cq-arr)" />
+          <g id="cq-b-pkg" class="h">
+            <rect x="600" y="430" width="360" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="780" y="502" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">恶意版本</text>
+          </g>
+          <path id="cq-b-a2" class="dr h" pathLength="1" d="M968 490 H1086" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cq-arr)" />
+          <g fill="#131a24" stroke="#58C4DD" stroke-width="2.5"><rect class="cq-d h" x="1100" y="360" width="80" height="70" rx="8" /><rect class="cq-d h" x="1210" y="360" width="80" height="70" rx="8" /><rect class="cq-d h" x="1320" y="360" width="80" height="70" rx="8" /><rect class="cq-d h" x="1430" y="360" width="80" height="70" rx="8" /><rect class="cq-d h" x="1100" y="460" width="80" height="70" rx="8" /><rect class="cq-d h" x="1210" y="460" width="80" height="70" rx="8" /><rect class="cq-d h" x="1320" y="460" width="80" height="70" rx="8" /><rect class="cq-d h" x="1430" y="460" width="80" height="70" rx="8" /><rect class="cq-d h" x="1100" y="560" width="80" height="70" rx="8" /><rect class="cq-d h" x="1210" y="560" width="80" height="70" rx="8" /><rect class="cq-d h" x="1320" y="560" width="80" height="70" rx="8" /><rect class="cq-d h" x="1430" y="560" width="80" height="70" rx="8" /></g>
+          <text id="cq-b-dl" class="h" x="1305" y="340" font-size="28" fill="#58C4DD" text-anchor="middle">大量 <tspan class="mono">dApp</tspan></text>
+          <g id="cq-b-time" class="h">
+            <path d="M1100 720 H1530" stroke="#8a8f99" stroke-width="2" />
+            <text x="1315" y="790" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">约 5 小时</text>
+          </g>
+          <rect id="cq-b-tf" class="h" x="1100" y="704" width="0" height="32" rx="6" fill="#FC6255" />
+        </g>
+
+        <!-- 案例 3 npm chalk/debug -->
+        <g id="cq-c">
+          <text id="cq-c-head" class="h" x="960" y="190" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle"><tspan class="mono">npm chalk/debug</tspan> · 2025</text>
+          <g id="cq-c-m" class="h">
+            <rect x="100" y="400" width="340" height="120" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="270" y="472" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">维护者</text>
+          </g>
+          <text id="cq-c-ph" class="h" x="270" y="380" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">被钓鱼</text>
+          <path id="cq-c-a1" class="dr h" pathLength="1" d="M448 460 H548" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cq-arr)" />
+          <g fill="#131a24" stroke="#58C4DD" stroke-width="2"><rect class="cq-p h" x="560" y="380" width="68" height="52" rx="6" /><rect class="cq-p h" x="644" y="380" width="68" height="52" rx="6" /><rect class="cq-p h" x="728" y="380" width="68" height="52" rx="6" /><rect class="cq-p h" x="812" y="380" width="68" height="52" rx="6" /><rect class="cq-p h" x="896" y="380" width="68" height="52" rx="6" /><rect class="cq-p h" x="980" y="380" width="68" height="52" rx="6" /><rect class="cq-p h" x="560" y="450" width="68" height="52" rx="6" /><rect class="cq-p h" x="644" y="450" width="68" height="52" rx="6" /><rect class="cq-p h" x="728" y="450" width="68" height="52" rx="6" /><rect class="cq-p h" x="812" y="450" width="68" height="52" rx="6" /><rect class="cq-p h" x="896" y="450" width="68" height="52" rx="6" /><rect class="cq-p h" x="980" y="450" width="68" height="52" rx="6" /><rect class="cq-p h" x="560" y="520" width="68" height="52" rx="6" /><rect class="cq-p h" x="644" y="520" width="68" height="52" rx="6" /><rect class="cq-p h" x="728" y="520" width="68" height="52" rx="6" /><rect class="cq-p h" x="812" y="520" width="68" height="52" rx="6" /><rect class="cq-p h" x="896" y="520" width="68" height="52" rx="6" /><rect class="cq-p h" x="980" y="520" width="68" height="52" rx="6" /></g>
+          <text id="cq-c-pl" class="h" x="782" y="360" font-size="28" fill="#FC6255" text-anchor="middle">18 个包 · 植入地址替换代码</text>
+          <g id="cq-c-coin" class="h">
+            <circle cx="782" cy="640" r="10" fill="#F0B90B" />
+            <text x="782" y="700" font-size="32" font-weight="700" fill="#F0B90B" text-anchor="middle">直接资损很小</text>
+          </g>
+          <path id="cq-c-a2" class="dr h" pathLength="1" d="M1072 450 H1150" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cq-arr)" />
+          <g fill="#FC6255"><circle class="cq-f h" cx="1180" cy="360" r="9" /><circle class="cq-f h" cx="1220" cy="360" r="9" /><circle class="cq-f h" cx="1260" cy="360" r="9" /><circle class="cq-f h" cx="1300" cy="360" r="9" /><circle class="cq-f h" cx="1340" cy="360" r="9" /><circle class="cq-f h" cx="1380" cy="360" r="9" /><circle class="cq-f h" cx="1420" cy="360" r="9" /><circle class="cq-f h" cx="1460" cy="360" r="9" /><circle class="cq-f h" cx="1500" cy="360" r="9" /><circle class="cq-f h" cx="1540" cy="360" r="9" /><circle class="cq-f h" cx="1580" cy="360" r="9" /><circle class="cq-f h" cx="1620" cy="360" r="9" /><circle class="cq-f h" cx="1660" cy="360" r="9" /><circle class="cq-f h" cx="1700" cy="360" r="9" /><circle class="cq-f h" cx="1740" cy="360" r="9" /><circle class="cq-f h" cx="1780" cy="360" r="9" /><circle class="cq-f h" cx="1180" cy="400" r="9" /><circle class="cq-f h" cx="1220" cy="400" r="9" /><circle class="cq-f h" cx="1260" cy="400" r="9" /><circle class="cq-f h" cx="1300" cy="400" r="9" /><circle class="cq-f h" cx="1340" cy="400" r="9" /><circle class="cq-f h" cx="1380" cy="400" r="9" /><circle class="cq-f h" cx="1420" cy="400" r="9" /><circle class="cq-f h" cx="1460" cy="400" r="9" /><circle class="cq-f h" cx="1500" cy="400" r="9" /><circle class="cq-f h" cx="1540" cy="400" r="9" /><circle class="cq-f h" cx="1580" cy="400" r="9" /><circle class="cq-f h" cx="1620" cy="400" r="9" /><circle class="cq-f h" cx="1660" cy="400" r="9" /><circle class="cq-f h" cx="1700" cy="400" r="9" /><circle class="cq-f h" cx="1740" cy="400" r="9" /><circle class="cq-f h" cx="1780" cy="400" r="9" /><circle class="cq-f h" cx="1180" cy="440" r="9" /><circle class="cq-f h" cx="1220" cy="440" r="9" /><circle class="cq-f h" cx="1260" cy="440" r="9" /><circle class="cq-f h" cx="1300" cy="440" r="9" /><circle class="cq-f h" cx="1340" cy="440" r="9" /><circle class="cq-f h" cx="1380" cy="440" r="9" /><circle class="cq-f h" cx="1420" cy="440" r="9" /><circle class="cq-f h" cx="1460" cy="440" r="9" /><circle class="cq-f h" cx="1500" cy="440" r="9" /><circle class="cq-f h" cx="1540" cy="440" r="9" /><circle class="cq-f h" cx="1580" cy="440" r="9" /><circle class="cq-f h" cx="1620" cy="440" r="9" /><circle class="cq-f h" cx="1660" cy="440" r="9" /><circle class="cq-f h" cx="1700" cy="440" r="9" /><circle class="cq-f h" cx="1740" cy="440" r="9" /><circle class="cq-f h" cx="1780" cy="440" r="9" /><circle class="cq-f h" cx="1180" cy="480" r="9" /><circle class="cq-f h" cx="1220" cy="480" r="9" /><circle class="cq-f h" cx="1260" cy="480" r="9" /><circle class="cq-f h" cx="1300" cy="480" r="9" /><circle class="cq-f h" cx="1340" cy="480" r="9" /><circle class="cq-f h" cx="1380" cy="480" r="9" /><circle class="cq-f h" cx="1420" cy="480" r="9" /><circle class="cq-f h" cx="1460" cy="480" r="9" /><circle class="cq-f h" cx="1500" cy="480" r="9" /><circle class="cq-f h" cx="1540" cy="480" r="9" /><circle class="cq-f h" cx="1580" cy="480" r="9" /><circle class="cq-f h" cx="1620" cy="480" r="9" /><circle class="cq-f h" cx="1660" cy="480" r="9" /><circle class="cq-f h" cx="1700" cy="480" r="9" /><circle class="cq-f h" cx="1740" cy="480" r="9" /><circle class="cq-f h" cx="1780" cy="480" r="9" /><circle class="cq-f h" cx="1180" cy="520" r="9" /><circle class="cq-f h" cx="1220" cy="520" r="9" /><circle class="cq-f h" cx="1260" cy="520" r="9" /><circle class="cq-f h" cx="1300" cy="520" r="9" /><circle class="cq-f h" cx="1340" cy="520" r="9" /><circle class="cq-f h" cx="1380" cy="520" r="9" /><circle class="cq-f h" cx="1420" cy="520" r="9" /><circle class="cq-f h" cx="1460" cy="520" r="9" /><circle class="cq-f h" cx="1500" cy="520" r="9" /><circle class="cq-f h" cx="1540" cy="520" r="9" /><circle class="cq-f h" cx="1580" cy="520" r="9" /><circle class="cq-f h" cx="1620" cy="520" r="9" /><circle class="cq-f h" cx="1660" cy="520" r="9" /><circle class="cq-f h" cx="1700" cy="520" r="9" /><circle class="cq-f h" cx="1740" cy="520" r="9" /><circle class="cq-f h" cx="1780" cy="520" r="9" /><circle class="cq-f h" cx="1180" cy="560" r="9" /><circle class="cq-f h" cx="1220" cy="560" r="9" /><circle class="cq-f h" cx="1260" cy="560" r="9" /><circle class="cq-f h" cx="1300" cy="560" r="9" /><circle class="cq-f h" cx="1340" cy="560" r="9" /><circle class="cq-f h" cx="1380" cy="560" r="9" /><circle class="cq-f h" cx="1420" cy="560" r="9" /><circle class="cq-f h" cx="1460" cy="560" r="9" /><circle class="cq-f h" cx="1500" cy="560" r="9" /><circle class="cq-f h" cx="1540" cy="560" r="9" /><circle class="cq-f h" cx="1580" cy="560" r="9" /><circle class="cq-f h" cx="1620" cy="560" r="9" /><circle class="cq-f h" cx="1660" cy="560" r="9" /><circle class="cq-f h" cx="1700" cy="560" r="9" /><circle class="cq-f h" cx="1740" cy="560" r="9" /><circle class="cq-f h" cx="1780" cy="560" r="9" /><circle class="cq-f h" cx="1180" cy="600" r="9" /><circle class="cq-f h" cx="1220" cy="600" r="9" /><circle class="cq-f h" cx="1260" cy="600" r="9" /><circle class="cq-f h" cx="1300" cy="600" r="9" /><circle class="cq-f h" cx="1340" cy="600" r="9" /><circle class="cq-f h" cx="1380" cy="600" r="9" /><circle class="cq-f h" cx="1420" cy="600" r="9" /><circle class="cq-f h" cx="1460" cy="600" r="9" /><circle class="cq-f h" cx="1500" cy="600" r="9" /><circle class="cq-f h" cx="1540" cy="600" r="9" /><circle class="cq-f h" cx="1580" cy="600" r="9" /><circle class="cq-f h" cx="1620" cy="600" r="9" /><circle class="cq-f h" cx="1660" cy="600" r="9" /><circle class="cq-f h" cx="1700" cy="600" r="9" /><circle class="cq-f h" cx="1740" cy="600" r="9" /><circle class="cq-f h" cx="1780" cy="600" r="9" /></g>
+          <text id="cq-c-big" class="h" x="1480" y="700" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">影响面极大</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const RED = { fill: "#2a1616", stroke: "#FC6255" };
+
+      // L0 Gate.io：统计 JS 被投毒
+      IN("#cq-a-head", at(0, 0.02), 0.8, { y: 16 });
+      IN("#cq-a-js", at(0, 0.12));
+      tl.fromTo(".cq-pg", { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.12 }, at(0, 0.2));
+      IN("#cq-a-v1", at(0, 0.3));
+      DRAW("#cq-a-bus", at(0, 0.35), 0.6);
+      DRAW(".cq-v", at(0, 0.5), 0.3);
+      tl.to("#cq-a-jsr", { attr: RED }, at(0, 0.6));
+      tl.to(["#cq-a-bus", ".cq-v"], { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(0, 0.62));
+      IN("#cq-a-poi", at(0, 0.62));
+      // L1 只在提现页替换地址
+      tl.to("#cq-a-wr", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(1, 0.1));
+      OUT("#cq-a-v1", at(1, 0.3), 0.3);
+      IN("#cq-a-v2", at(1, 0.4), 0.5);
+      tl.to("#cq-a-fld", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(1, 0.4));
+      IN("#cq-a-only", at(1, 0.55));
+
+      // L2 Ledger：npm 账号被钓鱼
+      OUT("#cq-a", at(2, 0.0));
+      IN("#cq-b-head", at(2, 0.08), 0.8, { y: 16 });
+      IN("#cq-b-acc", at(2, 0.2));
+      tl.to("#cq-b-accr", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(2, 0.45));
+      IN("#cq-b-ph", at(2, 0.45));
+      ARROW("#cq-b-a1", at(2, 0.55), 0.4);
+      IN("#cq-b-pkg", at(2, 0.62));
+      // L3 大量 dApp，约 5 小时
+      ARROW("#cq-b-a2", at(3, 0.02), 0.4);
+      tl.fromTo(".cq-d", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.04 }, at(3, 0.08));
+      IN("#cq-b-dl", at(3, 0.1));
+      tl.to(".cq-d", { attr: RED, duration: 0.25, stagger: 0.05 }, at(3, 0.3));
+      IN("#cq-b-time", at(3, 0.45));
+      IN("#cq-b-tf", at(3, 0.45), 0.2);
+      tl.to("#cq-b-tf", { attr: { width: 430 }, duration: 1.0, ease: "none" }, at(3, 0.45));
+
+      // L4 chalk/debug：18 个包
+      OUT("#cq-b", at(4, 0.0));
+      IN("#cq-c-head", at(4, 0.06), 0.8, { y: 16 });
+      IN("#cq-c-m", at(4, 0.15));
+      IN("#cq-c-ph", at(4, 0.25));
+      ARROW("#cq-c-a1", at(4, 0.3), 0.3);
+      tl.fromTo(".cq-p", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.03 }, at(4, 0.35));
+      tl.to(".cq-p", { attr: RED, duration: 0.2, stagger: 0.03 }, at(4, 0.5));
+      IN("#cq-c-pl", at(4, 0.55));
+      // L5 资损小，影响面大
+      IN("#cq-c-coin", at(5, 0.05), 0.6, { y: 10 });
+      ARROW("#cq-c-a2", at(5, 0.25), 0.3);
+      tl.fromTo(".cq-f", { opacity: 0 }, { opacity: 0.85, duration: 0.15, stagger: 0.008 }, at(5, 0.3));
+      IN("#cq-c-big", at(5, 0.55), 0.6, { y: 10 });
+
+      tl.to("#cq-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["cases"] = tl;
+    })();
+  </script>
+</template>

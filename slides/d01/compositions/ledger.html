@@ -1,0 +1,170 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 ledger，id 前缀 lg- -->
+  <div id="root" data-composition-id="ledger" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="lg-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+        <marker id="lg-arry" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+        <marker id="lg-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="lg-all">
+        <g id="lg-head" class="h">
+          <text x="960" y="120" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">业务账务与地址生命周期</text>
+          <text x="960" y="185" font-size="30" fill="#8a8f99" text-anchor="middle">针对“非黑客入侵型资损”</text>
+        </g>
+
+        <!-- L1–L3 三账对账 + 熔断 -->
+        <g id="lg-a">
+          <g id="lg-tag1" class="h"><text x="160" y="270" font-size="30" font-weight="700" fill="#FC6255">P0</text><text x="214" y="270" font-size="30" fill="#e8e6df">三账准实时对账</text></g>
+          <g id="lg-l" class="h" font-size="30">
+            <text x="160" y="350" fill="#58C4DD">链上余额</text>
+            <text x="160" y="450" fill="#B48EF0">钱包账本</text>
+            <text x="160" y="550" fill="#F0B90B">业务总账</text>
+          </g>
+          <rect id="lg-b1" x="420" y="318" width="0" height="48" rx="6" fill="#58C4DD" />
+          <rect id="lg-b2" x="420" y="418" width="0" height="48" rx="6" fill="#B48EF0" />
+          <rect id="lg-b3" x="420" y="518" width="0" height="48" rx="6" fill="#F0B90B" />
+          <text id="lg-eq" class="h" x="1340" y="456" font-size="44" font-weight="700" fill="#83C167">=</text>
+          <g id="lg-gap" class="h">
+            <rect x="1000" y="318" width="300" height="48" rx="6" fill="none" stroke="#FC6255" stroke-width="3" stroke-dasharray="10 6" />
+            <text x="1150" y="300" font-size="28" fill="#FC6255" text-anchor="middle">无订单转出</text>
+          </g>
+          <text id="lg-neq" class="h" x="1340" y="456" font-size="44" font-weight="700" fill="#FC6255">≠</text>
+          <path id="lg-fa" class="dr h" pathLength="1" d="M1392 440 H1428" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#lg-arrr)" />
+          <g id="lg-fuse" class="h">
+            <rect x="1440" y="380" width="300" height="120" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="1590" y="438" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">自动熔断</text>
+            <text x="1590" y="480" font-size="28" fill="#e8e6df" text-anchor="middle">分钟级</text>
+          </g>
+          <g id="lg-drill" class="h">
+            <rect x="160" y="640" width="1580" height="150" rx="14" fill="#161a22" stroke="#2f3542" stroke-width="2" />
+            <text x="200" y="700" font-size="28" fill="#8a8f99">演练</text>
+            <text x="200" y="752" font-size="34" fill="#e8e6df">模拟一笔无订单的链上转出 → 告警并停签</text>
+            <circle cx="1400" cy="715" r="44" fill="none" stroke="#83C167" stroke-width="4" />
+            <path id="lg-hand" d="M1400 715 V683" stroke="#83C167" stroke-width="4" stroke-linecap="round" />
+            <text x="1470" y="732" font-size="44" font-weight="700" fill="#83C167">≤ 5 分钟</text>
+          </g>
+          <text id="lg-c1" class="h" x="960" y="860" font-size="28" fill="#8a8f99" text-anchor="middle">对应案例：Bitget、Kraken、Upbit</text>
+        </g>
+
+        <!-- L4 发奖硬上限 -->
+        <g id="lg-p">
+          <g id="lg-tag2" class="h"><text x="160" y="270" font-size="30" font-weight="700" fill="#FC6255">P0</text><text x="214" y="270" font-size="30" fill="#e8e6df">营销、空投、发奖系统</text></g>
+          <g id="lg-aw" class="h">
+            <rect x="160" y="340" width="380" height="160" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="350" y="410" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">发奖批次</text>
+            <text x="350" y="462" font-size="28" fill="#FC6255" text-anchor="middle">超预算 / 单位错录</text>
+          </g>
+          <rect id="lg-pb" x="580" y="396" width="0" height="48" rx="6" fill="#F0B90B" />
+          <rect id="lg-po" class="h" x="1230" y="396" width="480" height="48" rx="6" fill="none" stroke="#FC6255" stroke-width="2.5" stroke-dasharray="10 6" />
+          <text id="lg-pol" class="h" x="1470" y="490" font-size="30" fill="#FC6255" text-anchor="middle">系统拦截</text>
+          <g id="lg-cap" class="h">
+            <path d="M1220 340 V500" stroke="#83C167" stroke-width="6" />
+            <text x="1220" y="320" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">单笔 / 总额硬上限</text>
+          </g>
+          <g id="lg-dual" class="h">
+            <g fill="none" stroke="#83C167" stroke-width="4">
+              <circle cx="620" cy="640" r="28" /><path d="M570 740 C570 670 670 670 670 740 Z" />
+              <circle cx="760" cy="640" r="28" /><path d="M710 740 C710 670 810 670 810 740 Z" />
+            </g>
+            <text x="860" y="680" font-size="34" fill="#e8e6df">币种单位：双人复核</text>
+            <text x="860" y="730" font-size="28" fill="#8a8f99">对应案例：Bithumb（误发 BTC）</text>
+          </g>
+        </g>
+
+        <!-- L5–L6 地址状态机 -->
+        <g id="lg-s">
+          <g id="lg-tag3" class="h"><text x="160" y="270" font-size="30" font-weight="700" fill="#F0B90B">P1</text><text x="214" y="270" font-size="30" fill="#e8e6df">钱包地址状态机</text></g>
+          <g id="lg-s1" class="h">
+            <rect x="200" y="340" width="380" height="120" rx="60" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text class="mono" x="390" y="412" font-size="36" font-weight="700" fill="#58C4DD" text-anchor="middle">Active</text>
+          </g>
+          <path id="lg-t1" class="dr h" pathLength="1" d="M592 400 H728" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#lg-arr)" />
+          <g id="lg-s2" class="h">
+            <rect x="740" y="340" width="420" height="120" rx="60" fill="#22252d" stroke="#8a8f99" stroke-width="3" />
+            <text class="mono" x="950" y="412" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">Deprecated</text>
+          </g>
+          <path id="lg-t2" class="dr h" pathLength="1" d="M1172 400 H1308" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#lg-arr)" />
+          <g id="lg-s3" class="h">
+            <rect id="lg-s3b" x="1320" y="340" width="360" height="120" rx="60" fill="#1b1f27" stroke="#8a8f99" stroke-width="3" stroke-dasharray="12 8" />
+            <text class="mono" x="1500" y="412" font-size="36" font-weight="700" fill="#8a8f99" text-anchor="middle">Retired</text>
+          </g>
+          <path id="lg-dep" class="dr h" pathLength="1" d="M1500 640 V476" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#lg-arry)" />
+          <text id="lg-depl" class="h" x="1520" y="610" font-size="28" fill="#F0B90B">有人转入</text>
+          <g id="lg-r" class="h">
+            <text x="1100" y="540" font-size="32" fill="#FC6255" text-anchor="end">自动记账：关闭</text>
+            <text x="1100" y="600" font-size="32" font-weight="700" fill="#83C167" text-anchor="end">链上转入：1 分钟内告警</text>
+          </g>
+          <text id="lg-c3" class="h" x="960" y="760" font-size="28" fill="#8a8f99" text-anchor="middle">对应案例：CoinDCX（旧钱包）</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const GROW = (s, w, t, d = 0.8) => tl.fromTo(s, { attr: { width: 0 } }, { attr: { width: w }, duration: d, ease: "power2.out", immediateRender: false }, t);
+
+      IN("#lg-head", at(0, 0.05), 0.8, { y: 20 });
+
+      // L1 三账
+      IN("#lg-tag1", at(1, 0.02)); IN("#lg-l", at(1, 0.08));
+      GROW("#lg-b1", 880, at(1, 0.15)); GROW("#lg-b2", 880, at(1, 0.25)); GROW("#lg-b3", 880, at(1, 0.35));
+      IN("#lg-eq", at(1, 0.65), 0.4);
+
+      // L2 差额 → 熔断
+      tl.to("#lg-b1", { attr: { width: 580 }, duration: 0.8, ease: "power2.inOut" }, at(2, 0.05));
+      IN("#lg-gap", at(2, 0.2), 0.4);
+      OUT("#lg-eq", at(2, 0.25), 0.2); IN("#lg-neq", at(2, 0.3), 0.3);
+      ARROW("#lg-fa", at(2, 0.45), 0.3);
+      IN("#lg-fuse", at(2, 0.55), 0.4, { scale: 1.3, svgOrigin: "1590 440" }, { scale: 1 });
+
+      // L3 演练
+      IN("#lg-drill", at(3, 0.05), 0.7, { y: 20 });
+      tl.fromTo("#lg-hand", { rotation: 0, svgOrigin: "1400 715" }, { rotation: 300, svgOrigin: "1400 715", duration: 1.5, ease: "power1.inOut", immediateRender: false }, at(3, 0.25));
+      IN("#lg-c1", at(3, 0.6));
+
+      // L4 发奖硬上限
+      OUT("#lg-a", at(4, 0.0));
+      IN("#lg-tag2", at(4, 0.05)); IN("#lg-aw", at(4, 0.1));
+      IN("#lg-cap", at(4, 0.2));
+      GROW("#lg-pb", 630, at(4, 0.28), 0.7);
+      IN("#lg-po", at(4, 0.42), 0.4); IN("#lg-pol", at(4, 0.45));
+      IN("#lg-dual", at(4, 0.6), 0.7, { y: 20 });
+
+      // L5 状态机
+      OUT("#lg-p", at(5, 0.0));
+      IN("#lg-tag3", at(5, 0.05));
+      IN("#lg-s1", at(5, 0.1)); ARROW("#lg-t1", at(5, 0.25), 0.4);
+      IN("#lg-s2", at(5, 0.32)); ARROW("#lg-t2", at(5, 0.47), 0.4);
+      IN("#lg-s3", at(5, 0.55));
+
+      // L6 退役：不记账，但告警
+      IN("#lg-r", at(6, 0.05), 0.6, { x: 20 });
+      ARROW("#lg-dep", at(6, 0.35), 0.5); IN("#lg-depl", at(6, 0.35));
+      tl.to("#lg-s3b", { attr: { stroke: "#83C167" }, duration: 0.4 }, at(6, 0.55));
+      IN("#lg-c3", at(6, 0.6));
+
+      tl.to("#lg-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["ledger"] = tl;
+    })();
+  </script>
+</template>

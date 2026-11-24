@@ -1,0 +1,182 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 devai，id 前缀 dv- -->
+  <div id="root" data-composition-id="devai" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="dv-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+        <marker id="dv-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="dv-all">
+        <text id="dv-title" class="h" x="960" y="120" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">现代研发终端与 AI 工具治理</text>
+
+        <!-- L0 概览 -->
+        <g id="dv-o">
+          <g id="dv-me" class="h">
+            <circle cx="960" cy="560" r="40" fill="none" stroke="#e8e6df" stroke-width="4" />
+            <path d="M885 740 C885 645 1035 645 1035 740 Z" fill="none" stroke="#e8e6df" stroke-width="4" stroke-linejoin="round" />
+            <text x="960" y="800" font-size="32" fill="#e8e6df" text-anchor="middle">开发者</text>
+          </g>
+          <g id="dv-sp" stroke="#8a8f99" stroke-width="3" fill="none">
+            <path class="dr" pathLength="1" d="M910 540 L650 400" /><path class="dr" pathLength="1" d="M960 508 V390" /><path class="dr" pathLength="1" d="M1010 540 L1270 400" />
+          </g>
+          <g id="dv-n1" class="h"><rect x="380" y="300" width="300" height="90" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text x="530" y="357" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">AI 编码工具</text></g>
+          <g id="dv-n2" class="h"><rect x="840" y="290" width="240" height="90" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text x="960" y="347" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">IDE</text></g>
+          <g id="dv-n3" class="h"><rect x="1240" y="300" width="300" height="90" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text x="1390" y="357" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">CI/CD</text></g>
+        </g>
+
+        <!-- L1–L2 AI 会话隔离 + 人工确认 -->
+        <g id="dv-a">
+          <g id="dv-ua" class="h">
+            <rect x="300" y="260" width="520" height="200" rx="16" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="560" y="330" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">员工 A 的 AI 会话</text>
+            <text x="560" y="400" font-size="28" fill="#8a8f99" text-anchor="middle">Agent · MCP · 工作区</text>
+          </g>
+          <g id="dv-ub" class="h">
+            <rect x="1100" y="260" width="520" height="200" rx="16" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="1360" y="330" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">员工 B 的 AI 会话</text>
+            <text x="1360" y="400" font-size="28" fill="#8a8f99" text-anchor="middle">Agent · MCP · 工作区</text>
+          </g>
+          <rect id="dv-wall" class="h" x="952" y="240" width="16" height="240" rx="4" fill="#83C167" />
+          <path id="dv-try" class="dr h" pathLength="1" d="M1088 360 H980" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#dv-arrr)" />
+          <text id="dv-rej" class="h" x="960" y="530" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">按用户隔离：跨会话访问被拒绝</text>
+          <g id="dv-acts" font-size="30" text-anchor="middle">
+            <g class="dv-act h"><rect x="300" y="620" width="280" height="64" rx="10" fill="#22252d" stroke="#8a8f99" stroke-width="2.5" /><text x="440" y="663" fill="#e8e6df">终端执行</text></g>
+            <g class="dv-act h"><rect x="300" y="710" width="280" height="64" rx="10" fill="#22252d" stroke="#8a8f99" stroke-width="2.5" /><text x="440" y="753" fill="#e8e6df">读凭证</text></g>
+            <g class="dv-act h"><rect x="300" y="800" width="280" height="64" rx="10" fill="#22252d" stroke="#8a8f99" stroke-width="2.5" /><text x="440" y="843" fill="#e8e6df">生产部署</text></g>
+          </g>
+          <g id="dv-ln" stroke="#8a8f99" stroke-width="3" fill="none">
+            <path class="dr" pathLength="1" d="M592 652 C700 652 720 740 790 740" /><path class="dr" pathLength="1" d="M592 742 H790" /><path class="dr" pathLength="1" d="M592 832 C700 832 720 744 790 744" />
+          </g>
+          <g id="dv-hum" class="h">
+            <rect x="800" y="670" width="360" height="140" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="980" y="752" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">人工确认</text>
+          </g>
+          <path id="dv-go" class="dr h" pathLength="1" d="M1172 740 H1328" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#dv-arr)" />
+          <text id="dv-gol" class="h" x="1350" y="752" font-size="32" fill="#e8e6df">才执行</text>
+          <text id="dv-c1" class="h" x="1620" y="900" font-size="28" fill="#8a8f99" text-anchor="end">对应案例：Binance 2026</text>
+        </g>
+
+        <!-- L3–L4 IDE 与外部代码 -->
+        <g id="dv-i">
+          <g id="dv-ide" class="h">
+            <rect x="200" y="260" width="760" height="460" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="3" />
+            <path d="M200 316 H960" stroke="#58C4DD" stroke-width="2" />
+            <text x="230" y="300" font-size="28" fill="#58C4DD">IDE</text>
+            <g class="mono" font-size="28" fill="#e8e6df">
+              <text x="240" y="480">repo/</text>
+              <text x="280" y="540">.vscode/tasks.json</text>
+              <text x="320" y="600" fill="#FC6255">runOn: folderOpen</text>
+            </g>
+          </g>
+          <g id="dv-trust" class="h">
+            <rect x="230" y="345" width="700" height="66" rx="10" fill="#16241a" stroke="#83C167" stroke-width="2.5" />
+            <text x="260" y="389" font-size="30" font-weight="700" fill="#83C167">强制 Workspace Trust</text>
+          </g>
+          <path id="dv-strike" class="dr" pathLength="1" d="M310 590 H640" stroke="#FC6255" stroke-width="4" fill="none" />
+          <text id="dv-noauto" class="h" x="580" y="680" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">打开目录，不自动执行</text>
+          <g id="dv-air" class="h">
+            <rect x="1110" y="280" width="120" height="200" rx="18" fill="none" stroke="#8a8f99" stroke-width="4" />
+            <path d="M1140 380 Q1170 350 1200 380 M1125 360 Q1170 315 1215 360" fill="none" stroke="#8a8f99" stroke-width="4" stroke-linecap="round" />
+            <path d="M1110 280 L1230 480" stroke="#FC6255" stroke-width="5" />
+            <text x="1270" y="370" font-size="32" fill="#e8e6df">AirDrop 接收</text>
+            <text x="1270" y="420" font-size="30" font-weight="700" fill="#FC6255">禁用</text>
+          </g>
+          <g id="dv-sb" class="h">
+            <rect x="1110" y="560" width="620" height="200" rx="16" fill="#132530" stroke="#9CDCEB" stroke-width="3" stroke-dasharray="12 8" />
+            <text x="1140" y="610" font-size="30" fill="#9CDCEB">一次性沙箱</text>
+            <rect x="1300" y="650" width="240" height="70" rx="10" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+            <text x="1420" y="696" font-size="30" fill="#FC6255" text-anchor="middle">外部代码</text>
+          </g>
+          <text id="dv-c2" class="h" x="960" y="860" font-size="28" fill="#8a8f99" text-anchor="middle">对应案例：WOO X、Drift、KelpDAO</text>
+        </g>
+
+        <!-- L5 令牌 -->
+        <g id="dv-t">
+          <g id="dv-dev" class="h">
+            <rect x="240" y="300" width="580" height="360" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <text x="530" y="360" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">开发机</text>
+            <g stroke="#FC6255" stroke-width="5" fill="none" stroke-linecap="round"><circle cx="440" cy="480" r="22" /><path d="M462 480 H560 M540 480 V498 M556 480 V494" /></g>
+            <text x="530" y="580" font-size="30" fill="#e8e6df" text-anchor="middle">长期云 / 容器部署令牌</text>
+          </g>
+          <path id="dv-x" class="dr" pathLength="1" d="M400 440 L600 520 M600 440 L400 520" stroke="#FC6255" stroke-width="6" fill="none" />
+          <text id="dv-zero" class="h" x="530" y="730" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">零存放</text>
+          <g id="dv-ci" class="h">
+            <rect x="1100" y="300" width="580" height="360" rx="16" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="1390" y="360" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">CI/CD</text>
+            <text x="1390" y="420" font-size="28" fill="#8a8f99" text-anchor="middle">受保护分支</text>
+            <g stroke="#83C167" stroke-width="5" fill="none" stroke-linecap="round"><circle cx="1300" cy="510" r="22" /><path d="M1322 510 H1400 M1384 510 V526" /></g>
+            <circle cx="1470" cy="510" r="26" fill="none" stroke="#83C167" stroke-width="3" />
+            <path id="dv-hand" d="M1470 510 V490" stroke="#83C167" stroke-width="3" stroke-linecap="round" />
+            <text x="1390" y="610" font-size="30" fill="#83C167" text-anchor="middle">OIDC 短时凭证</text>
+          </g>
+          <text id="dv-c3" class="h" x="960" y="860" font-size="28" fill="#8a8f99" text-anchor="middle">对应案例：SwissBorg / Kiln、Binance</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0
+      IN("#dv-title", at(0, 0.02), 0.8, { y: 20 });
+      IN("#dv-me", at(0, 0.2));
+      tl.fromTo("#dv-sp path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, stagger: 0.1 }, at(0, 0.35));
+      IN("#dv-n1", at(0, 0.5)); IN("#dv-n2", at(0, 0.55)); IN("#dv-n3", at(0, 0.6));
+
+      // L1 隔离
+      OUT("#dv-o", at(1, 0.0));
+      IN("#dv-ua", at(1, 0.08)); IN("#dv-ub", at(1, 0.14));
+      IN("#dv-wall", at(1, 0.3), 0.4, { scaleY: 0, svgOrigin: "960 480" }, { scaleY: 1 });
+      ARROW("#dv-try", at(1, 0.45), 0.4);
+      IN("#dv-rej", at(1, 0.6));
+
+      // L2 人工确认
+      tl.fromTo(".dv-act", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.12 }, at(2, 0.05));
+      tl.fromTo("#dv-ln path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, stagger: 0.08 }, at(2, 0.3));
+      IN("#dv-hum", at(2, 0.4));
+      ARROW("#dv-go", at(2, 0.55), 0.4); IN("#dv-gol", at(2, 0.6));
+      IN("#dv-c1", at(2, 0.7));
+
+      // L3 IDE
+      OUT("#dv-a", at(3, 0.0));
+      IN("#dv-ide", at(3, 0.08));
+      IN("#dv-trust", at(3, 0.3), 0.5, { y: -15 });
+      DRAW("#dv-strike", at(3, 0.5), 0.4);
+      IN("#dv-noauto", at(3, 0.6));
+
+      // L4 AirDrop + 沙箱
+      IN("#dv-air", at(4, 0.05));
+      IN("#dv-sb", at(4, 0.35), 0.7, { y: 20 });
+      IN("#dv-c2", at(4, 0.65));
+
+      // L5 令牌
+      OUT("#dv-i", at(5, 0.0));
+      IN("#dv-dev", at(5, 0.08));
+      DRAW("#dv-x", at(5, 0.3), 0.5);
+      IN("#dv-zero", at(5, 0.4));
+      IN("#dv-ci", at(5, 0.5));
+      tl.fromTo("#dv-hand", { rotation: 0, svgOrigin: "1470 510" }, { rotation: 240, svgOrigin: "1470 510", duration: 1.0, ease: "none", immediateRender: false }, at(5, 0.6));
+      IN("#dv-c3", at(5, 0.7));
+
+      tl.to("#dv-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["devai"] = tl;
+    })();
+  </script>
+</template>

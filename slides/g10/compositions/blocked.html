@@ -1,0 +1,140 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 blocked，id 前缀 bk- -->
+  <div id="root" data-composition-id="blocked" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="bk-all">
+        <text id="bk-title" class="h" x="960" y="140" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">攻击进来了，但没拿到钱</text>
+
+        <g id="bk-chain">
+          <g id="bk-stages" fill="#1b1f27" stroke="#8a8f99" stroke-width="2.5">
+            <rect id="bk-s1" class="h" x="120" y="440" width="300" height="120" rx="12" />
+            <rect id="bk-s2" class="h" x="470" y="440" width="300" height="120" rx="12" />
+            <g id="bk-rest">
+              <rect class="h" x="820" y="440" width="300" height="120" rx="12" />
+              <rect class="h" x="1170" y="440" width="300" height="120" rx="12" />
+              <rect class="h" x="1520" y="440" width="300" height="120" rx="12" />
+            </g>
+          </g>
+          <g id="bk-lab" class="h" font-size="32" fill="#e8e6df" text-anchor="middle">
+            <text x="270" y="512">入口</text><text x="620" y="512">立足</text>
+            <g id="bk-labr"><text x="970" y="512">横移</text><text x="1320" y="512">取得签名能力</text><text x="1670" y="512">链上执行</text></g>
+          </g>
+          <g id="bk-con" class="h" stroke="#8a8f99" stroke-width="3">
+            <path d="M428 500 H462 M778 500 H812 M1128 500 H1162 M1478 500 H1512" />
+          </g>
+          <g id="bk-cb" class="h">
+            <text x="960" y="270" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="middle">Coinbase 2019</text>
+            <text x="960" y="330" font-size="30" fill="#FC6255" text-anchor="middle">两个 <tspan class="mono">Firefox 0day</tspan> · 定向攻击员工</text>
+          </g>
+          <g id="bk-tko"><circle id="bk-tok" class="h" cx="270" cy="395" r="18" fill="#FC6255" /></g>
+          <text id="bk-ok1" class="h" x="270" y="612" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">成功</text>
+          <rect id="bk-wall" class="h" x="788" y="370" width="14" height="230" rx="4" fill="#83C167" />
+          <text id="bk-walll" class="h" x="795" y="650" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">检测阻断</text>
+          <text id="bk-nol" class="h" x="1320" y="650" font-size="32" fill="#83C167" text-anchor="middle">没有客户资损</text>
+          <text id="bk-neq" class="h" x="960" y="810" font-size="56" font-weight="700" fill="#e8e6df" text-anchor="middle"><tspan fill="#FC6255">入口成功</tspan> ≠ <tspan fill="#8a8f99">盗币成功</tspan></text>
+          <g id="bk-pills" class="h">
+            <rect x="260" y="760" width="300" height="70" rx="35" fill="#16241a" stroke="#83C167" stroke-width="2.5" />
+            <text x="410" y="806" font-size="30" fill="#83C167" text-anchor="middle">Coinbase 2019</text>
+          </g>
+          <g id="bk-p2" class="h">
+            <rect x="600" y="760" width="470" height="70" rx="35" fill="#16241a" stroke="#83C167" stroke-width="2.5" />
+            <text x="835" y="806" font-size="30" fill="#83C167" text-anchor="middle">Coinbase 2023 · 员工社工</text>
+          </g>
+          <g id="bk-p3" class="h">
+            <rect x="1110" y="760" width="470" height="70" rx="35" fill="#16241a" stroke="#83C167" stroke-width="2.5" />
+            <text x="1345" y="806" font-size="30" fill="#83C167" text-anchor="middle">Hotbit 2021 · 转出被拦截</text>
+            <text x="1345" y="884" font-size="28" fill="#8a8f99" text-anchor="middle">平台称资产无损，未经独立核实</text>
+          </g>
+        </g>
+
+        <!-- L6–L7 争议 -->
+        <text id="bk-t2" class="h" x="960" y="140" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">性质有争议的事件</text>
+        <g id="bk-cbn" class="h">
+          <rect x="160" y="300" width="740" height="400" rx="16" fill="#1b1f27" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="12 8" />
+          <text x="200" y="372" font-size="40" font-weight="700" fill="#e8e6df">CoinBene 2019</text>
+          <text x="840" y="390" font-size="80" font-weight="700" fill="#8a8f99" text-anchor="middle">?</text>
+          <text x="200" y="480" font-size="30" fill="#FC6255">研究方：约 1.05 亿美元代币异常转出</text>
+          <text x="200" y="570" font-size="30" fill="#B48EF0">平台：“钱包维护”，否认被盗</text>
+        </g>
+        <g id="bk-lb" class="h">
+          <rect x="1020" y="300" width="740" height="400" rx="16" fill="#1b1f27" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="12 8" />
+          <text x="1060" y="372" font-size="40" font-weight="700" fill="#e8e6df">LuBian 矿池 2020</text>
+          <text x="1700" y="390" font-size="80" font-weight="700" fill="#8a8f99" text-anchor="middle">?</text>
+          <text x="1060" y="470" font-size="30" fill="#F0B90B">约 127,426 BTC 被转出</text>
+          <text x="1060" y="550" font-size="30" fill="#e8e6df">研究称私钥生成算法可被暴力破解</text>
+          <text x="1060" y="630" font-size="30" fill="#8a8f99">是否被盗存疑</text>
+        </g>
+        <g id="bk-st1" class="h">
+          <g transform="rotate(-6 530 790)">
+            <rect x="400" y="750" width="260" height="80" rx="10" fill="#0f1117" stroke="#FC6255" stroke-width="4" />
+            <text x="530" y="804" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">不计入排名</text>
+          </g>
+        </g>
+        <g id="bk-st2" class="h">
+          <g transform="rotate(-6 1390 790)">
+            <rect x="1260" y="750" width="260" height="80" rx="10" fill="#0f1117" stroke="#FC6255" stroke-width="4" />
+            <text x="1390" y="804" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">不计入排名</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+
+      // L0 攻击链
+      IN("#bk-title", at(0, 0.02), 0.8, { y: 20 });
+      tl.fromTo("#bk-stages rect", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12 }, at(0, 0.25));
+      IN("#bk-lab", at(0, 0.45)); IN("#bk-con", at(0, 0.5));
+
+      // L1 Coinbase 2019
+      IN("#bk-cb", at(1, 0.05), 0.7, { y: 15 });
+      IN("#bk-tok", at(1, 0.45), 0.4, { scale: 0, svgOrigin: "270 395" }, { scale: 1, ease: "back.out(2)" });
+
+      // L2 入口成功
+      tl.to("#bk-s1", { attr: { stroke: "#FC6255", fill: "#2a1616" }, duration: 0.4 }, at(2, 0.1));
+      IN("#bk-ok1", at(2, 0.3));
+
+      // L3 被阻断
+      tl.to("#bk-tko", { x: 470, duration: 0.9, ease: "power2.inOut" }, at(3, 0.05));
+      IN("#bk-wall", at(3, 0.3), 0.4, { scaleY: 0, svgOrigin: "795 600" }, { scaleY: 1 });
+      tl.to("#bk-tko", { x: 440, duration: 0.25, ease: "power2.out" }, at(3, 0.4));
+      IN("#bk-walll", at(3, 0.42));
+      tl.to(["#bk-rest", "#bk-labr"], { opacity: 0.3, duration: 0.5 }, at(3, 0.5));
+      IN("#bk-nol", at(3, 0.6));
+
+      // L4
+      IN("#bk-neq", at(4, 0.1), 0.8, { y: 20 });
+
+      // L5 其他阻断
+      OUT("#bk-neq", at(5, 0.0), 0.3);
+      IN("#bk-pills", at(5, 0.1), 0.5, { y: 15 });
+      IN("#bk-p2", at(5, 0.25), 0.5, { y: 15 });
+      IN("#bk-p3", at(5, 0.45), 0.5, { y: 15 });
+
+      // L6 争议
+      OUT("#bk-chain", at(6, 0.0)); OUT("#bk-title", at(6, 0.0));
+      IN("#bk-t2", at(6, 0.1));
+      IN("#bk-cbn", at(6, 0.25), 0.7, { y: 20 });
+      IN("#bk-lb", at(6, 0.4), 0.7, { y: 20 });
+
+      // L7 不计入排名
+      IN("#bk-st1", at(7, 0.3), 0.35, { scale: 1.5, svgOrigin: "530 790" }, { scale: 1, ease: "back.out(2)" });
+      IN("#bk-st2", at(7, 0.5), 0.35, { scale: 1.5, svgOrigin: "1390 790" }, { scale: 1, ease: "back.out(2)" });
+
+      tl.to("#bk-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["blocked"] = tl;
+    })();
+  </script>
+</template>

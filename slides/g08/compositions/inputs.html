@@ -1,0 +1,128 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 inputs，id 前缀 in- -->
+  <div id="root" data-composition-id="inputs" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="in-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="in-arrb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#58C4DD" />
+        </marker>
+      </defs>
+      <g id="in-all">
+        <g id="in-sys">
+          <!-- L0 合约按设计运行 -->
+          <g id="in-box" class="h">
+            <rect x="900" y="300" width="460" height="360" rx="18" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="1130" y="372" font-size="40" font-weight="700" fill="#58C4DD" text-anchor="middle">借贷 / 治理合约</text>
+            <g fill="#58C4DD" opacity="0.5">
+              <rect x="960" y="410" width="340" height="40" rx="6" /><rect x="960" y="470" width="340" height="40" rx="6" /><rect x="960" y="530" width="340" height="40" rx="6" />
+            </g>
+            <text x="1130" y="626" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">每一步都按设计运行</text>
+          </g>
+          <path id="in-out" class="dr h" pathLength="1" d="M1372 480 H1560" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#in-arrb)" />
+          <text id="in-outl" class="h" x="1580" y="492" font-size="34" fill="#e8e6df">输出</text>
+
+          <!-- L1 三个输入 -->
+          <g font-size="36" font-weight="700" fill="#e8e6df">
+            <text id="in-i1" class="h" x="200" y="402">市场价格</text>
+            <text id="in-i2" class="h" x="200" y="492">抵押品估值</text>
+            <text id="in-i3" class="h" x="200" y="582">投票权</text>
+          </g>
+          <g fill="none" stroke="#FC6255" stroke-width="3">
+            <path id="in-a1" class="dr h" pathLength="1" d="M500 390 C700 390 720 440 888 440" marker-end="url(#in-arr)" />
+            <path id="in-a2" class="dr h" pathLength="1" d="M500 480 H888" marker-end="url(#in-arr)" />
+            <path id="in-a3" class="dr h" pathLength="1" d="M500 570 C700 570 720 520 888 520" marker-end="url(#in-arr)" />
+          </g>
+          <text id="in-tamp" class="h" x="200" y="320" font-size="34" font-weight="700" fill="#FC6255">攻击者改的是输入</text>
+
+          <!-- L2 闪电贷 -->
+          <g id="in-tx" class="h">
+            <rect x="140" y="760" width="1640" height="140" rx="14" fill="none" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="12 8" />
+            <text x="1750" y="744" font-size="30" fill="#8a8f99" text-anchor="end">同一笔交易</text>
+          </g>
+          <rect id="in-fl" x="180" y="790" width="0" height="80" rx="8" fill="#F0B90B" opacity="0.9" />
+          <text id="in-fll" class="h" x="210" y="844" font-size="34" font-weight="700" fill="#0f1117">闪电贷：巨额资本</text>
+        </g>
+
+        <!-- L3–L4 统计：一格一件 -->
+        <g id="in-n1" class="h">
+          <text id="in-cnt" x="300" y="226" font-size="80" font-weight="700" fill="#e8e6df">0</text>
+          <text x="400" y="226" font-size="40" fill="#e8e6df">起</text>
+          <text x="300" y="282" font-size="28" fill="#8a8f99">收录事件</text>
+        </g>
+        <g id="in-n2" class="h">
+          <text x="720" y="226" font-size="80" font-weight="700" fill="#F0B90B">$6.8 亿</text>
+          <text x="720" y="282" font-size="28" fill="#8a8f99">已披露损失合计</text>
+        </g>
+        <g id="in-n3" class="h">
+          <text x="1200" y="226" font-size="80" font-weight="700" fill="#FC6255">10</text>
+          <text x="1310" y="226" font-size="40" fill="#FC6255">起</text>
+          <text x="1200" y="282" font-size="28" fill="#8a8f99">在 1,000 万美元以上</text>
+        </g>
+        <path id="in-ax" class="dr" pathLength="1" d="M240 870 H1680" stroke="#8a8f99" stroke-width="3" fill="none" />
+        <g id="in-yrs" class="h" font-size="28" fill="#8a8f99" text-anchor="middle">
+          <text x="360" y="918">2020</text><text x="560" y="918">2021</text><text x="760" y="918">2022</text><text x="960" y="918">2023</text><text x="1160" y="918">2024</text><text x="1360" y="918">2025</text><text x="1560" y="918">2026</text>
+        </g>
+        <g id="in-sq" fill="#3a3f4a">
+          <rect class="in-s" x="325" y="780" width="70" height="70" rx="6" /><rect class="in-s in-big" x="325" y="700" width="70" height="70" rx="6" />
+          <rect class="in-s in-big" x="525" y="780" width="70" height="70" rx="6" /><rect class="in-s in-big" x="525" y="700" width="70" height="70" rx="6" />
+          <rect class="in-s in-big" x="725" y="780" width="70" height="70" rx="6" /><rect class="in-s in-big" x="725" y="700" width="70" height="70" rx="6" /><rect class="in-s in-big" x="725" y="620" width="70" height="70" rx="6" />
+          <rect class="in-s in-big" x="1125" y="780" width="70" height="70" rx="6" />
+          <rect class="in-s in-big" x="1525" y="780" width="70" height="70" rx="6" /><rect class="in-s in-big" x="1525" y="700" width="70" height="70" rx="6" /><rect class="in-s in-big" x="1525" y="620" width="70" height="70" rx="6" />
+        </g>
+        <text id="in-bzx" class="h" x="360" y="972" font-size="28" fill="#8a8f99" text-anchor="middle">bZx · 低于 $10M</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...("x" in from ? { x: 0 } : {}), ...("y" in from ? { y: 0 } : {}), ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      // L0
+      IN("#in-box", at(0, 0.05), 0.8, { y: 20 });
+      ARROW("#in-out", at(0, 0.45), 0.5); IN("#in-outl", at(0, 0.55));
+      // L1 输入
+      IN("#in-i1", at(1, 0.05), 0.5, { x: -20 }); ARROW("#in-a1", at(1, 0.1), 0.5);
+      IN("#in-i2", at(1, 0.2), 0.5, { x: -20 }); ARROW("#in-a2", at(1, 0.25), 0.5);
+      IN("#in-i3", at(1, 0.35), 0.5, { x: -20 }); ARROW("#in-a3", at(1, 0.4), 0.5);
+      tl.to("#in-i1, #in-i2, #in-i3", { attr: { fill: "#FC6255" }, duration: 0.4 }, at(1, 0.6));
+      IN("#in-tamp", at(1, 0.65));
+      // L2 闪电贷
+      IN("#in-tx", at(2, 0.05));
+      tl.fromTo("#in-fl", { attr: { width: 0 } }, { attr: { width: 1560 }, duration: 1.2, ease: "power2.out" }, at(2, 0.2));
+      IN("#in-fll", at(2, 0.4));
+
+      // L3 统计
+      OUT("#in-sys", at(3, 0.0)); OUT("#in-fl", at(3, 0.0)); OUT("#in-fll", at(3, 0.0));
+      IN("#in-n1", at(3, 0.1)); COUNT("#in-cnt", 0, 11, at(3, 0.1), 0.9);
+      DRAW("#in-ax", at(3, 0.15), 0.6); IN("#in-yrs", at(3, 0.2));
+      tl.fromTo(".in-s", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", stagger: 0.08 }, at(3, 0.25));
+      IN("#in-n2", at(3, 0.5), 0.7, { y: 20 });
+      // L4 ≥ $10M
+      tl.to(".in-big", { attr: { fill: "#FC6255" }, duration: 0.3, stagger: 0.06 }, at(4, 0.05));
+      IN("#in-n3", at(4, 0.3), 0.7, { y: 20 });
+      IN("#in-bzx", at(4, 0.5), 0.5);
+
+      tl.to("#in-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["inputs"] = tl;
+    })();
+  </script>
+</template>

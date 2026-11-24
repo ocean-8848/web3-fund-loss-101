@@ -1,0 +1,106 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 assume，id 前缀 as- -->
+  <div id="root" data-composition-id="assume" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="as-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="as-all">
+        <g id="as-p1">
+          <text id="as-title" class="h" x="960" y="160" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">“当前市场状态 = 真实价值”？</text>
+          <path id="as-ax" class="dr" pathLength="1" d="M200 300 V800 H1100" stroke="#8a8f99" stroke-width="2.5" fill="none" />
+          <path id="as-real" class="dr" pathLength="1" d="M204 640 H1100" stroke="#83C167" stroke-width="4" stroke-dasharray="1" fill="none" />
+          <text id="as-reall" class="h" x="1000" y="690" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">真实价值</text>
+          <path id="as-spot" class="dr" pathLength="1" d="M204 640 L460 632 L600 622 L680 420 L760 390 L840 618 L1100 640" stroke="#FC6255" stroke-width="5" fill="none" stroke-linejoin="round" />
+          <text id="as-spotl" class="h" x="720" y="360" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">市场价格</text>
+          <path id="as-gap" class="h" d="M610 640 L680 420 L760 390 L835 640 Z" fill="#FC6255" opacity="0.2" />
+
+          <g id="as-no" class="h" font-size="36">
+            <text x="1260" y="400" fill="#e8e6df">代码漏洞：<tspan fill="#83C167" font-weight="700">没有</tspan></text>
+            <text x="1260" y="470" fill="#e8e6df">私钥泄露：<tspan fill="#83C167" font-weight="700">没有</tspan></text>
+          </g>
+          <rect id="as-loss" x="1300" y="860" width="120" height="0" fill="#FC6255" opacity="0.85" />
+          <text id="as-lossl" class="h" x="1360" y="910" font-size="28" fill="#FC6255" text-anchor="middle">可能的损失</text>
+          <path id="as-cap" class="dr" pathLength="1" d="M1260 640 H1800" stroke="#83C167" stroke-width="5" fill="none" />
+          <text id="as-capl" class="h" x="1440" y="620" font-size="32" font-weight="700" fill="#83C167">风险参数 = 损失上限</text>
+        </g>
+
+        <!-- L3–L4 跨协议传染 -->
+        <g id="as-src" class="h">
+          <rect x="140" y="300" width="380" height="200" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="330" y="386" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">被操纵 /</text>
+          <text x="330" y="440" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">无背书资产</text>
+        </g>
+        <path id="as-a1" class="dr h" pathLength="1" d="M532 400 H788" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#as-arr)" />
+        <text id="as-a1l" class="h" x="660" y="376" font-size="28" fill="#e8e6df" text-anchor="middle">流入</text>
+        <g id="as-dn" class="h">
+          <rect x="800" y="280" width="480" height="240" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="1040" y="340" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">下游借贷协议</text>
+        </g>
+        <rect id="as-bad" x="830" y="370" width="0" height="120" rx="8" fill="#FC6255" opacity="0.55" />
+        <text id="as-badl" class="h" x="1040" y="444" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">坏账 / 清算</text>
+        <path id="as-a2" class="dr h" pathLength="1" d="M1292 400 H1508" stroke="#FC6255" stroke-width="3.5" stroke-dasharray="1" fill="none" marker-end="url(#as-arr)" />
+        <text id="as-a2l" class="h" x="1640" y="412" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">跨协议传染</text>
+
+        <g id="as-ex1" class="h" font-size="34">
+          <text x="240" y="700" font-weight="700" fill="#FC6255">KelpDAO</text>
+          <text x="520" y="700" fill="#8a8f99">→</text>
+          <text x="600" y="700" fill="#e8e6df">Aave 等协议出现坏账</text>
+        </g>
+        <g id="as-ex2" class="h" font-size="34">
+          <text x="240" y="800" font-weight="700" fill="#FC6255">Curve</text>
+          <text x="520" y="800" fill="#8a8f99">→</text>
+          <text x="600" y="800" fill="#e8e6df">CRV 抵押引发连环清算担忧</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...("x" in from ? { x: 0 } : {}), ...("y" in from ? { y: 0 } : {}), ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 假设
+      IN("#as-title", at(0, 0.02), 0.7, { y: 20 });
+      DRAW("#as-ax", at(0, 0.1), 0.6);
+      DRAW("#as-real", at(0, 0.2), 0.7); IN("#as-reall", at(0, 0.3), 0.5);
+      DRAW("#as-spot", at(0, 0.35), 1.1); IN("#as-spotl", at(0, 0.55), 0.5);
+      IN("#as-gap", at(0, 0.7), 0.4);
+      // L1 没有漏洞
+      IN("#as-no", at(1, 0.1), 0.7, { x: 20 });
+      // L2 风险参数决定上限
+      DRAW("#as-cap", at(2, 0.05), 0.5);
+      IN("#as-capl", at(2, 0.15), 0.5);
+      tl.fromTo("#as-loss", { attr: { y: 860, height: 0 } }, { attr: { y: 652, height: 208 }, duration: 0.8, ease: "power2.out" }, at(2, 0.3));
+      IN("#as-lossl", at(2, 0.4), 0.5);
+
+      // L3 跨协议传染
+      OUT("#as-p1", at(3, 0.0)); OUT("#as-loss", at(3, 0.0)); OUT("#as-lossl", at(3, 0.0));
+      IN("#as-src", at(3, 0.1), 0.6, { x: -20 });
+      ARROW("#as-a1", at(3, 0.2), 0.4); IN("#as-a1l", at(3, 0.25), 0.4);
+      IN("#as-dn", at(3, 0.3), 0.5);
+      tl.fromTo("#as-bad", { attr: { width: 0 } }, { attr: { width: 420 }, duration: 0.7, ease: "power2.out" }, at(3, 0.4));
+      IN("#as-badl", at(3, 0.5), 0.4);
+      ARROW("#as-a2", at(3, 0.6), 0.4); IN("#as-a2l", at(3, 0.68), 0.4);
+      // L4 两个例子
+      IN("#as-ex1", at(4, 0.05), 0.6, { x: -20 });
+      IN("#as-ex2", at(4, 0.4), 0.6, { x: -20 });
+
+      tl.to("#as-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["assume"] = tl;
+    })();
+  </script>
+</template>

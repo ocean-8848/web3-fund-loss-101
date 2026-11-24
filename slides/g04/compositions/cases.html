@@ -1,0 +1,143 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 cases，id 前缀 cs- -->
+  <div id="root" data-composition-id="cases" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="cs-all">
+        <!-- 案例 1 Harmony -->
+        <g id="cs-a">
+          <g id="cs-a-head" class="h">
+            <text x="960" y="250" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">Harmony Horizon · 2022</text>
+            <text x="960" y="306" font-size="30" fill="#8a8f99" text-anchor="middle">2/5 多签热钱包</text>
+          </g>
+          <g id="cs-a-dots">
+            <circle class="cs-ad h" cx="640" cy="520" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-ad h" cx="800" cy="520" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-ad h" cx="960" cy="520" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-ad h" cx="1120" cy="520" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-ad h" cx="1280" cy="520" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+          </g>
+          <g id="cs-a-br" class="h">
+            <path d="M590 596 V614 H850 V596" stroke="#83C167" stroke-width="3.5" fill="none" />
+            <text x="720" y="664" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">凑够 2 个就执行</text>
+          </g>
+          <g id="cs-a-keys" stroke="#FC6255" stroke-width="5" fill="none" stroke-linecap="round">
+            <g class="cs-ak h"><circle cx="622" cy="520" r="13" /><path d="M635 520 H668 M656 520 V531" /></g>
+            <g class="cs-ak h"><circle cx="782" cy="520" r="13" /><path d="M795 520 H828 M816 520 V531" /></g>
+          </g>
+          <text id="cs-a-res" class="h" x="960" y="800" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">损失 $1 亿 · FBI 归因 Lazarus</text>
+        </g>
+
+        <!-- 案例 2 Orbit -->
+        <g id="cs-b">
+          <g id="cs-b-head" class="h">
+            <text x="960" y="250" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">Orbit Bridge</text>
+            <text x="960" y="306" font-size="30" fill="#8a8f99" text-anchor="middle">7/10 签名者</text>
+          </g>
+          <g id="cs-b-dots">
+            <circle class="cs-bd cs-b7 h" cx="375" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-bd cs-b7 h" cx="505" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-bd cs-b7 h" cx="635" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-bd cs-b7 h" cx="765" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-bd cs-b7 h" cx="895" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-bd cs-b7 h" cx="1025" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-bd cs-b7 h" cx="1155" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-bd h" cx="1285" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-bd h" cx="1415" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-bd h" cx="1545" cy="520" r="46" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+          </g>
+          <g id="cs-b-br" class="h">
+            <path d="M329 592 V610 H1201 V592" stroke="#83C167" stroke-width="3.5" fill="none" />
+            <text x="765" y="660" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">凑够 7 个才执行，看上去不低</text>
+          </g>
+          <text id="cs-b-sim" class="h" x="765" y="430" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">私钥同时失陷</text>
+          <g id="cs-b-res" class="h">
+            <text x="960" y="800" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">损失 $81.5M</text>
+            <text x="960" y="852" font-size="28" fill="#8a8f99" text-anchor="middle">研究机构怀疑朝鲜</text>
+          </g>
+        </g>
+
+        <!-- 案例 3 Drift -->
+        <g id="cs-c">
+          <g id="cs-c-head" class="h">
+            <text x="960" y="250" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">Drift · 2026</text>
+            <text x="960" y="306" font-size="30" fill="#8a8f99" text-anchor="middle">6 个月线下社工 · 2/5 签名者</text>
+          </g>
+          <g id="cs-c-dots">
+            <circle class="cs-cd cs-c2 h" cx="640" cy="540" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-cd cs-c2 h" cx="800" cy="540" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-cd h" cx="960" cy="540" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-cd h" cx="1120" cy="540" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <circle class="cs-cd h" cx="1280" cy="540" r="50" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+          </g>
+          <g id="cs-c-docs" class="h" fill="#161a22" stroke="#FC6255" stroke-width="2.5">
+            <rect x="618" y="410" width="44" height="56" rx="4" /><path d="M628 428 H652 M628 440 H652 M628 452 H644" fill="none" />
+            <rect x="778" y="410" width="44" height="56" rx="4" /><path d="M788 428 H812 M788 440 H812 M788 452 H804" fill="none" />
+          </g>
+          <text id="cs-c-dl" class="h" x="940" y="450" font-size="30" fill="#FC6255">预签 <tspan class="mono">durable nonce</tspan> 交易</text>
+          <g id="cs-c-tl" class="h">
+            <text class="mono" x="740" y="732" font-size="32" fill="#e8e6df" text-anchor="end">timelock</text>
+            <rect x="770" y="698" width="560" height="44" rx="8" fill="#22252d" stroke="#8a8f99" stroke-width="2" />
+          </g>
+          <rect id="cs-c-tlf" class="h" x="770" y="698" width="560" height="44" rx="8" fill="#83C167" opacity="0.85" />
+          <text id="cs-c-z" class="h" x="1356" y="734" font-size="40" font-weight="700" fill="#FC6255">= 0</text>
+          <text id="cs-c-res" class="h" x="960" y="850" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">损失 $2.8 亿</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const RED = { fill: "#2a1616", stroke: "#FC6255" };
+      const DOTS = (s, t) => tl.fromTo(s, { opacity: 0, scale: 0.6, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)", stagger: 0.08 }, t);
+
+      // L0 Harmony
+      IN("#cs-a-head", at(0, 0.02), 0.8, { y: 16 });
+      DOTS(".cs-ad", at(0, 0.2));
+      IN("#cs-a-br", at(0, 0.55));
+      // L1
+      tl.fromTo(".cs-ak", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.2 }, at(1, 0.05));
+      tl.to(".cs-ad:nth-child(-n+2)", { attr: RED, duration: 0.3, stagger: 0.2 }, at(1, 0.2));
+      IN("#cs-a-res", at(1, 0.45), 0.7, { y: 14 });
+
+      // L2 Orbit
+      OUT("#cs-a", at(2, 0.0));
+      IN("#cs-b-head", at(2, 0.1), 0.8, { y: 16 });
+      DOTS(".cs-bd", at(2, 0.2));
+      IN("#cs-b-br", at(2, 0.5));
+      // L3 同时失陷
+      tl.to(".cs-b7", { attr: RED, duration: 0.25 }, at(3, 0.1));
+      tl.fromTo(".cs-b7", { attr: { "stroke-width": 3 } }, { attr: { "stroke-width": 8 }, duration: 0.25, yoyo: true, repeat: 1, immediateRender: false }, at(3, 0.1));
+      IN("#cs-b-sim", at(3, 0.2));
+      tl.to("#cs-b-br", { opacity: 0.35, duration: 0.4 }, at(3, 0.35));
+      IN("#cs-b-res", at(3, 0.45), 0.7, { y: 14 });
+
+      // L4 Drift
+      OUT("#cs-b", at(4, 0.0));
+      IN("#cs-c-head", at(4, 0.1), 0.8, { y: 16 });
+      DOTS(".cs-cd", at(4, 0.22));
+      IN("#cs-c-docs", at(4, 0.5), 0.6, { y: -20 });
+      tl.to(".cs-c2", { attr: RED, duration: 0.3 }, at(4, 0.55));
+      IN("#cs-c-dl", at(4, 0.62));
+      // L5 timelock = 0
+      IN("#cs-c-tl", at(5, 0.02));
+      IN("#cs-c-tlf", at(5, 0.02));
+      tl.to("#cs-c-tlf", { attr: { width: 0 }, duration: 0.9, ease: "power2.in" }, at(5, 0.15));
+      IN("#cs-c-z", at(5, 0.4), 0.5, { scale: 1.5, svgOrigin: "1390 720" }, { scale: 1 });
+      IN("#cs-c-res", at(5, 0.5), 0.7, { y: 14 });
+
+      tl.to("#cs-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["cases"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,148 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 evid，id 前缀 ev- -->
+  <div id="root" data-composition-id="evid" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ev-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="ev-all">
+        <g id="ev-gridall">
+          <text id="ev-h0" class="h" x="180" y="220" font-size="48" font-weight="700" fill="#e8e6df">证据栏 <tspan font-size="30" font-weight="400" fill="#8a8f99">信息从哪来</tspan></text>
+          <text id="ev-h1" class="h" x="180" y="220" font-size="48" font-weight="700" fill="#e8e6df">层数栏 <tspan font-size="30" font-weight="400" fill="#8a8f99">攻击链有几步</tspan></text>
+          <text id="ev-h2" class="h" x="180" y="220" font-size="48" font-weight="700" fill="#e8e6df">归因栏 <tspan font-size="30" font-weight="400" fill="#8a8f99">谁干的</tspan></text>
+          <g id="ev-dots"></g>
+          <!-- 证据图例 -->
+          <g id="ev-lg">
+            <g id="ev-k0" class="h"><rect x="1250" y="332" width="48" height="44" rx="8" fill="#83C167" /><text x="1274" y="364" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle" class="mono">P</text><text x="1320" y="365" font-size="30" fill="#e8e6df">原始披露</text></g>
+            <g id="ev-k1" class="h"><rect x="1250" y="412" width="48" height="44" rx="8" fill="#58C4DD" /><text x="1274" y="444" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle" class="mono">I</text><text x="1320" y="445" font-size="30" fill="#e8e6df">调查机构研究</text></g>
+            <g id="ev-k2" class="h"><rect x="1250" y="492" width="48" height="44" rx="8" fill="#8a8f99" /><text x="1274" y="524" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle" class="mono">M</text><text x="1320" y="525" font-size="30" fill="#e8e6df">媒体或二手转引</text></g>
+            <g id="ev-k3" class="h"><rect x="1250" y="572" width="48" height="44" rx="8" fill="#FC6255" /><text x="1274" y="604" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle" class="mono">C</text><text x="1320" y="605" font-size="30" fill="#e8e6df">仅索引线索</text></g>
+            <g id="ev-cn" class="h" font-size="34" font-weight="700" text-anchor="end">
+              <text x="1840" y="366" fill="#83C167">107</text><text x="1840" y="446" fill="#58C4DD">80</text><text x="1840" y="526" fill="#8a8f99">25</text><text x="1840" y="606" fill="#FC6255">1</text>
+            </g>
+            <text id="ev-cnl" class="h" x="1250" y="290" font-size="28" fill="#8a8f99">按第一个标签计</text>
+            <g id="ev-cc" class="h">
+              <text x="1250" y="700" font-size="32" fill="#FC6255" font-weight="700">带 C 的 7 条</text>
+              <text x="1250" y="748" font-size="30" fill="#e8e6df">回到原始材料核实</text>
+            </g>
+          </g>
+          <!-- 层数图例 -->
+          <g id="ev-ly" class="h">
+            <circle cx="1270" cy="400" r="13" fill="#58C4DD" /><text x="1300" y="411" font-size="32" fill="#e8e6df">有估计层数 <tspan font-weight="700" fill="#58C4DD">144</tspan></text>
+            <circle cx="1270" cy="470" r="12" fill="none" stroke="#8a8f99" stroke-width="2.5" /><text x="1300" y="481" font-size="32" fill="#e8e6df">空值 <tspan font-weight="700" fill="#e8e6df">69</tspan></text>
+            <text x="1300" y="530" font-size="28" fill="#8a8f99">链路未公开</text>
+          </g>
+          <!-- 归因图例 -->
+          <g id="ev-at" class="h">
+            <circle cx="1270" cy="400" r="13" fill="#8a8f99" /><text x="1300" y="411" font-size="32" fill="#e8e6df">“未知”开头 <tspan font-weight="700">153</tspan></text>
+            <circle cx="1270" cy="470" r="13" fill="#FC6255" /><text x="1300" y="481" font-size="32" fill="#e8e6df">写了归因 <tspan font-weight="700" fill="#FC6255">60</tspan></text>
+            <text x="1250" y="600" font-size="64" font-weight="700" fill="#e8e6df">72%</text>
+            <text x="1250" y="650" font-size="28" fill="#8a8f99">归因未知</text>
+          </g>
+        </g>
+
+        <!-- L5 措辞分层 -->
+        <g id="ev-wd">
+          <text id="ev-wh" class="h" x="160" y="220" font-size="48" font-weight="700" fill="#e8e6df">同样指向朝鲜，措辞不同</text>
+          <path id="ev-ax" class="dr h" pathLength="1" d="M200 640 H1740" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#ev-arr)" />
+          <text id="ev-axs" class="h" x="200" y="700" font-size="28" fill="#8a8f99">证据强</text>
+          <text id="ev-axw" class="h" x="1740" y="700" font-size="28" fill="#8a8f99" text-anchor="end">证据弱</text>
+          <g id="ev-q0" class="h">
+            <circle cx="400" cy="640" r="12" fill="#FC6255" />
+            <text x="400" y="430" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">Bybit</text>
+            <text x="400" y="485" font-size="30" fill="#FC6255" text-anchor="middle">TraderTraitor（执法）</text>
+            <text x="400" y="580" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">执法认定</text>
+          </g>
+          <g id="ev-q1" class="h">
+            <circle cx="960" cy="640" r="12" fill="#FC6255" opacity="0.7" />
+            <text x="960" y="430" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">Poloniex</text>
+            <text x="960" y="485" font-size="30" fill="#FC6255" text-anchor="middle" opacity="0.8">研究判断朝鲜关联</text>
+            <text x="960" y="580" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">研究判断</text>
+          </g>
+          <g id="ev-q2" class="h">
+            <circle cx="1520" cy="640" r="12" fill="none" stroke="#FC6255" stroke-width="3" />
+            <text x="1520" y="430" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">HTX / HECO 桥</text>
+            <text x="1520" y="485" font-size="30" fill="#8a8f99" text-anchor="middle">未知（朝鲜关联为猜测）</text>
+            <text x="1520" y="580" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle">猜测</text>
+          </g>
+          <text id="ev-wn" class="h" x="960" y="830" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">照原文读：不把“研究判断”说成“执法认定”</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const NS = "http://www.w3.org/2000/svg";
+      const mk = (tag, a, p, txt) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; p.appendChild(e); return e; };
+
+      // 第 5 位：首个证据标签（0 P,1 I,2 M,3 C）；第 6 位：带 C；第 7 位：层数空；第 8 位：归因“未知”开头
+      const D = "00010000 00010011 10100001 00110010 00012111 01012010 01410001 41100001 41200000 31110011 31110001 01412010 02210000 02210110 02410001 02012010 02111001 02112011 02110011 12100001 02112011 02010011 02013111 02411001 03012000 03010001 03111011 03012001 03410000 03112010 03412001 03011000 03412011 03110010 03010001 03110001 03010001 03412001 03010000 33110011 03010001 03110011 03012011 03110010 04012010 14001001 14101001 04010001 34011001 04012001 04010001 04012011 04210010 14101001 04412001 04112011 04412011 04412011 34410011 15100001 05410001 05010001 15101001 25200001 05110011 05111011 15100000 15201001 15200001 05210011 05110011 05410001 06010011 06110001 26101001 06010011 06112101 26200001 26001001 26200000 16101001 16201001 16101001 26200000 26200000 06011011 16001001 66200001 26200001 16200000 06011001 16101001 06110011 06210000 36410001 07010000 17001000 17200001 07110011 07110011 17001001 07010001 07010010 47200010 37110011 27201000 07410001 77100000 77100000 17100001 37110001 57100000 07111010 07010011 47200000 07010011 07412001 07010000 07011011 07211010 07110001 07211011 17100000 67000001 37010001 27101000 18001001 28001001 18001001 58201001 38112011 08111111 18101000 38011011 18101001 08110011 08210000 08112010 08010100 18101001 08110011 68401001 28101001 08210000 18101001 08111010 08111011 18100000 08111011 38111011 08011011 39011011 09110010 19001001 09310000 79100000 19101001 09110000 09410000 19200001 09110010 19001001 19101001 19001001 09110001 09110001 09110000 09110011 39110001 19001001 69001001 29001001 19001001 59101001 39111010 19001001 29101001 19201001 19001001 09110010 19001001 49000000 59001001 1a101001 1a101001 2a001001 1a100001 2a001001 0a410000 2a001001 1a101001 0a410001 1a101001 1a201000 1a002001 0a110010 1a101001 2a200000 2a101001 2a101001 5a101101 1a101001 2a101001 3a111011 4a101001 3a010011 1a200001 2a201001 0a210000 0a110001 0a310000 0a110011 0a010011".split(" ");
+      const pos = k => [180 + (k % 24) * 40, 330 + Math.floor(k / 24) * 40];
+      const gd = document.querySelector("#ev-dots");
+      const dots = D.map((d, i) => { const p = pos(i); return mk("circle", { cx: p[0], cy: p[1], r: 13, fill: "#8a8f99", opacity: 0 }, gd); });
+      // 按首个标签重排
+      const ord = D.map((d, i) => i).sort((a, b) => (+D[a][4]) - (+D[b][4]) || a - b);
+      const rank = []; ord.forEach((i, k) => rank[i] = k);
+      const EC = ["#83C167", "#58C4DD", "#8a8f99", "#FC6255"];
+      const pick = f => dots.filter((c, i) => f(D[i]));
+
+      // L0 图例
+      IN("#ev-h0", at(0, 0.02));
+      tl.fromTo(dots, { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.003, immediateRender: false }, at(0, 0.08));
+      ["#ev-k0", "#ev-k1", "#ev-k2", "#ev-k3"].forEach((s, j) => IN(s, at(0, 0.2 + j * 0.13), 0.5, { x: 20 }));
+
+      // L1 按首标签着色并归队
+      dots.forEach((c, i) => { const p = pos(rank[i]); tl.to(c, { attr: { cx: p[0], cy: p[1], fill: EC[+D[i][4]] }, duration: 0.9, ease: "power2.inOut" }, at(1, 0.05) + (i % 30) * 0.01); });
+      IN("#ev-cnl", at(1, 0.3)); IN("#ev-cn", at(1, 0.4), 0.6, { x: 20 });
+
+      // L2 带 C 的 7 条
+      const cdots = pick(d => d[5] === "1"), nonc = pick(d => d[5] !== "1");
+      tl.to(nonc, { opacity: 0.2, duration: 0.4 }, at(2, 0.05));
+      tl.to(cdots, { attr: { stroke: "#FC6255", "stroke-width": 5, r: 15 }, duration: 0.4, ease: "back.out(2)" }, at(2, 0.1));
+      IN("#ev-cc", at(2, 0.3));
+
+      // L3 层数
+      OUT("#ev-lg", at(3, 0.0), 0.3); OUT("#ev-h0", at(3, 0.0), 0.3);
+      IN("#ev-h1", at(3, 0.1));
+      tl.to(dots, { opacity: 1, attr: { "stroke-width": 0, r: 13 }, duration: 0.3 }, at(3, 0.05));
+      const ln = pick(d => d[6] === "1"), lk = pick(d => d[6] !== "1");
+      tl.to(lk, { attr: { fill: "#58C4DD" }, duration: 0.5 }, at(3, 0.15));
+      tl.to(ln, { attr: { fill: "#0f1117", stroke: "#8a8f99", "stroke-width": 2.5, r: 12 }, duration: 0.5 }, at(3, 0.15));
+      IN("#ev-ly", at(3, 0.35), 0.6, { x: 20 });
+
+      // L4 归因
+      OUT("#ev-ly", at(4, 0.0), 0.3); OUT("#ev-h1", at(4, 0.0), 0.3);
+      IN("#ev-h2", at(4, 0.1));
+      const au = pick(d => d[7] === "1"), ak = pick(d => d[7] !== "1");
+      tl.to(au, { attr: { fill: "#8a8f99", "stroke-width": 0, r: 13 }, duration: 0.5 }, at(4, 0.12));
+      tl.to(ak, { attr: { fill: "#FC6255", "stroke-width": 0, r: 13 }, duration: 0.5 }, at(4, 0.12));
+      IN("#ev-at", at(4, 0.35), 0.6, { x: 20 });
+
+      // L5 措辞分层
+      OUT("#ev-gridall", at(5, 0.0), 0.4);
+      IN("#ev-wh", at(5, 0.08));
+      ARROW("#ev-ax", at(5, 0.12), 0.7);
+      IN("#ev-axs", at(5, 0.2)); IN("#ev-axw", at(5, 0.2));
+      IN("#ev-q0", at(5, 0.25), 0.5, { y: 15 }); IN("#ev-q1", at(5, 0.4), 0.5, { y: 15 }); IN("#ev-q2", at(5, 0.55), 0.5, { y: 15 });
+      IN("#ev-wn", at(5, 0.72));
+
+      tl.to("#ev-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["evid"] = tl;
+    })();
+  </script>
+</template>

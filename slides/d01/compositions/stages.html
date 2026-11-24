@@ -1,0 +1,107 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 stages，id 前缀 sg- -->
+  <div id="root" data-composition-id="stages" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="sg-all">
+        <text id="sg-title" class="h" x="960" y="120" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">按阶段的检测信号</text>
+        <g id="sg-chain">
+          <g fill="#1b1f27" stroke="#8a8f99" stroke-width="2.5">
+            <rect id="sg-b0" class="h sg-b" x="120" y="190" width="300" height="100" rx="12" />
+            <rect id="sg-b1" class="h sg-b" x="470" y="190" width="300" height="100" rx="12" />
+            <rect id="sg-b2" class="h sg-b" x="820" y="190" width="300" height="100" rx="12" />
+            <rect id="sg-b3" class="h sg-b" x="1170" y="190" width="300" height="100" rx="12" />
+            <rect id="sg-b4" class="h sg-b" x="1520" y="190" width="300" height="100" rx="12" />
+          </g>
+          <g id="sg-lab" class="h" font-size="32" fill="#e8e6df" text-anchor="middle">
+            <text x="270" y="252">入口</text><text id="sg-l1" x="620" y="252">立足</text><text id="sg-l2" x="970" y="252">横移</text><text id="sg-l3" x="1320" y="252">取得签名能力</text><text id="sg-l4" x="1670" y="252">链上执行</text>
+          </g>
+          <g id="sg-con" class="h" stroke="#8a8f99" stroke-width="3"><path d="M428 240 H462 M778 240 H812 M1128 240 H1162 M1478 240 H1512" /></g>
+        </g>
+        <g id="sg-pt" class="h"><path d="M250 312 L290 312 L270 340 Z" fill="#FC6255" /></g>
+        <rect id="sg-panel" class="h" x="120" y="360" width="1700" height="460" rx="16" fill="#161a22" stroke="#2f3542" stroke-width="2" />
+
+        <g id="sg-p0" class="h">
+          <text x="170" y="430" font-size="28" fill="#8a8f99">典型信号</text>
+          <text x="170" y="510" font-size="36" fill="#e8e6df">员工收到高薪 offer</text>
+          <text x="170" y="580" font-size="36" fill="#e8e6df">外部“面试作业”</text>
+          <text x="170" y="650" font-size="36" fill="#e8e6df">开源贡献者邀请运行项目</text>
+          <text x="170" y="760" font-size="28" fill="#8a8f99">出现在 <tspan fill="#B48EF0" font-size="32">Ronin · DMM · Bybit · Binance</tspan></text>
+        </g>
+        <g id="sg-p1" class="h">
+          <text x="170" y="430" font-size="28" fill="#8a8f99">典型信号</text>
+          <text x="170" y="510" font-size="36" fill="#e8e6df">开发工具二进制被替换</text>
+          <text x="170" y="580" font-size="36" fill="#e8e6df">异常外联</text>
+          <text x="170" y="650" font-size="36" fill="#e8e6df">EDR 未覆盖的 macOS</text>
+          <text x="170" y="760" font-size="28" fill="#8a8f99">出现在 <tspan fill="#B48EF0" font-size="32">Binance · Bybit</tspan></text>
+        </g>
+        <g id="sg-p2" class="h">
+          <text x="170" y="430" font-size="28" fill="#8a8f99">典型信号</text>
+          <text x="170" y="510" font-size="36" fill="#e8e6df">同一令牌出现在两台设备</text>
+          <text x="170" y="580" font-size="36" fill="#e8e6df">非计划部署</text>
+          <text x="170" y="650" font-size="36" fill="#e8e6df">安全管理面下发命令</text>
+          <text x="170" y="760" font-size="28" fill="#8a8f99">出现在 <tspan fill="#B48EF0" font-size="32">Binance · Bitget</tspan></text>
+        </g>
+        <g id="sg-p3" class="h">
+          <text x="170" y="430" font-size="28" fill="#8a8f99">典型信号</text>
+          <text x="170" y="510" font-size="36" fill="#e8e6df">签名请求类型异常：升级、<tspan class="mono">delegatecall</tspan>、<tspan class="mono">7702</tspan></text>
+          <text x="170" y="580" font-size="36" fill="#e8e6df">没有对应订单的提现请求</text>
+          <text x="170" y="760" font-size="28" fill="#8a8f99">出现在 <tspan fill="#B48EF0" font-size="32">Bybit · WazirX · Binance · Bitget</tspan></text>
+        </g>
+        <g id="sg-p4" class="h">
+          <text x="170" y="430" font-size="28" fill="#8a8f99">典型信号</text>
+          <text x="170" y="510" font-size="36" fill="#e8e6df">数秒内多链大额转出</text>
+          <text x="170" y="580" font-size="36" fill="#e8e6df">实现地址、Keeper、委托代码变化</text>
+          <text x="170" y="760" font-size="28" fill="#8a8f99">出现在 <tspan fill="#FC6255" font-size="32" font-weight="700">全部案件</tspan></text>
+        </g>
+        <g id="sg-early" class="h">
+          <path d="M445 170 V310" stroke="#83C167" stroke-width="6" stroke-linecap="round" />
+          <text x="960" y="560" font-size="44" font-weight="700" fill="#83C167" text-anchor="middle">人员与终端：最早的切断点</text>
+          <text x="960" y="640" font-size="34" fill="#e8e6df" text-anchor="middle">越早切断，攻击者暴露越少</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const ON = (i, t) => tl.to("#sg-b" + i, { attr: { stroke: "#FC6255", fill: "#2a1616" }, duration: 0.4 }, t);
+      const OFF = (i, t) => tl.to("#sg-b" + i, { attr: { stroke: "#8a8f99", fill: "#1b1f27" }, duration: 0.4 }, t);
+
+      // L0
+      IN("#sg-title", at(0, 0.02), 0.8, { y: 20 });
+      tl.fromTo(".sg-b", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12 }, at(0, 0.2));
+      IN("#sg-lab", at(0, 0.45)); IN("#sg-con", at(0, 0.5));
+      IN("#sg-panel", at(0, 0.65));
+
+      // L1–L5 逐阶段
+      for (let i = 0; i < 5; i++) {
+        const t = at(i + 1, 0.02);
+        if (i > 0) { OUT("#sg-p" + (i - 1), t, 0.3); OFF(i - 1, t); }
+        ON(i, t);
+        if (i === 0) IN("#sg-pt", t, 0.4);
+        else tl.to("#sg-pt", { x: i * 350, duration: 0.5, ease: "power2.inOut" }, t);
+        tl.fromTo("#sg-p" + i + " text", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.15 }, at(i + 1, 0.12));
+        tl.set("#sg-p" + i, { opacity: 1 }, at(i + 1, 0.12));
+      }
+
+      // L6 最早的切断点
+      OUT("#sg-p4", at(6, 0.0), 0.3); OFF(4, at(6, 0.0)); OUT("#sg-pt", at(6, 0.0), 0.3);
+      tl.to("#sg-b0", { attr: { stroke: "#83C167", fill: "#16241a" }, duration: 0.4 }, at(6, 0.1));
+      tl.to(["#sg-b1", "#sg-b2", "#sg-b3", "#sg-b4", "#sg-l1", "#sg-l2", "#sg-l3", "#sg-l4"], { opacity: 0.3, duration: 0.5 }, at(6, 0.2));
+      IN("#sg-early", at(6, 0.25), 0.7, { y: 15 });
+
+      tl.to("#sg-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["stages"] = tl;
+    })();
+  </script>
+</template>

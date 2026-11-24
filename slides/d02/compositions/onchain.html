@@ -1,0 +1,193 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 onchain，id 前缀 oc- -->
+  <div id="root" data-composition-id="onchain" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="oc-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="oc-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="oc-all">
+        <text id="oc-title" class="h" x="960" y="120" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">事中黄金 10 分钟</text>
+        <g id="oc-stack" class="h" font-size="30" text-anchor="middle">
+          <rect x="120" y="300" width="500" height="90" rx="12" fill="#161a22" stroke="#83C167" stroke-width="2.5" opacity="0.5" /><text x="370" y="356" fill="#8a8f99">用户提现网关</text>
+          <rect x="120" y="410" width="500" height="90" rx="12" fill="#161a22" stroke="#83C167" stroke-width="2.5" opacity="0.5" /><text x="370" y="466" fill="#8a8f99">签名服务总开关</text>
+          <rect id="oc-y2" x="120" y="520" width="500" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="370" y="576" fill="#e8e6df">链上 Pause / 速率熔断</text>
+          <rect id="oc-y3" x="120" y="630" width="500" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="370" y="686" fill="#e8e6df">撤销链上委托与权限</text>
+          <rect id="oc-y4" x="120" y="740" width="500" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="370" y="796" fill="#e8e6df">稳定币与交易所协同</text>
+        </g>
+
+        <!-- L0–L1 暂停与速率熔断 -->
+        <g id="oc-p">
+          <g id="oc-ct" class="h">
+            <rect id="oc-ctb" x="760" y="340" width="320" height="180" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="920" y="420" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">协议合约</text>
+            <text x="920" y="470" font-size="28" fill="#8a8f99" text-anchor="middle">放款 · 铸造 · 提款</text>
+          </g>
+          <path id="oc-out" class="dr h" pathLength="1" d="M1092 430 H1340" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#oc-arrr)" />
+          <g id="oc-oc" fill="#F0B90B">
+            <circle class="h" cx="1110" cy="410" r="9" /><circle class="h" cx="1110" cy="410" r="9" /><circle class="h" cx="1110" cy="410" r="9" /><circle class="h" cx="1110" cy="410" r="9" />
+          </g>
+          <text id="oc-gl" class="h" x="1100" y="625" font-size="28" fill="#8a8f99">单小时流出</text>
+          <rect id="oc-gb" class="h" x="1100" y="640" width="640" height="40" rx="6" fill="#22252d" />
+          <rect id="oc-g" x="1100" y="640" width="0" height="40" rx="6" fill="#FC6255" />
+          <g id="oc-th" class="h">
+            <path d="M1500 620 V700" stroke="#83C167" stroke-width="5" />
+            <text x="1500" y="740" font-size="28" fill="#83C167" text-anchor="middle">阈值</text>
+          </g>
+          <g id="oc-pause" class="h">
+            <rect x="1380" y="380" width="300" height="100" rx="14" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="1530" y="442" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">自动暂停</text>
+          </g>
+          <text id="oc-ne" class="h" x="920" y="590" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">暂停权：不设失效期</text>
+          <text id="oc-c1" class="h" x="1280" y="830" font-size="28" fill="#8a8f99" text-anchor="middle">对应案例：Balancer v2、Nomad、Wormhole</text>
+        </g>
+
+        <!-- L2–L4 撤销委托 -->
+        <g id="oc-d">
+          <g id="oc-hw" class="h">
+            <rect x="760" y="340" width="340" height="140" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="930" y="422" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">热钱包地址</text>
+          </g>
+          <g id="oc-sv" class="h">
+            <rect x="760" y="620" width="340" height="140" rx="14" fill="#22252d" stroke="#8a8f99" stroke-width="3" />
+            <text x="930" y="702" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">服务器</text>
+          </g>
+          <path id="oc-svl" class="dr" pathLength="1" d="M930 608 V492" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="oc-sk" class="h">
+            <rect id="oc-skb" x="1420" y="340" width="360" height="140" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1600" y="402" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">链上清扫合约</text>
+            <text x="1600" y="448" font-size="28" fill="#e8e6df" text-anchor="middle">恶意 7702 委托</text>
+          </g>
+          <path id="oc-sw" class="dr h" pathLength="1" d="M1112 410 H1408" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#oc-arrr)" />
+          <g id="oc-dc" fill="#F0B90B">
+            <circle class="h" cx="1130" cy="390" r="9" /><circle class="h" cx="1130" cy="390" r="9" /><circle class="h" cx="1130" cy="390" r="9" /><circle class="h" cx="1130" cy="390" r="9" /><circle class="h" cx="1130" cy="390" r="9" />
+          </g>
+          <g id="oc-off" class="h">
+            <path d="M1150 660 L1190 720 M1190 660 L1150 720" stroke="#FC6255" stroke-width="6" stroke-linecap="round" />
+            <text x="1220" y="702" font-size="30" fill="#FC6255">已关停</text>
+          </g>
+          <text id="oc-still" class="h" x="1260" y="530" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">链上清扫照常进行</text>
+          <path id="oc-cut" class="dr" pathLength="1" d="M1240 380 L1280 440 M1280 380 L1240 440" stroke="#83C167" stroke-width="7" fill="none" />
+          <g id="oc-drill" class="h">
+            <rect x="760" y="830" width="1020" height="120" rx="14" fill="#16241a" stroke="#83C167" stroke-width="2.5" />
+            <text x="800" y="880" font-size="30" font-weight="700" fill="#83C167">提前演练：零地址清除 7702 委托 · 替换合约 Admin</text>
+            <text x="800" y="926" font-size="28" fill="#8a8f99">对应案例：Binance（3h50m）、Wintermute、Radiant</text>
+          </g>
+        </g>
+
+        <!-- L5–L6 外部协同 -->
+        <g id="oc-x">
+          <g id="oc-clk" class="h">
+            <circle cx="910" cy="400" r="64" fill="none" stroke="#F0B90B" stroke-width="5" />
+            <path d="M910 400 V352 M910 400 L944 418" stroke="#F0B90B" stroke-width="5" stroke-linecap="round" />
+            <text x="1000" y="412" font-size="34" font-weight="700" fill="#F0B90B">10 分钟内</text>
+          </g>
+          <g id="oc-ad" class="h">
+            <rect x="760" y="540" width="320" height="130" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="920" y="616" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者地址</text>
+          </g>
+          <g id="oc-bc" class="h" stroke="#83C167" stroke-width="3" fill="none">
+            <path class="dr" pathLength="1" d="M1092 590 C1200 590 1220 345 1338 345" marker-end="url(#oc-arrg)" />
+            <path class="dr" pathLength="1" d="M1092 605 C1200 605 1220 535 1338 535" marker-end="url(#oc-arrg)" />
+            <path class="dr" pathLength="1" d="M1092 620 C1200 620 1220 725 1338 725" marker-end="url(#oc-arrg)" />
+          </g>
+          <g id="oc-tg" font-size="30" font-weight="700" text-anchor="middle">
+            <g class="oc-t h"><rect x="1350" y="300" width="420" height="90" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="1560" y="356" fill="#B48EF0">稳定币发行方</text></g>
+            <g class="oc-t h"><rect x="1350" y="490" width="420" height="90" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="1560" y="546" fill="#B48EF0">主流交易所</text></g>
+            <g class="oc-t h"><rect x="1350" y="680" width="420" height="90" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="1560" y="736" fill="#B48EF0">行业应急通道</text></g>
+          </g>
+        </g>
+        <g id="oc-tm">
+          <path id="oc-ax" class="dr" pathLength="1" d="M760 900 H1780" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <rect id="oc-wd" class="h" x="1100" y="870" width="340" height="60" rx="6" fill="#FC6255" fill-opacity="0.2" stroke="#FC6255" stroke-width="2" />
+          <text id="oc-wdl" class="h" x="1270" y="850" font-size="28" font-weight="700" fill="#FC6255" text-anchor="middle">换币窗口 10–20 分钟</text>
+          <g id="oc-tk" class="h" font-size="28" fill="#8a8f99" text-anchor="middle">
+            <text x="760" y="970">告警</text><text x="1100" y="970">10 分钟</text><text x="1440" y="970">20 分钟</text>
+          </g>
+          <g id="oc-late" class="h">
+            <path d="M1640 860 V940" stroke="#8a8f99" stroke-width="4" />
+            <text x="1650" y="850" font-size="28" fill="#8a8f99" text-anchor="middle">复盘完才通知</text>
+            <text x="1650" y="985" font-size="28" font-weight="700" fill="#FC6255" text-anchor="middle">已错过</text>
+          </g>
+          <text id="oc-c5" class="h" x="1780" y="250" font-size="28" fill="#8a8f99" text-anchor="end">对应案例：Poly、Bitget、Bybit</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const HI = (s, t) => tl.to(s, { attr: { stroke: "#83C167", "stroke-width": 4 }, duration: 0.4 }, t);
+
+      // L0 第三层
+      IN("#oc-title", at(0, 0.0), 0.5);
+      IN("#oc-stack", at(0, 0.02), 0.5);
+      HI("#oc-y2", at(0, 0.15));
+      IN("#oc-ct", at(0, 0.2));
+      ARROW("#oc-out", at(0, 0.35), 0.5);
+      tl.fromTo("#oc-oc circle", { opacity: 1, x: 0 }, { x: 220, opacity: 0, duration: 0.6, ease: "none", stagger: 0.25, immediateRender: false }, at(0, 0.4));
+
+      // L1 阈值自动暂停 + 不设失效期
+      IN("#oc-gl", at(1, 0.02)); IN("#oc-gb", at(1, 0.02)); IN("#oc-th", at(1, 0.05));
+      tl.fromTo("#oc-g", { attr: { width: 0 } }, { attr: { width: 400 }, duration: 1.0, ease: "power1.in", immediateRender: false }, at(1, 0.1));
+      tl.to("#oc-out", { opacity: 0.2, duration: 0.3 }, at(1, 0.4));
+      IN("#oc-pause", at(1, 0.4), 0.4, { scale: 1.3, svgOrigin: "1530 430" }, { scale: 1 });
+      tl.to("#oc-ctb", { attr: { stroke: "#83C167" }, duration: 0.3 }, at(1, 0.45));
+      IN("#oc-ne", at(1, 0.55));
+      IN("#oc-c1", at(1, 0.7));
+
+      // L2 第四层
+      OUT("#oc-p", at(2, 0.0));
+      HI("#oc-y3", at(2, 0.05));
+      IN("#oc-hw", at(2, 0.1)); IN("#oc-sv", at(2, 0.15)); DRAW("#oc-svl", at(2, 0.2), 0.4);
+      IN("#oc-sk", at(2, 0.35)); ARROW("#oc-sw", at(2, 0.45), 0.5);
+
+      // L3 关服务器也没用
+      IN("#oc-off", at(3, 0.05), 0.4);
+      tl.to(["#oc-sv", "#oc-svl"], { opacity: 0.35, duration: 0.4 }, at(3, 0.1));
+      tl.fromTo("#oc-dc circle", { opacity: 1, x: 0 }, { x: 270, opacity: 0, duration: 0.6, ease: "none", stagger: 0.22, immediateRender: false }, at(3, 0.25));
+      IN("#oc-still", at(3, 0.35));
+
+      // L4 演练
+      OUT("#oc-still", at(4, 0.0), 0.3);
+      DRAW("#oc-cut", at(4, 0.1), 0.4);
+      tl.to("#oc-skb", { attr: { stroke: "#8a8f99" }, duration: 0.4 }, at(4, 0.2));
+      tl.to("#oc-sw", { opacity: 0.25, duration: 0.4 }, at(4, 0.2));
+      IN("#oc-drill", at(4, 0.3), 0.7, { y: 15 });
+
+      // L5 第五层
+      OUT("#oc-d", at(5, 0.0));
+      HI("#oc-y4", at(5, 0.05));
+      IN("#oc-clk", at(5, 0.1)); IN("#oc-ad", at(5, 0.15));
+      tl.set("#oc-bc", { opacity: 1 }, at(5, 0.3));
+      tl.fromTo("#oc-bc path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, stagger: 0.1 }, at(5, 0.3));
+      tl.fromTo(".oc-t", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.1 }, at(5, 0.4));
+
+      // L6 错过窗口
+      DRAW("#oc-ax", at(6, 0.02), 0.6);
+      IN("#oc-tk", at(6, 0.1));
+      IN("#oc-wd", at(6, 0.2)); IN("#oc-wdl", at(6, 0.25));
+      IN("#oc-late", at(6, 0.45), 0.5, { y: -10 });
+      IN("#oc-c5", at(6, 0.6));
+
+      tl.to("#oc-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["onchain"] = tl;
+    })();
+  </script>
+</template>

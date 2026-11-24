@@ -1,0 +1,107 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 price，id 前缀 pr- -->
+  <div id="root" data-composition-id="price" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="pr-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#e8e6df" />
+        </marker>
+        <marker id="pr-arry" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+      </defs>
+      <g id="pr-all">
+        <text id="pr-title" class="h" x="960" y="180" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">Mango · Cream · Harvest · Tectonic</text>
+
+        <!-- L0 资金 -->
+        <g id="pr-fund" class="h">
+          <rect x="120" y="300" width="320" height="200" rx="16" fill="#1f1c10" stroke="#F0B90B" stroke-width="3" />
+          <g fill="#F0B90B">
+            <ellipse cx="280" cy="400" rx="46" ry="14" /><ellipse cx="280" cy="380" rx="46" ry="14" opacity="0.85" /><ellipse cx="280" cy="360" rx="46" ry="14" opacity="0.7" />
+          </g>
+          <text x="280" y="470" font-size="30" font-weight="700" fill="#F0B90B" text-anchor="middle">闪电贷 / 自有资金</text>
+        </g>
+        <!-- L1 浅市场 -->
+        <path id="pr-a1" class="dr h" pathLength="1" d="M452 400 H548" stroke="#e8e6df" stroke-width="3" fill="none" marker-end="url(#pr-arr)" />
+        <g id="pr-mkt" class="h">
+          <rect x="560" y="300" width="440" height="200" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="590" y="352" font-size="32" font-weight="700" fill="#58C4DD">浅市场</text>
+          <path d="M600 380 V480 H960" stroke="#8a8f99" stroke-width="2" fill="none" />
+        </g>
+        <path id="pr-px" class="dr" pathLength="1" d="M604 466 H800 L830 462 L900 420 L956 392" stroke="#FC6255" stroke-width="5" fill="none" stroke-linejoin="round" />
+        <text id="pr-pxl" class="h" x="960" y="352" font-size="32" font-weight="700" fill="#FC6255" text-anchor="end">价格 ↑</text>
+        <!-- L2 预言机 -->
+        <path id="pr-a2" class="dr h" pathLength="1" d="M1012 400 H1108" stroke="#e8e6df" stroke-width="3" fill="none" marker-end="url(#pr-arr)" />
+        <g id="pr-orc" class="h">
+          <rect x="1120" y="300" width="380" height="200" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1310" y="372" font-size="36" font-weight="700" fill="#58C4DD" text-anchor="middle">预言机</text>
+          <text x="1310" y="450" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">报出新价格</text>
+        </g>
+        <!-- L3 估值上升 → 借出真资产 -->
+        <path id="pr-a3" class="dr h" pathLength="1" d="M1310 512 V628" stroke="#e8e6df" stroke-width="3" fill="none" marker-end="url(#pr-arr)" />
+        <g id="pr-col" class="h">
+          <rect x="1120" y="640" width="380" height="220" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1310" y="694" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">抵押品估值</text>
+          <rect x="1160" y="740" width="120" height="60" rx="6" fill="none" stroke="#8a8f99" stroke-width="2" stroke-dasharray="8 6" />
+        </g>
+        <rect id="pr-colb" x="1160" y="740" width="120" height="60" rx="6" fill="#F0B90B" opacity="0.85" />
+        <path id="pr-a4" class="dr h" pathLength="1" d="M1108 750 H1012" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#pr-arry)" />
+        <g id="pr-bor" class="h">
+          <rect x="560" y="640" width="440" height="220" rx="16" fill="#1f1c10" stroke="#F0B90B" stroke-width="3" />
+          <text x="780" y="710" font-size="34" font-weight="700" fill="#F0B90B" text-anchor="middle">借出真资产</text>
+        </g>
+        <g id="pr-coins" fill="#F0B90B">
+          <circle class="h" cx="700" cy="790" r="14" /><circle class="h" cx="750" cy="790" r="14" /><circle class="h" cx="800" cy="790" r="14" /><circle class="h" cx="850" cy="790" r="14" />
+        </g>
+        <path id="pr-a5" class="dr h" pathLength="1" d="M548 750 H452" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#pr-arry)" />
+        <g id="pr-atk" class="h">
+          <rect x="120" y="640" width="320" height="220" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="280" y="762" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...("x" in from ? { x: 0 } : {}), ...("y" in from ? { y: 0 } : {}), ...to }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0
+      IN("#pr-fund", at(0, 0.1), 0.8, { y: 20 });
+      // L1
+      ARROW("#pr-a1", at(1, 0.05), 0.4);
+      IN("#pr-mkt", at(1, 0.12));
+      DRAW("#pr-px", at(1, 0.35), 0.9);
+      IN("#pr-pxl", at(1, 0.6), 0.5);
+      // L2
+      ARROW("#pr-a2", at(2, 0.05), 0.4);
+      IN("#pr-orc", at(2, 0.15));
+      // L3
+      ARROW("#pr-a3", at(3, 0.02), 0.35);
+      IN("#pr-col", at(3, 0.08), 0.5);
+      tl.fromTo("#pr-colb", { opacity: 0 }, { opacity: 0.85, duration: 0.3 }, at(3, 0.1));
+      tl.to("#pr-colb", { attr: { width: 300 }, duration: 0.7, ease: "power2.out" }, at(3, 0.2));
+      ARROW("#pr-a4", at(3, 0.35), 0.35);
+      IN("#pr-bor", at(3, 0.4), 0.5);
+      tl.fromTo("#pr-coins circle", { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.25, stagger: 0.1 }, at(3, 0.5));
+      ARROW("#pr-a5", at(3, 0.6), 0.3);
+      IN("#pr-atk", at(3, 0.65), 0.4);
+      // L4
+      IN("#pr-title", at(4, 0.1), 0.8, { y: 20 });
+      tl.fromTo("#pr-px", { attr: { "stroke-width": 5 } }, { attr: { "stroke-width": 9 }, duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(4, 0.45));
+
+      tl.to("#pr-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["price"] = tl;
+    })();
+  </script>
+</template>

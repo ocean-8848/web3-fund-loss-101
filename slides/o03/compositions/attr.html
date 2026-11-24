@@ -1,0 +1,67 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 attr，id 前缀 at- -->
+  <div id="root" data-composition-id="attr" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="at-all">
+        <text id="at-head" class="h" x="960" y="150" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">归因的五个等级</text>
+        <text id="at-dec" class="h" x="1740" y="190" font-size="28" fill="#8a8f99" text-anchor="end">证据强度：左强右弱</text>
+        <g id="at-bars" class="h"><rect id="at-b0" x="160" y="400" width="300" height="300" rx="8" fill="#e8e6df" opacity="0.9" /><rect id="at-b1" x="480" y="460" width="300" height="240" rx="8" fill="#e8e6df" opacity="0.65" /><rect id="at-b2" x="800" y="520" width="300" height="180" rx="8" fill="#e8e6df" opacity="0.45" /><rect id="at-b3" x="1120" y="580" width="300" height="120" rx="8" fill="#e8e6df" opacity="0.3" /><rect id="at-b4" x="1440" y="640" width="300" height="60" rx="8" fill="#e8e6df" opacity="0.18" /></g>
+        <g id="at-names" class="h" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle"><text x="310" y="748" >执法确认</text><text x="630" y="748" >研究判断</text><text x="950" y="748" >受害方判断</text><text x="1270" y="748" >团伙自称</text><text x="1590" y="748" >未知</text></g>
+        <g id="at-e0" class="h" font-size="28" fill="#8a8f99" text-anchor="middle"><text class="mono" x="310" y="796">FBI · DC3 · NPA</text><text x="310" y="836">多国联合声明</text></g>
+        <g id="at-e1" class="h" font-size="28" fill="#8a8f99" text-anchor="middle"><text class="mono" x="630" y="796">Chainalysis · TRM</text><text class="mono" x="630" y="836">Elliptic · Mandiant</text></g>
+        <text id="at-e2" class="h" x="950" y="796" font-size="28" fill="#8a8f99" text-anchor="middle">平台公告</text>
+        <text id="at-e3" class="h mono" x="1270" y="796" font-size="28" fill="#8a8f99" text-anchor="middle">Predatory Sparrow</text>
+        <g id="at-c0"><g class="h"><rect x="210" y="340" width="200" height="46" rx="23" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text class="mono" x="310" y="373" font-size="28" font-weight="700" fill="#e8e6df" text-anchor="middle">Bybit</text></g><g class="h"><rect x="210" y="284" width="200" height="46" rx="23" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text class="mono" x="310" y="317" font-size="28" font-weight="700" fill="#e8e6df" text-anchor="middle">DMM</text></g><g class="h"><rect x="210" y="228" width="200" height="46" rx="23" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text class="mono" x="310" y="261" font-size="28" font-weight="700" fill="#e8e6df" text-anchor="middle">Binance</text></g></g>
+        <g id="at-bg"><g class="h"><rect x="530" y="400" width="200" height="46" rx="23" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text class="mono" x="630" y="433" font-size="28" font-weight="700" fill="#e8e6df" text-anchor="middle">Bitget</text></g></g>
+        <g id="at-v1" class="h" font-size="28" text-anchor="middle"><text x="630" y="370" fill="#e8e6df"><tspan class="mono">Chainalysis</tspan> → <tspan fill="#FC6255">朝鲜</tspan></text><text x="630" y="328" fill="#e8e6df"><tspan class="mono">Elliptic</tspan> → <tspan fill="#FC6255">朝鲜</tspan></text></g>
+        <g id="at-v2" class="h" font-size="28" text-anchor="middle"><text x="630" y="286" fill="#e8e6df"><tspan class="mono">TRM</tspan>：尚未确定</text><text x="630" y="244" fill="#e8e6df"><tspan class="mono">Mandiant</tspan>：不归因</text></g>
+        <text id="at-eu" class="h" x="960" y="940" font-size="34" fill="#e8e6df" text-anchor="middle"><tspan class="mono">Euler</tspan> 攻击者向 <tspan class="mono">Ronin</tspan> 地址转 <tspan class="mono">ETH</tspan>  <tspan fill="#FC6255" font-weight="700">≠ 归因证据</tspan></text>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      IN("#at-head", at(0, 0.02));
+      [300, 240, 180, 120, 60].forEach((h, i) => tl.fromTo("#at-b" + i, { attr: { height: 0, y: 700 } }, { attr: { height: h, y: 700 - h }, duration: 0.6, ease: "power2.out" }, at(0, 0.12) + i * 0.12));
+      tl.set("#at-bars", { opacity: 1 }, at(0, 0.12));
+      IN("#at-names", at(0, 0.3), 0.5);
+      IN("#at-dec", at(0, 0.55), 0.5);
+
+      tl.to("#at-b0", { attr: { fill: "#83C167" }, duration: 0.4 }, at(1, 0.05));
+      IN("#at-e0", at(1, 0.25), 0.6, { y: -10 });
+
+      tl.fromTo(["#at-e1", "#at-e2", "#at-e3"], { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.35 }, at(2, 0.1));
+
+      tl.fromTo("#at-c0 > g", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.3, ease: "back.out(1.6)" }, at(3, 0.05));
+
+      tl.fromTo("#at-bg > g", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, at(4, 0.05));
+      IN("#at-v1", at(4, 0.35), 0.6, { y: 10 });
+      IN("#at-v2", at(5, 0.1), 0.6, { y: 10 });
+
+      IN("#at-eu", at(6, 0.1), 0.6, { y: 16 });
+
+      tl.to("#at-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["attr"] = tl;
+    })();
+  </script>
+</template>

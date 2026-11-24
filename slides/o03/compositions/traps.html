@@ -1,0 +1,125 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 traps，id 前缀 tz- -->
+  <div id="root" data-composition-id="traps" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="tz-all">
+        <g id="tz-q0" class="h"><text x="900" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="end">币量</text><text id="tz-eq0" x="960" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="middle">=</text><text x="1020" y="270" font-size="68" font-weight="700" fill="#e8e6df">美元</text></g>
+        <text id="tz-ne0" class="h" x="960" y="270" font-size="68" font-weight="700" fill="#FC6255" text-anchor="middle">≠</text>
+        <text id="tz-n0" class="h" x="960" y="130" font-size="30" fill="#8a8f99" text-anchor="middle">口径陷阱 1 / 5</text>
+        <g id="tz-g0" class="h">
+          <text x="560" y="450" font-size="32" fill="#8a8f99" text-anchor="middle"><tspan class="mono">Coins.ph</tspan></text>
+          <ellipse cx="560" cy="700" rx="90" ry="24" fill="#F0B90B" stroke="#0f1117" stroke-width="3" /><ellipse cx="560" cy="674" rx="90" ry="24" fill="#F0B90B" stroke="#0f1117" stroke-width="3" /><ellipse cx="560" cy="648" rx="90" ry="24" fill="#F0B90B" stroke="#0f1117" stroke-width="3" /><ellipse cx="560" cy="622" rx="90" ry="24" fill="#F0B90B" stroke="#0f1117" stroke-width="3" /><ellipse cx="560" cy="596" rx="90" ry="24" fill="#F0B90B" stroke="#0f1117" stroke-width="3" /><ellipse cx="560" cy="570" rx="90" ry="24" fill="#F0B90B" stroke="#0f1117" stroke-width="3" />
+          <text x="560" y="800" font-size="40" font-weight="700" fill="#F0B90B" text-anchor="middle">1,220 万 <tspan class="mono">XRP</tspan></text>
+          <text x="960" y="640" font-size="80" font-weight="700" fill="#FC6255" text-anchor="middle">≠</text>
+          <text x="1360" y="660" font-size="56" font-weight="700" fill="#8a8f99" text-anchor="middle">1,220 万美元</text>
+          <path d="M1180 640 H1540" stroke="#FC6255" stroke-width="5" />
+        </g>
+        <g id="tz-q1" class="h"><text x="900" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="end">冻结</text><text id="tz-eq1" x="960" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="middle">=</text><text x="1020" y="270" font-size="68" font-weight="700" fill="#e8e6df">追回</text></g>
+        <text id="tz-ne1" class="h" x="960" y="270" font-size="68" font-weight="700" fill="#FC6255" text-anchor="middle">≠</text>
+        <text id="tz-n1" class="h" x="960" y="130" font-size="30" fill="#8a8f99" text-anchor="middle">口径陷阱 2 / 5</text>
+        <g id="tz-g1" class="h">
+          <rect x="580" y="560" width="280" height="160" rx="12" fill="#9CDCEB" fill-opacity="0.15" stroke="#9CDCEB" stroke-width="3" />
+          <circle cx="640" cy="640" r="20" fill="#F0B90B" /><circle cx="695" cy="640" r="20" fill="#F0B90B" /><circle cx="750" cy="640" r="20" fill="#F0B90B" /><circle cx="805" cy="640" r="20" fill="#F0B90B" />
+          <text x="720" y="530" font-size="34" font-weight="700" fill="#9CDCEB" text-anchor="middle">冻结</text>
+          <rect x="1160" y="560" width="280" height="160" rx="12" fill="none" stroke="#83C167" stroke-width="3" stroke-dasharray="12 8" />
+          <text x="1300" y="652" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">追回</text>
+          <path d="M876 640 H1144" stroke="#8a8f99" stroke-width="3" stroke-dasharray="10 8" />
+          <path d="M990 610 L1030 670 M1030 610 L990 670" stroke="#FC6255" stroke-width="5" />
+          <text x="720" y="790" font-size="30" fill="#e8e6df" text-anchor="middle">可能被解冻</text>
+          <text x="720" y="834" font-size="30" fill="#e8e6df" text-anchor="middle">或长期悬置</text>
+        </g>
+        <g id="tz-q2" class="h"><text x="900" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="end">补足</text><text id="tz-eq2" x="960" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="middle">=</text><text x="1020" y="270" font-size="68" font-weight="700" fill="#e8e6df">没有损失</text></g>
+        <text id="tz-ne2" class="h" x="960" y="270" font-size="68" font-weight="700" fill="#FC6255" text-anchor="middle">≠</text>
+        <text id="tz-n2" class="h" x="960" y="130" font-size="30" fill="#8a8f99" text-anchor="middle">口径陷阱 3 / 5</text>
+        <g id="tz-g2" class="h">
+          <rect x="460" y="540" width="320" height="200" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+          <text x="620" y="520" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">用户</text>
+          <rect x="1140" y="540" width="320" height="200" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="1300" y="520" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">公司</text>
+          <text x="960" y="830" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">损失没有消失，只是换了承担方</text>
+        </g>
+        <g id="tz-lossm"><g id="tz-loss" class="h"><rect x="540" y="600" width="160" height="80" rx="10" fill="#FC6255" /><text x="620" y="652" font-size="34" font-weight="700" fill="#0f1117" text-anchor="middle">损失</text></g></g>
+        <g id="tz-q3" class="h"><text x="900" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="end">初报</text><text id="tz-eq3" x="960" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="middle">=</text><text x="1020" y="270" font-size="68" font-weight="700" fill="#e8e6df">最终</text></g>
+        <text id="tz-ne3" class="h" x="960" y="270" font-size="68" font-weight="700" fill="#FC6255" text-anchor="middle">≠</text>
+        <text id="tz-n3" class="h" x="960" y="130" font-size="30" fill="#8a8f99" text-anchor="middle">口径陷阱 4 / 5</text>
+        <g id="tz-g3" class="h">
+          <text x="460" y="530" font-size="36" font-weight="700" fill="#e8e6df"><tspan class="mono">Bitget</tspan></text>
+          <rect id="tz-bar" x="460" y="560" width="907.4" height="80" rx="8" fill="#F0B90B" />
+          <text id="tz-v1" x="460" y="700" font-size="32" fill="#8a8f99">初报 3.516 亿</text>
+        </g>
+        <text id="tz-v2" class="h" x="1460" y="700" font-size="32" font-weight="700" fill="#F0B90B" text-anchor="end">修订 3.875 亿</text>
+        <g id="tz-why" class="h">
+          <path d="M1367 548 V532 H1460 V548" stroke="#83C167" stroke-width="3" fill="none" />
+          <text x="1460" y="510" font-size="30" font-weight="700" fill="#83C167" text-anchor="end">补充核算</text>
+          <text x="960" y="830" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">差额 <tspan fill="#83C167">来自补充核算</tspan>，<tspan fill="#FC6255">不是持续失窃</tspan></text>
+        </g>
+        <g id="tz-q4" class="h"><text x="900" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="end">发现日</text><text id="tz-eq4" x="960" y="270" font-size="68" font-weight="700" fill="#e8e6df" text-anchor="middle">=</text><text x="1020" y="270" font-size="68" font-weight="700" fill="#e8e6df">发生日</text></g>
+        <text id="tz-ne4" class="h" x="960" y="270" font-size="68" font-weight="700" fill="#FC6255" text-anchor="middle">≠</text>
+        <text id="tz-n4" class="h" x="960" y="130" font-size="30" fill="#8a8f99" text-anchor="middle">口径陷阱 5 / 5</text>
+        <g id="tz-g4" class="h">
+          <text x="400" y="500" font-size="36" font-weight="700" fill="#e8e6df"><tspan class="mono">Ronin</tspan></text>
+          <path d="M400 640 H1520" stroke="#8a8f99" stroke-width="3" />
+          <circle cx="500" cy="640" r="16" fill="#FC6255" /><text x="500" y="710" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">被盗</text>
+        </g>
+        <path id="tz-span" class="dr" pathLength="1" d="M500 640 H1400" stroke="#FC6255" stroke-width="6" fill="none" />
+        <g id="tz-days" class="h"><circle cx="1400" cy="640" r="16" fill="#e8e6df" /><text x="1400" y="710" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">发现</text><text x="950" y="610" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="middle">6 天</text></g>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      const Q = (i, ln, f = 0.02) => { IN("#tz-n" + i, at(ln, f), 0.4); IN("#tz-q" + i, at(ln, f + 0.03), 0.6, { y: 16 }); };
+      const NE = (i, t) => { OUT("#tz-eq" + i, t, 0.2); IN("#tz-ne" + i, t + 0.15, 0.4, { scale: 1.6, svgOrigin: "960 250" }, { scale: 1 }); };
+      const CLR = (i, ln, extra = []) => ["#tz-n" + i, "#tz-q" + i, "#tz-ne" + i, "#tz-g" + i, ...extra].forEach(s => OUT(s, at(ln, 0.0), 0.3));
+
+      // T1 币量 ≠ 美元
+      Q(0, 0); NE(0, at(0, 0.55));
+      IN("#tz-g0", at(1, 0.05), 0.6);
+      tl.fromTo("#tz-g0 ellipse", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, immediateRender: false }, at(1, 0.05));
+
+      // T2 冻结 ≠ 追回
+      CLR(0, 2); Q(1, 2, 0.05); NE(1, at(2, 0.25)); IN("#tz-g1", at(2, 0.3), 0.6);
+
+      // T3 补足 ≠ 没有损失
+      CLR(1, 3); Q(2, 3, 0.05); NE(2, at(3, 0.25)); IN("#tz-g2", at(3, 0.2), 0.5);
+      IN("#tz-loss", at(3, 0.3), 0.4);
+      tl.to("#tz-lossm", { x: 680, duration: 0.9, ease: "power2.inOut" }, at(3, 0.45));
+
+      // T4 初报 ≠ 最终
+      CLR(2, 4, ["#tz-loss"]); Q(3, 4, 0.05); NE(3, at(4, 0.25));
+      IN("#tz-g3", at(4, 0.3), 0.5);
+      tl.to("#tz-bar", { attr: { width: 1000 }, duration: 0.8, ease: "power2.inOut" }, at(4, 0.55));
+      IN("#tz-v2", at(4, 0.65), 0.4);
+      IN("#tz-why", at(5, 0.1), 0.6);
+
+      // T5 发现日 ≠ 发生日
+      CLR(3, 6, ["#tz-v2", "#tz-why"]); Q(4, 6, 0.05); NE(4, at(6, 0.25));
+      IN("#tz-g4", at(6, 0.25), 0.5);
+      DRAW("#tz-span", at(6, 0.35), 0.9);
+      IN("#tz-days", at(6, 0.55), 0.5);
+
+      tl.to("#tz-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["traps"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,149 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 dao，id 前缀 da- -->
+  <div id="root" data-composition-id="dao" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="da-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+        <marker id="da-arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="da-all">
+        <g id="da-head" class="h">
+          <text x="960" y="140" font-size="56" font-weight="700" fill="#58C4DD" text-anchor="middle">The DAO</text>
+          <text x="960" y="195" font-size="30" fill="#8a8f99" text-anchor="middle">以太坊 · 2016-06</text>
+        </g>
+
+        <!-- L1 合约与两步 -->
+        <g id="da-ctr" class="h">
+          <rect x="560" y="260" width="800" height="370" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text class="mono" x="960" y="328" font-size="38" font-weight="700" fill="#58C4DD" text-anchor="middle">splitDAO()</text>
+          <g fill="#58C4DD" font-size="28" font-weight="700" text-anchor="middle"><text x="592" y="445">1</text><text x="592" y="555">2</text></g>
+          <g id="da-row1">
+            <rect id="da-r1b" x="620" y="400" width="680" height="70" rx="10" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" />
+            <text x="650" y="446" font-size="32" fill="#F0B90B" font-weight="700">发送 ETH</text>
+          </g>
+          <g id="da-row2">
+            <rect id="da-r2b" x="620" y="510" width="680" height="70" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="650" y="556" font-size="32" fill="#e8e6df" font-weight="700">更新余额</text>
+            <text id="da-wait" class="h" x="1270" y="556" font-size="28" fill="#8a8f99" text-anchor="end">还没执行…</text>
+          </g>
+        </g>
+        <g id="da-atk" class="h">
+          <rect x="1520" y="380" width="300" height="150" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1670" y="446" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者合约</text>
+          <text x="1670" y="494" font-size="28" fill="#8a8f99" text-anchor="middle">收款回调</text>
+        </g>
+        <path id="da-call" class="dr h" pathLength="1" d="M1304 435 H1510" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#da-arr)" />
+
+        <!-- L2 回调再次进入 -->
+        <path id="da-re" class="dr h" pathLength="1" d="M1670 372 C1670 250 1250 200 1118 252" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#da-arr2)" />
+        <text id="da-rel" class="h" x="1450" y="200" font-size="30" fill="#FC6255" text-anchor="middle">再次调用 <tspan class="mono">splitDAO</tspan></text>
+        <g id="da-eths" fill="#F0B90B">
+          <circle class="h" cx="1320" cy="435" r="10" /><circle class="h" cx="1320" cy="435" r="10" /><circle class="h" cx="1320" cy="435" r="10" /><circle class="h" cx="1320" cy="435" r="10" /><circle class="h" cx="1320" cy="435" r="10" />
+        </g>
+
+        <!-- L3 计数 -->
+        <g id="da-cnt" class="h">
+          <text x="110" y="400" font-size="30" fill="#8a8f99">被取走</text>
+          <text id="da-num" x="110" y="484" font-size="72" font-weight="700" fill="#F0B90B">0</text>
+          <text x="110" y="540" font-size="36" fill="#F0B90B">万 ETH</text>
+        </g>
+
+        <!-- L4 分叉 -->
+        <g id="da-fork">
+          <g id="da-base" class="h" fill="#22252d" stroke="#8a8f99" stroke-width="2.5">
+            <rect x="200" y="520" width="110" height="80" rx="10" /><rect x="360" y="520" width="110" height="80" rx="10" /><rect x="520" y="520" width="110" height="80" rx="10" /><rect x="680" y="520" width="110" height="80" rx="10" />
+            <path d="M310 560 H360 M470 560 H520 M630 560 H680" fill="none" />
+          </g>
+          <text id="da-hf" class="h" x="740" y="490" font-size="30" fill="#e8e6df" text-anchor="middle">硬分叉</text>
+          <path id="da-up" class="dr" pathLength="1" d="M790 560 C840 560 850 440 900 440" stroke="#58C4DD" stroke-width="3" fill="none" />
+          <g id="da-eth" class="h" fill="#132530" stroke="#58C4DD" stroke-width="2.5">
+            <rect x="900" y="400" width="110" height="80" rx="10" /><rect x="1060" y="400" width="110" height="80" rx="10" /><rect x="1220" y="400" width="110" height="80" rx="10" />
+            <path d="M1010 440 H1060 M1170 440 H1220" fill="none" />
+            <text x="1380" y="434" font-size="40" font-weight="700" fill="#58C4DD" stroke="none">ETH</text>
+            <text x="1380" y="474" font-size="28" fill="#e8e6df" stroke="none">回滚被取走的资金</text>
+          </g>
+          <path id="da-dn" class="dr" pathLength="1" d="M790 560 C840 560 850 680 900 680" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="da-etc" class="h" fill="#22252d" stroke="#8a8f99" stroke-width="2.5">
+            <rect x="900" y="640" width="110" height="80" rx="10" /><rect x="1060" y="640" width="110" height="80" rx="10" /><rect x="1220" y="640" width="110" height="80" rx="10" />
+            <path d="M1010 680 H1060 M1170 680 H1220" fill="none" />
+            <text x="1380" y="674" font-size="40" font-weight="700" fill="#c9ccd3" stroke="none">ETC</text>
+            <text x="1380" y="714" font-size="28" fill="#8a8f99" stroke="none">不同意分叉，原链延续</text>
+          </g>
+        </g>
+
+        <!-- L5 教训 -->
+        <text id="da-les" class="h" x="960" y="740" font-size="52" font-weight="700" fill="#83C167" text-anchor="middle">执行顺序，就是安全边界</text>
+        <text id="da-les2" class="h" x="960" y="818" font-size="30" fill="#8a8f99" text-anchor="middle">先记账，后转账</text>
+      </g>
+      <g id="da-term" class="h">
+        <rect x="70" y="56" width="560" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+        <text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">重入 <tspan font-size="28" font-weight="400" fill="#8a8f99">Reentrancy</tspan></text>
+        <text x="100" y="160" font-size="28" fill="#e8e6df">外部调用还没返回，又进来一次</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      IN("#da-head", at(0, 0.05), 0.8, { y: 20 });
+      IN("#da-ctr", at(1, 0.05));
+      tl.fromTo("#da-r1b", { attr: { "stroke-width": 2.5 } }, { attr: { "stroke-width": 6 }, duration: 0.3, yoyo: true, repeat: 1 }, at(1, 0.35));
+      IN("#da-atk", at(1, 0.5));
+      ARROW("#da-call", at(1, 0.55), 0.6);
+
+      IN("#da-term", at(2, 0.0));
+      ARROW("#da-re", at(2, 0.2), 0.9);
+      IN("#da-rel", at(2, 0.45));
+      IN("#da-wait", at(2, 0.6));
+
+      // L3 循环取款
+      const dur3 = L[3][1] - L[3][0];
+      IN("#da-cnt", at(3, 0.02));
+      COUNT("#da-num", 0, 360, at(3, 0.08), dur3 * 0.7, v => Math.round(v));
+      tl.fromTo("#da-eths circle", { opacity: 1, x: 0 }, { x: 190, opacity: 0, duration: 0.6, ease: "power1.in", stagger: dur3 * 0.14, immediateRender: false }, at(3, 0.05));
+      tl.fromTo("#da-re", { opacity: 1 }, { opacity: 0.35, duration: dur3 * 0.07, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, at(3, 0.05));
+
+      // L4 分叉
+      OUT("#da-ctr", at(4, 0.0)); OUT("#da-atk", at(4, 0.0)); OUT("#da-call", at(4, 0.0)); OUT("#da-re", at(4, 0.0)); OUT("#da-rel", at(4, 0.0)); OUT("#da-term", at(4, 0.0));
+      tl.to("#da-cnt", { opacity: 0.0, duration: 0.4 }, at(4, 0.0));
+      IN("#da-base", at(4, 0.1));
+      IN("#da-hf", at(4, 0.2));
+      DRAW("#da-up", at(4, 0.3), 0.6); IN("#da-eth", at(4, 0.4));
+      DRAW("#da-dn", at(4, 0.55), 0.6); IN("#da-etc", at(4, 0.65));
+
+      // L5 顺序对调
+      OUT("#da-fork", at(5, 0.0));
+      tl.set("#da-wait", { opacity: 0 }, at(5, 0.05));
+      IN("#da-ctr", at(5, 0.1));
+      tl.to("#da-row1", { y: 110, duration: 0.8, ease: "power2.inOut" }, at(5, 0.25));
+      tl.to("#da-row2", { y: -110, duration: 0.8, ease: "power2.inOut" }, at(5, 0.25));
+      tl.to("#da-r2b", { attr: { stroke: "#83C167" }, duration: 0.4 }, at(5, 0.4));
+      IN("#da-les", at(5, 0.5), 0.8, { y: 20 });
+      IN("#da-les2", at(5, 0.6));
+
+      tl.to("#da-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["dao"] = tl;
+    })();
+  </script>
+</template>

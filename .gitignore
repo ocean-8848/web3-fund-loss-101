@@ -5,6 +5,8 @@
 !/index.html
 !/data/
 !/labs/
+!/slides/
+!/slides.html
 !/learning-site/
 !/web3-loss-101-site/
 !/tools/
@@ -12,3 +14,6 @@
 # 系统与编辑器
 .DS_Store
 .claude/
+
+# Slides 单章预览（tools/make_slides.py --only）
+slides/*/preview.html

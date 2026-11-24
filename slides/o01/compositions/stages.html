@@ -1,0 +1,79 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 stages，id 前缀 st- -->
+  <div id="root" data-composition-id="stages" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="st-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="st-all"><g transform="translate(0 90)">
+        <text id="st-head" class="h" x="960" y="180" font-size="56" font-weight="700" fill="#e8e6df" text-anchor="middle">攻击链六阶段</text>
+        <g id="st-b0" class="h"><rect id="st-r0" x="80" y="300" width="260" height="110" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="3" /><text x="210" y="368" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">入口</text></g>
+        <g id="st-b1" class="h"><rect id="st-r1" x="380" y="300" width="260" height="110" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" /><text x="510" y="368" font-size="36" font-weight="700" fill="#8a8f99" text-anchor="middle">立足</text></g>
+        <g id="st-b2" class="h"><rect id="st-r2" x="680" y="300" width="260" height="110" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" /><text x="810" y="368" font-size="36" font-weight="700" fill="#8a8f99" text-anchor="middle">横移</text></g>
+        <g id="st-b3" class="h"><rect id="st-r3" x="980" y="300" width="260" height="110" rx="14" fill="#161a22" stroke="#B48EF0" stroke-width="3" /><text x="1110" y="368" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">取得签名能力</text></g>
+        <g id="st-b4" class="h"><rect id="st-r4" x="1280" y="300" width="260" height="110" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="3" /><text x="1410" y="368" font-size="36" font-weight="700" fill="#58C4DD" text-anchor="middle">链上执行</text></g>
+        <g id="st-b5" class="h"><rect id="st-r5" x="1580" y="300" width="260" height="110" rx="14" fill="#161a22" stroke="#F0B90B" stroke-width="3" /><text x="1710" y="368" font-size="36" font-weight="700" fill="#F0B90B" text-anchor="middle">变现</text></g>
+        <path id="st-a0" class="dr h" pathLength="1" d="M344 355 H376" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#st-arr)" />
+        <path id="st-a1" class="dr h" pathLength="1" d="M644 355 H676" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#st-arr)" />
+        <path id="st-a2" class="dr h" pathLength="1" d="M944 355 H976" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#st-arr)" />
+        <path id="st-a3" class="dr h" pathLength="1" d="M1244 355 H1276" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#st-arr)" />
+        <path id="st-a4" class="dr h" pathLength="1" d="M1544 355 H1576" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#st-arr)" />
+        <g id="st-d0" class="h" font-size="30" fill="#e8e6df" text-anchor="middle"><path d="M210 418 V444" stroke="#FC6255" stroke-width="2.5" /><text x="210" y="486">假招聘</text><text x="210" y="538">钓鱼</text><text class="mono" x="210" y="590">0day</text><text x="210" y="642">代码缺陷</text></g>
+        <g id="st-d1" class="h" font-size="30" fill="#e8e6df" text-anchor="middle"><path d="M510 418 V444" stroke="#8a8f99" stroke-width="2.5" /><text x="510" y="486">终端控制</text><text x="510" y="538">持久化</text></g>
+        <g id="st-d2" class="h" font-size="30" fill="#e8e6df" text-anchor="middle"><path d="M810 418 V444" stroke="#8a8f99" stroke-width="2.5" /><text x="810" y="486">会话</text><text x="810" y="538">令牌</text><text x="810" y="590">内网</text><text x="810" y="642">供应商</text></g>
+        <g id="st-d3" class="h" font-size="30" fill="#e8e6df" text-anchor="middle"><path d="M1110 418 V444" stroke="#B48EF0" stroke-width="2.5" /><text x="1110" y="486">私钥</text><text x="1110" y="538">签名服务</text><text x="1110" y="590">界面欺骗</text><text x="1110" y="642">合约逻辑</text></g>
+        <g id="st-d4" class="h" font-size="30" fill="#e8e6df" text-anchor="middle"><path d="M1410 418 V444" stroke="#58C4DD" stroke-width="2.5" /><text x="1410" y="486">转账</text><text x="1410" y="538">升级</text><text x="1410" y="590">委托</text><text x="1410" y="642">铸造</text></g>
+        <g id="st-d5" class="h" font-size="30" fill="#e8e6df" text-anchor="middle"><path d="M1710 418 V444" stroke="#F0B90B" stroke-width="2.5" /><text x="1710" y="486">跨链</text><text x="1710" y="538">混币</text><text x="1710" y="590">场外</text></g>
+        <circle id="st-dot" class="h" cx="210" cy="262" r="14" fill="#FC6255" />
+      </g></g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const MARK = (i, t) => tl.to("#st-r" + i, { attr: { "stroke-width": 6 }, duration: 0.25, yoyo: true, repeat: 1 }, t);
+
+      // L0 六个方框依次出现
+      IN("#st-head", at(0, 0.02), 0.7, { y: 16 });
+      for (let i = 0; i < 6; i++) {
+        IN("#st-b" + i, at(0, 0.12 + i * 0.1), 0.5, { y: 20 });
+        if (i < 5) ARROW("#st-a" + i, at(0, 0.18 + i * 0.1), 0.25);
+      }
+
+      // L1–L4 逐阶段展开，红点跟着走
+      IN("#st-dot", at(1, 0.02), 0.4, { scale: 0, svgOrigin: "210 262" }, { scale: 1 });
+      IN("#st-d0", at(1, 0.15), 0.6, { y: -12 }); MARK(0, at(1, 0.1));
+      [2, 3, 4].forEach((ln, k) => {
+        const i = k + 1;
+        tl.to("#st-dot", { x: i * 300, duration: 0.6, ease: "power2.inOut" }, at(ln, 0.02));
+        MARK(i, at(ln, 0.15));
+        IN("#st-d" + i, at(ln, 0.2), 0.6, { y: -12 });
+      });
+
+      // L5 链上执行 → 变现
+      tl.to("#st-dot", { x: 1200, duration: 0.5, ease: "power2.inOut" }, at(5, 0.02));
+      MARK(4, at(5, 0.1));
+      IN("#st-d4", at(5, 0.15), 0.6, { y: -12 });
+      tl.to("#st-dot", { x: 1500, duration: 0.5, ease: "power2.inOut" }, at(5, 0.45));
+      MARK(5, at(5, 0.5));
+      IN("#st-d5", at(5, 0.55), 0.6, { y: -12 });
+
+      tl.to("#st-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["stages"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,2 @@
+/* 生成文件：tools/make_slides.py。有 Slides 的章节及页数 */
+H.slides={"o00": {"pages": 29}, "o01": {"pages": 31}, "o02": {"pages": 22}, "o03": {"pages": 27}, "g01": {"pages": 34}, "g02": {"pages": 34}, "g03": {"pages": 33}, "g04": {"pages": 30}, "g05": {"pages": 23}, "g06": {"pages": 31}, "g07": {"pages": 37}, "g08": {"pages": 32}, "g09": {"pages": 28}, "g10": {"pages": 39}, "d01": {"pages": 37}, "d02": {"pages": 35}, "d03": {"pages": 22}, "d04": {"pages": 29}};

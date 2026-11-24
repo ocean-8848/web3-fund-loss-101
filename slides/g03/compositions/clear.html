@@ -1,0 +1,84 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 clear，id 前缀 cl- -->
+  <div id="root" data-composition-id="clear" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="cl-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="cl-all">
+        <text id="cl-head" class="h" x="960" y="160" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">硬件钱包何时是核验点</text>
+
+        <!-- L0 清晰签名 -->
+        <g id="cl-l">
+          <g id="cl-lh" class="h">
+            <text x="500" y="300" font-size="38" font-weight="700" fill="#83C167" text-anchor="middle">清晰签名</text>
+            <rect x="260" y="340" width="480" height="360" rx="24" fill="#161a22" stroke="#83C167" stroke-width="3" />
+            <rect x="300" y="380" width="400" height="200" rx="10" fill="#0b0d12" stroke="#8a8f99" stroke-width="2" />
+          </g>
+          <g id="cl-ld" class="h">
+            <text x="330" y="450" font-size="30" fill="#e8e6df">操作：<tspan fill="#FC6255" font-weight="700">升级</tspan></text>
+            <text x="330" y="520" font-size="30" fill="#e8e6df">调用：<tspan fill="#FC6255" font-weight="700">delegatecall</tspan></text>
+          </g>
+          <text id="cl-lok" class="h" x="500" y="650" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">✓ 能核对内容</text>
+        </g>
+
+        <!-- L1 只显示哈希 -->
+        <g id="cl-r">
+          <g id="cl-rh" class="h">
+            <text x="1420" y="300" font-size="38" font-weight="700" fill="#8a8f99" text-anchor="middle">只显示哈希</text>
+            <rect x="1180" y="340" width="480" height="360" rx="24" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <rect x="1220" y="380" width="400" height="200" rx="10" fill="#0b0d12" stroke="#8a8f99" stroke-width="2" />
+            <text class="mono" x="1420" y="494" font-size="34" fill="#8a8f99" text-anchor="middle">0x··········</text>
+          </g>
+          <text id="cl-r1" class="h" x="1420" y="630" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">✓ 我签了</text>
+          <text id="cl-r2" class="h" x="1420" y="680" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">? 我签对了</text>
+        </g>
+
+        <!-- L3 第二台设备 -->
+        <g id="cl-2nd" class="h">
+          <rect x="1180" y="800" width="480" height="150" rx="16" fill="#142016" stroke="#83C167" stroke-width="3" />
+          <text x="1420" y="860" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">第二台设备</text>
+          <text x="1420" y="910" font-size="28" fill="#e8e6df" text-anchor="middle">解码 <tspan class="mono">calldata</tspan></text>
+        </g>
+        <path id="cl-ver" class="dr h" pathLength="1" d="M1420 792 V712" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#cl-arr)" />
+        <text id="cl-verl" class="h" x="1676" y="762" font-size="28" font-weight="700" fill="#83C167">本可发现篡改</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      IN("#cl-head", at(0, 0.02), 0.8, { y: 20 });
+      IN("#cl-lh", at(0, 0.15), 0.7, { y: 20 });
+      IN("#cl-ld", at(0, 0.35), 0.6);
+      IN("#cl-lok", at(0, 0.55), 0.5);
+
+      tl.to("#cl-l", { opacity: 0.35, duration: 0.4 }, at(1, 0.0));
+      IN("#cl-rh", at(1, 0.1), 0.7, { y: 20 });
+      IN("#cl-r1", at(1, 0.45), 0.5);
+
+      IN("#cl-r2", at(2, 0.1), 0.5, { scale: 1.4, svgOrigin: "1420 670" }, { scale: 1 });
+
+      IN("#cl-2nd", at(3, 0.05), 0.6, { y: 20 });
+      ARROW("#cl-ver", at(3, 0.35), 0.4);
+      IN("#cl-verl", at(3, 0.5), 0.5);
+
+      tl.to("#cl-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["clear"] = tl;
+    })();
+  </script>
+</template>

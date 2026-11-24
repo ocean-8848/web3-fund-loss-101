@@ -1,0 +1,131 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 entry，id 前缀 en- -->
+  <div id="root" data-composition-id="entry" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="en-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="en-all">
+        <!-- L0 平台：钱包 + 用户账户 -->
+        <g id="en-plat" class="h">
+          <rect x="1160" y="220" width="380" height="420" rx="18" fill="none" stroke="#B48EF0" stroke-width="2.5" stroke-dasharray="12 8" />
+          <text x="1350" y="684" font-size="30" fill="#B48EF0" text-anchor="middle">交易平台</text>
+          <rect x="1200" y="252" width="300" height="130" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="1350" y="310" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">平台钱包</text>
+          <text x="1350" y="356" font-size="28" fill="#83C167" text-anchor="middle">没被碰</text>
+        </g>
+        <g id="en-acc" class="h">
+          <rect id="en-accr" x="1200" y="474" width="300" height="130" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="1350" y="552" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">用户账户</text>
+        </g>
+        <g id="en-atk" class="h">
+          <rect x="1640" y="474" width="210" height="130" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1745" y="552" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+        </g>
+        <path id="en-take" class="dr h" pathLength="1" d="M1632 539 H1512" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#en-arr)" />
+
+        <!-- 凭证 -->
+        <g id="en-cred" class="h">
+          <rect x="700" y="464" width="340" height="150" rx="14" fill="#2a2410" stroke="#F0B90B" stroke-width="3" />
+          <text x="870" y="528" font-size="34" font-weight="700" fill="#F0B90B" text-anchor="middle">密码 + 2FA</text>
+          <text id="en-key" class="h" x="870" y="582" font-size="32" font-weight="700" fill="#F0B90B" text-anchor="middle">API Key</text>
+        </g>
+        <path id="en-c2a" class="dr h" pathLength="1" d="M1048 539 H1188" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#en-arr)" />
+
+        <!-- L1 L2 L3 入口 -->
+        <g id="en-s1" class="h">
+          <rect x="90" y="290" width="460" height="110" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="2.5" />
+          <text x="320" y="356" font-size="30" fill="#e8e6df" text-anchor="middle">钓鱼站 · 恶意插件 · 数据泄露</text>
+        </g>
+        <path id="en-a1" class="dr h" pathLength="1" d="M556 360 L690 486" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#en-arr)" />
+        <g id="en-s2" class="h">
+          <rect x="90" y="484" width="460" height="110" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="2.5" />
+          <text x="320" y="550" font-size="30" fill="#e8e6df" text-anchor="middle">账户恢复缺陷 · SMS 恢复</text>
+        </g>
+        <path id="en-a2" class="dr h" pathLength="1" d="M556 539 H690" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#en-arr)" />
+        <g id="en-s3" class="h">
+          <rect x="90" y="678" width="460" height="110" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="2.5" />
+          <text x="320" y="744" font-size="30" fill="#e8e6df" text-anchor="middle">第三方工具泄露 · <tspan class="mono">3Commas</tspan></text>
+        </g>
+        <path id="en-a3" class="dr h" pathLength="1" d="M556 718 L690 594" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#en-arr)" />
+
+        <!-- L4 单个小、合计大 -->
+        <g id="en-users" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5">
+          <circle class="en-u h" cx="140" cy="900" r="16" /><circle class="en-u h" cx="190" cy="900" r="16" /><circle class="en-u h" cx="240" cy="900" r="16" /><circle class="en-u h" cx="290" cy="900" r="16" />
+          <circle class="en-u h" cx="340" cy="900" r="16" /><circle class="en-u h" cx="390" cy="900" r="16" /><circle class="en-u h" cx="440" cy="900" r="16" /><circle class="en-u h" cx="490" cy="900" r="16" />
+          <circle class="en-u h" cx="540" cy="900" r="16" /><circle class="en-u h" cx="590" cy="900" r="16" /><circle class="en-u h" cx="640" cy="900" r="16" /><circle class="en-u h" cx="690" cy="900" r="16" />
+          <circle class="en-u h" cx="740" cy="900" r="16" /><circle class="en-u h" cx="790" cy="900" r="16" /><circle class="en-u h" cx="840" cy="900" r="16" /><circle class="en-u h" cx="890" cy="900" r="16" />
+        </g>
+        <text id="en-ul" class="h" x="140" y="964" font-size="28" fill="#8a8f99">每个用户：损失不大</text>
+        <g id="en-coins" fill="#F0B90B">
+          <circle class="en-k h" cx="140" cy="900" r="7" /><circle class="en-k h" cx="190" cy="900" r="7" /><circle class="en-k h" cx="240" cy="900" r="7" /><circle class="en-k h" cx="290" cy="900" r="7" />
+          <circle class="en-k h" cx="340" cy="900" r="7" /><circle class="en-k h" cx="390" cy="900" r="7" /><circle class="en-k h" cx="440" cy="900" r="7" /><circle class="en-k h" cx="490" cy="900" r="7" />
+          <circle class="en-k h" cx="540" cy="900" r="7" /><circle class="en-k h" cx="590" cy="900" r="7" /><circle class="en-k h" cx="640" cy="900" r="7" /><circle class="en-k h" cx="690" cy="900" r="7" />
+          <circle class="en-k h" cx="740" cy="900" r="7" /><circle class="en-k h" cx="790" cy="900" r="7" /><circle class="en-k h" cx="840" cy="900" r="7" /><circle class="en-k h" cx="890" cy="900" r="7" />
+        </g>
+        <rect id="en-sum" class="h" x="1010" y="876" width="0" height="48" rx="8" fill="#FC6255" />
+        <text id="en-suml" class="h" x="1010" y="976" font-size="32" font-weight="700" fill="#FC6255">合计可达数千万美元</text>
+      </g>
+      <g id="en-term" class="h">
+        <rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+        <text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">账户接管 <tspan font-size="28" font-weight="400" fill="#8a8f99">Account Takeover</tspan></text>
+        <text x="100" y="160" font-size="28" fill="#e8e6df">不碰平台钱包，接管用户的账户</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 平台钱包没被碰，账户被接管
+      IN("#en-term", at(0, 0.02));
+      IN("#en-plat", at(0, 0.1));
+      IN("#en-acc", at(0, 0.25));
+      IN("#en-atk", at(0, 0.4));
+      ARROW("#en-take", at(0, 0.5), 0.5);
+      tl.to("#en-accr", { attr: { stroke: "#FC6255", fill: "#2a1616" }, duration: 0.4 }, at(0, 0.65));
+
+      // L1 钓鱼 → 密码 + 2FA
+      IN("#en-s1", at(1, 0.02));
+      ARROW("#en-a1", at(1, 0.2), 0.5);
+      IN("#en-cred", at(1, 0.35));
+      ARROW("#en-c2a", at(1, 0.55), 0.4);
+
+      // L2 账户恢复
+      IN("#en-s2", at(2, 0.05));
+      ARROW("#en-a2", at(2, 0.3), 0.5);
+
+      // L3 第三方工具 → API Key
+      IN("#en-s3", at(3, 0.05));
+      ARROW("#en-a3", at(3, 0.3), 0.5);
+      IN("#en-key", at(3, 0.5), 0.5, { y: 10 });
+
+      // L4 单个小，合计大
+      tl.fromTo(".en-u", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.04 }, at(4, 0.02));
+      tl.fromTo(".en-k", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.04 }, at(4, 0.1));
+      IN("#en-ul", at(4, 0.15));
+      tl.to(".en-k", { x: (i) => 1030 - (140 + i * 50), opacity: 0, duration: 0.6, ease: "power1.in", stagger: 0.05 }, at(4, 0.35));
+      IN("#en-sum", at(4, 0.38), 0.2);
+      tl.to("#en-sum", { attr: { width: 760 }, duration: 1.2, ease: "power2.out" }, at(4, 0.38));
+      IN("#en-suml", at(4, 0.6));
+
+      tl.to("#en-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#en-term", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["entry"] = tl;
+    })();
+  </script>
+</template>

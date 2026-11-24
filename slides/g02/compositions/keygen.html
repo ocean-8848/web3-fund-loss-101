@@ -1,0 +1,134 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 keygen，id 前缀 kg- -->
+  <div id="root" data-composition-id="keygen" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="kg-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="kg-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="kg-all">
+        <text id="kg-head" class="h" x="960" y="160" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">不需要入侵：密钥生成缺陷</text>
+
+        <g id="kg-main">
+          <!-- L0 生成工具 → 私钥 → 公钥 -->
+          <g id="kg-tool" class="h">
+            <rect x="140" y="400" width="400" height="180" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          </g>
+          <text id="kg-tl1" class="h" x="340" y="502" font-size="36" font-weight="700" fill="#58C4DD" text-anchor="middle">密钥生成工具</text>
+          <text id="kg-tl2" class="h mono" x="340" y="504" font-size="40" font-weight="700" fill="#58C4DD" text-anchor="middle">Profanity</text>
+          <path id="kg-a1" class="dr h" pathLength="1" d="M548 490 H630" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#kg-arrg)" />
+          <g id="kg-key" class="h">
+            <g stroke="#F0B90B" stroke-width="5" fill="none" stroke-linecap="round">
+              <circle cx="666" cy="490" r="18" /><path d="M684 490 H734 M718 490 V504 M732 490 V502" />
+            </g>
+            <text x="700" y="560" font-size="30" fill="#F0B90B" text-anchor="middle">私钥</text>
+          </g>
+          <path id="kg-a2" class="dr h" pathLength="1" d="M760 490 H890" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#kg-arrg)" />
+          <g id="kg-pub" class="h">
+            <rect x="900" y="420" width="440" height="140" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <text x="1120" y="502" font-size="34" fill="#e8e6df" text-anchor="middle">公钥 / 地址（公开）</text>
+          </g>
+
+          <!-- L1 缺陷与反推 -->
+          <g id="kg-def" class="h">
+            <text x="340" y="650" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">弱随机数</text>
+            <text x="340" y="704" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">nonce 复用</text>
+          </g>
+          <path id="kg-back" class="dr h" pathLength="1" d="M1120 412 Q900 230 700 455" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#kg-arr)" />
+          <text id="kg-bl1" class="h" x="960" y="290" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">推算</text>
+          <text id="kg-bl2" class="h" x="960" y="290" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">暴力还原</text>
+
+          <!-- L2 Wintermute -->
+          <text id="kg-wm" class="h" x="1120" y="616" font-size="30" fill="#B48EF0" text-anchor="middle">Wintermute 金库 · 靓号地址</text>
+          <!-- L3 32 位种子 -->
+          <g id="kg-seed" class="h">
+            <text x="340" y="660" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">种子只有 32 位</text>
+          </g>
+          <text id="kg-amt" class="h" x="1640" y="510" font-size="56" font-weight="700" fill="#F0B90B" text-anchor="middle">约 $1.6 亿</text>
+        </g>
+
+        <!-- L4 Ledger · Zilliqa -->
+        <g id="kg-ld">
+          <text id="kg-ldh" class="h" x="960" y="330" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">Ledger 上的 Zilliqa 旧版应用</text>
+          <g id="kg-ld1" class="h">
+            <rect x="200" y="420" width="420" height="180" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="410" y="494" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">签名应用</text>
+            <text x="410" y="552" font-size="30" fill="#FC6255" text-anchor="middle">nonce 处理缺陷</text>
+          </g>
+          <path id="kg-la1" class="dr h" pathLength="1" d="M628 510 H770" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#kg-arrg)" />
+          <g id="kg-ld2" class="h">
+            <rect x="780" y="440" width="360" height="140" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <text x="960" y="522" font-size="34" fill="#e8e6df" text-anchor="middle">公开签名</text>
+          </g>
+          <path id="kg-la2" class="dr h" pathLength="1" d="M1148 510 H1290" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#kg-arr)" />
+          <g id="kg-ld3" class="h">
+            <rect x="1300" y="420" width="420" height="180" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <g stroke="#F0B90B" stroke-width="5" fill="none" stroke-linecap="round">
+              <circle cx="1400" cy="510" r="18" /><path d="M1418 510 H1468 M1452 510 V524 M1466 510 V522" />
+            </g>
+            <text x="1500" y="522" font-size="34" font-weight="700" fill="#FC6255">私钥暴露</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0
+      IN("#kg-head", at(0, 0.02), 0.8, { y: 20 });
+      IN("#kg-tool", at(0, 0.2), 0.6); IN("#kg-tl1", at(0, 0.2), 0.6);
+      ARROW("#kg-a1", at(0, 0.35), 0.4);
+      IN("#kg-key", at(0, 0.42), 0.5);
+      ARROW("#kg-a2", at(0, 0.52), 0.4);
+      IN("#kg-pub", at(0, 0.6), 0.5, { x: -20 });
+
+      // L1
+      IN("#kg-def", at(1, 0.05), 0.6, { y: 15 });
+      ARROW("#kg-back", at(1, 0.35), 0.8);
+      IN("#kg-bl1", at(1, 0.5), 0.5);
+
+      // L2 Wintermute
+      OUT("#kg-tl1", at(2, 0.0), 0.3); OUT("#kg-def", at(2, 0.0), 0.3);
+      IN("#kg-tl2", at(2, 0.1), 0.6);
+      IN("#kg-wm", at(2, 0.3), 0.6, { y: 10 });
+
+      // L3 32 位种子
+      IN("#kg-seed", at(3, 0.05), 0.6, { y: 10 });
+      OUT("#kg-bl1", at(3, 0.15), 0.3);
+      IN("#kg-bl2", at(3, 0.25), 0.4);
+      tl.fromTo("#kg-back", { opacity: 1 }, { opacity: 0.35, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, at(3, 0.25));
+      tl.fromTo("#kg-key", { scale: 1 }, { scale: 1.3, svgOrigin: "700 490", duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(3, 0.45));
+      IN("#kg-amt", at(3, 0.55), 0.6, { y: 15 });
+
+      // L4 Ledger
+      OUT("#kg-main", at(4, 0.0), 0.4);
+      IN("#kg-ldh", at(4, 0.08), 0.6);
+      IN("#kg-ld1", at(4, 0.15), 0.6, { x: -20 });
+      ARROW("#kg-la1", at(4, 0.3), 0.4);
+      IN("#kg-ld2", at(4, 0.35), 0.5, { x: -20 });
+      ARROW("#kg-la2", at(4, 0.5), 0.4);
+      IN("#kg-ld3", at(4, 0.58), 0.5, { x: -20 });
+
+      tl.to("#kg-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["keygen"] = tl;
+    })();
+  </script>
+</template>

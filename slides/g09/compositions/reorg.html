@@ -1,0 +1,110 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 reorg，id 前缀 rg- -->
+  <div id="root" data-composition-id="reorg" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="rg-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+        <marker id="rg-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="rg-all">
+        <text id="rg-pl" class="h" x="160" y="470" font-size="30" fill="#58C4DD">公开链</text>
+        <!-- 公开链 -->
+        <g id="rg-pub12" class="h" fill="#132530" stroke="#58C4DD" stroke-width="2.5">
+          <rect x="160" y="500" width="140" height="80" rx="10" /><rect x="340" y="500" width="140" height="80" rx="10" />
+          <path d="M300 540 H340" fill="none" />
+        </g>
+        <g id="rg-pub34" class="h">
+          <g fill="#132530" stroke="#58C4DD" stroke-width="2.5">
+            <path d="M480 540 H520 M660 540 H700" fill="none" />
+            <rect id="rg-b3" x="520" y="500" width="140" height="80" rx="10" /><rect x="700" y="500" width="140" height="80" rx="10" />
+          </g>
+          <circle cx="590" cy="540" r="20" fill="#F0B90B" />
+          <text x="590" y="626" font-size="28" font-weight="700" fill="#F0B90B" text-anchor="middle">充值 X</text>
+        </g>
+        <path id="rg-dep" class="dr h" pathLength="1" d="M612 524 C800 420 1100 300 1288 290" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#rg-arr)" />
+
+        <!-- 交易所 -->
+        <g id="rg-ex" class="h">
+          <rect id="rg-exb" x="1300" y="160" width="480" height="270" rx="18" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="1540" y="222" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">交易所</text>
+        </g>
+        <g id="rg-r1" class="h">
+          <rect x="1340" y="250" width="400" height="64" rx="8" fill="#161a22" stroke="#8a8f99" stroke-width="2" />
+          <text x="1370" y="294" font-size="32" font-weight="700" fill="#F0B90B">入账 +X</text>
+        </g>
+        <path id="rg-r1x" class="dr" pathLength="1" d="M1360 283 H1500" stroke="#FC6255" stroke-width="5" fill="none" />
+        <text id="rg-r1g" class="h" x="1720" y="294" font-size="30" font-weight="700" fill="#FC6255" text-anchor="end">充值消失</text>
+        <text id="rg-loss" class="h" x="1540" y="396" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">交易所亏损</text>
+        <path id="rg-wd" class="dr h" pathLength="1" d="M1620 442 V588" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#rg-arr)" />
+        <text id="rg-wdl" class="h" x="1640" y="526" font-size="30" fill="#e8e6df">兑换后提走</text>
+        <g id="rg-atk" class="h">
+          <rect x="1460" y="600" width="320" height="110" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1620" y="668" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+        </g>
+
+        <!-- 私链 -->
+        <path id="rg-br" class="dr" pathLength="1" d="M410 580 C410 700 450 760 516 760" stroke="#FC6255" stroke-width="2.5" fill="none" />
+        <g id="rg-prv">
+          <path id="rg-link" class="h" d="M480 760 H520" stroke="#FC6255" stroke-width="2.5" />
+          <g fill="#2a1616" stroke="#FC6255" stroke-width="2.5">
+            <rect class="rg-pb h" x="520" y="720" width="140" height="80" rx="10" /><rect class="rg-pb h" x="700" y="720" width="140" height="80" rx="10" /><rect class="rg-pb h" x="880" y="720" width="140" height="80" rx="10" /><rect class="rg-pb h" x="1060" y="720" width="140" height="80" rx="10" /><rect class="rg-pb h" x="1240" y="720" width="140" height="80" rx="10" />
+          </g>
+          <path id="rg-pl2" class="h" d="M660 760 H700 M840 760 H880 M1020 760 H1060 M1200 760 H1240" stroke="#FC6255" stroke-width="2.5" />
+        </g>
+        <text id="rg-prl" class="h" x="950" y="870" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">私下挖的更长链：没有这笔充值</text>
+        <text id="rg-rel" class="h" x="770" y="680" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">发布私链 → 链重组</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...("x" in from ? { x: 0 } : {}), ...("y" in from ? { y: 0 } : {}), ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 充值
+      IN("#rg-pl", at(0, 0.02), 0.5);
+      IN("#rg-pub12", at(0, 0.05), 0.5, { x: -20 });
+      IN("#rg-pub34", at(0, 0.2), 0.5, { x: -20 });
+      IN("#rg-ex", at(0, 0.4), 0.6);
+      ARROW("#rg-dep", at(0, 0.5), 0.6);
+      // L1 入账 → 兑换 → 提走
+      IN("#rg-r1", at(1, 0.05), 0.5);
+      ARROW("#rg-wd", at(1, 0.3), 0.5); IN("#rg-wdl", at(1, 0.35), 0.4);
+      IN("#rg-atk", at(1, 0.45), 0.5);
+      // L2 私链
+      DRAW("#rg-br", at(2, 0.05), 0.5);
+      IN("#rg-link", at(2, 0.12), 0.2);
+      tl.fromTo(".rg-pb", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.18 }, at(2, 0.15));
+      IN("#rg-pl2", at(2, 0.2), 0.6);
+      IN("#rg-prl", at(2, 0.6), 0.5);
+      // L3 发布 → 重组
+      OUT("#rg-prl", at(3, 0.0), 0.3); OUT("#rg-br", at(3, 0.0), 0.3); OUT("#rg-dep", at(3, 0.0), 0.3);
+      OUT("#rg-pub34", at(3, 0.05), 0.5);
+      tl.to("#rg-prv", { y: -220, duration: 0.8, ease: "power2.inOut" }, at(3, 0.15));
+      IN("#rg-rel", at(3, 0.35), 0.5);
+      DRAW("#rg-r1x", at(3, 0.5), 0.3);
+      IN("#rg-r1g", at(3, 0.55), 0.4);
+      // L4 亏损
+      tl.to("#rg-exb", { attr: { stroke: "#FC6255", fill: "#2a1616" }, duration: 0.4 }, at(4, 0.05));
+      IN("#rg-loss", at(4, 0.2), 0.6, { scale: 1.3, svgOrigin: "1540 380" }, { scale: 1 });
+
+      tl.to("#rg-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["reorg"] = tl;
+    })();
+  </script>
+</template>

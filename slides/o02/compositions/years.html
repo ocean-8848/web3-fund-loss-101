@@ -1,0 +1,80 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 years，id 前缀 yr- -->
+  <div id="root" data-composition-id="years" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="yr-all">
+        <text id="yr-h0" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">按年份 · 损失合计</text>
+        <text id="yr-h1" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">按年份 · 损失合计（排除 <tspan class="mono">Binance</tspan>）</text>
+        <text id="yr-h2" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">按年份 · 事件数</text>
+        <rect id="yr-b0" class="h" x="225" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b1" class="h" x="363" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b2" class="h" x="501" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b3" class="h" x="639" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b4" class="h" x="777" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b5" class="h" x="915" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b6" class="h" x="1053" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b7" class="h" x="1191" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b8" class="h" x="1329" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b9" class="h" x="1467" y="860" width="90" height="0" fill="#F0B90B" /><rect id="yr-b10" class="h" x="1605" y="860" width="90" height="0" fill="#F0B90B" />
+        <rect id="yr-bin" class="h" x="1605" y="300.0" width="90" height="433.5" fill="#FC6255" />
+        <path id="yr-ax" class="dr" pathLength="1" d="M200 860 H1720" stroke="#8a8f99" stroke-width="3" fill="none" />
+        <g id="yr-yl" class="h" font-size="28" fill="#8a8f99" text-anchor="middle"><text x="270" y="904" >2016</text><text x="408" y="904" >2017</text><text x="546" y="904" >2018</text><text x="684" y="904" >2019</text><text x="822" y="904" >2020</text><text x="960" y="904" >2021</text><text x="1098" y="904" >2022</text><text x="1236" y="904" >2023</text><text x="1374" y="904" >2024</text><text x="1512" y="904" >2025</text><text x="1650" y="904" >2026</text></g>
+        <text id="yr-v26" class="h" x="1650" y="284" font-size="32" font-weight="700" fill="#F0B90B" text-anchor="middle">$81.9 亿</text>
+        <text id="yr-vbin" class="h" x="1580" y="527" font-size="32" font-weight="700" fill="#FC6255" text-anchor="end"><tspan class="mono">Binance</tspan> $63.4 亿</text>
+        <text id="yr-v26b" class="h" x="1650" y="445" font-size="32" font-weight="700" fill="#F0B90B" text-anchor="middle">$18.5 亿</text>
+        <text id="yr-v22" class="h" x="1098" y="284" font-size="32" font-weight="700" fill="#F0B90B" text-anchor="middle">$26 亿</text>
+        <g id="yr-cl" class="h" font-size="28" font-weight="700" fill="#e8e6df" text-anchor="middle"><text x="270" y="758">5</text><text x="408" y="724">7</text><text x="546" y="636">12</text><text x="684" y="496">20</text><text x="822" y="584">15</text><text x="960" y="618">13</text><text x="1098" y="444">23</text><text x="1236" y="304">31</text><text x="1374" y="408">25</text><text x="1512" y="286">32</text><text x="1650" y="321">30</text></g>
+        <path id="yr-25" class="dr" pathLength="1" d="M1180 422.5 H1720" stroke="#83C167" stroke-width="3" fill="none" />
+        <text id="yr-25l" class="h" x="1732" y="432" font-size="28" font-weight="700" fill="#83C167">25 起</text>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      const H0 = [9.3, 19.1, 60.6, 13.7, 24.4, 105.2, 177.7, 95.9, 91.8, 164.6, 560.0], H1 = [29.2, 60.3, 191.0, 43.2, 76.9, 331.6, 560.0, 302.1, 289.3, 518.7, 398.7], H2 = [87.5, 122.5, 210.0, 350.0, 262.5, 227.5, 402.5, 542.5, 437.5, 560.0, 525.0];
+      const SET = (H, t, d, extra = {}) => H.forEach((h, i) => tl.to("#yr-b" + i, { attr: { y: 860 - h, height: h, ...extra }, duration: d, ease: "power2.inOut" }, t + i * 0.03));
+
+      // L0 损失合计：2026 特别高
+      IN("#yr-h0", at(0, 0.02));
+      DRAW("#yr-ax", at(0, 0.05), 0.6);
+      IN("#yr-yl", at(0, 0.1), 0.5);
+      tl.set("#yr-all rect", { opacity: 1 }, at(0, 0.12));
+      tl.set("#yr-bin", { opacity: 0 }, at(0, 0.12));
+      SET(H0, at(0, 0.15), 0.8);
+      IN("#yr-v26", at(0, 0.6));
+
+      // L1 Binance 单起
+      IN("#yr-bin", at(1, 0.1), 0.5);
+      IN("#yr-vbin", at(1, 0.3), 0.6, { x: 20 });
+
+      // L2 排除 Binance，重新缩放
+      OUT("#yr-h0", at(2, 0.0), 0.3); IN("#yr-h1", at(2, 0.1), 0.5);
+      OUT("#yr-vbin", at(2, 0.0), 0.3); OUT("#yr-v26", at(2, 0.0), 0.3);
+      tl.to("#yr-bin", { attr: { y: 860 - H0[10] - 80 }, opacity: 0, duration: 0.5, ease: "power2.in" }, at(2, 0.05));
+      SET(H1, at(2, 0.2), 0.9);
+      IN("#yr-v26b", at(2, 0.55)); IN("#yr-v22", at(2, 0.6));
+
+      // L3 换成事件数
+      OUT("#yr-h1", at(3, 0.0), 0.3); IN("#yr-h2", at(3, 0.1), 0.5);
+      OUT("#yr-v26b", at(3, 0.0), 0.3); OUT("#yr-v22", at(3, 0.0), 0.3);
+      SET(H2, at(3, 0.1), 0.8, { fill: "#8a8f99" });
+      tl.to("#yr-b7, #yr-b8, #yr-b9, #yr-b10", { attr: { fill: "#e8e6df" }, duration: 0.4 }, at(3, 0.45));
+      IN("#yr-cl", at(3, 0.4), 0.5);
+      DRAW("#yr-25", at(3, 0.5), 0.5); IN("#yr-25l", at(3, 0.6), 0.4);
+
+      tl.to("#yr-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["years"] = tl;
+    })();
+  </script>
+</template>

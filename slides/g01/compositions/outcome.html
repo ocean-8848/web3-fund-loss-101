@@ -1,0 +1,135 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 outcome，id 前缀 oc- -->
+  <div id="root" data-composition-id="outcome" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="oc-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="oc-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="oc-all">
+        <text id="oc-title" class="h" x="960" y="150" font-size="56" font-weight="700" fill="#e8e6df" text-anchor="middle">根因未公开的大额热钱包失守</text>
+
+        <g id="oc-main">
+          <!-- L0 热钱包 -->
+          <g id="oc-w" class="h">
+            <rect x="760" y="400" width="400" height="220" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="960" y="456" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">热钱包 / 暖钱包</text>
+          </g>
+          <!-- L1 外部地址 -->
+          <g id="oc-dst" class="h">
+            <rect x="1480" y="400" width="340" height="220" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1650" y="456" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">外部地址</text>
+          </g>
+          <path id="oc-flow" class="dr h" pathLength="1" d="M1168 470 H1470" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#oc-arr)" />
+          <text id="oc-fast" class="h" x="1318" y="440" font-size="30" fill="#FC6255" text-anchor="middle">短时间内转出</text>
+          <!-- L2 入口 -->
+          <g id="oc-in" class="h">
+            <rect x="140" y="400" width="320" height="220" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="3" stroke-dasharray="12 10" />
+            <text x="300" y="470" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">入口</text>
+            <text x="300" y="570" font-size="80" font-weight="700" fill="#8a8f99" text-anchor="middle">?</text>
+            <text x="300" y="680" font-size="30" fill="#8a8f99" text-anchor="middle">未公开</text>
+          </g>
+          <path id="oc-inl" class="h" d="M468 510 H750" stroke="#8a8f99" stroke-width="3" stroke-dasharray="12 10" fill="none" marker-end="url(#oc-arrg)" />
+          <!-- 资产 -->
+          <g id="oc-coins" fill="#F0B90B">
+            <circle class="h" cx="830" cy="520" r="18" /><circle class="h" cx="882" cy="520" r="18" /><circle class="h" cx="934" cy="520" r="18" />
+            <circle class="h" cx="986" cy="520" r="18" /><circle class="h" cx="1038" cy="520" r="18" /><circle class="h" cx="1090" cy="520" r="18" />
+            <circle class="h" cx="830" cy="575" r="18" /><circle class="h" cx="882" cy="575" r="18" /><circle class="h" cx="934" cy="575" r="18" />
+            <circle class="h" cx="986" cy="575" r="18" /><circle class="h" cx="1038" cy="575" r="18" /><circle class="h" cx="1090" cy="575" r="18" />
+          </g>
+        </g>
+
+        <!-- L3 归成一类 -->
+        <g id="oc-rows" fill="none">
+          <g class="h">
+            <text class="mono" x="380" y="341" font-size="30" fill="#B48EF0" text-anchor="end">KuCoin</text>
+            <rect x="420" y="300" width="100" height="60" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="8 7" /><text x="470" y="342" font-size="32" fill="#8a8f99" text-anchor="middle">?</text>
+            <path d="M532 330 H596" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="6 6" />
+            <rect x="608" y="300" width="220" height="60" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="718" y="340" font-size="28" fill="#e8e6df" text-anchor="middle">热钱包</text>
+            <path d="M840 330 H910" stroke="#FC6255" stroke-width="3" /><text x="930" y="340" font-size="28" fill="#FC6255">转出</text>
+          </g>
+          <g class="h">
+            <text class="mono" x="380" y="431" font-size="30" fill="#B48EF0" text-anchor="end">Poloniex</text>
+            <rect x="420" y="390" width="100" height="60" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="8 7" /><text x="470" y="432" font-size="32" fill="#8a8f99" text-anchor="middle">?</text>
+            <path d="M532 420 H596" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="6 6" />
+            <rect x="608" y="390" width="220" height="60" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="718" y="430" font-size="28" fill="#e8e6df" text-anchor="middle">热钱包</text>
+            <path d="M840 420 H910" stroke="#FC6255" stroke-width="3" /><text x="930" y="430" font-size="28" fill="#FC6255">转出</text>
+          </g>
+          <g class="h">
+            <text class="mono" x="380" y="521" font-size="30" fill="#B48EF0" text-anchor="end">CoinEx</text>
+            <rect x="420" y="480" width="100" height="60" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="8 7" /><text x="470" y="522" font-size="32" fill="#8a8f99" text-anchor="middle">?</text>
+            <path d="M532 510 H596" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="6 6" />
+            <rect x="608" y="480" width="220" height="60" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="718" y="520" font-size="28" fill="#e8e6df" text-anchor="middle">热钱包</text>
+            <path d="M840 510 H910" stroke="#FC6255" stroke-width="3" /><text x="930" y="520" font-size="28" fill="#FC6255">转出</text>
+          </g>
+          <g class="h">
+            <text class="mono" x="380" y="611" font-size="30" fill="#B48EF0" text-anchor="end">Phemex</text>
+            <rect x="420" y="570" width="100" height="60" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="8 7" /><text x="470" y="612" font-size="32" fill="#8a8f99" text-anchor="middle">?</text>
+            <path d="M532 600 H596" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="6 6" />
+            <rect x="608" y="570" width="220" height="60" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="718" y="610" font-size="28" fill="#e8e6df" text-anchor="middle">热钱包</text>
+            <path d="M840 600 H910" stroke="#FC6255" stroke-width="3" /><text x="930" y="610" font-size="28" fill="#FC6255">转出</text>
+          </g>
+          <g class="h">
+            <text class="mono" x="380" y="701" font-size="30" fill="#B48EF0" text-anchor="end">BitMart</text>
+            <rect x="420" y="660" width="100" height="60" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="8 7" /><text x="470" y="702" font-size="32" fill="#8a8f99" text-anchor="middle">?</text>
+            <path d="M532 690 H596" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="6 6" />
+            <rect x="608" y="660" width="220" height="60" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" /><text x="718" y="700" font-size="28" fill="#e8e6df" text-anchor="middle">热钱包</text>
+            <path d="M840 690 H910" stroke="#FC6255" stroke-width="3" /><text x="930" y="700" font-size="28" fill="#FC6255">转出</text>
+          </g>
+        </g>
+        <path id="oc-brace" class="dr" pathLength="1" d="M1060 290 Q1090 290 1090 320 V480 Q1090 510 1120 510 Q1090 510 1090 540 V700 Q1090 730 1060 730" stroke="#83C167" stroke-width="3.5" fill="none" />
+        <g id="oc-cls" class="h">
+          <text x="1170" y="450" font-size="30" fill="#8a8f99">链路未知</text>
+          <text x="1170" y="530" font-size="52" font-weight="700" fill="#83C167">归为一类</text>
+          <text x="1170" y="596" font-size="30" fill="#8a8f99">手册不单独成章</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 只知道结果
+      IN("#oc-title", at(0, 0.02), 0.8, { y: 20 });
+      IN("#oc-w", at(0, 0.3), 0.8, { y: 30 });
+      IN("#oc-coins circle", at(0, 0.45), 0.4, {}, { stagger: 0.04 });
+
+      // L1 短时间内转出
+      IN("#oc-dst", at(1, 0.05));
+      ARROW("#oc-flow", at(1, 0.15), 0.6);
+      IN("#oc-fast", at(1, 0.25));
+      tl.to("#oc-coins circle", { x: 690, duration: 0.9, ease: "power2.inOut", stagger: 0.07 }, at(1, 0.3));
+
+      // L2 入口未知
+      IN("#oc-in", at(2, 0.05), 0.8, { x: -30 });
+      IN("#oc-inl", at(2, 0.35), 0.6, { x: -20 });
+      tl.fromTo("#oc-in text:nth-of-type(2)", { scale: 1 }, { scale: 1.25, svgOrigin: "300 545", duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(2, 0.55));
+
+      // L3 归成一类
+      OUT("#oc-main", at(3, 0.0), 0.4);
+      IN("#oc-rows > g", at(3, 0.1), 0.6, { x: -20 }, { stagger: 0.12 });
+      DRAW("#oc-brace", at(3, 0.45), 0.7);
+      IN("#oc-cls", at(3, 0.55));
+
+      tl.to("#oc-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["outcome"] = tl;
+    })();
+  </script>
+</template>

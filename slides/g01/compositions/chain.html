@@ -1,0 +1,102 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 chain，id 前缀 ch- -->
+  <div id="root" data-composition-id="chain" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ch-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+        <marker id="ch-arry" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+        <marker id="ch-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="ch-all">
+        <text id="ch-head" class="h" x="960" y="160" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">共同链路</text>
+
+        <!-- L0 入口 ? -->
+        <g id="ch-e" class="h">
+          <rect x="80" y="380" width="240" height="160" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="3" stroke-dasharray="12 10" />
+          <text x="200" y="440" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">入口</text>
+          <text x="200" y="514" font-size="56" font-weight="700" fill="#FC6255" text-anchor="middle">?</text>
+          <text x="200" y="598" font-size="28" fill="#8a8f99" text-anchor="middle">未公开</text>
+        </g>
+        <path id="ch-a1" class="h" d="M328 460 H430" stroke="#8a8f99" stroke-width="3" stroke-dasharray="10 8" fill="none" marker-end="url(#ch-arrg)" />
+
+        <!-- L1 签名能力 -->
+        <g id="ch-k" class="h">
+          <rect x="440" y="380" width="420" height="160" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="650" y="442" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">热钱包签名能力</text>
+        </g>
+        <text id="ch-ks" class="h" x="650" y="500" font-size="28" fill="#e8e6df" text-anchor="middle">私钥 / 签名服务 / 提现系统</text>
+
+        <!-- L3 多链批量转出 -->
+        <path id="ch-a2" class="dr h" pathLength="1" d="M868 460 H960" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#ch-arry)" />
+        <g id="ch-t" class="h">
+          <rect x="970" y="380" width="360" height="160" rx="14" fill="#221d10" stroke="#F0B90B" stroke-width="3" />
+          <text x="1150" y="442" font-size="36" font-weight="700" fill="#F0B90B" text-anchor="middle">多链批量转出</text>
+          <text x="1150" y="500" font-size="28" fill="#e8e6df" text-anchor="middle">数分钟到数小时</text>
+        </g>
+        <g id="ch-lanes" class="h" stroke="#8a8f99" stroke-width="2" fill="none">
+          <path d="M990 620 H1310" /><path d="M990 670 H1310" /><path d="M990 720 H1310" />
+        </g>
+        <g id="ch-coins" fill="#F0B90B">
+          <circle class="h" cx="990" cy="620" r="10" /><circle class="h" cx="990" cy="670" r="10" /><circle class="h" cx="990" cy="720" r="10" />
+          <circle class="h" cx="990" cy="620" r="10" /><circle class="h" cx="990" cy="670" r="10" /><circle class="h" cx="990" cy="720" r="10" />
+        </g>
+
+        <!-- L4 流走 -->
+        <path id="ch-a3" class="dr h" pathLength="1" d="M1338 460 H1430" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#ch-arrr)" />
+        <g id="ch-l" class="h">
+          <rect x="1440" y="380" width="400" height="160" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1640" y="474" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">跨链 · 混币 · 场外</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      IN("#ch-head", at(0, 0.02), 0.8, { y: 20 });
+      IN("#ch-e", at(0, 0.25), 0.8, { x: -30 });
+      tl.fromTo("#ch-e text:nth-of-type(2)", { scale: 1 }, { scale: 1.3, svgOrigin: "200 495", duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(0, 0.6));
+
+      // L1
+      IN("#ch-a1", at(1, 0.05), 0.5, { x: -20 });
+      IN("#ch-k", at(1, 0.2), 0.8, { x: -20 });
+
+      // L2
+      IN("#ch-ks", at(2, 0.1), 0.7, { y: 10 });
+
+      // L3
+      ARROW("#ch-a2", at(3, 0.02), 0.5);
+      IN("#ch-t", at(3, 0.12), 0.7, { x: -20 });
+      IN("#ch-lanes", at(3, 0.3), 0.5);
+      tl.fromTo("#ch-coins circle", { opacity: 1, x: 0 }, { x: 320, duration: 1.0, ease: "power1.inOut", stagger: 0.15, immediateRender: false }, at(3, 0.35));
+
+      // L4
+      ARROW("#ch-a3", at(4, 0.02), 0.5);
+      IN("#ch-l", at(4, 0.12), 0.7, { x: -20 });
+      tl.to("#ch-coins circle", { x: 640, y: -200, opacity: 0, duration: 0.8, ease: "power1.in", stagger: 0.08 }, at(4, 0.3));
+      tl.to("#ch-lanes", { opacity: 0.35, duration: 0.5 }, at(4, 0.5));
+
+      tl.to("#ch-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["chain"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,186 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 defense，id 前缀 df- -->
+  <div id="root" data-composition-id="defense" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="df-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#58C4DD" />
+        </marker>
+        <marker id="df-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="df-all">
+        <g font-size="48" font-weight="700" fill="#83C167">
+          <text id="df-h1" class="h" x="120" y="150">风险参数</text>
+          <text id="df-h2" class="h" x="120" y="150">预言机</text>
+          <text id="df-h3" class="h" x="120" y="150">下游借贷协议</text>
+          <text id="df-h4" class="h" x="120" y="150">治理</text>
+        </g>
+
+        <!-- L0–L1 深度、上限、拉盘成本 -->
+        <g id="df-p1">
+          <g font-size="32" fill="#e8e6df" text-anchor="end">
+            <text id="df-l1" class="h" x="280" y="402">市场深度</text>
+            <text id="df-l2" class="h" x="280" y="532">借款上限</text>
+            <text id="df-l3" class="h" x="280" y="662">拉盘成本</text>
+          </g>
+          <rect id="df-b1" x="300" y="360" width="0" height="64" rx="8" fill="#58C4DD" opacity="0.7" />
+          <rect id="df-b2" x="300" y="490" width="0" height="64" rx="8" fill="#83C167" opacity="0.9" />
+          <text id="df-b2l" class="h" x="820" y="534" font-size="30" fill="#83C167">抵押率、借款上限都按深度设</text>
+          <rect id="df-b3" x="300" y="620" width="0" height="64" rx="8" fill="#FC6255" opacity="0.8" />
+          <text id="df-cmp" class="h" x="300" y="800" font-size="40" font-weight="700" fill="#83C167">验证：可借金额 &lt; 拉盘成本</text>
+        </g>
+
+        <!-- L2–L3 TWAP + 中位数，偏离暂停 -->
+        <g id="df-p2">
+          <g id="df-src" class="h" font-size="30" fill="#e8e6df">
+            <text x="160" y="410">价格源 1</text><text x="160" y="500">价格源 2</text><text x="160" y="590">价格源 3</text>
+          </g>
+          <g fill="none" stroke="#58C4DD" stroke-width="3">
+            <path class="df-sl dr h" pathLength="1" d="M310 400 C600 400 640 470 888 470" marker-end="url(#df-arr)" />
+            <path class="df-sl dr h" pathLength="1" d="M310 490 H888" marker-end="url(#df-arr)" />
+            <path class="df-sl dr h" pathLength="1" d="M310 580 C600 580 640 510 888 510" marker-end="url(#df-arr)" />
+          </g>
+          <g id="df-med" class="h">
+            <rect x="900" y="410" width="360" height="160" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text class="mono" x="1080" y="474" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">TWAP</text>
+            <text x="1080" y="532" font-size="32" fill="#e8e6df" text-anchor="middle">+ 多源中位数</text>
+          </g>
+          <g id="df-band" class="h">
+            <rect x="1380" y="450" width="420" height="80" fill="#83C167" opacity="0.15" />
+            <path d="M1380 450 H1800 M1380 530 H1800" stroke="#83C167" stroke-width="2" stroke-dasharray="8 6" />
+            <text x="1380" y="432" font-size="30" fill="#83C167">偏离阈值</text>
+            <path d="M1380 490 H1560" stroke="#e8e6df" stroke-width="4" />
+          </g>
+          <path id="df-spike" class="dr" pathLength="1" d="M1560 490 L1640 480 L1700 300" stroke="#FC6255" stroke-width="5" fill="none" stroke-linejoin="round" />
+          <text id="df-spl" class="h" x="1700" y="270" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">现货 ×3</text>
+          <g id="df-stop" class="h">
+            <rect x="1440" y="640" width="300" height="90" rx="12" fill="#161a22" stroke="#83C167" stroke-width="3" />
+            <text x="1590" y="698" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">借款暂停</text>
+          </g>
+        </g>
+
+        <!-- L4 LRT / 桥接资产独立上限 -->
+        <g id="df-p3">
+          <g id="df-bins" class="h">
+            <g fill="#161a22" stroke="#B48EF0" stroke-width="3">
+              <rect x="360" y="380" width="300" height="380" rx="12" /><rect x="810" y="380" width="300" height="380" rx="12" /><rect x="1260" y="380" width="300" height="380" rx="12" />
+            </g>
+            <g font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">
+              <text x="510" y="810">LRT A</text><text x="960" y="810">LRT B</text><text x="1410" y="810">桥接资产</text>
+            </g>
+            <path d="M360 500 H660 M810 500 H1110 M1260 500 H1560" stroke="#83C167" stroke-width="4" />
+            <text x="340" y="512" font-size="30" fill="#83C167" text-anchor="end">独立上限</text>
+          </g>
+          <rect id="df-f1" x="375" y="760" width="270" height="0" fill="#F0B90B" opacity="0.8" />
+          <rect id="df-f2" x="825" y="760" width="270" height="0" fill="#F0B90B" opacity="0.8" />
+          <rect id="df-f3" x="1275" y="760" width="270" height="0" fill="#F0B90B" opacity="0.8" />
+          <text id="df-dp" class="h" x="960" y="460" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">脱锚</text>
+          <g id="df-ps" class="h">
+            <rect x="840" y="600" width="240" height="90" rx="12" fill="#161a22" stroke="#83C167" stroke-width="3" />
+            <text x="960" y="658" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">自动暂停</text>
+          </g>
+        </g>
+
+        <!-- L5–L6 治理：快照 + 时间锁 -->
+        <g id="df-p4">
+          <path id="df-tax" class="dr" pathLength="1" d="M200 600 H1720" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="df-snap" class="h">
+            <circle cx="380" cy="600" r="16" fill="#83C167" />
+            <text x="380" y="560" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">投票快照</text>
+          </g>
+          <g id="df-prop" class="h">
+            <circle cx="700" cy="600" r="16" fill="#B48EF0" />
+            <text x="700" y="560" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">提案</text>
+          </g>
+          <g id="df-bt" class="h">
+            <rect x="790" y="700" width="260" height="90" rx="12" fill="#1f1c10" stroke="#F0B90B" stroke-width="3" />
+            <text x="920" y="758" font-size="32" font-weight="700" fill="#F0B90B" text-anchor="middle">借来的代币</text>
+          </g>
+          <path id="df-btx" class="dr" pathLength="1" d="M780 690 L1060 800" stroke="#FC6255" stroke-width="5" fill="none" />
+          <text id="df-btl" class="h" x="1090" y="758" font-size="32" font-weight="700" fill="#FC6255">不能投票</text>
+          <g id="df-pass" class="h">
+            <circle cx="1000" cy="600" r="16" fill="#e8e6df" />
+            <text x="1000" y="560" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">通过</text>
+          </g>
+          <rect id="df-lock" x="1000" y="588" width="0" height="24" fill="#83C167" opacity="0.5" />
+          <g id="df-exec" class="h">
+            <circle cx="1600" cy="600" r="16" fill="#e8e6df" />
+            <text x="1600" y="560" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">执行</text>
+          </g>
+          <text id="df-lockl" class="h" x="1300" y="480" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">时间锁 ≥ 24 小时</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...("x" in from ? { x: 0 } : {}), ...("y" in from ? { y: 0 } : {}), ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const GROW = (s, t, w, d = 0.8) => tl.fromTo(s, { attr: { width: 0 } }, { attr: { width: w }, duration: d, ease: "power2.out" }, t);
+      const RISE = (s, t, y, h, d = 0.8) => tl.fromTo(s, { attr: { y: 760, height: 0 } }, { attr: { y: y, height: h }, duration: d, ease: "power2.out" }, t);
+
+      // L0 深度 → 上限
+      IN("#df-h1", at(0, 0.02), 0.6, { y: 15 });
+      IN("#df-l1", at(0, 0.15), 0.5); GROW("#df-b1", at(0, 0.18), 1000);
+      IN("#df-l2", at(0, 0.45), 0.5); GROW("#df-b2", at(0, 0.48), 480);
+      IN("#df-b2l", at(0, 0.65), 0.5);
+      // L1 可借 < 拉盘成本
+      IN("#df-l3", at(1, 0.05), 0.5); GROW("#df-b3", at(1, 0.08), 820);
+      IN("#df-cmp", at(1, 0.4), 0.6, { y: 15 });
+
+      // L2 TWAP + 中位数
+      OUT("#df-p1", at(2, 0.0)); OUT("#df-h1", at(2, 0.0), 0.3);
+      OUT("#df-b1", at(2, 0.0)); OUT("#df-b2", at(2, 0.0)); OUT("#df-b3", at(2, 0.0));
+      IN("#df-h2", at(2, 0.1), 0.6, { y: 15 });
+      IN("#df-src", at(2, 0.12), 0.5);
+      tl.fromTo(".df-sl", { opacity: 0, strokeDashoffset: 1 }, { opacity: 1, strokeDashoffset: 0, duration: 0.6, stagger: 0.12 }, at(2, 0.2));
+      IN("#df-med", at(2, 0.4), 0.5);
+      IN("#df-band", at(2, 0.6), 0.5);
+      // L3 现货 ×3 → 暂停
+      DRAW("#df-spike", at(3, 0.05), 0.6);
+      IN("#df-spl", at(3, 0.2), 0.4);
+      IN("#df-stop", at(3, 0.45), 0.4, { scale: 1.3, svgOrigin: "1590 685" }, { scale: 1 });
+
+      // L4 LRT 与桥接资产
+      OUT("#df-p2", at(4, 0.0)); OUT("#df-h2", at(4, 0.0), 0.3);
+      IN("#df-h3", at(4, 0.1), 0.6, { y: 15 });
+      IN("#df-bins", at(4, 0.12), 0.5);
+      RISE("#df-f1", at(4, 0.2), 580, 180); RISE("#df-f2", at(4, 0.2), 560, 200); RISE("#df-f3", at(4, 0.2), 600, 160);
+      tl.to("#df-f2", { attr: { y: 500, height: 260, fill: "#FC6255" }, duration: 0.6, ease: "power2.in" }, at(4, 0.4));
+      IN("#df-dp", at(4, 0.45), 0.4);
+      IN("#df-ps", at(4, 0.6), 0.4);
+
+      // L5 快照在提案前，借来的不能投
+      OUT("#df-p3", at(5, 0.0)); OUT("#df-h3", at(5, 0.0), 0.3);
+      OUT("#df-f1", at(5, 0.0)); OUT("#df-f2", at(5, 0.0)); OUT("#df-f3", at(5, 0.0));
+      IN("#df-h4", at(5, 0.1), 0.6, { y: 15 });
+      DRAW("#df-tax", at(5, 0.12), 0.6);
+      IN("#df-snap", at(5, 0.25), 0.5);
+      IN("#df-prop", at(5, 0.35), 0.5);
+      IN("#df-bt", at(5, 0.45), 0.5, { y: 15 });
+      DRAW("#df-btx", at(5, 0.6), 0.3);
+      IN("#df-btl", at(5, 0.62), 0.4);
+      // L6 时间锁
+      IN("#df-pass", at(6, 0.05), 0.4);
+      IN("#df-exec", at(6, 0.15), 0.4);
+      GROW("#df-lock", at(6, 0.25), 600, 1.0);
+      IN("#df-lockl", at(6, 0.45), 0.5, { y: 10 });
+
+      tl.to("#df-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["defense"] = tl;
+    })();
+  </script>
+</template>

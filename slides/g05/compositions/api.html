@@ -1,0 +1,131 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 api，id 前缀 ap- -->
+  <div id="root" data-composition-id="api" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ap-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+        <marker id="ap-arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="ap-all">
+        <!-- 受害账户 -->
+        <g id="ap-acc" class="h">
+          <rect x="140" y="440" width="320" height="140" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="300" y="502" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">受害账户</text>
+          <text x="300" y="548" font-size="28" fill="#FC6255" text-anchor="middle">已被接管</text>
+          <rect x="140" y="610" width="320" height="36" rx="6" fill="#22252d" stroke="#8a8f99" stroke-width="2" />
+        </g>
+        <rect id="ap-vbal" class="h" x="140" y="610" width="320" height="36" rx="6" fill="#F0B90B" />
+
+        <!-- 分支 A 提现 -->
+        <g id="ap-A">
+          <path id="ap-pa" class="dr h" pathLength="1" d="M470 480 C620 480 620 330 760 330" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#ap-arr)" />
+          <g id="ap-boxA" class="h">
+            <rect x="770" y="270" width="380" height="120" rx="14" fill="#161a22" stroke="#F0B90B" stroke-width="3" />
+            <text x="960" y="342" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">提现 → 外部地址</text>
+          </g>
+        </g>
+        <g id="ap-ca" fill="#F0B90B">
+          <circle class="ap-c1 h" cx="480" cy="480" r="10" /><circle class="ap-c1 h" cx="480" cy="480" r="10" /><circle class="ap-c1 h" cx="480" cy="480" r="10" />
+        </g>
+        <!-- L5 拦截 -->
+        <g id="ap-block" class="h">
+          <rect x="592" y="376" width="56" height="58" rx="8" fill="#9CDCEB" opacity="0.9" />
+          <text x="574" y="414" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="end">拦截</text>
+        </g>
+
+        <!-- 分支 B 交易 -->
+        <path id="ap-pb" class="dr h" pathLength="1" d="M470 540 C620 540 620 690 760 690" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#ap-arr)" />
+        <text id="ap-pbl" class="h" x="610" y="792" font-size="30" fill="#F0B90B" text-anchor="end">交易权限</text>
+        <g id="ap-boxB" class="h">
+          <rect id="ap-boxBr" x="770" y="630" width="380" height="120" rx="14" fill="#161a22" stroke="#F0B90B" stroke-width="3" />
+        </g>
+        <text id="ap-b1" class="h" x="960" y="702" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">下单交易</text>
+        <text id="ap-b2" class="h" x="960" y="702" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">VIA 高价卖单</text>
+        <text id="ap-buy" class="h" x="960" y="800" font-size="28" fill="#e8e6df" text-anchor="middle">受害账户高价买入</text>
+
+        <!-- L3 攻击者 -->
+        <g id="ap-atk" class="h">
+          <rect x="1450" y="630" width="350" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1625" y="702" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者账户</text>
+          <rect x="1450" y="780" width="350" height="36" rx="6" fill="#22252d" stroke="#8a8f99" stroke-width="2" />
+        </g>
+        <rect id="ap-abal" class="h" x="1450" y="780" width="0" height="36" rx="6" fill="#F0B90B" />
+        <path id="ap-post" class="dr h" pathLength="1" d="M1442 690 H1160" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#ap-arr2)" />
+        <text id="ap-postl" class="h" x="1300" y="672" font-size="30" fill="#FC6255" text-anchor="middle">挂出 VIA</text>
+
+        <g id="ap-cb" fill="#F0B90B">
+          <circle class="ap-c2 h" cx="480" cy="540" r="10" /><circle class="ap-c2 h" cx="480" cy="540" r="10" /><circle class="ap-c2 h" cx="480" cy="540" r="10" />
+          <circle class="ap-c2 h" cx="480" cy="540" r="10" /><circle class="ap-c2 h" cx="480" cy="540" r="10" />
+        </g>
+
+        <text id="ap-les" class="h" x="960" y="930" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">外部提现被拦截 <tspan fill="#FC6255">≠</tspan> 用户零损失</text>
+      </g>
+      <g id="ap-term" class="h">
+        <rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+        <text class="mono" x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">API Key</text>
+        <text x="100" y="160" font-size="28" fill="#e8e6df">授权给第三方工具，可分交易 / 提现</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 两条路
+      IN("#ap-acc", at(0, 0.02));
+      IN("#ap-vbal", at(0, 0.02));
+      ARROW("#ap-pa", at(0, 0.3), 0.5);
+      ARROW("#ap-pb", at(0, 0.4), 0.5);
+      IN("#ap-boxA", at(0, 0.55));
+      IN("#ap-boxB", at(0, 0.6)); IN("#ap-b1", at(0, 0.6));
+      IN("#ap-pbl", at(0, 0.7));
+
+      // L1 直接提现
+      tl.fromTo(".ap-c1", { opacity: 1, x: 0, y: 0 }, { keyframes: [{ x: 140, y: -50, duration: 0.35 }, { x: 300, y: -150, duration: 0.35, opacity: 0 }], ease: "none", stagger: 0.25, immediateRender: false }, at(1, 0.15));
+      tl.to("#ap-vbal", { attr: { width: 260 }, duration: 0.8 }, at(1, 0.15));
+
+      // L2 只有交易权限
+      IN("#ap-term", at(2, 0.02));
+      tl.to("#ap-A", { opacity: 0.3, duration: 0.4 }, at(2, 0.1));
+      tl.to("#ap-boxBr", { attr: { "stroke-width": 6 }, duration: 0.3, yoyo: true, repeat: 1 }, at(2, 0.35));
+
+      // L3 VIA：攻击者挂单，受害账户高价买入
+      IN("#ap-atk", at(3, 0.02));
+      ARROW("#ap-post", at(3, 0.15), 0.5);
+      IN("#ap-postl", at(3, 0.2));
+      OUT("#ap-b1", at(3, 0.3), 0.3); IN("#ap-b2", at(3, 0.35));
+      IN("#ap-buy", at(3, 0.55));
+
+      // L4 价值转移
+      tl.fromTo(".ap-c2", { opacity: 1, x: 0, y: 0 }, { keyframes: [{ x: 300, y: 120, duration: 0.5 }, { x: 960, y: 150, duration: 0.6, opacity: 0 }], ease: "none", stagger: 0.25, immediateRender: false }, at(4, 0.05));
+      tl.to("#ap-vbal", { attr: { width: 70 }, duration: 1.6, ease: "none" }, at(4, 0.1));
+      IN("#ap-abal", at(4, 0.15), 0.2);
+      tl.to("#ap-abal", { attr: { width: 240 }, duration: 1.6, ease: "none" }, at(4, 0.15));
+
+      // L5 拦截 ≠ 零损失
+      tl.to("#ap-A", { opacity: 1, duration: 0.3 }, at(5, 0.02));
+      IN("#ap-block", at(5, 0.1), 0.5, { scale: 1.4, svgOrigin: "620 405" }, { scale: 1 });
+      IN("#ap-les", at(5, 0.45), 0.7, { y: 14 });
+
+      tl.to("#ap-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#ap-term", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["api"] = tl;
+    })();
+  </script>
+</template>

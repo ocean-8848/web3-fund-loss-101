@@ -1,0 +1,115 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 use，id 前缀 us- -->
+  <div id="root" data-composition-id="use" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="us-all">
+        <!-- 筛选栏 -->
+        <g id="us-bar" font-size="28">
+          <g class="h"><rect x="100" y="120" width="380" height="72" rx="10" fill="#161a22" stroke="#2c313c" stroke-width="2" /><text x="124" y="166" fill="#8a8f99">搜索名称、机制、归因</text></g>
+          <g class="h"><rect x="500" y="120" width="180" height="72" rx="10" fill="#161a22" stroke="#2c313c" stroke-width="2" /><text x="524" y="166" fill="#e8e6df">全部年份</text></g>
+          <g class="h"><rect x="700" y="120" width="180" height="72" rx="10" fill="#161a22" stroke="#2c313c" stroke-width="2" /><text x="724" y="166" fill="#e8e6df">全部类型</text></g>
+          <g class="h"><rect id="us-fh" x="900" y="120" width="320" height="72" rx="10" fill="#161a22" stroke="#2c313c" stroke-width="2" /><text id="us-fh0" x="924" y="166" fill="#e8e6df">全部手法</text></g>
+          <g class="h"><rect id="us-fl" x="1240" y="120" width="200" height="72" rx="10" fill="#161a22" stroke="#2c313c" stroke-width="2" /><text id="us-fl0" x="1264" y="166" fill="#e8e6df">任意金额</text></g>
+          <g class="h"><rect id="us-cb" x="1480" y="138" width="36" height="36" rx="6" fill="none" stroke="#8a8f99" stroke-width="2.5" /><text x="1532" y="166" fill="#e8e6df">只看有独立章</text></g>
+        </g>
+        <text id="us-fh1" class="h" x="924" y="166" font-size="28" font-weight="700" fill="#F0B90B">私钥/签名者失陷</text>
+        <text id="us-fl1" class="h" x="1264" y="166" font-size="28" font-weight="700" fill="#F0B90B">≥ $1 亿</text>
+
+        <!-- 计数 -->
+        <text id="us-n0" class="h" x="100" y="270" font-size="32" fill="#8a8f99"><tspan fill="#e8e6df" font-weight="700">213</tspan> 条 · 合计 $193.4 亿</text>
+        <text id="us-n1" class="h" x="100" y="270" font-size="32" fill="#8a8f99"><tspan fill="#F0B90B" font-weight="700">7</tspan> 条 · 合计 <tspan fill="#F0B90B" font-weight="700">$77.3 亿</tspan></text>
+
+        <!-- 全表的行（示意） -->
+        <g id="us-lines" class="h" stroke="#2c313c" stroke-width="18" stroke-linecap="round">
+          <path d="M120 330 H1180" /><path d="M120 372 H1180" /><path d="M120 414 H1180" /><path d="M120 456 H1180" />
+          <path d="M120 498 H1180" /><path d="M120 540 H1180" /><path d="M120 582 H1180" /><path d="M120 624 H1180" />
+          <path d="M120 666 H1180" /><path d="M120 708 H1180" /><path d="M120 750 H1180" /><path d="M120 792 H1180" />
+          <path d="M120 834 H1180" opacity="0.6" /><path d="M120 876 H1180" opacity="0.3" />
+        </g>
+
+        <!-- 7 行结果 -->
+        <g id="us-rows" font-size="30"></g>
+
+        <!-- L3 独立章 -->
+        <g id="us-chn" class="h">
+          <text x="1300" y="420" font-size="88" font-weight="700" fill="#58C4DD">32</text>
+          <text x="1300" y="476" font-size="30" fill="#e8e6df">条事件有独立的案件章</text>
+          <text x="1300" y="522" font-size="28" fill="#8a8f99">名称可点击，跳到那一章</text>
+        </g>
+
+        <!-- L4 口径 -->
+        <g id="us-cv" class="h">
+          <rect x="100" y="860" width="1720" height="120" rx="14" fill="#161a22" stroke="#83C167" stroke-width="2" />
+          <text x="140" y="934" font-size="34" font-weight="700" fill="#F0B90B">损失 = 事发时估值</text>
+          <text x="560" y="934" font-size="34" fill="#e8e6df">冻结 · 追回 · 赔付 <tspan font-weight="700" fill="#83C167">不混算</tspan></text>
+          <text x="1060" y="934" font-size="28" fill="#8a8f99">层数是本手册的估计，空值 = 链路未公开</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const NS = "http://www.w3.org/2000/svg";
+      const mk = (tag, a, p, txt) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; p.appendChild(e); return e; };
+
+      // 筛选结果：手法 = 私钥/签名者失陷，金额 ≥ $1 亿，按损失降序；第 4 项 = 有独立章
+      const R = [["2026-10-29", "Binance", "$63.4 亿", 1], ["2018-01-26", "Coincheck", "$5.3 亿", 1], ["2024-02-09", "PlayDapp", "$2.9 亿", 0],
+                 ["2023-09-23", "Mixin Network", "$2 亿", 1], ["2022-09-20", "Wintermute", "$1.6 亿", 1], ["2023-11-22", "HTX / HECO 桥", "$1.13 亿", 0], ["2023-06-03", "Atomic Wallet", "$1 亿", 0]];
+      const gr = document.querySelector("#us-rows");
+      const rows = [], links = [];
+      R.forEach((r, i) => {
+        const y = 350 + i * 66;
+        const g = mk("g", { opacity: 0 }, gr);
+        mk("text", { x: 120, y, class: "mono", fill: "#8a8f99" }, g, r[0]);
+        const nm = mk("text", { x: 400, y, fill: "#e8e6df", "font-weight": 700 }, g, r[1]);
+        mk("text", { x: 1160, y, fill: "#F0B90B", "font-weight": 700, "text-anchor": "end" }, g, r[2]);
+        rows.push(g);
+        if (r[3]) {
+          const lk = mk("g", { opacity: 0 }, gr);
+          let w = 0; try { w = nm.getComputedTextLength(); } catch (e) {} if (!w) w = r[1].length * 30 * 0.55;
+          mk("path", { d: `M400 ${y + 10} H${400 + w}`, stroke: "#58C4DD", "stroke-width": 2.5 }, lk);
+          mk("text", { x: 760, y, fill: "#58C4DD", "font-size": 28 }, lk, "↗ 案件章");
+          links.push({ lk, nm });
+        }
+      });
+
+      // L0 筛选栏
+      tl.fromTo("#us-bar > g", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, stagger: (L[0][1] - L[0][0]) * 0.08 }, at(0, 0.05));
+      IN("#us-lines", at(0, 0.35), 0.6);
+      IN("#us-n0", at(0, 0.55));
+
+      // L1 选手法、选金额
+      tl.to("#us-fh", { attr: { stroke: "#F0B90B", "stroke-width": 3 }, duration: 0.3 }, at(1, 0.1));
+      OUT("#us-fh0", at(1, 0.15), 0.2); IN("#us-fh1", at(1, 0.22), 0.4);
+      tl.to("#us-fl", { attr: { stroke: "#F0B90B", "stroke-width": 3 }, duration: 0.3 }, at(1, 0.5));
+      OUT("#us-fl0", at(1, 0.55), 0.2); IN("#us-fl1", at(1, 0.62), 0.4);
+
+      // L2 剩 7 条
+      OUT("#us-lines", at(2, 0.02), 0.4); OUT("#us-n0", at(2, 0.02), 0.3);
+      tl.fromTo(rows, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, immediateRender: false }, at(2, 0.12));
+      IN("#us-n1", at(2, 0.55), 0.5, { x: -20 });
+
+      // L3 独立章
+      tl.to("#us-cb", { attr: { stroke: "#58C4DD", "stroke-width": 3.5 }, duration: 0.3 }, at(3, 0.05));
+      links.forEach((o, j) => { tl.to(o.nm, { attr: { fill: "#58C4DD" }, duration: 0.3 }, at(3, 0.15) + j * 0.12); tl.to(o.lk, { opacity: 1, duration: 0.4 }, at(3, 0.18) + j * 0.12); });
+      IN("#us-chn", at(3, 0.5), 0.6, { x: 20 });
+
+      // L4 口径
+      IN("#us-cv", at(4, 0.08), 0.7, { y: 20 });
+
+      tl.to("#us-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["use"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,174 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 rules，id 前缀 ru- -->
+  <div id="root" data-composition-id="rules" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ru-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#e8e6df" />
+        </marker>
+      </defs>
+      <g id="ru-all">
+        <text id="ru-title" class="h" x="960" y="140" font-size="56" font-weight="700" fill="#e8e6df" text-anchor="middle">选值规则：每起事件定一个数</text>
+
+        <!-- 左侧规则索引 -->
+        <path id="ru-rail" class="dr" pathLength="1" d="M560 260 V860" stroke="#2b3040" stroke-width="3" fill="none" />
+        <g font-size="32" font-weight="700">
+          <text id="ru-i1" class="h" x="110" y="330">① 估值时点</text>
+          <text id="ru-i2" class="h" x="110" y="440">② 多口径取舍</text>
+          <text id="ru-i3" class="h" x="110" y="550">③ 收录门槛</text>
+          <text id="ru-i4" class="h" x="110" y="660">④ 赔付成本</text>
+          <text id="ru-i5" class="h" x="110" y="770">⑤ 三种日期</text>
+        </g>
+
+        <!-- R1 估值时点 -->
+        <g id="ru-r1" class="h">
+          <circle cx="760" cy="450" r="72" fill="#2a2410" stroke="#F0B90B" stroke-width="4" />
+          <text class="mono" x="760" y="464" font-size="40" font-weight="700" fill="#F0B90B" text-anchor="middle">BTC</text>
+          <text x="1010" y="418" font-size="28" fill="#8a8f99" text-anchor="middle">× 事发时价格</text>
+          <rect x="1150" y="400" width="340" height="100" rx="14" fill="#161a22" stroke="#83C167" stroke-width="3" />
+          <text x="1320" y="462" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">美元估值</text>
+        </g>
+        <path id="ru-r1a" class="dr h" pathLength="1" d="M850 450 H1140" stroke="#e8e6df" stroke-width="3" fill="none" marker-end="url(#ru-arr)" />
+        <g id="ru-r1b" class="h">
+          <rect x="690" y="610" width="1100" height="100" rx="14" fill="none" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="10 8" />
+          <text x="730" y="672" font-size="32" fill="#e8e6df">没有估值时 → 保留原始币量，不硬换算</text>
+        </g>
+
+        <!-- R2 多口径取舍 -->
+        <g id="ru-r2">
+          <g id="ru-ch" font-size="30" text-anchor="middle">
+            <g class="h"><rect x="660" y="300" width="250" height="76" rx="38" fill="#161a22" stroke="#8a8f99" stroke-width="2" /><text x="785" y="349" fill="#c9ccd3">媒体报道</text></g>
+            <g class="h"><rect x="940" y="300" width="250" height="76" rx="38" fill="#161a22" stroke="#8a8f99" stroke-width="2" /><text x="1065" y="349" fill="#c9ccd3">受害方早期</text></g>
+            <g class="h"><rect x="1220" y="300" width="250" height="76" rx="38" fill="#161a22" stroke="#83C167" stroke-width="3" /><text x="1345" y="349" fill="#83C167">受害方最新</text></g>
+            <g class="h"><rect x="1500" y="300" width="250" height="76" rx="38" fill="#161a22" stroke="#83C167" stroke-width="3" /><text x="1625" y="349" fill="#83C167">执法方最新</text></g>
+          </g>
+          <path id="ru-r2a" class="dr h" pathLength="1" d="M1345 384 C1345 470 1480 470 1480 548" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#ru-arr)" />
+          <path id="ru-r2b" class="dr h" pathLength="1" d="M1625 384 C1625 470 1500 470 1500 548" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#ru-arr)" />
+          <path id="ru-r2c" class="dr h" pathLength="1" d="M785 384 V548" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#ru-arr)" />
+          <path id="ru-r2d" class="dr h" pathLength="1" d="M1065 384 C1065 470 860 470 860 548" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#ru-arr)" />
+          <g id="ru-pick" class="h">
+            <rect x="1310" y="556" width="380" height="110" rx="14" fill="#132416" stroke="#83C167" stroke-width="3" />
+            <text x="1500" y="624" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">选用值</text>
+          </g>
+          <g id="ru-conf" class="h">
+            <rect x="660" y="556" width="420" height="110" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" stroke-dasharray="10 8" />
+            <text x="870" y="624" font-size="32" fill="#c9ccd3" text-anchor="middle">章内列出冲突</text>
+          </g>
+        </g>
+
+        <!-- R3 门槛 -->
+        <g id="ru-r3">
+          <g id="ru-bars">
+            <rect class="h" x="720" y="420" width="110" height="380" rx="6" fill="#F0B90B" />
+            <rect class="h" x="880" y="660" width="110" height="140" rx="6" fill="#3a3d46" />
+            <rect class="h" x="1040" y="500" width="110" height="300" rx="6" fill="#F0B90B" />
+            <rect class="h" x="1200" y="700" width="110" height="100" rx="6" fill="#3a3d46" />
+            <rect class="h" x="1360" y="340" width="110" height="460" rx="6" fill="#F0B90B" />
+            <rect class="h" x="1520" y="610" width="110" height="190" rx="6" fill="#3a3d46" />
+          </g>
+          <path id="ru-base" class="dr" pathLength="1" d="M680 800 H1680" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <path id="ru-th" class="dr" pathLength="1" d="M680 590 H1640" stroke="#FC6255" stroke-width="4" stroke-dasharray="14 10" fill="none" />
+          <g id="ru-thl" class="h">
+            <rect x="1650" y="566" width="200" height="48" rx="8" fill="#0f1117" />
+            <text x="1660" y="602" font-size="30" font-weight="700" fill="#FC6255">1,000 万美元</text>
+          </g>
+          <text id="ru-thn" class="h" x="1180" y="870" font-size="30" fill="#8a8f99" text-anchor="middle">柱高 = 选用值；高过门槛才收录</text>
+        </g>
+
+        <!-- R4 赔付成本 -->
+        <g id="ru-r4">
+          <g id="ru-st" class="h">
+            <rect x="680" y="380" width="440" height="180" rx="16" fill="#2a2410" stroke="#F0B90B" stroke-width="3" />
+            <text x="900" y="460" font-size="40" font-weight="700" fill="#F0B90B" text-anchor="middle">被盗金额</text>
+            <text x="900" y="512" font-size="28" fill="#8a8f99" text-anchor="middle">计入资损</text>
+          </g>
+          <text id="ru-ne" class="h" x="1200" y="490" font-size="56" font-weight="700" fill="#FC6255" text-anchor="middle">≠</text>
+          <g id="ru-cp" class="h">
+            <rect x="1280" y="380" width="440" height="180" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="3" stroke-dasharray="12 8" />
+            <text x="1500" y="460" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="middle">赔付成本</text>
+            <text x="1500" y="512" font-size="28" fill="#8a8f99" text-anchor="middle">单独标注</text>
+          </g>
+          <text id="ru-eg" class="h" x="1500" y="630" font-size="30" fill="#c9ccd3" text-anchor="middle">例：Coinbase 2025 外包客服事件</text>
+        </g>
+
+        <!-- R5 三种日期 -->
+        <g id="ru-r5">
+          <path id="ru-tax" class="dr" pathLength="1" d="M680 560 H1760" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="ru-m1" class="h"><circle cx="820" cy="560" r="20" fill="#FC6255" /><text x="820" y="640" font-size="40" font-weight="700" fill="#FC6255" text-anchor="middle">发生</text></g>
+          <g id="ru-m2" class="h"><circle cx="1220" cy="560" r="14" fill="#e8e6df" /><text x="1220" y="640" font-size="36" fill="#e8e6df" text-anchor="middle">发现</text></g>
+          <g id="ru-m3" class="h"><circle cx="1600" cy="560" r="14" fill="#e8e6df" /><text x="1600" y="640" font-size="36" fill="#e8e6df" text-anchor="middle">披露</text></g>
+          <g id="ru-def" class="h">
+            <rect x="700" y="420" width="240" height="64" rx="10" fill="#132416" stroke="#83C167" stroke-width="2.5" />
+            <text x="820" y="463" font-size="28" font-weight="700" fill="#83C167" text-anchor="middle">表格默认日期</text>
+          </g>
+          <text id="ru-mg" class="h" x="1220" y="740" font-size="30" fill="#8a8f99" text-anchor="middle">三个日期可能相隔很久，例如 Mt.Gox 的长期失窃</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => { const z = {}; if ("x" in from) z.x = 0; if ("y" in from) z.y = 0; if ("scale" in from) z.scale = 1; return tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...z, ...to }, t); };
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      // 规则索引：当前项亮，之前的变灰
+      const IDX = (n) => {
+        IN("#ru-i" + n, at(n, 0.0), 0.5, { x: -20, fill: "#e8e6df" }, { fill: "#e8e6df" });
+        if (n > 1) tl.to("#ru-i" + (n - 1), { fill: "#5c616c", duration: 0.4 }, at(n, 0.0));
+      };
+
+      IN("#ru-title", at(0, 0.05), 0.8, { y: 20 });
+      DRAW("#ru-rail", at(0, 0.4), 1.0);
+
+      // R1
+      IDX(1);
+      IN("#ru-r1", at(1, 0.1));
+      ARROW("#ru-r1a", at(1, 0.3), 0.6);
+      IN("#ru-r1b", at(1, 0.6));
+
+      // R2
+      OUT("#ru-r1", at(2, 0.0)); OUT("#ru-r1a", at(2, 0.0)); OUT("#ru-r1b", at(2, 0.0));
+      IDX(2);
+      tl.fromTo("#ru-ch > g", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.18 }, at(2, 0.08));
+      ARROW("#ru-r2a", at(2, 0.4)); ARROW("#ru-r2b", at(2, 0.45)); IN("#ru-pick", at(2, 0.55));
+      ARROW("#ru-r2c", at(2, 0.65)); ARROW("#ru-r2d", at(2, 0.68)); IN("#ru-conf", at(2, 0.75));
+
+      // R3
+      OUT("#ru-r2", at(3, 0.0));
+      IDX(3);
+      DRAW("#ru-base", at(3, 0.05), 0.6);
+      tl.fromTo("#ru-bars rect", { opacity: 0, scaleY: 0, transformOrigin: "50% 100%" }, { opacity: 1, scaleY: 1, duration: 0.5, stagger: 0.1 }, at(3, 0.1));
+      DRAW("#ru-th", at(3, 0.45), 0.7); IN("#ru-thl", at(3, 0.55));
+      IN("#ru-thn", at(3, 0.7));
+
+      // R4
+      OUT("#ru-r3", at(4, 0.0));
+      IDX(4);
+      IN("#ru-st", at(4, 0.08), 0.7, { y: 20 });
+      IN("#ru-cp", at(4, 0.3), 0.7, { y: 20 });
+      IN("#ru-ne", at(4, 0.45), 0.4, { scale: 1.6, svgOrigin: "1200 470" }, { scale: 1 });
+      IN("#ru-eg", at(4, 0.6));
+
+      // R5
+      OUT("#ru-r4", at(5, 0.0));
+      IDX(5);
+      DRAW("#ru-tax", at(5, 0.05), 0.8);
+      IN("#ru-m1", at(5, 0.15)); IN("#ru-m2", at(5, 0.25)); IN("#ru-m3", at(5, 0.35));
+      IN("#ru-def", at(5, 0.55), 0.6, { y: 10 });
+      IN("#ru-mg", at(5, 0.7));
+
+      tl.to("#ru-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["rules"] = tl;
+    })();
+  </script>
+</template>

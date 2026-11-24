@@ -1,0 +1,222 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 defense，id 前缀 df- -->
+  <div id="root" data-composition-id="defense" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="df-arry" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+      </defs>
+      <g id="df-all">
+        <g id="df-head" class="h">
+          <text x="960" y="130" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">共同阻塞点</text>
+          <text x="960" y="190" font-size="30" fill="#8a8f99" text-anchor="middle">与具体入口无关，对整类事件都有效</text>
+        </g>
+
+        <!-- 左侧：累积的阻塞点 -->
+        <g id="df-b1" class="h">
+          <rect x="80" y="290" width="340" height="96" rx="12" fill="#161a22" stroke="#83C167" stroke-width="2.5" />
+          <text x="110" y="350" font-size="30" font-weight="700" fill="#FC6255">P0</text><text x="180" y="350" font-size="32" fill="#e8e6df">收回权限</text>
+        </g>
+        <g id="df-b2" class="h">
+          <rect x="80" y="420" width="340" height="96" rx="12" fill="#161a22" stroke="#83C167" stroke-width="2.5" />
+          <text x="110" y="480" font-size="30" font-weight="700" fill="#FC6255">P0</text><text x="180" y="480" font-size="32" fill="#e8e6df">限制查询</text>
+        </g>
+        <g id="df-b3" class="h">
+          <rect x="80" y="550" width="340" height="96" rx="12" fill="#161a22" stroke="#83C167" stroke-width="2.5" />
+          <text x="110" y="610" font-size="30" font-weight="700" fill="#F0B90B">P1</text><text x="180" y="610" font-size="32" fill="#e8e6df">旧地址告警</text>
+        </g>
+        <g id="df-b4" class="h">
+          <rect x="80" y="680" width="340" height="96" rx="12" fill="#161a22" stroke="#83C167" stroke-width="2.5" />
+          <text x="110" y="740" font-size="30" font-weight="700" fill="#8a8f99">P2</text><text x="180" y="740" font-size="32" fill="#e8e6df">双人复核</text>
+        </g>
+
+        <!-- L1 离职当天收权限 -->
+        <g id="df-v1">
+          <g id="df-job" class="h">
+            <text x="560" y="316" font-size="28" fill="#8a8f99">在职</text>
+            <rect x="560" y="330" width="740" height="40" rx="6" fill="#B48EF0" />
+          </g>
+          <g id="df-pa" class="h">
+            <text x="560" y="436" font-size="28" fill="#8a8f99">系统权限</text>
+            <text x="560" y="556" font-size="28" fill="#8a8f99">合约管理员</text>
+          </g>
+          <rect id="df-pa1" class="h" x="560" y="450" width="1140" height="40" rx="6" fill="#58C4DD" />
+          <rect id="df-pa2" class="h" x="560" y="570" width="1140" height="40" rx="6" fill="#58C4DD" />
+          <g id="df-cut" class="h">
+            <path d="M1300 300 V650" stroke="#83C167" stroke-width="4" />
+            <text x="1330" y="330" font-size="30" font-weight="700" fill="#83C167">离职 / 转岗当天</text>
+            <text x="1330" y="720" font-size="30" fill="#83C167">全部收回，包括合约管理员</text>
+          </g>
+        </g>
+
+        <!-- L2 HR 名单 vs 链上管理员 -->
+        <g id="df-v2">
+          <g id="df-hr" class="h">
+            <rect x="560" y="290" width="460" height="400" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" />
+            <text x="790" y="340" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">HR 名单</text>
+            <g font-size="30" fill="#e8e6df"><text x="600" y="420">员工 A</text><text x="600" y="500">员工 B</text><text x="600" y="580">员工 C</text></g>
+            <text x="600" y="660" font-size="30" fill="#8a8f99">员工 D（已离职）</text>
+          </g>
+          <g id="df-ch" class="h">
+            <rect x="1280" y="290" width="460" height="400" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="2.5" />
+            <text x="1510" y="340" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">链上管理员地址</text>
+            <g class="mono" font-size="30" fill="#e8e6df"><text x="1320" y="420">0x3f…a1</text><text x="1320" y="500">0x9c…07</text><text x="1320" y="580">0x51…e4</text></g>
+            <text id="df-bad" class="mono" x="1320" y="660" font-size="30" fill="#e8e6df">0x7d…2b</text>
+          </g>
+          <g id="df-match" stroke="#83C167" stroke-width="3">
+            <path class="dr" pathLength="1" d="M1032 410 H1268" /><path class="dr" pathLength="1" d="M1032 490 H1268" /><path class="dr" pathLength="1" d="M1032 570 H1268" />
+          </g>
+          <path id="df-mis" class="dr" pathLength="1" d="M1032 650 H1268" stroke="#FC6255" stroke-width="3" stroke-linecap="round" />
+          <text id="df-misl" class="h" x="1150" y="770" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">对不上：权限没收回</text>
+          <text id="df-mon" class="h" x="1150" y="840" font-size="30" fill="#83C167" text-anchor="middle">每月对一遍</text>
+        </g>
+
+        <!-- L3 外包查询上限 -->
+        <g id="df-v3">
+          <g id="df-ag" class="h">
+            <circle cx="640" cy="440" r="36" fill="none" stroke="#e8e6df" stroke-width="4" />
+            <path d="M570 600 C570 510 710 510 710 600 Z" fill="none" stroke="#e8e6df" stroke-width="4" stroke-linejoin="round" />
+            <text x="640" y="660" font-size="30" fill="#e8e6df" text-anchor="middle">外包客服</text>
+          </g>
+          <g id="df-tk" class="h">
+            <rect x="560" y="290" width="160" height="70" rx="8" fill="#161a22" stroke="#B48EF0" stroke-width="2.5" stroke-dasharray="8 6" />
+            <text x="640" y="336" font-size="30" fill="#B48EF0" text-anchor="middle">工单</text>
+          </g>
+          <text id="df-ql" class="h" x="800" y="456" font-size="28" fill="#8a8f99">今日查询客户数</text>
+          <rect id="df-q" x="800" y="480" width="0" height="56" rx="6" fill="#B48EF0" />
+          <rect id="df-qx" class="h" x="1316" y="480" width="360" height="56" rx="6" fill="none" stroke="#FC6255" stroke-width="2.5" stroke-dasharray="10 8" />
+          <text id="df-qxl" class="h" x="1496" y="600" font-size="30" fill="#FC6255" text-anchor="middle">超出：拒绝</text>
+          <g id="df-cap" class="h">
+            <path d="M1306 430 V590" stroke="#83C167" stroke-width="5" />
+            <text x="1306" y="410" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">每日上限</text>
+          </g>
+        </g>
+
+        <!-- L4 旧地址下线 + 告警 -->
+        <g id="df-v4">
+          <g id="df-chn" class="h">
+            <rect x="560" y="320" width="200" height="70" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" />
+            <rect x="560" y="440" width="200" height="70" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" />
+            <rect x="560" y="560" width="200" height="70" rx="10" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" />
+            <g font-size="30" fill="#e8e6df" text-anchor="middle"><text x="660" y="366">App</text><text x="660" y="486">网页</text><text x="660" y="606">API</text></g>
+          </g>
+          <g id="df-lnk" stroke="#8a8f99" stroke-width="3" fill="none">
+            <path class="dr" pathLength="1" d="M772 355 C860 355 880 460 948 460" /><path class="dr" pathLength="1" d="M772 475 H948" /><path class="dr" pathLength="1" d="M772 595 C860 595 880 490 948 490" />
+          </g>
+          <g id="df-old" class="h">
+            <rect x="960" y="380" width="360" height="190" rx="14" fill="#1b1f27" stroke="#8a8f99" stroke-width="3" stroke-dasharray="12 8" />
+            <text x="1140" y="464" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">旧地址</text>
+            <text x="1140" y="516" font-size="28" fill="#8a8f99" text-anchor="middle">已退役</text>
+          </g>
+          <text id="df-off" class="h" x="660" y="700" font-size="30" fill="#83C167" text-anchor="middle">所有渠道下线</text>
+          <path id="df-dep" class="dr h" pathLength="1" d="M1680 475 H1334" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#df-arry)" />
+          <text id="df-depl" class="h" x="1520" y="450" font-size="28" fill="#F0B90B" text-anchor="middle">有人充值</text>
+          <g id="df-bell" class="h">
+            <path d="M1110 300 C1110 250 1170 250 1170 300 V318 L1182 334 H1098 L1110 318 Z" fill="none" stroke="#83C167" stroke-width="4" stroke-linejoin="round" />
+            <circle cx="1140" cy="344" r="6" fill="#83C167" />
+            <text x="1210" y="320" font-size="32" font-weight="700" fill="#83C167">立即告警</text>
+          </g>
+        </g>
+
+        <!-- L5 背景核验 + 双人复核 -->
+        <g id="df-v5">
+          <g id="df-dev" class="h">
+            <circle cx="620" cy="440" r="36" fill="none" stroke="#e8e6df" stroke-width="4" />
+            <path d="M550 600 C550 510 690 510 690 600 Z" fill="none" stroke="#e8e6df" stroke-width="4" stroke-linejoin="round" />
+            <text x="620" y="660" font-size="30" fill="#e8e6df" text-anchor="middle">开发者</text>
+            <text x="620" y="710" font-size="28" fill="#83C167" text-anchor="middle">背景核验</text>
+          </g>
+          <g id="df-diff" class="h">
+            <rect x="780" y="300" width="640" height="440" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="2.5" />
+            <text x="820" y="350" font-size="30" font-weight="700" fill="#58C4DD">升级 diff</text>
+            <g class="mono" font-size="28">
+              <text x="820" y="420" fill="#8a8f99">  function upgrade()</text>
+              <text x="820" y="480" fill="#FC6255">- require(isOwner)</text>
+              <text x="820" y="540" fill="#83C167">+ require(isAdmin)</text>
+              <text x="820" y="600" fill="#83C167">+ slot[9] = admin</text>
+              <text x="820" y="660" fill="#8a8f99">  emit Upgraded()</text>
+            </g>
+          </g>
+          <rect id="df-scan" class="h" x="800" y="392" width="600" height="40" rx="6" fill="#F0B90B" fill-opacity="0.18" />
+          <rect id="df-flag" class="h" x="800" y="572" width="600" height="40" rx="6" fill="none" stroke="#FC6255" stroke-width="3" />
+          <g id="df-rev" class="h">
+            <circle cx="1600" cy="440" r="36" fill="none" stroke="#83C167" stroke-width="4" />
+            <path d="M1530 600 C1530 510 1670 510 1670 600 Z" fill="none" stroke="#83C167" stroke-width="4" stroke-linejoin="round" />
+            <text x="1600" y="660" font-size="30" fill="#83C167" text-anchor="middle">第二个人</text>
+            <text x="1600" y="710" font-size="28" fill="#e8e6df" text-anchor="middle">逐行审</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const BADGE = (s, t) => IN(s, t, 0.6, { x: -30 });
+
+      IN("#df-head", at(0, 0.05), 0.8, { y: 20 });
+      tl.fromTo(["#df-b1", "#df-b2", "#df-b3", "#df-b4"], { opacity: 0 }, { opacity: 0.25, duration: 0.4, stagger: 0.12 }, at(0, 0.4));
+
+      // L1
+      tl.to("#df-b1", { opacity: 1, duration: 0.4 }, at(1, 0.02));
+      IN("#df-job", at(1, 0.08));
+      IN("#df-pa", at(1, 0.15)); IN("#df-pa1", at(1, 0.15)); IN("#df-pa2", at(1, 0.2));
+      IN("#df-cut", at(1, 0.4));
+      tl.to(["#df-pa1", "#df-pa2"], { attr: { width: 740 }, duration: 0.8, ease: "power2.inOut" }, at(1, 0.5));
+
+      // L2
+      OUT("#df-v1", at(2, 0.0));
+      IN("#df-hr", at(2, 0.05)); IN("#df-ch", at(2, 0.12));
+      tl.fromTo("#df-match path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.4, stagger: 0.12 }, at(2, 0.3));
+      DRAW("#df-mis", at(2, 0.5), 0.4);
+      tl.to("#df-bad", { attr: { fill: "#FC6255" }, duration: 0.3 }, at(2, 0.6));
+      IN("#df-misl", at(2, 0.62));
+      IN("#df-mon", at(2, 0.72));
+
+      // L3
+      OUT("#df-v2", at(3, 0.0));
+      tl.to("#df-b2", { opacity: 1, duration: 0.4 }, at(3, 0.02));
+      IN("#df-ag", at(3, 0.05)); IN("#df-tk", at(3, 0.12));
+      IN("#df-ql", at(3, 0.2));
+      IN("#df-cap", at(3, 0.22));
+      tl.fromTo("#df-q", { attr: { width: 0 } }, { attr: { width: 500 }, duration: 1.0, ease: "power2.out", immediateRender: false }, at(3, 0.3));
+      IN("#df-qx", at(3, 0.55)); IN("#df-qxl", at(3, 0.6));
+
+      // L4
+      OUT("#df-v3", at(4, 0.0));
+      tl.to("#df-b3", { opacity: 1, duration: 0.4 }, at(4, 0.02));
+      IN("#df-chn", at(4, 0.05)); IN("#df-old", at(4, 0.08));
+      tl.fromTo("#df-lnk path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.4, stagger: 0.08 }, at(4, 0.12));
+      tl.to("#df-lnk", { opacity: 0, duration: 0.5 }, at(4, 0.32));
+      tl.to("#df-chn", { opacity: 0.35, duration: 0.5 }, at(4, 0.32));
+      IN("#df-off", at(4, 0.35));
+      ARROW("#df-dep", at(4, 0.5), 0.5); IN("#df-depl", at(4, 0.5));
+      IN("#df-bell", at(4, 0.65), 0.4, { scale: 1.5, svgOrigin: "1140 300" }, { scale: 1, ease: "back.out(2)" });
+
+      // L5
+      OUT("#df-v4", at(5, 0.0));
+      tl.to("#df-b4", { opacity: 1, duration: 0.4 }, at(5, 0.02));
+      IN("#df-dev", at(5, 0.05)); IN("#df-diff", at(5, 0.12));
+      IN("#df-rev", at(5, 0.3));
+      IN("#df-scan", at(5, 0.35), 0.2);
+      tl.to("#df-scan", { y: 180, duration: 1.0, ease: "steps(3)" }, at(5, 0.4));
+      IN("#df-flag", at(5, 0.62), 0.3);
+
+      tl.to("#df-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["defense"] = tl;
+    })();
+  </script>
+</template>

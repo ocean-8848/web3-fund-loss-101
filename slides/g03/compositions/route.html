@@ -1,0 +1,101 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 route，id 前缀 rt- -->
+  <div id="root" data-composition-id="route" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="rt-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="rt-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="rt-all">
+        <text id="rt-head" class="h" x="960" y="160" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">同一条路</text>
+
+        <!-- L0 意图 -->
+        <g id="rt-b1" class="h">
+          <rect x="120" y="300" width="380" height="140" rx="16" fill="#142016" stroke="#83C167" stroke-width="3" />
+          <text x="310" y="358" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">签名者意图</text>
+          <text x="310" y="408" font-size="28" fill="#e8e6df" text-anchor="middle">转账到温钱包</text>
+        </g>
+        <!-- L1 界面 / 通道 -->
+        <path id="rt-a1" class="dr h" pathLength="1" d="M508 370 H612" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#rt-arrg)" />
+        <g id="rt-b2" class="h">
+          <rect id="rt-b2r" x="620" y="300" width="420" height="140" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="830" y="382" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">界面 / 供应商通道</text>
+        </g>
+        <path id="rt-a2" class="dr h" pathLength="1" d="M1048 370 H1192" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#rt-arr)" />
+        <text id="rt-a2l" class="h" x="1120" y="340" font-size="28" font-weight="700" fill="#FC6255" text-anchor="middle">被篡改</text>
+        <!-- L2 待签数据 -->
+        <g id="rt-b3" class="h">
+          <rect x="1200" y="300" width="600" height="140" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1500" y="358" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">待签数据</text>
+          <text x="1500" y="408" font-size="28" fill="#e8e6df" text-anchor="middle">升级 · delegatecall · 改权限</text>
+        </g>
+        <!-- L3 硬件钱包 -->
+        <path id="rt-a3" class="dr h" pathLength="1" d="M1500 448 V612" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#rt-arr)" />
+        <g id="rt-b4" class="h">
+          <rect x="1200" y="620" width="600" height="140" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+          <text x="1500" y="678" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">硬件钱包</text>
+          <text x="1500" y="728" font-size="28" fill="#8a8f99" text-anchor="middle">只显示哈希</text>
+        </g>
+        <path id="rt-a4" class="dr h" pathLength="1" d="M1192 690 H1048" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#rt-arrg)" />
+        <text id="rt-a4l" class="h" x="1120" y="662" font-size="28" fill="#8a8f99" text-anchor="middle">照常确认</text>
+        <!-- L4 有效签名 → 链上执行 -->
+        <g id="rt-b5" class="h">
+          <rect x="620" y="620" width="420" height="140" rx="16" fill="#142016" stroke="#83C167" stroke-width="3" />
+          <text x="830" y="702" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">有效签名</text>
+        </g>
+        <path id="rt-a5" class="dr h" pathLength="1" d="M612 690 H508" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#rt-arr)" />
+        <g id="rt-b6" class="h">
+          <rect x="120" y="620" width="380" height="140" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="310" y="702" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">链上执行</text>
+        </g>
+        <!-- L5 同一条路 -->
+        <text id="rt-names" class="h mono" x="900" y="552" font-size="30" font-weight="700" fill="#B48EF0" text-anchor="middle">Bybit · WazirX · Radiant 2024 · DMM · SwissBorg / Kiln</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      IN("#rt-head", at(0, 0.02), 0.8, { y: 20 });
+      IN("#rt-b1", at(0, 0.25), 0.7, { x: -20 });
+
+      ARROW("#rt-a1", at(1, 0.05), 0.4);
+      IN("#rt-b2", at(1, 0.12), 0.6, { x: -20 });
+      tl.to("#rt-b2r", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(1, 0.5));
+      ARROW("#rt-a2", at(1, 0.5), 0.4);
+      IN("#rt-a2l", at(1, 0.6), 0.4);
+
+      IN("#rt-b3", at(2, 0.05), 0.6, { x: -20 });
+
+      ARROW("#rt-a3", at(3, 0.05), 0.4);
+      IN("#rt-b4", at(3, 0.15), 0.6, { y: -15 });
+      ARROW("#rt-a4", at(3, 0.5), 0.4);
+      IN("#rt-a4l", at(3, 0.55), 0.4);
+
+      IN("#rt-b5", at(4, 0.05), 0.5, { x: 20 });
+      ARROW("#rt-a5", at(4, 0.35), 0.4);
+      IN("#rt-b6", at(4, 0.45), 0.5, { x: 20 });
+
+      IN("#rt-names", at(5, 0.1), 0.7, { y: 10 });
+
+      tl.to("#rt-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["route"] = tl;
+    })();
+  </script>
+</template>

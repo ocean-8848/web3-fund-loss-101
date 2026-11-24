@@ -1,0 +1,164 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 cases，id 前缀 cs- -->
+  <div id="root" data-composition-id="cases" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="cs-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="cs-arry" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+        <marker id="cs-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="cs-all">
+        <!-- L0–L1 Cream -->
+        <g id="cs-cream">
+          <g id="cs-ch" class="h">
+            <text x="120" y="160" font-size="52" font-weight="700" fill="#B48EF0">Cream Finance</text>
+            <text x="120" y="210" font-size="28" fill="#8a8f99">Ethereum · 2021-10</text>
+          </g>
+          <g id="cs-cl" class="h">
+            <text x="1800" y="168" font-size="64" font-weight="700" fill="#FC6255" text-anchor="end">$1.3 亿</text>
+            <text x="1800" y="214" font-size="28" fill="#8a8f99" text-anchor="end">损失</text>
+          </g>
+          <g id="cs-vault" class="h">
+            <rect x="700" y="340" width="400" height="420" rx="18" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="900" y="400" font-size="36" font-weight="700" fill="#58C4DD" text-anchor="middle"><tspan class="mono">yUSD</tspan> 金库</text>
+            <rect x="840" y="600" width="120" height="120" rx="6" fill="none" stroke="#8a8f99" stroke-width="2" stroke-dasharray="8 6" />
+            <path d="M760 720 H1040" stroke="#8a8f99" stroke-width="2" />
+          </g>
+          <rect id="cs-px" x="840" y="600" width="120" height="120" rx="6" fill="#F0B90B" opacity="0.85" />
+          <text id="cs-pxl" class="h" x="900" y="462" font-size="30" font-weight="700" fill="#F0B90B" text-anchor="middle">价格被抬高</text>
+          <text id="cs-don" class="h" x="200" y="520" font-size="34" font-weight="700" fill="#F0B90B">“捐赠”资产</text>
+          <path id="cs-dona" class="dr h" pathLength="1" d="M440 540 H688" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#cs-arry)" />
+          <path id="cs-loop" class="dr h" pathLength="1" d="M1112 470 C1420 400 1420 680 1112 620" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#cs-arr)" />
+          <text id="cs-loopl" class="h" x="1380" y="552" font-size="32" font-weight="700" fill="#FC6255">闪电贷循环借出</text>
+        </g>
+
+        <!-- L2–L4 Tectonic -->
+        <g id="cs-tec">
+          <g id="cs-th" class="h">
+            <text x="120" y="160" font-size="52" font-weight="700" fill="#B48EF0">Tectonic</text>
+            <text x="120" y="210" font-size="28" fill="#8a8f99">Cronos · 2026-08</text>
+          </g>
+          <g id="cs-pump">
+            <path id="cs-base" class="dr" pathLength="1" d="M240 820 H560" stroke="#8a8f99" stroke-width="3" fill="none" />
+            <rect id="cs-tb" x="320" y="810" width="120" height="10" fill="#FC6255" />
+            <text id="cs-tn" class="h mono" x="380" y="868" font-size="32" fill="#e8e6df" text-anchor="middle">TONIC</text>
+            <text id="cs-tx" class="h" x="470" y="380" font-size="34" font-weight="700" fill="#FC6255">约 100–300 倍</text>
+            <path id="cs-ta" class="dr h" pathLength="1" d="M620 565 H1060" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cs-arr)" />
+            <g id="cs-mk" fill="#F0B90B" stroke="#F0B90B" stroke-width="2.5">
+              <rect class="cs-m h" x="1100" y="400" width="160" height="90" rx="10" /><rect class="cs-m h" x="1290" y="400" width="160" height="90" rx="10" /><rect class="cs-m h" x="1480" y="400" width="160" height="90" rx="10" />
+              <rect class="cs-m h" x="1100" y="520" width="160" height="90" rx="10" /><rect class="cs-m h" x="1290" y="520" width="160" height="90" rx="10" /><rect class="cs-m h" x="1480" y="520" width="160" height="90" rx="10" />
+              <rect class="cs-m h" x="1100" y="640" width="160" height="90" rx="10" /><rect class="cs-m h" x="1290" y="640" width="160" height="90" rx="10" /><rect class="cs-m h" x="1480" y="640" width="160" height="90" rx="10" />
+            </g>
+            <text id="cs-mkl" class="h" x="1370" y="800" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">借空 9 个市场</text>
+          </g>
+          <g id="cs-chain" class="h" fill="#22252d" stroke="#8a8f99" stroke-width="2.5">
+            <rect x="220" y="500" width="140" height="90" rx="10" /><rect x="420" y="500" width="140" height="90" rx="10" /><rect x="620" y="500" width="140" height="90" rx="10" /><rect x="820" y="500" width="140" height="90" rx="10" /><rect x="1020" y="500" width="140" height="90" rx="10" /><rect x="1220" y="500" width="140" height="90" rx="10" /><rect x="1420" y="500" width="140" height="90" rx="10" />
+            <path d="M360 545 H420 M560 545 H620 M760 545 H820 M960 545 H1020 M1160 545 H1220 M1360 545 H1420" fill="none" />
+          </g>
+          <rect id="cs-rb" x="1560" y="490" width="0" height="110" fill="#83C167" opacity="0.18" />
+          <path id="cs-rw" class="dr h" pathLength="1" d="M1490 480 C1300 360 860 360 640 480" stroke="#83C167" stroke-width="4" fill="none" marker-end="url(#cs-arrg)" />
+          <text id="cs-rwl" class="h" x="1065" y="350" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">Cronos 回滚 10,961 个区块</text>
+          <text id="cs-rec" class="h" x="1065" y="680" font-size="36" font-weight="700" fill="#83C167" text-anchor="middle">恢复约 1.11 亿美元</text>
+          <text id="cs-eth" class="h" x="1065" y="820" font-size="44" font-weight="700" fill="#B48EF0" text-anchor="middle">回滚伦理？</text>
+        </g>
+
+        <!-- L5 Ostium -->
+        <g id="cs-os">
+          <g id="cs-oh" class="h">
+            <text x="120" y="160" font-size="52" font-weight="700" fill="#B48EF0">Ostium</text>
+            <text x="120" y="210" font-size="28" fill="#8a8f99">2026</text>
+            <text x="1800" y="168" font-size="64" font-weight="700" fill="#FC6255" text-anchor="end">$23.75M</text>
+          </g>
+          <g id="cs-sg" class="h">
+            <rect x="160" y="420" width="420" height="220" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="370" y="500" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">报价签名者</text>
+            <g stroke="#FC6255" stroke-width="5" fill="none" stroke-linecap="round">
+              <circle cx="300" cy="570" r="16" /><path d="M316 570 H370 M352 570 V584 M366 570 V582" />
+            </g>
+            <text x="400" y="582" font-size="32" font-weight="700" fill="#FC6255">失陷</text>
+          </g>
+          <path id="cs-oa1" class="dr h" pathLength="1" d="M592 530 H748" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cs-arr)" />
+          <g id="cs-fp" class="h">
+            <rect x="760" y="460" width="380" height="140" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" stroke-dasharray="12 8" />
+            <text x="950" y="544" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">虚构价格</text>
+          </g>
+          <path id="cs-oa2" class="dr h" pathLength="1" d="M1152 530 H1288" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cs-arr)" />
+          <g id="cs-tr" class="h">
+            <rect x="1300" y="420" width="460" height="220" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="1530" y="544" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">开仓 / 平仓</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...("x" in from ? { x: 0 } : {}), ...("y" in from ? { y: 0 } : {}), ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 Cream
+      IN("#cs-ch", at(0, 0.05), 0.7, { x: -20 });
+      IN("#cs-cl", at(0, 0.3), 0.7, { scale: 1.3, svgOrigin: "1680 150" }, { scale: 1 });
+      IN("#cs-vault", at(0, 0.5));
+      tl.fromTo("#cs-px", { opacity: 0 }, { opacity: 0.85, duration: 0.5 }, at(0, 0.55));
+      // L1 捐赠抬价 + 循环借出
+      IN("#cs-don", at(1, 0.02), 0.5, { x: -20 });
+      ARROW("#cs-dona", at(1, 0.08), 0.5);
+      tl.to("#cs-px", { attr: { y: 480, height: 240 }, duration: 0.8, ease: "power2.out" }, at(1, 0.2));
+      IN("#cs-pxl", at(1, 0.35), 0.5);
+      ARROW("#cs-loop", at(1, 0.5), 0.7);
+      IN("#cs-loopl", at(1, 0.62), 0.5);
+
+      // L2 Tectonic
+      OUT("#cs-cream", at(2, 0.0)); OUT("#cs-px", at(2, 0.0));
+      IN("#cs-th", at(2, 0.08), 0.7, { x: -20 });
+      DRAW("#cs-base", at(2, 0.1), 0.4);
+      IN("#cs-tn", at(2, 0.12), 0.4);
+      tl.fromTo("#cs-tb", { opacity: 0 }, { opacity: 1, duration: 0.2 }, at(2, 0.12));
+      tl.to("#cs-tb", { attr: { y: 400, height: 420 }, duration: 0.9, ease: "power3.in" }, at(2, 0.18));
+      IN("#cs-tx", at(2, 0.35), 0.5);
+      ARROW("#cs-ta", at(2, 0.42), 0.4);
+      tl.fromTo(".cs-m", { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.04 }, at(2, 0.45));
+      tl.to(".cs-m", { attr: { fill: "#161a22", stroke: "#FC6255" }, duration: 0.3, stagger: 0.07 }, at(2, 0.58));
+      IN("#cs-mkl", at(2, 0.7), 0.5);
+      // L3 回滚
+      OUT("#cs-pump", at(3, 0.0));
+      IN("#cs-chain", at(3, 0.1));
+      ARROW("#cs-rw", at(3, 0.25), 0.9);
+      tl.fromTo("#cs-rb", { attr: { x: 1560, width: 0 } }, { attr: { x: 620, width: 940 }, duration: 0.9, ease: "power2.inOut" }, at(3, 0.25));
+      IN("#cs-rwl", at(3, 0.35));
+      IN("#cs-rec", at(3, 0.6), 0.6, { y: 10 });
+      // L4 伦理
+      IN("#cs-eth", at(4, 0.1), 0.7, { scale: 1.2, svgOrigin: "1065 805" }, { scale: 1 });
+
+      // L5 Ostium
+      OUT("#cs-tec", at(5, 0.0)); OUT("#cs-rb", at(5, 0.0));
+      IN("#cs-oh", at(5, 0.08), 0.6, { x: -20 });
+      IN("#cs-sg", at(5, 0.2));
+      ARROW("#cs-oa1", at(5, 0.35), 0.4);
+      IN("#cs-fp", at(5, 0.42), 0.5);
+      ARROW("#cs-oa2", at(5, 0.55), 0.4);
+      IN("#cs-tr", at(5, 0.6), 0.5);
+
+      tl.to("#cs-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["cases"] = tl;
+    })();
+  </script>
+</template>

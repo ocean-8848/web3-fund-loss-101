@@ -1,0 +1,194 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 insider，id 前缀 in- -->
+  <div id="root" data-composition-id="insider" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="in-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#B48EF0" />
+        </marker>
+        <marker id="in-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="in-all">
+        <!-- L0–L2 权限与动机 -->
+        <g id="in-s1">
+          <g id="in-p" class="h">
+            <circle cx="360" cy="440" r="42" fill="none" stroke="#e8e6df" stroke-width="4" />
+            <path d="M280 620 C280 520 440 520 440 620 Z" fill="none" stroke="#e8e6df" stroke-width="4" stroke-linejoin="round" />
+            <text x="360" y="690" font-size="32" fill="#e8e6df" text-anchor="middle">内部人员</text>
+          </g>
+          <g id="in-key" class="h">
+            <g stroke="#F0B90B" stroke-width="5" fill="none" stroke-linecap="round">
+              <circle cx="480" cy="570" r="14" /><path d="M494 570 H540 M526 570 V582 M538 570 V580" />
+            </g>
+            <text x="470" y="530" font-size="28" fill="#B48EF0">合法权限</text>
+          </g>
+          <path id="in-ka" class="dr h" pathLength="1" d="M556 570 H726" stroke="#B48EF0" stroke-width="3" fill="none" marker-end="url(#in-arr)" />
+          <rect id="in-scope" class="h" x="740" y="300" width="1020" height="460" rx="18" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <g id="in-scl"><text id="in-scope-l" class="h" x="740" y="282" font-size="30" fill="#58C4DD">权限范围</text></g>
+          <g id="in-r1" class="h">
+            <rect x="800" y="440" width="240" height="180" rx="12" fill="#22252d" stroke="#F0B90B" stroke-width="2.5" />
+            <text x="920" y="542" font-size="34" font-weight="700" fill="#F0B90B" text-anchor="middle">金库</text>
+          </g>
+          <g id="in-r2" class="h">
+            <rect x="1130" y="440" width="240" height="180" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="2.5" />
+            <text x="1250" y="542" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">客户数据</text>
+          </g>
+          <g id="in-r3" class="h">
+            <rect x="1460" y="440" width="240" height="180" rx="12" fill="#132530" stroke="#58C4DD" stroke-width="2.5" />
+            <text x="1580" y="542" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">合约管理员</text>
+          </g>
+          <text id="in-ctl" class="h" x="1250" y="720" font-size="30" fill="#83C167" text-anchor="middle">控制：只给需要的那一块</text>
+          <text id="in-q" class="h" x="360" y="370" font-size="96" font-weight="700" fill="#FC6255" text-anchor="middle">?</text>
+          <text id="in-mot" class="h" x="960" y="880" font-size="40" fill="#e8e6df" text-anchor="middle">控制能限制范围，<tspan fill="#FC6255" font-weight="700">判断不了动机</tspan></text>
+        </g>
+
+        <!-- L3 Infini -->
+        <g id="in-s2">
+          <g id="in-if-h" class="h">
+            <text x="960" y="150" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">Infini 2025</text>
+          </g>
+          <g id="in-co" class="h">
+            <rect x="160" y="300" width="700" height="460" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="196" y="356" font-size="36" font-weight="700" fill="#B48EF0">Infini</text>
+            <rect x="220" y="480" width="260" height="200" rx="12" fill="#22252d" stroke="#F0B90B" stroke-width="2.5" />
+            <text x="350" y="560" font-size="36" font-weight="700" fill="#F0B90B" text-anchor="middle">金库</text>
+          </g>
+          <path id="in-perm" class="h" d="M492 590 H620" stroke="#58C4DD" stroke-width="3" stroke-dasharray="10 8" fill="none" />
+          <text id="in-perml" class="h" x="920" y="566" font-size="30" fill="#58C4DD">管理权限未收回</text>
+          <g id="in-devo">
+            <g id="in-dev" class="h">
+              <circle cx="700" cy="470" r="36" fill="none" stroke="#FC6255" stroke-width="4" />
+              <path d="M630 640 C630 550 770 550 770 640 Z" fill="#0f1117" stroke="#FC6255" stroke-width="4" stroke-linejoin="round" />
+            </g>
+            <text id="in-devl1" class="h" x="700" y="700" font-size="30" fill="#e8e6df" text-anchor="middle">开发者</text>
+            <text id="in-devl2" class="h" x="700" y="700" font-size="30" fill="#FC6255" text-anchor="middle">前开发者</text>
+          </g>
+          <g id="in-ifc" fill="#F0B90B">
+            <circle class="h" cx="350" cy="630" r="11" /><circle class="h" cx="350" cy="630" r="11" /><circle class="h" cx="350" cy="630" r="11" /><circle class="h" cx="350" cy="630" r="11" /><circle class="h" cx="350" cy="630" r="11" />
+          </g>
+          <g id="in-ifa" class="h">
+            <text x="1300" y="860" font-size="30" fill="#8a8f99" text-anchor="middle">提走金库</text>
+            <text x="1300" y="930" font-size="56" font-weight="700" fill="#F0B90B" text-anchor="middle">$49.5M</text>
+          </g>
+        </g>
+
+        <!-- L4–L5 Multichain -->
+        <g id="in-s3">
+          <g id="in-mc-h" class="h">
+            <text x="960" y="150" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">Multichain 2023</text>
+          </g>
+          <g id="in-ceo" class="h">
+            <circle cx="380" cy="460" r="40" fill="none" stroke="#e8e6df" stroke-width="4" />
+            <path d="M305 640 C305 545 455 545 455 640 Z" fill="none" stroke="#e8e6df" stroke-width="4" stroke-linejoin="round" />
+            <text x="380" y="700" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">CEO</text>
+          </g>
+          <path id="in-link" class="dr" pathLength="1" d="M476 540 H748" stroke="#58C4DD" stroke-width="3" fill="none" />
+          <g id="in-mpc" class="h">
+            <rect id="in-mpcb" x="760" y="360" width="400" height="360" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="960" y="420" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">MPC 密钥</text>
+            <g stroke="#F0B90B" stroke-width="5" fill="none" stroke-linecap="round">
+              <circle cx="850" cy="520" r="14" /><path d="M864 520 H906 M894 520 V532" />
+              <circle cx="1010" cy="520" r="14" /><path d="M1024 520 H1066 M1054 520 V532" />
+              <circle cx="850" cy="630" r="14" /><path d="M864 630 H906 M894 630 V642" />
+              <circle cx="1010" cy="630" r="14" /><path d="M1024 630 H1066 M1054 630 V642" />
+            </g>
+          </g>
+          <g id="in-arrest" class="h">
+            <g transform="rotate(-10 380 560)">
+              <rect x="300" y="522" width="160" height="72" rx="8" fill="#0f1117" stroke="#8a8f99" stroke-width="4" />
+              <text x="380" y="572" font-size="40" font-weight="700" fill="#c9ccd3" text-anchor="middle">被捕</text>
+            </g>
+          </g>
+          <text id="in-lost" class="h" x="960" y="790" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">密钥失控</text>
+          <path id="in-mca" class="dr h" pathLength="1" d="M1172 540 H1388" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#in-arrr)" />
+          <g id="in-mcout" class="h">
+            <rect x="1400" y="400" width="380" height="280" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1590" y="500" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">资金被转出</text>
+            <text x="1590" y="600" font-size="52" font-weight="700" fill="#F0B90B" text-anchor="middle">$1.26 亿</text>
+          </g>
+          <g id="in-sus" class="h">
+            <g transform="rotate(-4 960 900)">
+              <rect x="790" y="852" width="340" height="90" rx="10" fill="#0f1117" stroke="#FC6255" stroke-width="4" />
+              <text x="960" y="914" font-size="44" font-weight="700" fill="#FC6255" text-anchor="middle">性质：疑似内部</text>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="in-term" class="h">
+        <rect x="70" y="56" width="560" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+        <text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">内部人员 <tspan font-size="28" font-weight="400" fill="#8a8f99">Insider</tspan></text>
+        <text x="100" y="160" font-size="28" fill="#e8e6df">手里有合法权限的人</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0
+      IN("#in-term", at(0, 0.02));
+      IN("#in-p", at(0, 0.1), 0.8, { y: 20 });
+      IN("#in-key", at(0, 0.45), 0.6, { x: -20 });
+
+      // L1 范围收窄
+      ARROW("#in-ka", at(1, 0.02), 0.4);
+      IN("#in-scope", at(1, 0.05)); IN("#in-scope-l", at(1, 0.05));
+      IN("#in-r1", at(1, 0.12)); IN("#in-r2", at(1, 0.18)); IN("#in-r3", at(1, 0.24));
+      tl.to("#in-scope", { attr: { x: 1100, y: 400, width: 300, height: 260 }, duration: 1.0, ease: "power2.inOut" }, at(1, 0.4));
+      tl.to("#in-scl", { x: 360, y: 100, duration: 1.0, ease: "power2.inOut" }, at(1, 0.4));
+      tl.to(["#in-r1", "#in-r3"], { opacity: 0.25, duration: 0.6 }, at(1, 0.5));
+      IN("#in-ctl", at(1, 0.65));
+
+      // L2 动机
+      IN("#in-q", at(2, 0.1), 0.5, { scale: 1.6, svgOrigin: "360 340" }, { scale: 1, ease: "back.out(2)" });
+      IN("#in-mot", at(2, 0.35), 0.7, { y: 20 });
+
+      // L3 Infini
+      OUT("#in-s1", at(3, 0.0)); OUT("#in-term", at(3, 0.0));
+      IN("#in-if-h", at(3, 0.05));
+      IN("#in-co", at(3, 0.08));
+      IN("#in-dev", at(3, 0.12)); IN("#in-devl1", at(3, 0.12));
+      tl.fromTo("#in-perm", { opacity: 0 }, { opacity: 1, duration: 0.3 }, at(3, 0.15));
+      tl.to("#in-devo", { x: 560, duration: 1.0, ease: "power2.inOut" }, at(3, 0.25));
+      tl.to("#in-perm", { attr: { d: "M492 590 H1180" }, duration: 1.0, ease: "power2.inOut" }, at(3, 0.25));
+      OUT("#in-devl1", at(3, 0.3), 0.3); IN("#in-devl2", at(3, 0.35), 0.4);
+      IN("#in-perml", at(3, 0.45));
+      tl.fromTo("#in-ifc circle", { opacity: 1, x: 0, y: 0 }, { x: 800, y: -40, opacity: 0, duration: 0.9, ease: "power1.in", stagger: 0.18, immediateRender: false }, at(3, 0.5));
+      IN("#in-ifa", at(3, 0.65), 0.7, { y: 20 });
+
+      // L4 Multichain
+      OUT("#in-s2", at(4, 0.0));
+      IN("#in-mc-h", at(4, 0.05));
+      IN("#in-ceo", at(4, 0.08));
+      DRAW("#in-link", at(4, 0.12), 0.5);
+      IN("#in-mpc", at(4, 0.15));
+      IN("#in-arrest", at(4, 0.35), 0.35, { scale: 1.6, svgOrigin: "380 560" }, { scale: 1, ease: "back.out(2)" });
+      tl.to("#in-link", { attr: { stroke: "#FC6255" }, duration: 0.4 }, at(4, 0.45));
+      tl.to("#in-mpcb", { attr: { stroke: "#FC6255" }, duration: 0.4 }, at(4, 0.45));
+      IN("#in-lost", at(4, 0.5));
+      ARROW("#in-mca", at(4, 0.6), 0.5);
+      IN("#in-mcout", at(4, 0.68));
+
+      // L5
+      IN("#in-sus", at(5, 0.1), 0.4, { scale: 1.5, svgOrigin: "960 897" }, { scale: 1, ease: "back.out(2)" });
+
+      tl.to("#in-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#in-term", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["insider"] = tl;
+    })();
+  </script>
+</template>

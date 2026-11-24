@@ -1,0 +1,144 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 kelp，id 前缀 kp- -->
+  <div id="root" data-composition-id="kelp" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="kp-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#58C4DD" />
+        </marker>
+        <marker id="kp-arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="kp-all">
+        <g id="kp-head" class="h">
+          <text x="1000" y="140" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">KelpDAO · 2026</text>
+          <text x="1000" y="192" font-size="28" fill="#8a8f99" text-anchor="middle">rsETH · LayerZero</text>
+        </g>
+
+        <g id="kp-msg" class="h">
+          <rect x="140" y="410" width="340" height="140" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="310" y="492" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">跨链消息</text>
+        </g>
+        <path id="kp-a1" class="dr h" pathLength="1" d="M490 480 H778" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#kp-arr)" />
+        <g id="kp-dvn">
+          <g id="kp-dvnb" class="h">
+            <rect id="kp-dvnr" x="790" y="400" width="340" height="160" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text class="mono" x="960" y="472" font-size="44" font-weight="700" fill="#58C4DD" text-anchor="middle">DVN</text>
+            <text class="mono" x="960" y="526" font-size="30" fill="#8a8f99" text-anchor="middle">1-of-1</text>
+          </g>
+          <path id="kp-feed" class="dr h" pathLength="1" d="M960 692 V572" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#kp-arr)" />
+        </g>
+        <path id="kp-a2" class="dr h" pathLength="1" d="M1140 480 H1428" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#kp-arr)" />
+        <g id="kp-rel" class="h">
+          <rect id="kp-relr" x="1440" y="410" width="340" height="140" rx="14" fill="#2a2410" stroke="#F0B90B" stroke-width="3" />
+          <text x="1610" y="476" font-size="34" font-weight="700" fill="#F0B90B" text-anchor="middle">目标链释放</text>
+          <text class="mono" x="1610" y="522" font-size="28" fill="#e8e6df" text-anchor="middle">rsETH</text>
+        </g>
+
+        <!-- L1 RPC -->
+        <g id="kp-rpc" class="h">
+          <rect id="kp-rpcr" x="830" y="700" width="260" height="100" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text class="mono" x="960" y="764" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="middle">RPC</text>
+        </g>
+        <text id="kp-poi" class="h" x="1110" y="764" font-size="32" font-weight="700" fill="#FC6255">被投毒</text>
+
+        <!-- L2 -->
+        <text id="kp-all1" class="h" x="960" y="350" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle"><tspan class="mono">1 / 1</tspan> 被投毒 = 全部</text>
+
+        <!-- L3 伪造消息 -->
+        <g id="kp-fakeo">
+          <g id="kp-fake" class="h">
+            <rect x="286" y="560" width="48" height="60" rx="5" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <path d="M296 578 H324 M296 591 H324 M296 604 H314" stroke="#FC6255" stroke-width="2.5" />
+          </g>
+        </g>
+        <text id="kp-fakel" class="h" x="310" y="668" font-size="30" fill="#FC6255" text-anchor="middle">伪造 <tspan class="mono">burn</tspan> 消息</text>
+        <text id="kp-num" class="h mono" x="1610" y="630" font-size="44" font-weight="700" fill="#F0B90B" text-anchor="middle">0 rsETH</text>
+
+        <!-- L4 -->
+        <g id="kp-loss" class="h">
+          <text x="1600" y="736" font-size="44" font-weight="700" fill="#FC6255" text-anchor="middle">损失约 $2.9 亿</text>
+          <text x="1600" y="788" font-size="28" fill="#8a8f99" text-anchor="middle">LayerZero 称是 TraderTraitor</text>
+        </g>
+
+        <!-- L5 依赖分开 -->
+        <g id="kp-vs" fill="#161a22" stroke-width="3">
+          <g class="kp-v h"><rect x="790" y="320" width="340" height="84" rx="12" stroke="#83C167" /><text x="820" y="374" font-size="30" fill="#e8e6df" stroke="none">验证者 1</text><text class="mono" x="1104" y="374" font-size="28" fill="#83C167" stroke="none" text-anchor="end">RPC A</text></g>
+          <g class="kp-v h"><rect x="790" y="438" width="340" height="84" rx="12" stroke="#83C167" /><text x="820" y="492" font-size="30" fill="#e8e6df" stroke="none">验证者 2</text><text class="mono" x="1104" y="492" font-size="28" fill="#83C167" stroke="none" text-anchor="end">RPC B</text></g>
+          <g class="kp-v h"><rect x="790" y="556" width="340" height="84" rx="12" stroke="#FC6255" /><text x="820" y="610" font-size="30" fill="#e8e6df" stroke="none">验证者 3</text><text class="mono" x="1104" y="610" font-size="28" fill="#FC6255" stroke="none" text-anchor="end">RPC C</text></g>
+        </g>
+        <path id="kp-feed3" class="dr" pathLength="1" d="M960 694 V648" stroke="#FC6255" stroke-width="3" fill="none" />
+        <text id="kp-les" class="h" x="960" y="920" font-size="44" font-weight="700" fill="#83C167" text-anchor="middle">依赖分开：一处投毒 ≠ 全部投毒</text>
+      </g>
+      <g id="kp-term" class="h">
+        <rect x="70" y="56" width="560" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+        <text class="mono" x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">1-of-1 DVN</text>
+        <text x="100" y="160" font-size="28" fill="#e8e6df">只有 1 个验证者，它说了算</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      // L0
+      IN("#kp-term", at(0, 0.02));
+      IN("#kp-head", at(0, 0.05), 0.8, { y: 16 });
+      IN("#kp-msg", at(0, 0.25));
+      ARROW("#kp-a1", at(0, 0.35), 0.5);
+      IN("#kp-dvnb", at(0, 0.45));
+      ARROW("#kp-a2", at(0, 0.55), 0.5);
+      IN("#kp-rel", at(0, 0.65));
+
+      // L1 RPC 被投毒
+      IN("#kp-rpc", at(1, 0.05));
+      ARROW("#kp-feed", at(1, 0.2), 0.5);
+      tl.to("#kp-rpcr", { attr: { stroke: "#FC6255", fill: "#2a1616" }, duration: 0.4 }, at(1, 0.5));
+      tl.to("#kp-feed", { attr: { stroke: "#FC6255", "marker-end": "url(#kp-arr2)" }, duration: 0.3 }, at(1, 0.5));
+      IN("#kp-poi", at(1, 0.55));
+
+      // L2 一个 = 全部
+      tl.to("#kp-dvnr", { attr: { stroke: "#FC6255", fill: "#2a1616" }, duration: 0.5 }, at(2, 0.1));
+      IN("#kp-all1", at(2, 0.3), 0.7, { y: 12 });
+
+      // L3 伪造 burn 消息
+      IN("#kp-fake", at(3, 0.02), 0.4);
+      IN("#kp-fakel", at(3, 0.05));
+      tl.to("#kp-fakeo", { keyframes: [{ x: 0, y: -230, duration: 0.3 }, { x: 650, y: -230, duration: 0.6 }, { x: 1300, y: -230, duration: 0.6 }], ease: "none" }, at(3, 0.15));
+      tl.to("#kp-relr", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(3, 0.5));
+      IN("#kp-num", at(3, 0.5), 0.3);
+      COUNT("#kp-num", 0, 116500, at(3, 0.5), 1.0, v => Math.round(v).toLocaleString("en-US") + " rsETH");
+
+      // L4 损失
+      IN("#kp-loss", at(4, 0.1), 0.7, { y: 14 });
+
+      // L5 依赖分开
+      ["#kp-fakeo", "#kp-fakel", "#kp-num", "#kp-loss", "#kp-all1", "#kp-dvnb", "#kp-feed"].forEach(s => OUT(s, at(5, 0.0)));
+      tl.to("#kp-relr", { attr: { stroke: "#F0B90B" }, duration: 0.3 }, at(5, 0.0));
+      tl.fromTo(".kp-v", { opacity: 0, x: 0, y: 0 }, { opacity: 1, duration: 0.5, ease: "power3.out", stagger: 0.15 }, at(5, 0.15));
+      DRAW("#kp-feed3", at(5, 0.45), 0.3);
+      IN("#kp-les", at(5, 0.55), 0.7, { y: 14 });
+
+      tl.to("#kp-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#kp-term", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["kelp"] = tl;
+    })();
+  </script>
+</template>

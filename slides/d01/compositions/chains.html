@@ -1,0 +1,218 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 chains，id 前缀 ch- -->
+  <div id="root" data-composition-id="chains" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ch-arrb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#58C4DD" />
+        </marker>
+        <marker id="ch-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="ch-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="ch-all">
+        <text id="ch-title" class="h" x="960" y="110" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">多链安全心智差异</text>
+        <g id="ch-tabs">
+          <g id="ch-tb0" class="h"><rect id="ch-tr0" x="160" y="170" width="400" height="70" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="360" y="216" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">EVM</text></g>
+          <g id="ch-tb1" class="h"><rect id="ch-tr1" x="600" y="170" width="400" height="70" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="800" y="216" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">Solana</text></g>
+          <g id="ch-tb2" class="h"><rect id="ch-tr2" x="1040" y="170" width="400" height="70" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="1240" y="216" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">Move（Sui / Aptos）</text></g>
+          <g id="ch-tb3" class="h"><rect id="ch-tr3" x="1480" y="170" width="340" height="70" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="1650" y="216" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">BTC · 侧链 · 桥</text></g>
+        </g>
+        <text id="ch-hint" class="h" x="960" y="560" font-size="40" fill="#8a8f99" text-anchor="middle">每条链：特有的高危陷阱 → 必查的防线</text>
+
+        <!-- L1 EVM -->
+        <g id="ch-e">
+          <g id="ch-px" class="h">
+            <rect x="200" y="320" width="520" height="260" rx="16" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="460" y="380" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">代理合约</text>
+            <rect id="ch-slot" x="240" y="440" width="440" height="80" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+            <text x="270" y="492" font-size="30" fill="#e8e6df">存储：实现地址</text>
+          </g>
+          <path id="ch-dc" class="dr h" pathLength="1" d="M732 400 H988" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#ch-arrb)" />
+          <text id="ch-dcl" class="h mono" x="860" y="380" font-size="28" fill="#58C4DD" text-anchor="middle">delegatecall</text>
+          <g id="ch-mal" class="h">
+            <rect x="1000" y="320" width="360" height="160" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1180" y="412" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">恶意代码</text>
+          </g>
+          <path id="ch-ow" class="dr h" pathLength="1" d="M1180 492 C1180 560 900 600 692 520" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#ch-arrr)" />
+          <text id="ch-owl" class="h" x="1000" y="620" font-size="28" fill="#FC6255" text-anchor="middle">改写代理存储</text>
+          <g id="ch-eo" class="h" font-size="30" fill="#e8e6df">
+            <text x="1440" y="380">EIP-7702 授权清扫</text>
+            <text x="1440" y="440"><tspan class="mono">approve(max)</tspan> 遗留授权</text>
+            <text x="1440" y="500">ERC-4626 空池与舍入</text>
+          </g>
+          <g id="ch-em" class="h">
+            <text x="960" y="740" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">必查：Safe Guard 禁 delegatecall 与升级；策略层默认拒签 7702</text>
+            <text x="960" y="800" font-size="28" fill="#8a8f99" text-anchor="middle">典型案例：Bybit、WazirX、Binance、Curve / Vyper</text>
+          </g>
+        </g>
+
+        <!-- L2 Solana -->
+        <g id="ch-s">
+          <g id="ch-tx" class="h">
+            <rect x="200" y="300" width="600" height="340" rx="16" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="240" y="352" font-size="30" font-weight="700" fill="#58C4DD">一笔交易</text>
+            <rect x="240" y="380" width="520" height="64" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2" />
+            <text x="270" y="423" font-size="28" fill="#e8e6df">正常指令</text>
+          </g>
+          <g id="ch-au" class="h">
+            <rect x="240" y="464" width="520" height="64" rx="10" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+            <text class="mono" x="270" y="507" font-size="28" fill="#FC6255">Authorize</text>
+            <rect x="240" y="548" width="520" height="64" rx="10" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+            <text class="mono" x="270" y="591" font-size="28" fill="#FC6255">Authorize</text>
+          </g>
+          <text id="ch-aul" class="h" x="500" y="690" font-size="28" fill="#FC6255" text-anchor="middle">夹带多条 Authorize，改掉提款权限</text>
+          <g id="ch-sv" class="h">
+            <text x="920" y="380" font-size="30" fill="#e8e6df">账户与 sysvar 不校验身份</text>
+          </g>
+          <g id="ch-dn" class="h">
+            <rect x="920" y="440" width="700" height="150" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="2.5" />
+            <text x="960" y="500" font-size="30" fill="#e8e6df"><tspan class="mono">durable nonce</tspan> 预签名</text>
+            <text x="960" y="560" font-size="30" font-weight="700" fill="#FC6255">永不过期</text>
+            <text x="1480" y="560" font-size="72" font-weight="700" fill="#FC6255" text-anchor="middle">∞</text>
+          </g>
+          <g id="ch-sm" class="h">
+            <text x="960" y="770" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">必查：签名端逐条解析指令；管理员多签禁用 durable nonce</text>
+            <text x="960" y="830" font-size="28" fill="#8a8f99" text-anchor="middle">典型案例：Wormhole、SwissBorg / Kiln、Drift</text>
+          </g>
+        </g>
+
+        <!-- L3 Move -->
+        <g id="ch-m">
+          <g id="ch-lang" class="h">
+            <rect x="240" y="320" width="560" height="200" rx="16" fill="#16241a" stroke="#83C167" stroke-width="3" />
+            <text x="520" y="432" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">语言层：防溢出</text>
+                      </g>
+          <text id="ch-ne" class="h" x="960" y="440" font-size="72" font-weight="700" fill="#e8e6df" text-anchor="middle">≠</text>
+          <g id="ch-lib" class="h">
+            <rect x="1120" y="320" width="560" height="200" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1400" y="400" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">自定义位运算 / 数学库</text>
+            <text x="1400" y="460" font-size="28" fill="#e8e6df" text-anchor="middle">要单独做形式化验证</text>
+          </g>
+          <g id="ch-ty" class="h">
+            <text x="960" y="610" font-size="30" fill="#e8e6df" text-anchor="middle">另一个陷阱：充值入账没校验代币的完整 <tspan class="mono">type</tspan></text>
+          </g>
+          <g id="ch-mm" class="h">
+            <text x="960" y="740" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">必查：数学库形式化验证 + 边界值模糊测试；入账校验完整 type</text>
+            <text x="960" y="800" font-size="28" fill="#8a8f99" text-anchor="middle">典型案例：Cetus、Upbit（假 APT）</text>
+          </g>
+        </g>
+
+        <!-- L4 BTC / 侧链 / 桥 -->
+        <g id="ch-b">
+          <g id="ch-rpc" class="h">
+            <rect x="200" y="300" width="300" height="80" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+            <rect x="200" y="410" width="300" height="80" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+            <rect x="200" y="520" width="300" height="80" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+            <g font-size="28" fill="#e8e6df" text-anchor="middle"><text x="350" y="350">数据源 1</text><text x="350" y="460">数据源 2</text><text x="350" y="570">数据源 3</text></g>
+          </g>
+          <g id="ch-rl" stroke="#58C4DD" stroke-width="3" fill="none">
+            <path class="dr" pathLength="1" d="M512 340 C620 340 640 430 730 440" /><path class="dr" pathLength="1" d="M512 450 H730" /><path class="dr" pathLength="1" d="M512 560 C620 560 640 470 730 460" />
+          </g>
+          <g id="ch-val" class="h">
+            <rect x="740" y="370" width="320" height="160" rx="16" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+            <text x="900" y="462" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">验证者</text>
+          </g>
+          <g id="ch-dos" class="h">
+            <path d="M140 322 L176 358 M176 322 L140 358 M140 432 L176 468 M176 432 L140 468" stroke="#FC6255" stroke-width="5" stroke-linecap="round" />
+            <text x="350" y="650" font-size="28" fill="#FC6255" text-anchor="middle">DoS 打掉正常数据源</text>
+          </g>
+          <g id="ch-poi" class="h">
+            <rect x="1300" y="390" width="300" height="120" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="1450" y="462" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">投毒 RPC</text>
+          </g>
+          <path id="ch-fb" class="dr h" pathLength="1" d="M1072 450 H1288" stroke="#8a8f99" stroke-width="3" stroke-linecap="round" fill="none" marker-end="url(#ch-arr)" />
+          <text id="ch-fbl" class="h" x="1180" y="430" font-size="28" fill="#8a8f99" text-anchor="middle">降级切换</text>
+          <path id="ch-fbx" class="dr" pathLength="1" d="M1160 470 L1200 510 M1200 470 L1160 510" stroke="#83C167" stroke-width="6" fill="none" />
+          <text id="ch-ref" class="h" x="1180" y="570" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">宁可拒签</text>
+          <g id="ch-bo" class="h" font-size="28" fill="#8a8f99">
+            <text x="1660" y="330" text-anchor="end">Range Proof 缓存键缺字段</text>
+            <text x="1660" y="640" text-anchor="end">PoW 51% 算力重组双花</text>
+          </g>
+          <g id="ch-bm" class="h">
+            <text x="960" y="750" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">必查：≥ 3 个独立 DVN / RPC；缓存键覆盖完整上下文</text>
+            <text x="960" y="810" font-size="28" fill="#8a8f99" text-anchor="middle">典型案例：Liquid Network、OKEx / ETC、KelpDAO</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const TAB = (i, t) => {
+        tl.to("#ch-tr" + i, { attr: { fill: "#1d3340" }, duration: 0.3 }, t);
+        if (i > 0) tl.to("#ch-tr" + (i - 1), { attr: { fill: "#161a22" }, duration: 0.3 }, t);
+        tl.to(["#ch-tb0", "#ch-tb1", "#ch-tb2", "#ch-tb3"].filter((_, k) => k !== i), { opacity: 0.4, duration: 0.3 }, t);
+        tl.to("#ch-tb" + i, { opacity: 1, duration: 0.3 }, t);
+      };
+
+      // L0
+      IN("#ch-title", at(0, 0.02), 0.8, { y: 20 });
+      tl.fromTo(["#ch-tb0", "#ch-tb1", "#ch-tb2", "#ch-tb3"], { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.12 }, at(0, 0.25));
+      IN("#ch-hint", at(0, 0.6));
+
+      // L1 EVM
+      OUT("#ch-hint", at(1, 0.0), 0.3);
+      TAB(0, at(1, 0.02));
+      IN("#ch-px", at(1, 0.05));
+      ARROW("#ch-dc", at(1, 0.15), 0.4); IN("#ch-dcl", at(1, 0.18));
+      IN("#ch-mal", at(1, 0.22));
+      ARROW("#ch-ow", at(1, 0.32), 0.5); IN("#ch-owl", at(1, 0.38));
+      tl.to("#ch-slot", { attr: { stroke: "#FC6255", fill: "#2a1616" }, duration: 0.3 }, at(1, 0.42));
+      IN("#ch-eo", at(1, 0.48));
+      IN("#ch-em", at(1, 0.62), 0.6, { y: 15 });
+
+      // L2 Solana
+      OUT("#ch-e", at(2, 0.0));
+      TAB(1, at(2, 0.02));
+      IN("#ch-tx", at(2, 0.05));
+      IN("#ch-au", at(2, 0.18), 0.5, { y: -15 }); IN("#ch-aul", at(2, 0.25));
+      IN("#ch-sv", at(2, 0.3));
+      IN("#ch-dn", at(2, 0.4));
+      IN("#ch-sm", at(2, 0.62), 0.6, { y: 15 });
+
+      // L3 Move
+      OUT("#ch-s", at(3, 0.0));
+      TAB(2, at(3, 0.02));
+      IN("#ch-lang", at(3, 0.05));
+      IN("#ch-ne", at(3, 0.2), 0.4, { scale: 1.5, svgOrigin: "960 420" }, { scale: 1 });
+      IN("#ch-lib", at(3, 0.28));
+      IN("#ch-ty", at(3, 0.45));
+      IN("#ch-mm", at(3, 0.62), 0.6, { y: 15 });
+
+      // L4 BTC / 侧链 / 桥
+      OUT("#ch-m", at(4, 0.0));
+      TAB(3, at(4, 0.02));
+      IN("#ch-rpc", at(4, 0.05));
+      tl.fromTo("#ch-rl path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.4, stagger: 0.06 }, at(4, 0.1));
+      IN("#ch-val", at(4, 0.15));
+      IN("#ch-dos", at(4, 0.25), 0.3);
+      tl.to(["#ch-rl path:nth-child(1)", "#ch-rl path:nth-child(2)"], { opacity: 0.15, duration: 0.3 }, at(4, 0.27));
+      IN("#ch-poi", at(4, 0.32));
+      ARROW("#ch-fb", at(4, 0.36), 0.4); IN("#ch-fbl", at(4, 0.36));
+      DRAW("#ch-fbx", at(4, 0.45), 0.3);
+      IN("#ch-ref", at(4, 0.48));
+      IN("#ch-bo", at(4, 0.55));
+      IN("#ch-bm", at(4, 0.62), 0.6, { y: 15 });
+
+      tl.to("#ch-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["chains"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,145 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 gate，id 前缀 gt- -->
+  <div id="root" data-composition-id="gate" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="gt-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+        <marker id="gt-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="gt-all">
+        <text id="gt-title" class="h" x="960" y="120" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">事中黄金 10 分钟</text>
+
+        <!-- L0 十分钟 -->
+        <g id="gt-clk">
+          <circle id="gt-ring0" class="h" cx="960" cy="520" r="200" fill="none" stroke="#22252d" stroke-width="18" />
+          <path id="gt-ring" class="dr" pathLength="1" d="M960 320 A200 200 0 1 1 959.9 320" stroke="#F0B90B" stroke-width="18" fill="none" stroke-linecap="round" />
+          <text id="gt-ten" class="h" x="960" y="545" font-size="72" font-weight="700" fill="#F0B90B" text-anchor="middle">10 分钟</text>
+          <text id="gt-dec" class="h" x="960" y="830" font-size="36" fill="#e8e6df" text-anchor="middle">决定能不能拦住主力资金</text>
+        </g>
+
+        <!-- 左侧：五层 -->
+        <g id="gt-stack" font-size="30" text-anchor="middle">
+          <g class="gt-ly h"><rect id="gt-y0" x="120" y="300" width="500" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="370" y="356" fill="#e8e6df">用户提现网关</text></g>
+          <g class="gt-ly h"><rect id="gt-y1" x="120" y="410" width="500" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="370" y="466" fill="#e8e6df">签名服务总开关</text></g>
+          <g class="gt-ly h"><rect x="120" y="520" width="500" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="370" y="576" fill="#e8e6df">链上 Pause / 速率熔断</text></g>
+          <g class="gt-ly h"><rect x="120" y="630" width="500" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="370" y="686" fill="#e8e6df">撤销链上委托与权限</text></g>
+          <g class="gt-ly h"><rect x="120" y="740" width="500" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="370" y="796" fill="#e8e6df">稳定币与交易所协同</text></g>
+        </g>
+        <text id="gt-stk" class="h" x="370" y="270" font-size="28" fill="#8a8f99" text-anchor="middle">止损五层 · 各自切断不同的对象</text>
+
+        <!-- L2–L6 右侧 -->
+        <g id="gt-user" class="h">
+          <circle cx="820" cy="420" r="30" fill="none" stroke="#e8e6df" stroke-width="4" />
+          <path d="M760 520 C760 450 880 450 880 520 Z" fill="none" stroke="#e8e6df" stroke-width="4" stroke-linejoin="round" />
+          <text x="820" y="570" font-size="28" fill="#e8e6df" text-anchor="middle">用户</text>
+        </g>
+        <path id="gt-a1" class="dr h" pathLength="1" d="M896 470 H1168" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#gt-arr)" />
+        <g id="gt-gate" class="h">
+          <rect x="1020" y="380" width="18" height="180" rx="5" fill="#83C167" />
+          <text x="1029" y="360" font-size="28" fill="#83C167" text-anchor="middle">提现网关</text>
+        </g>
+        <text id="gt-gl" class="h" x="1029" y="610" font-size="28" fill="#83C167" text-anchor="middle">只挡得住账户接管</text>
+        <g id="gt-sig" class="h">
+          <rect id="gt-sigb" x="1180" y="380" width="320" height="180" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="1340" y="440" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">签名服务</text>
+        </g>
+        <path id="gt-a2" class="dr h" pathLength="1" d="M1512 470 H1628" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#gt-arr)" />
+        <g id="gt-chain" class="h">
+          <rect x="1640" y="420" width="180" height="100" rx="14" fill="#132530" stroke="#58C4DD" stroke-width="3" />
+          <text x="1730" y="480" font-size="30" font-weight="700" fill="#58C4DD" text-anchor="middle">链上</text>
+        </g>
+        <g id="gt-atk" class="h">
+          <rect x="1180" y="700" width="320" height="100" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1340" y="762" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者 · 内网工具</text>
+        </g>
+        <path id="gt-a3" class="dr h" pathLength="1" d="M1340 690 V572" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#gt-arrr)" />
+        <text id="gt-a3l" class="h" x="1316" y="660" font-size="28" fill="#FC6255" text-anchor="end">绕过网关，直接调签名</text>
+        <g id="gt-coins" fill="#F0B90B">
+          <circle class="h" cx="1520" cy="500" r="10" /><circle class="h" cx="1520" cy="500" r="10" /><circle class="h" cx="1520" cy="500" r="10" /><circle class="h" cx="1520" cy="500" r="10" /><circle class="h" cx="1520" cy="500" r="10" />
+        </g>
+        <text id="gt-bg" class="h" x="1340" y="900" font-size="34" fill="#e8e6df" text-anchor="middle">Bitget：告警之后，仍流出 <tspan fill="#F0B90B" font-weight="700">2.4 亿</tspan></text>
+        <!-- 停签开关 -->
+        <g id="gt-sw" class="h">
+          <rect x="1270" y="480" width="140" height="56" rx="28" fill="#22252d" stroke="#8a8f99" stroke-width="2.5" />
+        </g>
+        <circle id="gt-knob" class="h" cx="1300" cy="508" r="20" fill="#8a8f99" />
+        <path id="gt-x" class="dr" pathLength="1" d="M1552 450 L1588 490 M1588 450 L1552 490" stroke="#FC6255" stroke-width="6" fill="none" />
+        <text id="gt-swl" class="h" x="1340" y="345" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">按链 · 按钱包 一键停签</text>
+        <g id="gt-t" class="h">
+          <text x="760" y="895" font-size="30" fill="#e8e6df">告警</text>
+          <rect x="840" y="872" width="640" height="30" rx="6" fill="#22252d" />
+          <text x="1500" y="895" font-size="30" fill="#e8e6df">全链停签</text>
+        </g>
+        <rect id="gt-tb" x="840" y="872" width="0" height="30" rx="6" fill="#83C167" />
+        <text id="gt-tl" class="h" x="1160" y="960" font-size="44" font-weight="700" fill="#83C167" text-anchor="middle">小于 5 分钟</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const HI = (s, t, c) => tl.to(s, { attr: { stroke: c, "stroke-width": 4 }, duration: 0.4 }, t);
+
+      // L0
+      IN("#gt-title", at(0, 0.02), 0.8, { y: 20 });
+      IN("#gt-ring0", at(0, 0.15), 0.4);
+      DRAW("#gt-ring", at(0, 0.2), 1.4);
+      IN("#gt-ten", at(0, 0.3));
+      IN("#gt-dec", at(0, 0.6));
+
+      // L1 五层
+      OUT("#gt-clk", at(1, 0.0));
+      IN("#gt-stk", at(1, 0.1));
+      tl.fromTo(".gt-ly", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, stagger: 0.15 }, at(1, 0.15));
+
+      // L2 提现网关
+      HI("#gt-y0", at(2, 0.02), "#83C167");
+      IN("#gt-user", at(2, 0.08)); ARROW("#gt-a1", at(2, 0.18), 0.5);
+      IN("#gt-gate", at(2, 0.25), 0.4, { scaleY: 0, svgOrigin: "1029 560" }, { scaleY: 1 });
+      IN("#gt-sig", at(2, 0.35)); ARROW("#gt-a2", at(2, 0.45), 0.4); IN("#gt-chain", at(2, 0.5));
+      IN("#gt-gl", at(2, 0.6));
+
+      // L3 绕过网关
+      IN("#gt-atk", at(3, 0.08));
+      ARROW("#gt-a3", at(3, 0.3), 0.5);
+      IN("#gt-a3l", at(3, 0.45));
+
+      // L4 Bitget 2.4 亿
+      tl.fromTo("#gt-coins circle", { opacity: 1, x: 0 }, { x: 160, opacity: 0, duration: 0.6, ease: "none", stagger: 0.2, immediateRender: false }, at(4, 0.05));
+      IN("#gt-bg", at(4, 0.3), 0.7, { y: 15 });
+
+      // L5 停签
+      OUT("#gt-bg", at(5, 0.0), 0.3);
+      HI("#gt-y1", at(5, 0.02), "#83C167");
+      IN("#gt-sw", at(5, 0.15)); IN("#gt-knob", at(5, 0.15));
+      tl.to("#gt-knob", { attr: { cx: 1380, fill: "#83C167" }, duration: 0.4, ease: "power2.inOut" }, at(5, 0.35));
+      tl.to("#gt-sigb", { attr: { stroke: "#83C167" }, duration: 0.3 }, at(5, 0.4));
+      DRAW("#gt-x", at(5, 0.45), 0.3);
+      IN("#gt-swl", at(5, 0.5));
+
+      // L6 < 5 分钟
+      IN("#gt-t", at(6, 0.05));
+      tl.fromTo("#gt-tb", { attr: { width: 0 } }, { attr: { width: 380 }, duration: 1.0, ease: "power2.out", immediateRender: false }, at(6, 0.2));
+      IN("#gt-tl", at(6, 0.5), 0.6, { y: 15 });
+
+      tl.to("#gt-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["gate"] = tl;
+    })();
+  </script>
+</template>

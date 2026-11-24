@@ -1,0 +1,199 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 sign，id 前缀 sg- -->
+  <div id="root" data-composition-id="sign" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="sg-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" /></marker>
+        <marker id="sg-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#FC6255" /></marker>
+      </defs>
+      <g id="sg-all">
+        <!-- L0 私钥 -->
+        <g id="sg-k">
+          <g id="sg-seed" class="h">
+            <text x="140" y="300" font-size="30" fill="#8a8f99">助记词</text>
+            <g fill="#161a22" stroke="#F0B90B" stroke-width="2">
+              <rect x="140" y="330" width="60" height="40" rx="6" /><rect x="212" y="330" width="60" height="40" rx="6" /><rect x="284" y="330" width="60" height="40" rx="6" /><rect x="356" y="330" width="60" height="40" rx="6" /><rect x="428" y="330" width="60" height="40" rx="6" /><rect x="500" y="330" width="60" height="40" rx="6" />
+              <rect x="140" y="382" width="60" height="40" rx="6" /><rect x="212" y="382" width="60" height="40" rx="6" /><rect x="284" y="382" width="60" height="40" rx="6" /><rect x="356" y="382" width="60" height="40" rx="6" /><rect x="428" y="382" width="60" height="40" rx="6" /><rect x="500" y="382" width="60" height="40" rx="6" />
+            </g>
+          </g>
+          <path id="sg-a0" class="dr h" pathLength="1" d="M580 376 H690" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#sg-arr)" />
+          <text id="sg-a0l" class="h" x="635" y="350" font-size="28" fill="#8a8f99" text-anchor="middle">还原</text>
+          <g id="sg-key" class="h" stroke="#F0B90B" stroke-width="6" fill="none" stroke-linecap="round">
+            <circle cx="735" cy="376" r="24" /><path d="M759 376 H830 M808 376 V394 M826 376 V392" />
+          </g>
+          <text id="sg-keyl" class="h" x="782" y="450" font-size="30" font-weight="700" fill="#F0B90B" text-anchor="middle">私钥</text>
+          <path id="sg-a1" class="dr h" pathLength="1" d="M850 376 H1040" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#sg-arr)" />
+          <text id="sg-a1l" class="h" x="945" y="350" font-size="28" fill="#8a8f99" text-anchor="middle">签名</text>
+          <g id="sg-eoa" class="h">
+            <rect x="1060" y="290" width="400" height="180" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+            <text x="1090" y="340" font-size="32" font-weight="700" fill="#e8e6df">EOA 账户</text>
+          </g>
+          <g id="sg-coins" fill="#F0B90B">
+            <circle class="h" cx="1110" cy="420" r="16" /><circle class="h" cx="1160" cy="420" r="16" /><circle class="h" cx="1210" cy="420" r="16" /><circle class="h" cx="1260" cy="420" r="16" />
+          </g>
+          <path id="sg-a2" class="dr h" pathLength="1" d="M1470 380 H1640" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#sg-arrr)" />
+          <text id="sg-a2l" class="h" x="1555" y="350" font-size="28" fill="#FC6255" text-anchor="middle">转走</text>
+          <text id="sg-kc" class="h" x="960" y="600" font-size="34" fill="#e8e6df" text-anchor="middle">私钥、助记词泄露，等于资产可以被转走</text>
+        </g>
+
+        <!-- L1–L2 签名设备 -->
+        <g id="sg-dev">
+          <g id="sg-hw" class="h">
+            <rect id="sg-hwb" x="760" y="260" width="400" height="480" rx="30" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <rect x="800" y="300" width="320" height="260" rx="10" fill="#0b0d12" />
+            <circle cx="900" cy="650" r="26" fill="none" stroke="#8a8f99" stroke-width="3" /><circle cx="1020" cy="650" r="26" fill="none" stroke="#8a8f99" stroke-width="3" />
+          </g>
+          <g id="sg-bl" class="h">
+            <text x="960" y="355" font-size="28" fill="#8a8f99" text-anchor="middle">签名请求</text>
+            <text x="960" y="435" font-size="30" fill="#e8e6df" text-anchor="middle" class="mono">0x9f3a…c21e</text>
+            <text x="960" y="510" font-size="28" fill="#8a8f99" text-anchor="middle">确认？</text>
+          </g>
+          <g id="sg-tx" class="h">
+            <rect x="160" y="330" width="420" height="200" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2" stroke-dasharray="10 8" />
+            <text x="370" y="415" font-size="30" fill="#8a8f99" text-anchor="middle">真实交易</text>
+            <text x="370" y="485" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">看不到</text>
+          </g>
+          <path id="sg-txa" class="dr h" pathLength="1" d="M590 430 H748" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#sg-arr)" />
+          <text id="sg-bll" class="h" x="1200" y="420" font-size="34" font-weight="700" fill="#FC6255">只显示哈希</text>
+          <text id="sg-bll2" class="h" x="1200" y="470" font-size="30" fill="#e8e6df">= 盲签</text>
+          <g id="sg-cl" class="h" font-size="28">
+            <text x="824" y="370" fill="#8a8f99">类型 <tspan fill="#e8e6df">合约调用</tspan></text>
+            <text x="824" y="435" fill="#8a8f99">目标 <tspan fill="#e8e6df" class="mono">0x51A3…</tspan></text>
+            <text x="824" y="500" fill="#8a8f99">参数 <tspan fill="#e8e6df">逐项显示</tspan></text>
+          </g>
+          <text id="sg-cll" class="h" x="1200" y="420" font-size="34" font-weight="700" fill="#83C167">解析后显示</text>
+          <text id="sg-cll2" class="h" x="1200" y="470" font-size="30" fill="#e8e6df">= 清晰签名</text>
+        </g>
+
+        <!-- L3 多签 -->
+        <g id="sg-ms">
+          <g id="sg-sig" fill="#161a22" stroke="#e8e6df" stroke-width="3">
+            <circle class="h" cx="360" cy="400" r="50" /><circle class="h" cx="560" cy="400" r="50" /><circle class="h" cx="760" cy="400" r="50" /><circle class="h" cx="960" cy="400" r="50" /><circle class="h" cx="1160" cy="400" r="50" />
+          </g>
+          <g id="sg-chk" stroke="#83C167" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path class="h" d="M338 400 L354 418 L384 380" /><path class="h" d="M538 400 L554 418 L584 380" /><path class="h" d="M738 400 L754 418 L784 380" />
+          </g>
+          <g id="sg-th" class="h">
+            <text x="1360" y="390" font-size="44" font-weight="700" fill="#e8e6df">阈值 <tspan fill="#83C167">3</tspan> / 5</text>
+            <rect x="1360" y="420" width="80" height="30" rx="5" fill="#2c313c" /><rect x="1448" y="420" width="80" height="30" rx="5" fill="#2c313c" /><rect x="1536" y="420" width="80" height="30" rx="5" fill="#2c313c" /><rect x="1624" y="420" width="80" height="30" rx="5" fill="#2c313c" /><rect x="1712" y="420" width="80" height="30" rx="5" fill="#2c313c" />
+          </g>
+          <g id="sg-thf" fill="#83C167">
+            <rect class="h" x="1360" y="420" width="80" height="30" rx="5" /><rect class="h" x="1448" y="420" width="80" height="30" rx="5" /><rect class="h" x="1536" y="420" width="80" height="30" rx="5" />
+          </g>
+          <g id="sg-dep" stroke="#FC6255" stroke-width="3" fill="none" stroke-dasharray="10 8">
+            <path class="h" d="M360 452 L520 640" /><path class="h" d="M560 452 L560 640" /><path class="h" d="M760 452 L600 640" />
+          </g>
+          <g id="sg-shared" class="h">
+            <rect x="400" y="642" width="320" height="80" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+            <text x="560" y="694" font-size="30" fill="#FC6255" text-anchor="middle">共用同一个依赖</text>
+            <text x="780" y="694" font-size="30" fill="#e8e6df">安全性取决于签名者是否独立</text>
+          </g>
+        </g>
+
+        <!-- L4 MPC -->
+        <g id="sg-mpc">
+          <text id="sg-mp1" class="h" x="960" y="320" font-size="30" fill="#83C167" text-anchor="middle">保护密钥完整性</text>
+          <g id="sg-sh" font-size="28" text-anchor="middle">
+            <g class="h"><rect x="680" y="360" width="160" height="80" rx="10" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="760" y="410" fill="#F0B90B">分片 A</text></g>
+            <g class="h"><rect x="880" y="360" width="160" height="80" rx="10" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="960" y="410" fill="#F0B90B">分片 B</text></g>
+            <g class="h"><rect x="1080" y="360" width="160" height="80" rx="10" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="1160" y="410" fill="#F0B90B">分片 C</text></g>
+          </g>
+          <g id="sg-ml" stroke="#F0B90B" stroke-width="2.5" fill="none">
+            <path class="dr" pathLength="1" d="M760 440 L920 560" /><path class="dr" pathLength="1" d="M960 440 V560" /><path class="dr" pathLength="1" d="M1160 440 L1000 560" />
+          </g>
+          <g id="sg-ms2" class="h">
+            <rect x="840" y="560" width="240" height="100" rx="12" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" />
+            <text x="960" y="622" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">共同签名</text>
+          </g>
+          <g id="sg-anytx" class="h">
+            <rect x="200" y="570" width="400" height="80" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2" stroke-dasharray="10 8" />
+            <text x="400" y="621" font-size="30" fill="#e8e6df" text-anchor="middle">任意交易</text>
+          </g>
+          <path id="sg-ma" class="dr h" pathLength="1" d="M610 610 H828" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#sg-arr)" />
+          <path id="sg-mb" class="dr h" pathLength="1" d="M1090 610 H1380" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#sg-arr)" />
+          <text id="sg-mbl" class="h" x="1400" y="621" font-size="30" fill="#e8e6df">签名照样产出</text>
+          <text id="sg-mp2" class="h" x="960" y="780" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">不判断交易意图</text>
+        </g>
+      </g>
+
+      <!-- 术语卡 -->
+      <g id="sg-t0" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">私钥 <tspan font-size="28" font-weight="400" fill="#8a8f99">Private Key</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">谁持有，谁就能签名转走资产</text></g>
+      <g id="sg-t1" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">盲签 <tspan font-size="28" font-weight="400" fill="#8a8f99">Blind Signing</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">看不到交易真实内容就签名</text></g>
+      <g id="sg-t2" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#83C167" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">清晰签名 <tspan font-size="28" font-weight="400" fill="#8a8f99">Clear Signing</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">设备解析并显示交易内容</text></g>
+      <g id="sg-t3" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">多签 / 阈值 <tspan font-size="28" font-weight="400" fill="#8a8f99">Multisig</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">签名数够阈值才能执行</text></g>
+      <g id="sg-t4" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">MPC <tspan font-size="28" font-weight="400" fill="#8a8f99">多方计算</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">各持密钥分片，共同计算签名</text></g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const TERM = (n) => { if (n > 0) OUT("#sg-t" + (n - 1), at(n, 0.0), 0.3); IN("#sg-t" + n, at(n, 0.05), 0.5, { x: -20 }); };
+
+      // L0 私钥
+      TERM(0);
+      IN("#sg-seed", at(0, 0.05), 0.6);
+      ARROW("#sg-a0", at(0, 0.15), 0.4); IN("#sg-a0l", at(0, 0.18), 0.4);
+      IN("#sg-key", at(0, 0.22), 0.5, { scale: 0.6, svgOrigin: "782 376" }, { scale: 1 }); IN("#sg-keyl", at(0, 0.25));
+      ARROW("#sg-a1", at(0, 0.32), 0.4); IN("#sg-a1l", at(0, 0.35), 0.4);
+      IN("#sg-eoa", at(0, 0.38));
+      tl.fromTo("#sg-coins circle", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.08 }, at(0, 0.42));
+      ARROW("#sg-a2", at(0, 0.55), 0.4); IN("#sg-a2l", at(0, 0.57), 0.4);
+      tl.to("#sg-coins circle", { x: 480, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.in" }, at(0, 0.6));
+      IN("#sg-kc", at(0, 0.7));
+
+      // L1 盲签
+      OUT("#sg-k", at(1, 0.0), 0.4);
+      TERM(1);
+      IN("#sg-hw", at(1, 0.1), 0.6, { y: 20 });
+      IN("#sg-bl", at(1, 0.25));
+      IN("#sg-tx", at(1, 0.35)); ARROW("#sg-txa", at(1, 0.45), 0.4);
+      IN("#sg-bll", at(1, 0.55)); IN("#sg-bll2", at(1, 0.62));
+
+      // L2 清晰签名
+      TERM(2);
+      OUT("#sg-bl", at(2, 0.05), 0.3); OUT("#sg-bll", at(2, 0.05), 0.3); OUT("#sg-bll2", at(2, 0.05), 0.3);
+      OUT("#sg-tx", at(2, 0.05), 0.3); OUT("#sg-txa", at(2, 0.05), 0.3);
+      tl.to("#sg-hwb", { attr: { stroke: "#83C167" }, duration: 0.4 }, at(2, 0.15));
+      tl.fromTo("#sg-cl text", { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.2 }, at(2, 0.2));
+      tl.set("#sg-cl", { opacity: 1 }, at(2, 0.2));
+      IN("#sg-cll", at(2, 0.5)); IN("#sg-cll2", at(2, 0.58));
+
+      // L3 多签
+      OUT("#sg-dev", at(3, 0.0), 0.4);
+      TERM(3);
+      tl.fromTo("#sg-sig circle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.08 }, at(3, 0.08));
+      IN("#sg-th", at(3, 0.2));
+      tl.fromTo("#sg-chk path", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.2 }, at(3, 0.28));
+      tl.fromTo("#sg-thf rect", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.2 }, at(3, 0.3));
+      tl.fromTo("#sg-dep path", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.1 }, at(3, 0.55));
+      IN("#sg-shared", at(3, 0.62));
+
+      // L4 MPC
+      OUT("#sg-ms", at(4, 0.0), 0.4);
+      TERM(4);
+      tl.fromTo("#sg-sh > g", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.12 }, at(4, 0.08));
+      IN("#sg-mp1", at(4, 0.15));
+      DRAW("#sg-ml path", at(4, 0.25), 0.5);
+      IN("#sg-ms2", at(4, 0.32));
+      IN("#sg-anytx", at(4, 0.42)); ARROW("#sg-ma", at(4, 0.48), 0.4);
+      ARROW("#sg-mb", at(4, 0.56), 0.4); IN("#sg-mbl", at(4, 0.62));
+      IN("#sg-mp2", at(4, 0.7), 0.5, { scale: 1.3, svgOrigin: "960 770" }, { scale: 1 });
+
+      tl.to("#sg-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#sg-t4", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["sign"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,211 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 defense，id 前缀 df- -->
+  <div id="root" data-composition-id="defense" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="df-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#e8e6df" />
+        </marker>
+        <marker id="df-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="df-all">
+        <!-- L0 四个阶段 -->
+        <path id="df-line" class="dr" pathLength="1" d="M300 240 H1680" stroke="#8a8f99" stroke-width="3" fill="none" />
+        <g id="df-nodes" font-size="34" font-weight="700" text-anchor="middle">
+          <g class="df-nd h"><circle id="df-c1" cx="300" cy="240" r="26" fill="#161a22" stroke="#83C167" stroke-width="4" /><text x="300" y="318" fill="#e8e6df">开发</text></g>
+          <g class="df-nd h"><circle id="df-c2" cx="760" cy="240" r="26" fill="#161a22" stroke="#83C167" stroke-width="4" /><text x="760" y="318" fill="#e8e6df">审计</text></g>
+          <g class="df-nd h"><circle id="df-c3" cx="1220" cy="240" r="26" fill="#161a22" stroke="#83C167" stroke-width="4" /><text x="1220" y="318" fill="#e8e6df">升级 · 上线</text></g>
+          <g class="df-nd h"><circle id="df-c4" cx="1680" cy="240" r="26" fill="#161a22" stroke="#83C167" stroke-width="4" /><text x="1680" y="318" fill="#e8e6df">监控</text></g>
+        </g>
+        <text id="df-nokey" class="h" x="960" y="140" font-size="40" font-weight="700" fill="#83C167" text-anchor="middle">防线不在钥匙上，在工程流程里</text>
+
+        <!-- L1–L2 开发 -->
+        <g id="df-p1">
+          <g id="df-fns" class="h">
+            <text x="120" y="450" font-size="30" fill="#8a8f99">所有公开函数</text>
+            <g fill="#131a24" stroke="#58C4DD" stroke-width="2.5">
+              <rect x="120" y="480" width="170" height="80" rx="10" /><rect x="320" y="480" width="170" height="80" rx="10" /><rect x="520" y="480" width="170" height="80" rx="10" /><rect x="720" y="480" width="170" height="80" rx="10" /><rect x="920" y="480" width="170" height="80" rx="10" /><rect x="1120" y="480" width="170" height="80" rx="10" />
+            </g>
+            <g class="mono" font-size="30" fill="#58C4DD" text-anchor="middle">
+              <text x="205" y="531">fn1()</text><text x="405" y="531">fn2()</text><text x="605" y="531">fn3()</text><text x="805" y="531">fn4()</text><text x="1005" y="531">fn5()</text><text x="1205" y="531">fn6()</text>
+            </g>
+          </g>
+          <g id="df-tools" class="h" font-size="32" font-weight="700" fill="#83C167">
+            <text x="1400" y="510">模糊测试</text>
+            <text x="1400" y="566">+ 形式化验证</text>
+          </g>
+          <g id="df-ticks" fill="none" stroke="#83C167" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <path class="df-tk dr" pathLength="1" d="M190 598 L202 610 L222 586" /><path class="df-tk dr" pathLength="1" d="M390 598 L402 610 L422 586" /><path class="df-tk dr" pathLength="1" d="M590 598 L602 610 L622 586" /><path class="df-tk dr" pathLength="1" d="M790 598 L802 610 L822 586" /><path class="df-tk dr" pathLength="1" d="M990 598 L1002 610 L1022 586" /><path class="df-tk dr" pathLength="1" d="M1190 598 L1202 610 L1222 586" />
+          </g>
+          <g id="df-pr" class="h">
+            <rect x="140" y="720" width="180" height="100" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2" />
+            <rect x="130" y="730" width="180" height="100" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2" />
+            <rect x="120" y="740" width="180" height="100" rx="10" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" />
+            <text class="mono" x="210" y="802" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">PR</text>
+          </g>
+          <path id="df-pra" class="dr h" pathLength="1" d="M312 790 H428" stroke="#e8e6df" stroke-width="3" fill="none" marker-end="url(#df-arr)" />
+          <g id="df-ci" class="h">
+            <rect x="440" y="740" width="200" height="100" rx="10" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text class="mono" x="540" y="802" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">CI</text>
+          </g>
+          <path id="df-cia" class="dr h" pathLength="1" d="M652 790 H768" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#df-arrg)" />
+          <text id="df-cil" class="h" x="790" y="802" font-size="34" font-weight="700" fill="#83C167">每个 PR 都跑不变量测试</text>
+        </g>
+
+        <!-- L3–L4 升级：主网分叉回放 -->
+        <g id="df-p2">
+          <g id="df-main" class="h">
+            <text x="120" y="470" font-size="30" fill="#8a8f99">主网</text>
+            <g fill="#22252d" stroke="#8a8f99" stroke-width="2.5">
+              <rect x="220" y="440" width="110" height="60" rx="8" /><rect x="370" y="440" width="110" height="60" rx="8" /><rect x="520" y="440" width="110" height="60" rx="8" /><rect x="670" y="440" width="110" height="60" rx="8" />
+              <path d="M330 470 H370 M480 470 H520 M630 470 H670" fill="none" />
+            </g>
+          </g>
+          <path id="df-fk" class="dr" pathLength="1" d="M780 470 C840 470 840 640 900 640" stroke="#58C4DD" stroke-width="3" fill="none" />
+          <g id="df-fork" class="h">
+            <g fill="#132530" stroke="#58C4DD" stroke-width="2.5">
+              <rect x="900" y="610" width="110" height="60" rx="8" /><rect x="1050" y="610" width="110" height="60" rx="8" />
+              <path d="M1010 640 H1050" fill="none" />
+            </g>
+            <text x="955" y="720" font-size="30" fill="#58C4DD" text-anchor="middle">主网分叉</text>
+          </g>
+          <path id="df-rpa" class="dr h" pathLength="1" d="M1170 640 H1288" stroke="#e8e6df" stroke-width="3" fill="none" marker-end="url(#df-arr)" />
+          <g id="df-new" class="h">
+            <rect x="1300" y="580" width="280" height="120" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="1440" y="652" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">新版本合约</text>
+          </g>
+          <g id="df-txs" fill="#F0B90B">
+            <circle class="h" cx="1180" cy="640" r="10" /><circle class="h" cx="1180" cy="640" r="10" /><circle class="h" cx="1180" cy="640" r="10" /><circle class="h" cx="1180" cy="640" r="10" />
+          </g>
+          <text id="df-rpl" class="h" x="1180" y="560" font-size="30" fill="#e8e6df" text-anchor="middle">历史交易，逐笔回放</text>
+          <g id="df-nm" class="h">
+            <text x="1440" y="820" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">Nomad 式初始化错误</text>
+            <path d="M1440 790 V712" stroke="#FC6255" stroke-width="3" fill="none" />
+          </g>
+          <g id="df-fail" class="h">
+            <path d="M1610 616 L1650 656 M1650 616 L1610 656" stroke="#FC6255" stroke-width="6" stroke-linecap="round" />
+            <text x="1610" y="730" font-size="32" font-weight="700" fill="#FC6255">回放必须失败</text>
+          </g>
+        </g>
+
+        <!-- L5 种子流动性 -->
+        <g id="df-p3">
+          <g id="df-proto" class="h">
+            <rect x="320" y="560" width="300" height="140" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="470" y="642" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">协议方</text>
+          </g>
+          <path id="df-sda" class="dr h" pathLength="1" d="M632 630 H828" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#df-arrg)" />
+          <g id="df-pool" class="h">
+            <path d="M840 440 V800 H1240 V440" fill="none" stroke="#58C4DD" stroke-width="4" stroke-linejoin="round" />
+            <text x="1040" y="860" font-size="32" fill="#e8e6df" text-anchor="middle">新池</text>
+          </g>
+          <rect id="df-seed" x="852" y="788" width="376" height="0" fill="#83C167" opacity="0.85" />
+          <text id="df-seedl" class="h" x="1040" y="740" font-size="32" font-weight="700" fill="#0f1117" text-anchor="middle">种子流动性</text>
+          <text id="df-seedt" class="h" x="1300" y="560" font-size="34" font-weight="700" fill="#83C167">首笔存款由协议方完成</text>
+          <text id="df-seedt2" class="h" x="1300" y="616" font-size="30" fill="#8a8f99">不留“空池”给攻击者</text>
+        </g>
+
+        <!-- L6 监控 + 暂停 -->
+        <g id="df-p4">
+          <path id="df-tax" class="dr" pathLength="1" d="M200 760 H1700" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="df-t0" class="h">
+            <path d="M300 740 V780" stroke="#FC6255" stroke-width="5" />
+            <text x="300" y="700" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">异常放款</text>
+          </g>
+          <rect id="df-win" x="300" y="745" width="0" height="30" fill="#FC6255" opacity="0.35" />
+          <g id="df-t1" class="h">
+            <path d="M560 740 V780" stroke="#F0B90B" stroke-width="5" />
+            <text x="560" y="836" font-size="32" font-weight="700" fill="#F0B90B" text-anchor="middle">≤ 1 分钟告警</text>
+          </g>
+          <g id="df-t2" class="h">
+            <path d="M1400 740 V780" stroke="#83C167" stroke-width="5" />
+            <text x="1400" y="836" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">≤ 10 分钟可暂停</text>
+          </g>
+          <g id="df-sw" class="h">
+            <rect x="1330" y="560" width="140" height="70" rx="35" fill="#161a22" stroke="#83C167" stroke-width="3" />
+            <circle id="df-knob" cx="1365" cy="595" r="24" fill="#8a8f99" />
+            <text x="1400" y="530" font-size="30" fill="#e8e6df" text-anchor="middle">暂停开关</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...("x" in from ? { x: 0 } : {}), ...("y" in from ? { y: 0 } : {}), ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const FOCUS = (c, t) => tl.to(c, { attr: { fill: "#83C167" }, duration: 0.4 }, t);
+      const UNFOCUS = (c, t) => tl.to(c, { attr: { fill: "#161a22" }, duration: 0.3 }, t);
+
+      // L0
+      IN("#df-nokey", at(0, 0.02), 0.7, { y: 15 });
+      DRAW("#df-line", at(0, 0.2), 1.0);
+      tl.fromTo(".df-nd", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.2 }, at(0, 0.3));
+
+      // L1 不变量测试
+      OUT("#df-nokey", at(1, 0.0));
+      FOCUS("#df-c1", at(1, 0.05));
+      IN("#df-fns", at(1, 0.1));
+      IN("#df-tools", at(1, 0.35), 0.6, { x: 20 });
+      tl.fromTo(".df-tk", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.3, stagger: 0.12 }, at(1, 0.5));
+      // L2 CI
+      IN("#df-pr", at(2, 0.05));
+      ARROW("#df-pra", at(2, 0.25), 0.4);
+      IN("#df-ci", at(2, 0.3));
+      ARROW("#df-cia", at(2, 0.45), 0.4);
+      IN("#df-cil", at(2, 0.55));
+
+      // L3 主网分叉回放
+      OUT("#df-p1", at(3, 0.0));
+      UNFOCUS("#df-c1", at(3, 0.0)); FOCUS("#df-c3", at(3, 0.05));
+      IN("#df-main", at(3, 0.1));
+      DRAW("#df-fk", at(3, 0.2), 0.5);
+      IN("#df-fork", at(3, 0.3));
+      ARROW("#df-rpa", at(3, 0.4), 0.4);
+      IN("#df-new", at(3, 0.45));
+      tl.fromTo("#df-txs circle", { opacity: 1, x: 0 }, { opacity: 0, x: 120, duration: 0.6, ease: "power1.in", stagger: 0.2, immediateRender: false }, at(3, 0.5));
+      IN("#df-rpl", at(3, 0.55));
+      // L4 Nomad 式错误必须失败
+      IN("#df-nm", at(4, 0.05), 0.6, { y: 15 });
+      tl.to("#df-new rect", { attr: { stroke: "#FC6255" }, duration: 0.4 }, at(4, 0.35));
+      IN("#df-fail", at(4, 0.45), 0.4, { scale: 1.4, svgOrigin: "1630 636" }, { scale: 1 });
+
+      // L5 种子流动性
+      OUT("#df-p2", at(5, 0.0));
+      IN("#df-pool", at(5, 0.1));
+      IN("#df-proto", at(5, 0.2), 0.6, { x: -20 });
+      ARROW("#df-sda", at(5, 0.3), 0.4);
+      tl.fromTo("#df-seed", { attr: { y: 788, height: 0 } }, { attr: { y: 680, height: 108 }, duration: 0.8, ease: "power2.out" }, at(5, 0.4));
+      IN("#df-seedl", at(5, 0.55), 0.4);
+      IN("#df-seedt", at(5, 0.6));
+      IN("#df-seedt2", at(5, 0.7));
+
+      // L6 监控与暂停
+      OUT("#df-p3", at(6, 0.0)); OUT("#df-seed", at(6, 0.0)); OUT("#df-seedl", at(6, 0.0));
+      UNFOCUS("#df-c3", at(6, 0.0)); FOCUS("#df-c4", at(6, 0.05));
+      DRAW("#df-tax", at(6, 0.1), 0.6);
+      IN("#df-t0", at(6, 0.2));
+      tl.fromTo("#df-win", { attr: { width: 0 } }, { attr: { width: 1100 }, duration: 1.4, ease: "none" }, at(6, 0.3));
+      IN("#df-t1", at(6, 0.35));
+      IN("#df-sw", at(6, 0.5));
+      IN("#df-t2", at(6, 0.6));
+      tl.to("#df-knob", { attr: { cx: 1435, fill: "#83C167" }, duration: 0.4, ease: "power2.inOut" }, at(6, 0.7));
+
+      tl.to("#df-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["defense"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,85 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 three，id 前缀 th- -->
+  <div id="root" data-composition-id="three" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="th-ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#83C167" /></marker><marker id="th-ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#58C4DD" /></marker></defs>
+      <g id="th-all">
+        <g id="th-rays">
+          <path id="th-r1" class="dr" pathLength="1" d="M875 548 L640 430" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <path id="th-r2" class="dr" pathLength="1" d="M875 652 L640 770" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <path id="th-r3" class="dr" pathLength="1" d="M1068 600 H1300" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="th-l1" class="h">
+            <text x="580" y="380" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="end">来源不同</text>
+            <g font-size="26" font-weight="700" text-anchor="middle" class="mono"><circle cx="440" cy="436" r="22" fill="none" stroke="#83C167" stroke-width="2.5" /><text x="440" y="445" fill="#83C167">P</text><circle cx="500" cy="436" r="22" fill="none" stroke="#58C4DD" stroke-width="2.5" /><text x="500" y="445" fill="#58C4DD">I</text><circle cx="560" cy="436" r="22" fill="none" stroke="#c9ccd3" stroke-width="2.5" /><text x="560" y="445" fill="#c9ccd3">M</text></g>
+          </g>
+          <g id="th-l2" class="h">
+            <text x="580" y="830" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="end">时点不同</text>
+            <circle cx="500" cy="890" r="26" fill="none" stroke="#8a8f99" stroke-width="3" /><path d="M500 890 V872 M500 890 H514" stroke="#8a8f99" stroke-width="3" />
+          </g>
+          <g id="th-l3" class="h">
+            <text x="1330" y="614" font-size="40" font-weight="700" fill="#e8e6df">立场不同</text>
+          </g>
+        </g>
+        <g id="th-evm">
+          <g id="th-ev" class="h">
+            <circle cx="960" cy="600" r="100" fill="#161a22" stroke="#e8e6df" stroke-width="3" />
+            <text x="960" y="612" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">一起事件</text>
+          </g>
+        </g>
+        <g id="th-p1" class="h"><rect x="420" y="150" width="360" height="80" rx="40" fill="#161a22" stroke="#83C167" stroke-width="3" /><text x="600" y="203" font-size="38" font-weight="700" fill="#83C167" text-anchor="middle">来源标签</text></g>
+        <g id="th-p2" class="h"><rect x="1140" y="150" width="360" height="80" rx="40" fill="#161a22" stroke="#58C4DD" stroke-width="3" /><text x="1320" y="203" font-size="38" font-weight="700" fill="#58C4DD" text-anchor="middle">结论标签</text></g>
+        <path id="th-a1" class="dr h" pathLength="1" d="M600 240 V486" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#th-ag)" />
+        <path id="th-a2" class="dr h" pathLength="1" d="M1320 240 V540" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#th-ab)" />
+        <g id="th-steps" class="h">
+          <rect x="1020" y="560" width="180" height="80" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="1110" y="610" font-size="28" fill="#e8e6df" text-anchor="middle">第 1 步</text>
+          <rect x="1230" y="560" width="180" height="80" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="1320" y="610" font-size="28" fill="#e8e6df" text-anchor="middle">第 2 步</text>
+          <rect x="1440" y="560" width="180" height="80" rx="10" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="1530" y="610" font-size="28" fill="#e8e6df" text-anchor="middle">第 3 步</text>
+          <path d="M1204 600 H1226 M1414 600 H1436" stroke="#8a8f99" stroke-width="3" />
+        </g>
+        <text id="th-k1" class="h" x="600" y="790" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">事件级</text>
+        <text id="th-k2" class="h" x="1320" y="720" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">步骤级</text>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      IN("#th-ev", at(0, 0.02), 0.6, { scale: 0.7, svgOrigin: "960 600" }, { scale: 1 });
+      DRAW("#th-r1", at(0, 0.12), 0.4); IN("#th-l1", at(0, 0.2), 0.5);
+      DRAW("#th-r2", at(0, 0.32), 0.4); IN("#th-l2", at(0, 0.4), 0.5);
+      DRAW("#th-r3", at(0, 0.52), 0.4); IN("#th-l3", at(0, 0.6), 0.5);
+
+      tl.to("#th-rays", { opacity: 0.3, duration: 0.4 }, at(1, 0.05));
+      IN("#th-p1", at(1, 0.15), 0.6, { y: -16 });
+      IN("#th-p2", at(1, 0.4), 0.6, { y: -16 });
+
+      OUT("#th-rays", at(2, 0.0), 0.3);
+      tl.to("#th-evm", { x: -360, duration: 0.7, ease: "power2.inOut" }, at(2, 0.05));
+      IN("#th-steps", at(2, 0.25), 0.6, { y: 16 });
+      ARROW("#th-a1", at(2, 0.3), 0.5); IN("#th-k1", at(2, 0.4));
+      ARROW("#th-a2", at(2, 0.5), 0.5); IN("#th-k2", at(2, 0.6));
+
+      tl.to("#th-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["three"] = tl;
+    })();
+  </script>
+</template>

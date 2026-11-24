@@ -1,0 +1,82 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 tech，id 前缀 te- -->
+  <div id="root" data-composition-id="tech" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="te-all">
+        <text id="te-h0" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">按手法 · 损失合计（前 6）</text>
+        <text id="te-h1" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">按手法 · 损失合计（排除 <tspan class="mono">Binance</tspan>）</text>
+        <text id="te-h2" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">按手法 · 事件数</text>
+        <text id="te-n0" class="h" x="520" y="330" font-size="32" fill="#e8e6df" text-anchor="end">私钥/签名者失陷</text><rect id="te-b0" class="h" x="560" y="298" width="0" height="44" rx="4" fill="#F0B90B" />
+        <text id="te-n1" class="h" x="520" y="426" font-size="32" fill="#e8e6df" text-anchor="end">合约逻辑漏洞</text><rect id="te-b1" class="h" x="560" y="394" width="0" height="44" rx="4" fill="#F0B90B" />
+        <text id="te-n2" class="h" x="520" y="522" font-size="32" fill="#e8e6df" text-anchor="end">根因未公开</text><rect id="te-b2" class="h" x="560" y="490" width="0" height="44" rx="4" fill="#F0B90B" />
+        <text id="te-n3" class="h" x="520" y="618" font-size="32" fill="#e8e6df" text-anchor="end">盲签与界面篡改</text><rect id="te-b3" class="h" x="560" y="586" width="0" height="44" rx="4" fill="#F0B90B" />
+        <text id="te-n4" class="h" x="520" y="714" font-size="32" fill="#e8e6df" text-anchor="end">验证者/多签阈值</text><rect id="te-b4" class="h" x="560" y="682" width="0" height="44" rx="4" fill="#F0B90B" />
+        <text id="te-n5" class="h" x="520" y="810" font-size="32" fill="#e8e6df" text-anchor="end">第三方供应商通道</text><rect id="te-b5" class="h" x="560" y="778" width="0" height="44" rx="4" fill="#F0B90B" />
+        <rect id="te-bin" class="h" x="809.5" y="298" width="790.5" height="44" rx="4" fill="#FC6255" />
+        <text id="te-binl" class="h" x="1205" y="280" font-size="28" font-weight="700" fill="#FC6255" text-anchor="middle"><tspan class="mono">Binance</tspan> 一起 $63.4 亿</text>
+        <g id="te-vs" class="h" font-size="30" font-weight="700" fill="#F0B90B" text-anchor="end"><text id="te-v0" x="1840" y="330">$83.4 亿</text><text x="1840" y="426">$30.6 亿</text><text x="1840" y="522">$20 亿</text><text x="1840" y="618">$17.4 亿</text><text x="1840" y="714">$14.2 亿</text><text x="1840" y="810">$7.55 亿</text></g>
+        <text id="te-v0b" class="h" x="1840" y="330" font-size="30" font-weight="700" fill="#F0B90B" text-anchor="end">$20 亿</text>
+        <text id="te-first" class="h" x="1624" y="426" font-size="28" font-weight="700" fill="#83C167">第一</text>
+        <g id="te-vc" class="h" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="end"><text x="1840" y="330">31 起</text><text x="1840" y="426">41 起</text><text x="1840" y="522">53 起</text><text x="1840" y="618">3 起</text><text x="1840" y="714">8 起</text><text x="1840" y="810">8 起</text></g>
+        <text id="te-note" class="h" x="960" y="930" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle">披露不足 <tspan fill="#FC6255">≠</tspan> 手法最常见</text>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      const W0 = [1040.0, 382.1, 249.4, 216.9, 177.0, 94.1], W1 = [679.1, 1040.0, 678.9, 590.4, 481.8, 256.2], W2 = [608.3, 804.5, 1040.0, 58.9, 157.0, 157.0];
+      const SET = (W, t, d, extra = {}) => W.forEach((w, i) => tl.to("#te-b" + i, { attr: { width: w, ...extra }, duration: d, ease: "power2.inOut" }, t + i * 0.04));
+
+      // L0
+      IN("#te-h0", at(0, 0.02));
+      for (let i = 0; i < 6; i++) { IN("#te-n" + i, at(0, 0.08 + i * 0.04), 0.4); tl.set("#te-b" + i, { opacity: 1 }, at(0, 0.1)); }
+      SET(W0, at(0, 0.15), 0.9);
+      IN("#te-vs", at(0, 0.5), 0.5);
+
+      // L1 Binance 占了大头；排除后合约逻辑漏洞第一
+      IN("#te-bin", at(1, 0.05), 0.4);
+      IN("#te-binl", at(1, 0.1), 0.4);
+      OUT("#te-bin", at(1, 0.4), 0.4); OUT("#te-binl", at(1, 0.4), 0.4);
+      OUT("#te-h0", at(1, 0.4), 0.3); IN("#te-h1", at(1, 0.45), 0.4);
+      OUT("#te-v0", at(1, 0.4), 0.3); IN("#te-v0b", at(1, 0.5), 0.4);
+      SET(W1, at(1, 0.45), 0.8);
+      tl.to("#te-b1", { attr: { stroke: "#83C167", "stroke-width": 4 }, duration: 0.3 }, at(1, 0.65));
+      IN("#te-first", at(1, 0.68), 0.4);
+
+      // L2 事件数
+      OUT("#te-h1", at(2, 0.0), 0.3); IN("#te-h2", at(2, 0.08), 0.4);
+      OUT("#te-vs", at(2, 0.0), 0.3); OUT("#te-v0b", at(2, 0.0), 0.3); OUT("#te-first", at(2, 0.0), 0.3);
+      tl.to("#te-b1", { attr: { "stroke-width": 0 }, duration: 0.3 }, at(2, 0.0));
+      SET(W2, at(2, 0.1), 0.8, { fill: "#8a8f99" });
+      tl.to("#te-b2", { attr: { fill: "#e8e6df" }, duration: 0.4 }, at(2, 0.45));
+      IN("#te-vc", at(2, 0.4), 0.5);
+
+      // L3 披露不足
+      tl.to("#te-b2", { attr: { fill: "#0f1117", stroke: "#e8e6df", "stroke-width": 3, "stroke-dasharray": "10 8" }, duration: 0.5 }, at(3, 0.1));
+      IN("#te-note", at(3, 0.3), 0.6, { y: 16 });
+
+      tl.to("#te-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["tech"] = tl;
+    })();
+  </script>
+</template>

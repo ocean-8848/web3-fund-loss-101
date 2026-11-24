@@ -302,6 +302,10 @@ a.lab-link::after{content:" ▸";color:var(--danger);font-size:.85em}
 .barrow .v{font-family:var(--f-mono);font-size:12px;text-align:right}
 @media (max-width:560px){.barrow{grid-template-columns:96px minmax(0,1fr) 70px}}
 
+.slides-cta{display:flex;align-items:center;gap:10px;margin:0 0 18px;padding:10px 14px;border:1px solid var(--line);border-left:3px solid var(--danger);border-radius:8px;background:var(--surface);color:var(--ink);text-decoration:none}
+.slides-cta:hover{border-color:var(--danger)}
+.slides-cta b{color:var(--danger)}
+.slides-cta span{color:var(--muted);font-size:13px}
 .pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:56px}
 .pager a{display:grid;gap:2px;padding:11px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;color:var(--ink);background:var(--surface);min-width:0}
 .pager a:hover{border-color:var(--danger)}
@@ -326,6 +330,7 @@ a.lab-link::after{content:" ▸";color:var(--danger);font-size:.85em}
   <button class="icon-btn" id="menuBtn" type="button" aria-label="打开目录">☰ 目录</button>
   <a class="brand" href="#home"><b>Web3 行业安全<em>资损</em> 101</b><span class="tick">CEX · DeFi · BRIDGE · WALLET · 2016–2026</span></a>
   <span class="spacer"></span>
+  <a class="icon-btn" href="slides.html">▶ Slides</a>
   <a class="icon-btn opt" href="#d03">事件库</a>
   <a class="icon-btn" href="#labs">实验室</a>
 </header>
@@ -356,6 +361,7 @@ a.lab-link::after{content:" ▸";color:var(--danger);font-size:.85em}
 <script src="data/events.js"></script>
 <script src="data/evsrc.js"></script>
 <script src="data/labs.js"></script>
+<script src="data/slides.js"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -540,7 +546,7 @@ function navTo(id){
   const d=byId[id]||byId.home;
   if(cleanup){try{cleanup()}catch(e){} cleanup=null;}
   const v=$("#view");v.className="doc"+(d.wide?" wide":"");
-  v.innerHTML=(d.render?d.render():d.html)+pager(d);
+  v.innerHTML=slidesCta(d)+(d.render?d.render():d.html)+pager(d);
   if(d.after)cleanup=d.after(v)||null;
   renderMermaid(v);bindTables(v);if(d.id!=="d04")annotate(v);
   $$(".navlink").forEach(a=>a.toggleAttribute("aria-current",a.dataset.id===d.id));
@@ -549,6 +555,7 @@ function navTo(id){
   window.scrollTo(0,0);
 }
 H.navTo=navTo;
+function slidesCta(d){const s=H.slides&&H.slides[d.id];return s?`<a class="slides-cta" href="slides.html#${d.id}"><b>▶ 看 Slides</b><span>${s.pages} 页动画，几分钟过完本章要点</span></a>`:""}
 function pager(d){const list=H.docs.filter(x=>!x.soon);const i=list.indexOf(d);if(i<0)return "";const p=list[i-1],n=list[i+1];
   return `<nav class="pager">${p?`<a href="#${p.id}"><span class="k">上一章</span><span class="t">${p.code} ${esc(p.title)}</span></a>`:"<span></span>"}${n?`<a class="next" href="#${n.id}"><span class="k">下一章</span><span class="t">${n.code} ${esc(n.title)}</span></a>`:""}</nav>`;}
 function route(){const id=(location.hash||"#home").slice(1);navTo(byId[id]?id:"home");}

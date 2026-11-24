@@ -1,0 +1,146 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 fix，id 前缀 fx- -->
+  <div id="root" data-composition-id="fix" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="fx-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+        <marker id="fx-arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="fx-all">
+        <!-- L0 L1 事件条形图 -->
+        <g id="fx-chart">
+          <text id="fx-tot" class="h" x="960" y="150" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">8 起 · 已披露损失合计 <tspan fill="#FC6255">$14.2 亿</tspan></text>
+          <g id="fx-rows" font-size="30">
+            <g class="fx-r h"><text x="560" y="278" fill="#e8e6df" text-anchor="end">Ronin Bridge</text><rect class="fx-b" data-w="1000" x="590" y="250" width="1000" height="40" rx="5" fill="#FC6255" /><text x="1606" y="280" fill="#e8e6df">$6.25 亿</text></g>
+            <g class="fx-r fx-dim h"><text x="560" y="354" fill="#e8e6df" text-anchor="end">KelpDAO</text><rect class="fx-b" data-w="467" x="590" y="326" width="467" height="40" rx="5" fill="#FC6255" /><text x="1073" y="356" fill="#e8e6df">$2.92 亿</text></g>
+            <g class="fx-r fx-dim h"><text x="560" y="430" fill="#e8e6df" text-anchor="end">Drift</text><rect class="fx-b" data-w="453" x="590" y="402" width="453" height="40" rx="5" fill="#FC6255" /><text x="1059" y="432" fill="#e8e6df">$2.83 亿</text></g>
+            <g class="fx-r fx-dim h"><text x="560" y="506" fill="#e8e6df" text-anchor="end">Harmony Horizon</text><rect class="fx-b" data-w="160" x="590" y="478" width="160" height="40" rx="5" fill="#FC6255" /><text x="766" y="508" fill="#e8e6df">$1 亿</text></g>
+            <g class="fx-r fx-dim h"><text x="560" y="582" fill="#e8e6df" text-anchor="end">Orbit Bridge</text><rect class="fx-b" data-w="130" x="590" y="554" width="130" height="40" rx="5" fill="#FC6255" /><text x="736" y="584" fill="#e8e6df">$81.5M</text></g>
+            <g class="fx-r fx-dim h"><text x="560" y="658" fill="#e8e6df" text-anchor="end">AFX Bridge</text><rect class="fx-b" data-w="39" x="590" y="630" width="39" height="40" rx="5" fill="#FC6255" /><text x="645" y="660" fill="#e8e6df">$24M</text></g>
+            <g class="fx-r fx-dim h"><text x="560" y="734" fill="#e8e6df" text-anchor="end">THORChain</text><rect class="fx-b" data-w="17" x="590" y="706" width="17" height="40" rx="5" fill="#FC6255" /><text x="623" y="736" fill="#e8e6df">$11M</text></g>
+            <g class="fx-r fx-dim h"><text x="560" y="810" fill="#e8e6df" text-anchor="end">Shibarium Bridge</text><rect class="fx-b" data-w="4" x="590" y="782" width="4" height="40" rx="2" fill="#FC6255" /><text x="610" y="812" fill="#e8e6df">$2.4M</text></g>
+          </g>
+          <path id="fx-ten" class="dr" pathLength="1" d="M606 236 V770" stroke="#F0B90B" stroke-width="3" stroke-dasharray="1" fill="none" />
+          <text id="fx-tenl" class="h" x="606" y="884" font-size="30" font-weight="700" fill="#F0B90B" text-anchor="middle">$10M 线：7 起在右侧</text>
+        </g>
+
+        <!-- L2 按组织设计阈值 -->
+        <text id="fx-p1" class="h" x="80" y="372" font-size="30" font-weight="700" fill="#83C167">P0</text>
+        <g id="fx-orgs" class="h" fill="#161f15" stroke="#83C167" stroke-width="2.5">
+          <rect x="252" y="312" width="256" height="96" rx="48" /><rect x="572" y="312" width="256" height="96" rx="48" /><rect x="892" y="312" width="256" height="96" rx="48" />
+        </g>
+        <g id="fx-dots" fill="#132530" stroke="#58C4DD" stroke-width="3">
+          <circle class="fx-d fx-dA h" cx="300" cy="360" r="30" /><circle class="fx-d fx-dA h" cx="380" cy="360" r="30" /><circle class="fx-d fx-dA h" cx="460" cy="360" r="30" />
+          <circle class="fx-d fx-dB h" cx="620" cy="360" r="30" /><circle class="fx-d fx-dB h" cx="700" cy="360" r="30" /><circle class="fx-d fx-dB h" cx="780" cy="360" r="30" />
+          <circle class="fx-d h" cx="940" cy="360" r="30" /><circle class="fx-d h" cx="1020" cy="360" r="30" /><circle class="fx-d h" cx="1100" cy="360" r="30" />
+        </g>
+        <text id="fx-th" class="h" x="1220" y="340" font-size="30" fill="#8a8f99">阈值 7 / 9，每个组织 3 个</text>
+        <text id="fx-min" class="h" x="1220" y="402" font-size="40" font-weight="700" fill="#83C167">最少攻破 3 个组织</text>
+        <text id="fx-lab" class="h" x="1220" y="462" font-size="30" font-weight="700" fill="#FC6255">L3 实验：攻破 2 个组织，6 / 9，还差 1 个</text>
+
+        <!-- L3 临时授权到期 -->
+        <text id="fx-p2" class="h" x="80" y="626" font-size="30" font-weight="700" fill="#83C167">P0</text>
+        <g id="fx-tmp" class="h">
+          <rect id="fx-tmpr" x="250" y="570" width="300" height="90" rx="12" fill="#1d1830" stroke="#B48EF0" stroke-width="3" stroke-dasharray="10 8" />
+          <text x="400" y="626" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">临时授权</text>
+        </g>
+        <path id="fx-tline" class="dr" pathLength="1" d="M560 615 H1130" stroke="#83C167" stroke-width="4" fill="none" />
+        <g id="fx-exp" class="h">
+          <path d="M1140 590 V640" stroke="#FC6255" stroke-width="5" />
+          <text x="1140" y="575" font-size="28" font-weight="700" fill="#FC6255" text-anchor="middle">到期</text>
+        </g>
+                <text id="fx-mon" class="h" x="1220" y="626" font-size="30" fill="#e8e6df">每月比对：签名权限 ↔ 审批单</text>
+
+        <!-- L4 时间锁 -->
+        <text id="fx-p3" class="h" x="80" y="848" font-size="30" font-weight="700" fill="#83C167">P1</text>
+        <g id="fx-sub" class="h">
+          <rect x="250" y="800" width="240" height="80" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+          <text x="370" y="851" font-size="30" fill="#e8e6df" text-anchor="middle">提交变更</text>
+        </g>
+        <g id="fx-lock" class="h">
+          <rect x="540" y="812" width="440" height="56" rx="10" fill="#161f15" stroke="#83C167" stroke-width="2.5" />
+          <text class="mono" x="760" y="850" font-size="30" fill="#83C167" text-anchor="middle">timelock &gt; 0</text>
+        </g>
+        <rect id="fx-lockf" x="540" y="812" width="0" height="56" rx="10" fill="#83C167" opacity="0.25" />
+        <path id="fx-a1" class="dr h" pathLength="1" d="M494 840 H532" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#fx-arr)" />
+        <path id="fx-a2" class="dr h" pathLength="1" d="M984 840 H1032" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#fx-arr)" />
+        <g id="fx-eff" class="h">
+          <rect x="1040" y="800" width="140" height="80" rx="12" fill="#161a22" stroke="#83C167" stroke-width="2.5" />
+          <text x="1110" y="851" font-size="30" fill="#e8e6df" text-anchor="middle">生效</text>
+        </g>
+        <path id="fx-can" class="dr h" pathLength="1" d="M760 874 V940" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#fx-arr2)" />
+        <text id="fx-canl" class="h" x="790" y="942" font-size="30" font-weight="700" fill="#FC6255">可取消</text>
+        <text id="fx-adm" class="h" x="1220" y="851" font-size="30" fill="#e8e6df">阈值变更 · 管理员操作</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0 条形图
+      IN("#fx-tot", at(0, 0.02), 0.8, { y: 16 });
+      tl.fromTo(".fx-r", { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.1 }, at(0, 0.2));
+      tl.fromTo(".fx-b", { attr: { width: 0 } }, { attr: { width: (i, el) => +el.dataset.w }, duration: 0.7, ease: "power2.out", stagger: 0.1 }, at(0, 0.2));
+
+      // L1 Ronin + $10M 线
+      tl.to(".fx-dim", { opacity: 0.45, duration: 0.4 }, at(1, 0.05));
+      DRAW("#fx-ten", at(1, 0.4), 0.6);
+      tl.to(".fx-dim", { opacity: 1, duration: 0.4 }, at(1, 0.5));
+      IN("#fx-tenl", at(1, 0.55));
+
+      // L2 按组织设计阈值
+      OUT("#fx-chart", at(2, 0.0));
+      IN("#fx-p1", at(2, 0.1));
+      tl.fromTo(".fx-d", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05 }, at(2, 0.1));
+      IN("#fx-orgs", at(2, 0.3));
+      IN("#fx-th", at(2, 0.4));
+      IN("#fx-min", at(2, 0.55), 0.6, { x: -20 });
+
+      // L3 临时授权到期
+      IN("#fx-p2", at(3, 0.02));
+      IN("#fx-tmp", at(3, 0.05));
+      DRAW("#fx-tline", at(3, 0.15), 0.9);
+      IN("#fx-exp", at(3, 0.4));
+      tl.to("#fx-tmpr", { attr: { stroke: "#8a8f99" }, duration: 0.3 }, at(3, 0.45));
+      tl.to("#fx-tmp", { opacity: 0.4, duration: 0.4 }, at(3, 0.5));
+      IN("#fx-mon", at(3, 0.55));
+
+      // L4 时间锁
+      IN("#fx-p3", at(4, 0.02));
+      IN("#fx-sub", at(4, 0.05));
+      ARROW("#fx-a1", at(4, 0.15), 0.3);
+      IN("#fx-lock", at(4, 0.2));
+      tl.to("#fx-lockf", { attr: { width: 440 }, duration: 1.0, ease: "none" }, at(4, 0.25));
+      ARROW("#fx-a2", at(4, 0.45), 0.3);
+      IN("#fx-eff", at(4, 0.5));
+      ARROW("#fx-can", at(4, 0.55), 0.4);
+      IN("#fx-canl", at(4, 0.6));
+      IN("#fx-adm", at(4, 0.65));
+
+      // L5 L3 实验：勾选组织
+      tl.to(".fx-dA", { attr: { fill: "#2a1616", stroke: "#FC6255" }, duration: 0.3 }, at(5, 0.1));
+      tl.to(".fx-dB", { attr: { fill: "#2a1616", stroke: "#FC6255" }, duration: 0.3 }, at(5, 0.3));
+      IN("#fx-lab", at(5, 0.45), 0.6, { y: 10 });
+
+      tl.to("#fx-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["fix"] = tl;
+    })();
+  </script>
+</template>

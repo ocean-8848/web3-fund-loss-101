@@ -1,0 +1,88 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 tally，id 前缀 tl- -->
+  <div id="root" data-composition-id="tally" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="tl-all">
+        <text id="tl-head" class="h" x="960" y="130" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">手册收录的 G03 事件（按损失排序）</text>
+        <g id="tl-leg" class="h">
+          <rect x="560" y="182" width="36" height="28" rx="4" fill="#FC6255" stroke="#FC6255" stroke-width="2.5" />
+          <text x="612" y="206" font-size="30" fill="#e8e6df">盲签与界面篡改 <tspan font-weight="700" fill="#FC6255">3</tspan> 起</text>
+          <rect x="1000" y="182" width="36" height="28" rx="4" fill="#0f1117" stroke="#FC6255" stroke-width="2.5" />
+          <text x="1052" y="206" font-size="30" fill="#e8e6df">第三方供应商通道 <tspan font-weight="700" fill="#FC6255">8</tspan> 起</text>
+        </g>
+        <g id="tl-names" class="h">
+          <text x="430" y="290" font-size="28" fill="#e8e6df" text-anchor="end">Bybit</text>
+<text x="430" y="350" font-size="28" fill="#e8e6df" text-anchor="end">Bitget</text>
+<text x="430" y="410" font-size="28" fill="#e8e6df" text-anchor="end">DMM Bitcoin</text>
+<text x="430" y="470" font-size="28" fill="#e8e6df" text-anchor="end">WazirX</text>
+<text x="430" y="530" font-size="28" fill="#e8e6df" text-anchor="end">Radiant 2024</text>
+<text x="430" y="590" font-size="28" fill="#e8e6df" text-anchor="end">SwissBorg / Kiln</text>
+<text x="430" y="650" font-size="28" fill="#e8e6df" text-anchor="end">Fortress Trust</text>
+<text x="430" y="710" font-size="28" fill="#e8e6df" text-anchor="end">FixedFloat</text>
+<text x="430" y="770" font-size="28" fill="#e8e6df" text-anchor="end">Remitano</text>
+<text x="430" y="830" font-size="28" fill="#e8e6df" text-anchor="end">INX 关联供应商</text>
+<text x="430" y="890" font-size="28" fill="#e8e6df" text-anchor="end">ONUS</text>
+<text x="460" y="890" font-size="28" fill="#8a8f99">金额未披露</text>
+        </g>
+        <g id="tl-bars">
+          <rect x="460" y="260" width="1100.0" height="40" rx="4" fill="#FC6255" stroke="#FC6255" stroke-width="2.5" data-w="1100.0" />
+<rect x="460" y="320" width="292.3" height="40" rx="4" fill="#0f1117" stroke="#FC6255" stroke-width="2.5" data-w="292.3" />
+<rect x="460" y="380" width="229.8" height="40" rx="4" fill="#0f1117" stroke="#FC6255" stroke-width="2.5" data-w="229.8" />
+<rect x="460" y="440" width="177.1" height="40" rx="4" fill="#FC6255" stroke="#FC6255" stroke-width="2.5" data-w="177.1" />
+<rect x="460" y="500" width="37.7" height="40" rx="4" fill="#FC6255" stroke="#FC6255" stroke-width="2.5" data-w="37.7" />
+<rect x="460" y="560" width="31.3" height="40" rx="4" fill="#0f1117" stroke="#FC6255" stroke-width="2.5" data-w="31.3" />
+<rect x="460" y="620" width="10.2" height="40" rx="4" fill="#0f1117" stroke="#FC6255" stroke-width="2.5" data-w="10.2" />
+<rect x="460" y="680" width="3.0" height="40" rx="4" fill="#0f1117" stroke="#FC6255" stroke-width="2.5" data-w="3.0" />
+<rect x="460" y="740" width="3.0" height="40" rx="4" fill="#0f1117" stroke="#FC6255" stroke-width="2.5" data-w="3.0" />
+<rect x="460" y="800" width="3.0" height="40" rx="4" fill="#0f1117" stroke="#FC6255" stroke-width="2.5" data-w="3.0" />
+        </g>
+        <text id="tl-v0" class="h" x="1578" y="290" font-size="30" font-weight="700" fill="#F0B90B">$14.6 亿</text>
+<text id="tl-v1" class="h" x="770" y="350" font-size="30" font-weight="700" fill="#F0B90B">$3.88 亿</text>
+<text id="tl-v2" class="h" x="708" y="410" font-size="30" font-weight="700" fill="#F0B90B">$3.05 亿</text>
+<text id="tl-v3" class="h" x="655" y="470" font-size="30" font-weight="700" fill="#F0B90B">$2.35 亿</text>
+        <path id="tl-hl" class="dr" pathLength="1" d="M446 248 H1790 V312 H446 Z" stroke="#F0B90B" stroke-width="3" fill="none" />
+        <g id="tl-tot" class="h">
+          <text x="1450" y="610" font-size="32" fill="#8a8f99" text-anchor="middle">已披露损失合计</text>
+          <text x="1450" y="720" font-size="96" font-weight="700" fill="#F0B90B" text-anchor="middle">$<tspan id="tl-c">0</tspan> 亿</text>
+          <text x="1450" y="800" font-size="32" fill="#e8e6df" text-anchor="middle"><tspan fill="#F0B90B" font-weight="700">7</tspan> 起超过 1,000 万美元</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      IN("#tl-head", at(0, 0.02), 0.7, { y: 15 });
+      IN("#tl-names", at(0, 0.1), 0.6);
+      tl.fromTo("#tl-bars rect", { attr: { width: 0 } }, { attr: { width: (i, el) => +el.getAttribute("data-w") }, duration: 0.9, ease: "power2.out", stagger: 0.06 }, at(0, 0.2));
+      IN("#tl-leg", at(0, 0.5), 0.6);
+
+      IN("#tl-tot", at(1, 0.05), 0.5);
+      COUNT("#tl-c", 0, 25, at(1, 0.1), 1.2);
+
+      DRAW("#tl-hl", at(2, 0.1), 0.7);
+      IN("#tl-v0", at(2, 0.35), 0.5);
+
+      IN("#tl-v1", at(3, 0.1), 0.4); IN("#tl-v2", at(3, 0.25), 0.4); IN("#tl-v3", at(3, 0.4), 0.4);
+      tl.to("#tl-hl", { opacity: 0.3, duration: 0.4 }, at(3, 0.05));
+
+      tl.to("#tl-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["tally"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,103 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 matrix，id 前缀 mx- -->
+  <div id="root" data-composition-id="matrix" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="mx-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+      </defs>
+      <g id="mx-all">
+        <text id="mx-title" class="h" x="960" y="120" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">防御矩阵：哪道控制能切断哪起事件</text>
+        <text id="mx-colh" class="h" x="951" y="200" font-size="28" fill="#8a8f99" text-anchor="middle">← 32 起案件 →</text>
+        <rect id="mx-top" class="h" x="100" y="224" width="1720" height="52" rx="8" fill="#F0B90B" fill-opacity="0.12" stroke="#F0B90B" stroke-width="2" />
+        <rect id="mx-cb" class="h" x="723" y="222" width="28" height="672" rx="6" fill="#58C4DD" fill-opacity="0.16" />
+        <rect id="mx-rb" class="h" x="100" y="226" width="1380" height="48" rx="6" fill="#58C4DD" fill-opacity="0.16" />
+        <g id="mx-rows"></g>
+        <path id="mx-down" class="dr h" pathLength="1" d="M395 236 V872" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#mx-arr)" />
+        <text id="mx-downl" class="h" x="395" y="925" font-size="28" fill="#F0B90B" text-anchor="middle">越接近资金</text>
+        <text id="mx-barh" class="h" x="1510" y="200" font-size="28" fill="#8a8f99">覆盖案件数</text>
+        <text id="mx-lim" class="h" x="960" y="975" font-size="30" fill="#8a8f99" text-anchor="middle"><tspan fill="#83C167">●</tspan> = 公开信息显示可以切断，不代表受害方当时没有部署</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // 数据：data/groups.js D01 的 12 个控制族 × 32 起案件（H.cases 顺序），1 = ●
+      const FAM = ["人员与终端", "身份与会话", "云与内部平台", "供应商", "前端与界面", "签名与密钥", "阈值", "合约", "经济参数", "熔断", "余额", "监控与对账"];
+      const M = ["10100001010100000001001011100110", "00000001010100000001000011110010", "00000000011110001001100011110010", "00000001111011000000010000010000",
+        "00000000110001000000001000010000", "10100000111111001101111010010100", "00100000100000001000100000000110", "01011010000000110010000100001001",
+        "00000100000000110000000000000110", "01111000001100100010000100001101", "10000000011100000000010010000000", "01110000000111001100000001100001"];
+      const KEY = ["签名与密钥", "熔断", "余额"];
+      const NS = "http://www.w3.org/2000/svg", root = document.querySelector("#mx-rows");
+      const mk = (tag, a, parent) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; };
+      const cnt = M.map(r => [...r].filter(c => c === "1").length);
+      FAM.forEach((f, i) => {
+        const cy = 250 + i * 56, g = mk("g", { id: "mx-r" + i }, root);
+        const lab = mk("text", { x: 360, y: cy + 10, "font-size": 28, fill: "#e8e6df", "text-anchor": "end", class: "mx-lab h" + (KEY.includes(f) ? " mx-key" : "") }, g);
+        lab.textContent = f;
+        [...M[i]].forEach((c, j) => {
+          const cx = 440 + j * 33;
+          mk("circle", { cx, cy, r: 3, fill: "#3a3f4a", class: "mx-emp h" }, g);
+          if (c === "1") mk("circle", { cx, cy, r: 10, fill: "#83C167", class: "mx-dot h" }, g);
+        });
+        mk("rect", { x: 1510, y: cy - 13, width: cnt[i] * 14, height: 26, rx: 4, fill: "#58C4DD", class: "mx-bar h" + (KEY.includes(f) ? " mx-keyb" : "") }, g);
+        const n = mk("text", { x: 1522 + cnt[i] * 14, y: cy + 10, "font-size": 28, "font-weight": 700, fill: "#e8e6df", class: "mx-num h" }, g);
+        n.textContent = cnt[i];
+      });
+      const order = FAM.map((_, i) => i).sort((a, b) => cnt[b] - cnt[a] || a - b);
+
+      // L0
+      IN("#mx-title", at(0, 0.02), 0.8, { y: 20 });
+      tl.fromTo(".mx-emp", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.002 }, at(0, 0.2));
+      IN("#mx-colh", at(0, 0.5));
+
+      // L1 行 / 列
+      tl.fromTo(".mx-lab", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.05 }, at(1, 0.02));
+      IN("#mx-rb", at(1, 0.3), 0.4);
+      IN("#mx-cb", at(1, 0.55), 0.4);
+
+      // L2 打点
+      OUT("#mx-rb", at(2, 0.0), 0.3); OUT("#mx-cb", at(2, 0.0), 0.3);
+      tl.fromTo(".mx-dot", { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.012, ease: "back.out(2)" }, at(2, 0.1));
+
+      // L3 越往下越接近资金
+      ARROW("#mx-down", at(3, 0.05), 0.9);
+      IN("#mx-downl", at(3, 0.45));
+
+      // L4 按覆盖数排序
+      OUT("#mx-down", at(4, 0.0), 0.3); OUT("#mx-downl", at(4, 0.0), 0.3);
+      IN("#mx-barh", at(4, 0.05));
+      tl.fromTo(".mx-bar", { opacity: 0, scaleX: 0, transformOrigin: "0% 50%" }, { opacity: 1, scaleX: 1, duration: 0.5, stagger: 0.04 }, at(4, 0.05));
+      IN(".mx-num", at(4, 0.25), 0.4);
+      order.forEach((ri, k) => tl.to("#mx-r" + ri, { y: (k - ri) * 56, duration: 0.9, ease: "power2.inOut" }, at(4, 0.4)));
+      IN("#mx-top", at(4, 0.72), 0.4);
+
+      // L5 不依赖入口
+      OUT("#mx-top", at(5, 0.0), 0.3);
+      tl.to(".mx-key", { attr: { fill: "#83C167" }, duration: 0.4 }, at(5, 0.1));
+      tl.to(".mx-keyb", { attr: { fill: "#83C167" }, duration: 0.4 }, at(5, 0.1));
+      tl.to(".mx-lab:not(.mx-key)", { opacity: 0.45, duration: 0.4 }, at(5, 0.1));
+
+      // L6 局限
+      IN("#mx-lim", at(6, 0.1), 0.7, { y: 15 });
+
+      tl.to("#mx-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["matrix"] = tl;
+    })();
+  </script>
+</template>

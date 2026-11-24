@@ -1,0 +1,101 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 sign，id 前缀 sg- -->
+  <div id="root" data-composition-id="sign" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="sg-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="sg-arrb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#58C4DD" />
+        </marker>
+      </defs>
+      <g id="sg-all">
+        <!-- L0 攻击者 → 签名能力 -->
+        <g id="sg-atk" class="h">
+          <rect x="140" y="440" width="300" height="180" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="290" y="544" font-size="38" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+        </g>
+        <g id="sg-v" class="h">
+          <rect x="700" y="340" width="520" height="380" rx="18" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="960" y="410" font-size="42" font-weight="700" fill="#B48EF0" text-anchor="middle">签名能力</text>
+        </g>
+        <path id="sg-get" class="dr h" pathLength="1" d="M448 530 H688" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#sg-arr)" />
+        <text id="sg-getl" class="h" x="568" y="504" font-size="30" fill="#FC6255" text-anchor="middle">拿到</text>
+
+        <!-- L1 三种形态 -->
+        <g id="sg-i1" class="h">
+          <g stroke="#F0B90B" stroke-width="5" fill="none" stroke-linecap="round">
+            <circle cx="782" cy="540" r="16" /><path d="M798 540 H836 M822 540 V552 M834 540 V550" />
+          </g>
+          <text x="805" y="620" font-size="30" fill="#e8e6df" text-anchor="middle">私钥</text>
+        </g>
+        <g id="sg-i2" class="h">
+          <circle cx="960" cy="540" r="32" fill="#221d10" stroke="#F0B90B" stroke-width="3" />
+          <path d="M960 540 V508 M960 540 L988 556 M960 540 L932 556" stroke="#F0B90B" stroke-width="3" />
+          <text x="960" y="620" font-size="30" fill="#e8e6df" text-anchor="middle">MPC 分片</text>
+        </g>
+        <g id="sg-i3" class="h">
+          <rect x="1070" y="514" width="100" height="52" rx="8" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text class="mono" x="1120" y="550" font-size="28" fill="#58C4DD" text-anchor="middle">API</text>
+          <text x="1120" y="620" font-size="30" fill="#e8e6df" text-anchor="middle">签名服务</text>
+        </g>
+
+        <!-- L2 签出交易 -->
+        <path id="sg-out" class="dr h" pathLength="1" d="M1228 530 H1410" stroke="#58C4DD" stroke-width="3.5" fill="none" marker-end="url(#sg-arrb)" />
+        <g id="sg-tx" class="h">
+          <rect x="1420" y="400" width="360" height="260" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1600" y="460" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">交易</text>
+          <path d="M1460 500 H1740 M1460 540 H1700 M1460 580 H1720" stroke="#8a8f99" stroke-width="3" />
+        </g>
+        <g id="sg-ok" class="h">
+          <g transform="rotate(-8 1600 620)">
+            <rect x="1490" y="590" width="220" height="64" rx="8" fill="#0f1117" stroke="#83C167" stroke-width="3.5" />
+            <text x="1600" y="634" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">签名有效</text>
+          </g>
+        </g>
+        <text id="sg-legal" class="h" x="1600" y="740" font-size="32" fill="#e8e6df" text-anchor="middle">链上看：完全“合法”</text>
+      </g>
+      <g id="sg-term" class="h">
+        <rect x="70" y="56" width="640" height="132" rx="14" fill="#161a22" stroke="#B48EF0" stroke-width="2.5" />
+        <text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">签名能力</text>
+        <text x="100" y="160" font-size="28" fill="#e8e6df">私钥、MPC 分片或签名服务调用</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      IN("#sg-v", at(0, 0.05), 0.8, { y: 20 });
+      IN("#sg-atk", at(0, 0.25), 0.7, { x: -30 });
+      ARROW("#sg-get", at(0, 0.45), 0.6);
+      IN("#sg-getl", at(0, 0.55), 0.5);
+
+      IN("#sg-term", at(1, 0.0));
+      IN("#sg-i1", at(1, 0.15), 0.5, { y: 15 });
+      IN("#sg-i2", at(1, 0.3), 0.5, { y: 15 });
+      IN("#sg-i3", at(1, 0.45), 0.5, { y: 15 });
+
+      ARROW("#sg-out", at(2, 0.05), 0.5);
+      IN("#sg-tx", at(2, 0.15), 0.6, { x: -20 });
+      IN("#sg-ok", at(2, 0.4), 0.35, { scale: 1.6, svgOrigin: "1600 620" }, { scale: 1, ease: "back.out(2)" });
+      IN("#sg-legal", at(2, 0.55), 0.6);
+
+      tl.to("#sg-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#sg-term", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["sign"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,148 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 guard，id 前缀 gd- -->
+  <div id="root" data-composition-id="guard" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="gd-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="gd-all">
+        <g id="gd-main">
+          <text id="gd-head" class="h" x="960" y="160" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">签名前的四道核验</text>
+          <!-- 链路 -->
+          <g id="gd-pipe" class="h">
+            <rect x="100" y="450" width="280" height="140" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+            <text x="240" y="532" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">交易请求</text>
+            <path d="M388 520 H510" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#gd-arrg)" />
+            <rect id="gd-b2" x="520" y="450" width="360" height="140" rx="16" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="700" y="532" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">界面 / 通道</text>
+            <path d="M888 520 H1010" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#gd-arrg)" />
+            <rect x="1020" y="450" width="280" height="140" rx="16" fill="#161a22" stroke="#e8e6df" stroke-width="3" />
+            <text x="1160" y="532" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">签名者</text>
+            <path d="M1308 520 H1430" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#gd-arrg)" />
+            <rect x="1440" y="450" width="360" height="140" rx="16" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+            <text x="1620" y="532" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">Safe 多签</text>
+          </g>
+
+          <!-- L0 独立设备 -->
+          <path id="gd-dl" class="h" d="M1160 690 V598" stroke="#83C167" stroke-width="2.5" stroke-dasharray="8 7" fill="none" />
+          <g id="gd-dev" class="h">
+            <rect x="980" y="690" width="360" height="170" rx="16" fill="#142016" stroke="#83C167" stroke-width="3" />
+            <text x="1160" y="740" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P0 独立设备</text>
+            <text x="1160" y="790" font-size="28" fill="#e8e6df" text-anchor="middle">解码 <tspan class="mono">calldata</tspan></text>
+            <text x="1160" y="834" font-size="28" fill="#e8e6df" text-anchor="middle">核对 <tspan class="mono">safeTxHash</tspan></text>
+          </g>
+
+          <!-- L1 Safe Guard -->
+          <g id="gd-sg" class="h">
+            <text class="mono" x="1620" y="300" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">Safe Guard</text>
+            <path d="M1620 326 L1650 338 V360 Q1650 380 1620 392 Q1590 380 1590 360 V338 Z" fill="#142016" stroke="#83C167" stroke-width="3" />
+            <text x="1620" y="424" font-size="28" fill="#e8e6df" text-anchor="middle">禁 delegatecall · 禁改实现</text>
+          </g>
+          <!-- L2 测试网回滚 -->
+          <g id="gd-tko">
+            <g id="gd-tk" class="h">
+              <rect x="1450" y="612" width="150" height="48" rx="8" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+              <text x="1525" y="646" font-size="28" fill="#FC6255" text-anchor="middle">升级交易</text>
+            </g>
+          </g>
+          <text id="gd-rb" class="h" x="1620" y="710" font-size="28" font-weight="700" fill="#83C167" text-anchor="middle">测试网：必须回滚</text>
+
+          <!-- L3 端到端签名 -->
+          <path id="gd-e2e" class="dr" pathLength="1" d="M240 442 C240 330 1160 330 1160 442" stroke="#83C167" stroke-width="3" fill="none" />
+          <text id="gd-e2el" class="h" x="700" y="326" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P1 端到端签名</text>
+          <!-- L4 改一个字节 -->
+          <g id="gd-byte" class="h">
+            <rect x="904" y="545" width="92" height="42" rx="8" fill="#FC6255" />
+            <text class="mono" x="950" y="576" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">0x??</text>
+          </g>
+          <g id="gd-x" class="h" stroke="#FC6255" stroke-width="6" stroke-linecap="round"><path d="M934 500 L964 530 M964 500 L934 530" /></g>
+          <text id="gd-xl" class="h" x="950" y="640" font-size="28" font-weight="700" fill="#FC6255" text-anchor="middle">改 1 字节 → 拒绝</text>
+
+          <!-- L5 供应商评估 -->
+          <path id="gd-vl" class="h" d="M700 710 V612" stroke="#83C167" stroke-width="2.5" stroke-dasharray="8 7" fill="none" />
+          <g id="gd-ven" class="h">
+            <rect x="440" y="710" width="520" height="180" rx="16" fill="#142016" stroke="#83C167" stroke-width="3" />
+            <text x="700" y="760" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P1 供应商安全评估</text>
+            <text x="700" y="806" font-size="28" fill="#e8e6df" text-anchor="middle">开发终端 · 云会话 · 发布流程</text>
+            <text x="700" y="852" font-size="28" fill="#e8e6df" text-anchor="middle">合同写明审计权</text>
+          </g>
+        </g>
+
+        <!-- L6 L2 实验 -->
+        <g id="gd-lab">
+          <text id="gd-lh" class="h" x="960" y="300" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle"><tspan fill="#58C4DD">L2</tspan> 盲签实验：界面与数据不一致</text>
+          <g id="gd-l1" class="h">
+            <rect x="360" y="420" width="520" height="160" rx="16" fill="#161a22" stroke="#B48EF0" stroke-width="3" />
+            <text x="620" y="480" font-size="30" fill="#8a8f99" text-anchor="middle">真实场景</text>
+            <text class="mono" x="620" y="536" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">Bybit · WazirX · Kiln</text>
+          </g>
+          <text id="gd-lx" class="h" x="960" y="518" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">×</text>
+          <g id="gd-l2" class="h">
+            <rect x="1040" y="420" width="520" height="160" rx="16" fill="#142016" stroke="#83C167" stroke-width="3" />
+            <text x="1300" y="480" font-size="30" fill="#8a8f99" text-anchor="middle">核验方式</text>
+            <text x="1300" y="536" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">签名前选一种</text>
+          </g>
+          <text id="gd-lq" class="h" x="960" y="700" font-size="40" font-weight="700" fill="#e8e6df" text-anchor="middle">签名者能否在签名前发现篡改？</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+
+      // L0
+      IN("#gd-head", at(0, 0.02), 0.7, { y: 15 });
+      IN("#gd-pipe", at(0, 0.1), 0.6);
+      IN("#gd-dl", at(0, 0.35), 0.4);
+      IN("#gd-dev", at(0, 0.4), 0.6, { y: 20 });
+
+      // L1
+      IN("#gd-sg", at(1, 0.1), 0.6, { y: -15 });
+
+      // L2 测试网升级交易被回滚
+      IN("#gd-tk", at(2, 0.05), 0.4);
+      tl.fromTo("#gd-tko", { x: 0 }, { x: 160, duration: 0.6, ease: "power2.in", immediateRender: false }, at(2, 0.15));
+      tl.to("#gd-tko", { x: 0, duration: 0.6, ease: "back.out(1.5)" }, at(2, 0.15) + 0.6);
+      tl.to("#gd-tk", { opacity: 0.4, duration: 0.3 }, at(2, 0.15) + 1.2);
+      IN("#gd-rb", at(2, 0.55), 0.5);
+
+      // L3
+      DRAW("#gd-e2e", at(3, 0.05), 0.8);
+      IN("#gd-e2el", at(3, 0.35), 0.5);
+
+      // L4
+      IN("#gd-byte", at(4, 0.05), 0.3, { y: -20 });
+      IN("#gd-x", at(4, 0.3), 0.3, { scale: 1.6, svgOrigin: "949 515" }, { scale: 1 });
+      IN("#gd-xl", at(4, 0.4), 0.5);
+
+      // L5
+      IN("#gd-vl", at(5, 0.05), 0.4);
+      IN("#gd-ven", at(5, 0.12), 0.6, { y: 20 });
+
+      // L6 L2 实验
+      OUT("#gd-main", at(6, 0.0), 0.4);
+      IN("#gd-lh", at(6, 0.08), 0.6, { y: 15 });
+      IN("#gd-l1", at(6, 0.18), 0.5, { x: -20 });
+      IN("#gd-lx", at(6, 0.28), 0.4);
+      IN("#gd-l2", at(6, 0.35), 0.5, { x: 20 });
+      IN("#gd-lq", at(6, 0.5), 0.6);
+
+      tl.to("#gd-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["guard"] = tl;
+    })();
+  </script>
+</template>

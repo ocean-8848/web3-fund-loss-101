@@ -1,0 +1,191 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 people，id 前缀 pp- -->
+  <div id="root" data-composition-id="people" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="pp-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" /></marker>
+        <marker id="pp-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#FC6255" /></marker>
+        <marker id="pp-arry" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" /></marker>
+      </defs>
+      <g id="pp-all">
+        <!-- L0 社会工程 -->
+        <g id="pp-se">
+          <g id="pp-atk" class="h" fill="none" stroke="#FC6255" stroke-width="5">
+            <circle cx="260" cy="440" r="34" /><path d="M200 580 C200 500 320 500 320 580" />
+            <text x="260" y="640" font-size="30" fill="#FC6255" stroke="none" text-anchor="middle">攻击者</text>
+          </g>
+          <g id="pp-bub" font-size="30" text-anchor="middle">
+            <g class="h"><rect x="430" y="350" width="230" height="64" rx="32" fill="#2a1616" stroke="#FC6255" stroke-width="2" /><text x="545" y="393" fill="#e8e6df">冒充身份</text></g>
+            <g class="h"><rect x="430" y="450" width="230" height="64" rx="32" fill="#2a1616" stroke="#FC6255" stroke-width="2" /><text x="545" y="493" fill="#e8e6df">紧迫感</text></g>
+            <g class="h"><rect x="430" y="550" width="230" height="64" rx="32" fill="#2a1616" stroke="#FC6255" stroke-width="2" /><text x="545" y="593" fill="#e8e6df">利用信任</text></g>
+          </g>
+          <g id="pp-vic" class="h" fill="none" stroke="#e8e6df" stroke-width="5">
+            <circle cx="860" cy="440" r="34" /><path d="M800 580 C800 500 920 500 920 580" />
+            <text x="860" y="640" font-size="30" fill="#e8e6df" stroke="none" text-anchor="middle">员工</text>
+          </g>
+          <path id="pp-do" class="dr h" pathLength="1" d="M940 510 H1188" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#pp-arrr)" />
+          <text id="pp-dol" class="h" x="1064" y="485" font-size="28" fill="#FC6255" text-anchor="middle">照做</text>
+          <g id="pp-sys" class="h">
+            <rect x="1200" y="400" width="440" height="220" rx="16" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+            <text x="1420" y="500" font-size="34" font-weight="700" fill="#58C4DD" text-anchor="middle">系统</text>
+            <text x="1420" y="560" font-size="28" fill="#83C167" text-anchor="middle">本身没被攻破</text>
+          </g>
+        </g>
+
+        <!-- L1 会话令牌 + SIM 换卡 -->
+        <g id="pp-ss">
+          <g id="pp-g1" class="h"><rect x="420" y="320" width="180" height="100" rx="12" fill="#161a22" stroke="#83C167" stroke-width="2.5" /><text x="510" y="382" font-size="30" fill="#83C167" text-anchor="middle">密码</text></g>
+          <g id="pp-g2" class="h"><rect x="680" y="320" width="180" height="100" rx="12" fill="#161a22" stroke="#83C167" stroke-width="2.5" /><text x="770" y="382" font-size="30" fill="#83C167" text-anchor="middle">MFA</text></g>
+          <path id="pp-ga" class="dr h" pathLength="1" d="M200 370 H408 M600 370 H668 M860 370 H988" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <text id="pp-gal" class="h" x="200" y="345" font-size="28" fill="#8a8f99">正常登录</text>
+          <g id="pp-acct" class="h"><rect x="1000" y="300" width="300" height="140" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="1150" y="382" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">账户</text></g>
+          <g id="pp-tk" class="h"><rect x="1340" y="344" width="200" height="52" rx="10" fill="#F0B90B" /><text x="1440" y="380" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">会话令牌</text></g>
+          <g id="pp-tk2o"><g id="pp-tk2" class="h"><rect x="1340" y="344" width="200" height="52" rx="10" fill="#FC6255" /><text x="1440" y="380" font-size="28" font-weight="700" fill="#0f1117" text-anchor="middle">偷来的令牌</text></g></g>
+          <path id="pp-by" class="dr h" pathLength="1" d="M420 560 C700 560 1060 560 1120 452" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#pp-arrr)" />
+          <text id="pp-byl" class="h" x="760" y="610" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">绕过密码和 MFA</text>
+
+          <g id="pp-sim">
+            <g id="pp-sm" class="h"><rect x="200" y="740" width="280" height="90" rx="12" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="340" y="797" font-size="30" fill="#F0B90B" text-anchor="middle">短信验证码</text></g>
+            <g id="pp-ph" class="h"><rect x="760" y="740" width="280" height="90" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="900" y="797" font-size="30" fill="#8a8f99" text-anchor="middle">受害者手机</text></g>
+            <path id="pp-s1" class="dr" pathLength="1" d="M490 785 H748" stroke="#8a8f99" stroke-width="3" fill="none" stroke-dasharray="1" />
+            <path id="pp-s1x" class="h" d="M600 765 L640 805 M640 765 L600 805" stroke="#FC6255" stroke-width="5" />
+            <path id="pp-s2" class="dr h" pathLength="1" d="M490 810 C700 900 1100 900 1308 810" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#pp-arrr)" />
+            <g id="pp-as" class="h"><rect x="1320" y="740" width="320" height="90" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="1480" y="797" font-size="30" fill="#FC6255" text-anchor="middle">攻击者的 SIM</text></g>
+          </g>
+        </g>
+
+        <!-- L2 供应链 -->
+        <g id="pp-sc">
+          <g id="pp-sa" class="h"><rect x="160" y="420" width="300" height="160" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="310" y="512" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text></g>
+          <g id="pp-dep" class="h"><rect id="pp-depb" x="720" y="400" width="440" height="200" rx="16" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" /><text x="940" y="490" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">依赖的软件</text><text x="940" y="545" font-size="30" fill="#8a8f99" text-anchor="middle">或供应商</text></g>
+          <g id="pp-tg" class="h"><rect x="1440" y="400" width="320" height="200" rx="16" fill="#161a22" stroke="#B48EF0" stroke-width="2.5" /><text x="1600" y="512" font-size="32" font-weight="700" fill="#B48EF0" text-anchor="middle">目标</text></g>
+          <path id="pp-c1" class="dr h" pathLength="1" d="M470 500 H708" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#pp-arrr)" />
+          <text id="pp-c1l" class="h" x="590" y="470" font-size="28" fill="#FC6255" text-anchor="middle">先攻破</text>
+          <path id="pp-c2" class="dr h" pathLength="1" d="M1170 500 H1428" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#pp-arrr)" />
+          <text id="pp-c2l" class="h" x="1300" y="470" font-size="28" fill="#FC6255" text-anchor="middle">再借它进入</text>
+          <text id="pp-c3" class="h" x="960" y="700" font-size="32" fill="#e8e6df" text-anchor="middle">目标看到的，是一次正常的更新或服务调用</text>
+        </g>
+
+        <!-- L3 Contagious Interview -->
+        <g id="pp-ci">
+          <g id="pp-j1" class="h"><rect x="160" y="420" width="380" height="180" rx="16" fill="#161a22" stroke="#B48EF0" stroke-width="2.5" /><text x="350" y="500" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">假招聘</text><text x="350" y="555" font-size="28" fill="#8a8f99" text-anchor="middle">看起来很正规</text></g>
+          <path id="pp-j1a" class="dr h" pathLength="1" d="M550 510 H708" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#pp-arr)" />
+          <g id="pp-j2" class="h"><rect x="720" y="420" width="380" height="180" rx="16" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="910" y="500" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">“面试作业”</text><text x="910" y="555" font-size="28" fill="#8a8f99" text-anchor="middle">一份要运行的代码</text></g>
+          <path id="pp-j2a" class="dr h" pathLength="1" d="M1110 510 H1268" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#pp-arrr)" />
+          <g id="pp-j3" class="h"><rect x="1280" y="420" width="420" height="180" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" /><text x="1490" y="500" font-size="34" font-weight="700" fill="#FC6255" text-anchor="middle">开发者电脑</text><text x="1490" y="555" font-size="28" fill="#e8e6df" text-anchor="middle">恶意代码已运行</text></g>
+        </g>
+
+        <!-- L4 资金去向 -->
+        <g id="pp-mo">
+          <g id="pp-w" class="h"><circle cx="300" cy="540" r="90" fill="#2a1616" stroke="#FC6255" stroke-width="3" /><text x="300" y="552" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">赃款</text></g>
+          <path id="pp-m1" class="dr h" pathLength="1" d="M390 500 C500 400 560 380 688 380" stroke="#F0B90B" stroke-width="3.5" fill="none" marker-end="url(#pp-arry)" />
+          <path id="pp-m2" class="dr h" pathLength="1" d="M390 580 C500 680 560 700 688 700" stroke="#F0B90B" stroke-width="3.5" fill="none" marker-end="url(#pp-arry)" />
+          <g id="pp-tc" class="h"><rect x="700" y="310" width="380" height="140" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="890" y="392" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle" class="mono">Tornado Cash</text></g>
+          <g id="pp-tco" class="h" stroke="#8a8f99" stroke-width="3" stroke-dasharray="6 10" fill="none"><path d="M1090 350 H1300" /><path d="M1090 380 H1300" /><path d="M1090 410 H1300" /></g>
+          <text id="pp-tcl" class="h" x="1330" y="392" font-size="30" fill="#e8e6df">来源与去向的链上联系被切断</text>
+          <g id="pp-th" class="h"><rect x="700" y="630" width="380" height="140" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="890" y="712" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle" class="mono">THORChain</text></g>
+          <path id="pp-tho" class="dr h" pathLength="1" d="M1090 700 H1300" stroke="#F0B90B" stroke-width="3.5" fill="none" marker-end="url(#pp-arry)" />
+          <text id="pp-thl" class="h" x="1330" y="690" font-size="30" fill="#e8e6df">无许可跨链兑换</text>
+          <text id="pp-thl2" class="h" x="1330" y="738" font-size="30" font-weight="700" fill="#FC6255">不封锁地址</text>
+        </g>
+
+        <!-- L5 Lazarus / TraderTraitor -->
+        <g id="pp-nm">
+          <g id="pp-n1" class="h">
+            <rect x="200" y="360" width="680" height="300" rx="18" fill="#161a22" stroke="#FC6255" stroke-width="2.5" />
+            <text x="240" y="450" font-size="52" font-weight="700" fill="#FC6255" class="mono">Lazarus</text>
+            <text x="240" y="520" font-size="32" fill="#e8e6df">朝鲜相关黑客组织的统称</text>
+            <text x="240" y="580" font-size="28" fill="#8a8f99">多起大额盗窃被官方归因于它</text>
+          </g>
+          <g id="pp-n2" class="h">
+            <rect x="1040" y="360" width="680" height="300" rx="18" fill="#161a22" stroke="#FC6255" stroke-width="2.5" />
+            <text x="1080" y="450" font-size="52" font-weight="700" fill="#FC6255" class="mono">TraderTraitor</text>
+            <text x="1080" y="520" font-size="32" fill="#e8e6df">美国政府对一类活动的命名</text>
+            <text x="1080" y="580" font-size="28" fill="#8a8f99">也称 <tspan class="mono">Jade Sleet</tspan>、<tspan class="mono">UNC4899</tspan></text>
+          </g>
+          <text id="pp-n3" class="h" x="960" y="770" font-size="32" fill="#e8e6df" text-anchor="middle">一个是组织统称，一个是活动命名；引用时照原文写</text>
+        </g>
+      </g>
+
+      <!-- 术语卡 -->
+      <g id="pp-t0" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">社会工程 <tspan font-size="28" font-weight="400" fill="#8a8f99">Social Eng.</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">诱导人操作，而不是攻破系统</text></g>
+      <g id="pp-t1" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">会话令牌 / SIM 换卡</text><text x="100" y="160" font-size="28" fill="#e8e6df">绕过密码、MFA 与短信验证</text></g>
+      <g id="pp-t2" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">供应链攻击</text><text x="100" y="160" font-size="28" fill="#e8e6df">借目标依赖的软件或供应商进入</text></g>
+      <g id="pp-t3" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df" class="mono">Contagious Interview</text><text x="100" y="160" font-size="28" fill="#e8e6df">假招聘 + 面试作业投放恶意代码</text></g>
+      <g id="pp-t4" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">资金去向</text><text x="100" y="160" font-size="28" fill="#e8e6df">混币协议、无许可跨链兑换</text></g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const TERM = (n) => { if (n > 0) OUT("#pp-t" + (n - 1), at(n, 0.0), 0.3); IN("#pp-t" + n, at(n, 0.05), 0.5, { x: -20 }); };
+
+      // L0 社会工程
+      TERM(0);
+      IN("#pp-atk", at(0, 0.05));
+      tl.fromTo("#pp-bub > g", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.18 }, at(0, 0.12));
+      IN("#pp-vic", at(0, 0.3));
+      IN("#pp-sys", at(0, 0.42));
+      ARROW("#pp-do", at(0, 0.55), 0.5); IN("#pp-dol", at(0, 0.58));
+
+      // L1 会话令牌 + SIM
+      OUT("#pp-se", at(1, 0.0), 0.4);
+      TERM(1);
+      IN("#pp-gal", at(1, 0.05)); DRAW("#pp-ga", at(1, 0.05), 0.6); tl.set("#pp-ga", { opacity: 1 }, at(1, 0.05));
+      IN("#pp-g1", at(1, 0.08)); IN("#pp-g2", at(1, 0.12)); IN("#pp-acct", at(1, 0.16));
+      IN("#pp-tk", at(1, 0.2), 0.4, { x: -20 });
+      IN("#pp-tk2", at(1, 0.26), 0.2);
+      tl.to("#pp-tk2o", { x: -1140, y: 190, duration: 0.6, ease: "power2.inOut" }, at(1, 0.28));
+      ARROW("#pp-by", at(1, 0.36), 0.5); IN("#pp-byl", at(1, 0.4));
+      IN("#pp-sm", at(1, 0.52)); IN("#pp-ph", at(1, 0.54)); DRAW("#pp-s1", at(1, 0.54), 0.3);
+      IN("#pp-s1x", at(1, 0.62), 0.2);
+      ARROW("#pp-s2", at(1, 0.64), 0.4); IN("#pp-as", at(1, 0.68));
+
+      // L2 供应链
+      OUT("#pp-ss", at(2, 0.0), 0.4);
+      TERM(2);
+      IN("#pp-sa", at(2, 0.08)); IN("#pp-dep", at(2, 0.12)); IN("#pp-tg", at(2, 0.16));
+      ARROW("#pp-c1", at(2, 0.25), 0.4); IN("#pp-c1l", at(2, 0.28));
+      tl.to("#pp-depb", { attr: { stroke: "#FC6255" }, duration: 0.3 }, at(2, 0.38));
+      ARROW("#pp-c2", at(2, 0.45), 0.4); IN("#pp-c2l", at(2, 0.48));
+      IN("#pp-c3", at(2, 0.6));
+
+      // L3 Contagious Interview
+      OUT("#pp-sc", at(3, 0.0), 0.4);
+      TERM(3);
+      IN("#pp-j1", at(3, 0.1)); ARROW("#pp-j1a", at(3, 0.22), 0.4);
+      IN("#pp-j2", at(3, 0.28)); ARROW("#pp-j2a", at(3, 0.42), 0.4);
+      IN("#pp-j3", at(3, 0.5), 0.5, { scale: 1.1, svgOrigin: "1490 510" }, { scale: 1 });
+
+      // L4 资金去向
+      OUT("#pp-ci", at(4, 0.0), 0.4);
+      TERM(4);
+      IN("#pp-w", at(4, 0.08));
+      ARROW("#pp-m1", at(4, 0.15), 0.4); IN("#pp-tc", at(4, 0.2));
+      IN("#pp-tco", at(4, 0.3)); IN("#pp-tcl", at(4, 0.34));
+      ARROW("#pp-m2", at(4, 0.45), 0.4); IN("#pp-th", at(4, 0.5));
+      ARROW("#pp-tho", at(4, 0.56), 0.3); IN("#pp-thl", at(4, 0.6)); IN("#pp-thl2", at(4, 0.66));
+
+      // L5 名字
+      OUT("#pp-mo", at(5, 0.0), 0.4); OUT("#pp-t4", at(5, 0.0), 0.3);
+      IN("#pp-n1", at(5, 0.1), 0.6, { y: 20 });
+      IN("#pp-n2", at(5, 0.35), 0.6, { y: 20 });
+      IN("#pp-n3", at(5, 0.62));
+
+      tl.to("#pp-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["people"] = tl;
+    })();
+  </script>
+</template>

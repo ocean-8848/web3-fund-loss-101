@@ -1,0 +1,141 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 defend，id 前缀 df- -->
+  <div id="root" data-composition-id="defend" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="df-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="df-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#83C167" />
+        </marker>
+      </defs>
+      <g id="df-all">
+        <text id="df-head" class="h" x="960" y="160" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">防线落在签名上</text>
+        <text id="df-head2" class="h" x="960" y="160" font-size="44" font-weight="700" fill="#e8e6df" text-anchor="middle"><tspan fill="#58C4DD">L8</tspan>：MPC 保护密钥，不判断意图</text>
+
+        <!-- L0 办公网 → 签名设备 -->
+        <g id="df-off" class="h">
+          <rect x="100" y="380" width="400" height="280" rx="16" fill="#161a22" stroke="#8a8f99" stroke-width="3" />
+          <text x="300" y="436" font-size="32" font-weight="700" fill="#e8e6df" text-anchor="middle">办公网 / 终端</text>
+          <rect x="250" y="490" width="100" height="62" rx="6" fill="none" stroke="#8a8f99" stroke-width="3" />
+          <path d="M234 562 H366" stroke="#8a8f99" stroke-width="4" stroke-linecap="round" />
+          <circle cx="300" cy="521" r="12" fill="#FC6255" />
+        </g>
+        <g id="df-v" class="h">
+          <rect x="760" y="380" width="400" height="280" rx="18" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="960" y="436" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">签名设备</text>
+          <g stroke="#F0B90B" stroke-width="5" fill="none" stroke-linecap="round">
+            <circle cx="930" cy="560" r="16" /><path d="M946 560 H990 M976 560 V572 M988 560 V570" />
+          </g>
+        </g>
+        <g id="df-atk" stroke="#FC6255" stroke-width="3" fill="none">
+          <path class="dr h" pathLength="1" d="M508 450 C600 450 640 510 750 510" marker-end="url(#df-arr)" />
+          <path class="dr h" pathLength="1" d="M508 520 H750" marker-end="url(#df-arr)" />
+          <path class="dr h" pathLength="1" d="M508 590 C600 590 640 530 750 530" marker-end="url(#df-arr)" />
+        </g>
+
+        <!-- L1 隔离墙 -->
+        <path id="df-wall" class="dr" pathLength="1" d="M630 340 V700" stroke="#83C167" stroke-width="8" fill="none" />
+        <text id="df-wl" class="h" x="630" y="316" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">谁能触达签名</text>
+        <text id="df-wl2" class="h" x="630" y="744" font-size="28" fill="#83C167" text-anchor="middle">与办公网隔离</text>
+        <g id="df-x" class="h" stroke="#FC6255" stroke-width="5" stroke-linecap="round">
+          <path d="M598 494 L622 518 M622 494 L598 518" />
+        </g>
+
+        <!-- L2 HSM / MPC -->
+        <text id="df-hsm" class="h mono" x="960" y="500" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">HSM / MPC</text>
+        <text id="df-nod" class="h" x="960" y="628" font-size="28" fill="#83C167" text-anchor="middle">私钥不落盘</text>
+        <text id="df-one" class="h" x="960" y="720" font-size="28" fill="#83C167" text-anchor="middle">任一台服务器失陷，签不出交易</text>
+
+        <!-- L3 策略层 -->
+        <path id="df-a1" class="dr h" pathLength="1" d="M1168 520 H1272" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#df-arrg)" />
+        <g id="df-pol" class="h">
+          <rect id="df-polr" x="1280" y="400" width="300" height="240" rx="16" fill="#142016" stroke="#83C167" stroke-width="3" />
+          <text x="1430" y="460" font-size="34" font-weight="700" fill="#83C167" text-anchor="middle">策略层</text>
+          <text x="1430" y="530" font-size="28" fill="#e8e6df" text-anchor="middle">类型 · 地址</text>
+          <text x="1430" y="580" font-size="28" fill="#e8e6df" text-anchor="middle">金额 · 速率</text>
+        </g>
+        <text id="df-pl" class="h" x="1430" y="370" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">签名前谁核对意图</text>
+        <path id="df-a2" class="dr h" pathLength="1" d="M1588 520 H1682" stroke="#83C167" stroke-width="3" fill="none" marker-end="url(#df-arrg)" />
+        <g id="df-ch" class="h">
+          <rect x="1690" y="460" width="170" height="120" rx="14" fill="#131a24" stroke="#58C4DD" stroke-width="3" />
+          <text x="1775" y="532" font-size="32" font-weight="700" fill="#58C4DD" text-anchor="middle">链上</text>
+        </g>
+
+        <!-- L4 熵审计 -->
+        <g id="df-ent" class="h">
+          <text x="960" y="830" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P1 熵审计</text>
+          <text x="960" y="872" font-size="28" fill="#8a8f99" text-anchor="middle">靓号地址 · 自研密钥工具</text>
+        </g>
+        <!-- L5 招聘社工演练 -->
+        <path id="df-dl" class="dr" pathLength="1" d="M300 792 V668" stroke="#83C167" stroke-width="2.5" fill="none" />
+        <g id="df-drill" class="h">
+          <text x="300" y="830" font-size="30" font-weight="700" fill="#83C167" text-anchor="middle">P1 招聘社工演练</text>
+          <text x="300" y="872" font-size="28" fill="#8a8f99" text-anchor="middle">红队投递假 offer</text>
+        </g>
+        <!-- L6 -->
+        <text id="df-pol2" class="h" x="1430" y="700" font-size="28" fill="#83C167" text-anchor="middle">判断意图</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0
+      IN("#df-head", at(0, 0.02), 0.8, { y: 20 });
+      IN("#df-off", at(0, 0.15), 0.6);
+      IN("#df-v", at(0, 0.25), 0.6);
+      ARROW("#df-atk path", at(0, 0.4), 0.7);
+
+      // L1 隔离
+      DRAW("#df-wall", at(1, 0.05), 0.6);
+      IN("#df-wl", at(1, 0.15), 0.5);
+      tl.to("#df-atk path", { opacity: 0.25, duration: 0.4 }, at(1, 0.4));
+      IN("#df-x", at(1, 0.45), 0.3, { scale: 1.6, svgOrigin: "610 506" }, { scale: 1 });
+      IN("#df-wl2", at(1, 0.5), 0.5);
+
+      // L2
+      IN("#df-hsm", at(2, 0.05), 0.5);
+      IN("#df-nod", at(2, 0.2), 0.5);
+      IN("#df-one", at(2, 0.45), 0.6);
+
+      // L3 策略层
+      ARROW("#df-a1", at(3, 0.05), 0.4);
+      IN("#df-pol", at(3, 0.12), 0.6, { x: -20 });
+      IN("#df-pl", at(3, 0.25), 0.5);
+      ARROW("#df-a2", at(3, 0.45), 0.4);
+      IN("#df-ch", at(3, 0.5), 0.5);
+
+      // L4
+      IN("#df-ent", at(4, 0.1), 0.6, { y: 15 });
+      tl.fromTo("#df-v g", { scale: 1 }, { scale: 1.3, svgOrigin: "960 560", duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(4, 0.4));
+
+      // L5
+      DRAW("#df-dl", at(5, 0.05), 0.4);
+      IN("#df-drill", at(5, 0.15), 0.6, { y: 15 });
+
+      // L6 L8
+      OUT("#df-head", at(6, 0.0), 0.3);
+      IN("#df-head2", at(6, 0.1), 0.6, { y: 15 });
+      IN("#df-pol2", at(6, 0.35), 0.5);
+      tl.fromTo("#df-polr", { attr: { "stroke-width": 3 } }, { attr: { "stroke-width": 7 }, duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(6, 0.45));
+
+      tl.to("#df-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["defend"] = tl;
+    })();
+  </script>
+</template>

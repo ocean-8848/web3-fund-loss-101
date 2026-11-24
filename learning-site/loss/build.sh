@@ -1,12 +1,13 @@
 #!/bin/sh
 # Build the learning-site edition of Web3 行业安全资损 101: the handbook's shell plus the learning layer.
-# Source: index.html, data/ and labs/ at the repo root.
+# Source: index.html, data/, labs/ and slides.html at the repo root.
 set -e
 cd "$(dirname "$0")"
 SRC=../..
 OUT=index.html
 sed -e 's#<title>Web3 行业安全资损 101</title>#<title>Web3 资损 101 学习站</title>#' "$SRC/index.html" > "$OUT"
 rm -rf data labs && cp -R "$SRC/data" data && cp -R "$SRC/labs" labs
+cp "$SRC/slides.html" slides.html   # Slides player (tools/make_slides.py)
 {
   # map this handbook's color tokens onto the names the learning layer uses
   echo '<style>:root{--paper:var(--surface);--ground:var(--bg);--ink-2:var(--muted);--rule:var(--line);--tint:var(--surface2);--risk:var(--danger);--risk-soft:var(--danger-soft);--info:var(--accent);--info-soft:var(--accent-soft)}

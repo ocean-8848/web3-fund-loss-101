@@ -1,0 +1,199 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 process，id 前缀 pr- -->
+  <div id="root" data-composition-id="process" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="pr-arry" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+        <marker id="pr-arrp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#B48EF0" />
+        </marker>
+        <marker id="pr-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="pr-all">
+        <text id="pr-title" class="h" x="960" y="130" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">第二类：流程缺陷</text>
+        <text id="pr-chips" class="h" x="960" y="195" font-size="30" fill="#8a8f99" text-anchor="middle">旧地址 · 二次审核 · 迁移窗口</text>
+
+        <!-- L1–L2 CoinDCX -->
+        <g id="pr-dcx">
+          <text id="pr-dh" class="h" x="160" y="290" font-size="40" font-weight="700" fill="#e8e6df">CoinDCX 2026</text>
+          <g id="pr-user" class="h">
+            <circle cx="260" cy="470" r="34" fill="none" stroke="#e8e6df" stroke-width="4" />
+            <path d="M200 610 C200 530 320 530 320 610 Z" fill="none" stroke="#e8e6df" stroke-width="4" stroke-linejoin="round" />
+            <text x="260" y="660" font-size="30" fill="#e8e6df" text-anchor="middle">用户</text>
+          </g>
+          <path id="pr-dep" class="dr h" pathLength="1" d="M340 520 H506" stroke="#F0B90B" stroke-width="3" fill="none" marker-end="url(#pr-arry)" />
+          <g id="pr-old" class="h">
+            <rect x="520" y="420" width="380" height="200" rx="14" fill="#1b1f27" stroke="#8a8f99" stroke-width="3" stroke-dasharray="12 8" />
+            <text x="710" y="508" font-size="36" font-weight="700" fill="#e8e6df" text-anchor="middle">旧地址</text>
+            <text x="710" y="562" font-size="28" fill="#8a8f99" text-anchor="middle">已退役</text>
+          </g>
+          <g id="pr-dc" fill="#F0B90B">
+            <circle class="h" cx="350" cy="560" r="10" /><circle class="h" cx="350" cy="560" r="10" /><circle class="h" cx="350" cy="560" r="10" />
+          </g>
+          <text id="pr-still" class="h" x="710" y="680" font-size="30" fill="#FC6255" text-anchor="middle">还在继续收款</text>
+          <path id="pr-l1" class="dr h" pathLength="1" d="M912 470 C1050 470 1100 370 1206 370" stroke="#B48EF0" stroke-width="3" fill="none" marker-end="url(#pr-arrp)" />
+          <text id="pr-l1t" class="h" x="1000" y="352" font-size="28" fill="#B48EF0" text-anchor="middle">① 先记账</text>
+          <g id="pr-led" class="h">
+            <rect x="1220" y="300" width="500" height="140" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="1470" y="358" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">平台账本</text>
+            <text x="1470" y="410" font-size="30" fill="#F0B90B" text-anchor="middle">+ 已给用户记账</text>
+          </g>
+          <path id="pr-l2" class="dr" pathLength="1" d="M912 570 C1050 570 1100 650 1206 650" stroke="#8a8f99" stroke-width="3" fill="none" />
+          <g id="pr-x" class="h" stroke="#FC6255" stroke-width="6" stroke-linecap="round">
+            <path d="M1040 586 L1076 622 M1076 586 L1040 622" />
+          </g>
+          <text id="pr-l2t" class="h" x="1000" y="700" font-size="28" fill="#FC6255" text-anchor="middle">② 归集失效</text>
+          <g id="pr-wal" class="h">
+            <rect x="1220" y="580" width="500" height="140" rx="14" fill="#22252d" stroke="#8a8f99" stroke-width="3" />
+            <text x="1470" y="638" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">归集钱包</text>
+            <text x="1470" y="690" font-size="28" fill="#8a8f99" text-anchor="middle">没有收到这笔钱</text>
+          </g>
+          <g id="pr-gap" class="h">
+            <text x="1470" y="830" font-size="48" font-weight="700" fill="#FC6255" text-anchor="middle">缺口 <tspan fill="#F0B90B">$16M</tspan></text>
+          </g>
+        </g>
+
+        <!-- L3–L4 Bitrue -->
+        <g id="pr-btr">
+          <text id="pr-bh" class="h" x="160" y="290" font-size="40" font-weight="700" fill="#e8e6df">Bitrue 2019</text>
+          <g id="pr-atk" class="h">
+            <rect x="160" y="440" width="280" height="140" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+            <text x="300" y="524" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+          </g>
+          <g id="pr-gate" class="h">
+            <rect x="800" y="320" width="40" height="150" rx="6" fill="#B48EF0" />
+            <rect x="800" y="550" width="40" height="150" rx="6" fill="#B48EF0" />
+            <text x="820" y="296" font-size="30" fill="#B48EF0" text-anchor="middle">风控二次审核</text>
+          </g>
+          <rect id="pr-hole" class="h" x="790" y="478" width="60" height="64" rx="6" fill="none" stroke="#FC6255" stroke-width="3" stroke-dasharray="8 6" />
+          <text id="pr-holet" class="h" x="820" y="750" font-size="30" fill="#FC6255" text-anchor="middle">流程漏洞</text>
+          <path id="pr-run" class="dr h" pathLength="1" d="M452 510 H1222" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#pr-arrr)" />
+          <g id="pr-dots" fill="#F0B90B"></g>
+          <g id="pr-bl" class="h">
+            <text x="1494" y="690" font-size="32" fill="#e8e6df" text-anchor="middle">约 90 名用户</text>
+            <text x="1494" y="752" font-size="40" font-weight="700" fill="#F0B90B" text-anchor="middle">420 万–450 万美元</text>
+          </g>
+        </g>
+
+        <!-- L5–L6 Bithumb -->
+        <g id="pr-bth">
+          <text id="pr-th" class="h" x="160" y="290" font-size="40" font-weight="700" fill="#e8e6df">Bithumb 2026</text>
+          <g id="pr-promo" class="h">
+            <rect x="160" y="400" width="460" height="200" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+            <text x="390" y="478" font-size="36" font-weight="700" fill="#B48EF0" text-anchor="middle">促销奖励</text>
+            <text x="390" y="544" font-size="30" fill="#FC6255" text-anchor="middle">单位录入错误</text>
+          </g>
+          <g id="pr-fan" stroke="#F0B90B" stroke-width="3" fill="none">
+            <path class="dr" pathLength="1" d="M632 500 C800 500 850 360 984 360" />
+            <path class="dr" pathLength="1" d="M632 500 H984" />
+            <path class="dr" pathLength="1" d="M632 500 C800 500 850 600 984 600" />
+          </g>
+          <g id="pr-acc" fill="#22252d" stroke="#F0B90B" stroke-width="1.5"></g>
+          <text id="pr-accl" class="h" x="1380" y="680" font-size="30" fill="#e8e6df" text-anchor="middle">695 个账户</text>
+          <g id="pr-btc" class="h">
+            <text x="1380" y="760" font-size="56" font-weight="700" fill="#F0B90B" text-anchor="middle">约 62 万 BTC</text>
+            <text x="1380" y="808" font-size="28" fill="#8a8f99" text-anchor="middle">账面约 420 亿美元</text>
+          </g>
+          <g id="pr-ok" class="h">
+            <g transform="rotate(-8 390 690)">
+              <rect x="290" y="650" width="200" height="80" rx="10" fill="#0f1117" stroke="#83C167" stroke-width="4" />
+              <text x="390" y="704" font-size="40" font-weight="700" fill="#83C167" text-anchor="middle">非攻击</text>
+            </g>
+          </g>
+          <g id="pr-barg" class="h">
+            <rect x="300" y="880" width="1200" height="46" rx="8" fill="#22252d" stroke="#F0B90B" stroke-width="2" />
+            <text x="300" y="862" font-size="30" font-weight="700" fill="#83C167">当天收回 99.7%</text>
+          </g>
+          <rect id="pr-rec" x="300" y="880" width="0" height="46" rx="8" fill="#83C167" />
+          <text id="pr-sold" class="h" x="1500" y="978" font-size="30" fill="#e8e6df" text-anchor="end">已卖出的 1,788 BTC：平台自有资产补足</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const NS = "http://www.w3.org/2000/svg";
+      const dg = document.querySelector("#pr-dots");
+      for (let r = 0; r < 9; r++) for (let c = 0; c < 10; c++) {
+        const d = document.createElementNS(NS, "circle");
+        d.setAttribute("cx", 1260 + c * 52); d.setAttribute("cy", 380 + r * 30); d.setAttribute("r", 9); d.setAttribute("class", "pr-dot h"); dg.appendChild(d);
+      }
+      const ag = document.querySelector("#pr-acc");
+      for (let r = 0; r < 6; r++) for (let c = 0; c < 20; c++) {
+        const q = document.createElementNS(NS, "rect");
+        q.setAttribute("x", 1000 + c * 38); q.setAttribute("y", 330 + r * 48); q.setAttribute("width", 30); q.setAttribute("height", 36); q.setAttribute("rx", 4); q.setAttribute("class", "pr-ac h"); ag.appendChild(q);
+      }
+
+      // L0
+      IN("#pr-title", at(0, 0.05), 0.8, { y: 20 });
+      IN("#pr-chips", at(0, 0.4));
+
+      // L1 CoinDCX 旧地址收款
+      OUT("#pr-chips", at(1, 0.0), 0.3);
+      IN("#pr-dh", at(1, 0.05));
+      IN("#pr-user", at(1, 0.1));
+      IN("#pr-old", at(1, 0.2));
+      ARROW("#pr-dep", at(1, 0.35), 0.5);
+      tl.fromTo("#pr-dc circle", { opacity: 1, x: 0 }, { x: 300, opacity: 0, duration: 0.7, ease: "power1.in", stagger: 0.2, immediateRender: false }, at(1, 0.45));
+      IN("#pr-still", at(1, 0.6));
+
+      // L2 先记账，后归集失效
+      ARROW("#pr-l1", at(2, 0.02), 0.6); IN("#pr-l1t", at(2, 0.05));
+      IN("#pr-led", at(2, 0.12));
+      DRAW("#pr-l2", at(2, 0.3), 0.5);
+      IN("#pr-x", at(2, 0.4), 0.3, { scale: 1.8, svgOrigin: "1058 604" }, { scale: 1 });
+      IN("#pr-l2t", at(2, 0.42));
+      IN("#pr-wal", at(2, 0.48));
+      IN("#pr-gap", at(2, 0.65), 0.7, { y: 20 });
+
+      // L3 Bitrue
+      OUT("#pr-dcx", at(3, 0.0));
+      IN("#pr-bh", at(3, 0.05));
+      IN("#pr-atk", at(3, 0.1));
+      IN("#pr-gate", at(3, 0.2));
+      tl.fromTo(".pr-dot", { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.005 }, at(3, 0.25));
+      IN("#pr-hole", at(3, 0.45));
+      ARROW("#pr-run", at(3, 0.5), 0.7);
+      IN("#pr-holet", at(3, 0.6));
+
+      // L4 90 名用户
+      tl.to(".pr-dot", { attr: { fill: "#5a2020" }, duration: 0.15, stagger: 0.02 }, at(4, 0.05));
+      IN("#pr-bl", at(4, 0.5), 0.7, { y: 20 });
+
+      // L5 Bithumb
+      OUT("#pr-btr", at(5, 0.0));
+      IN("#pr-th", at(5, 0.05));
+      IN("#pr-promo", at(5, 0.1));
+      tl.fromTo("#pr-fan path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, stagger: 0.1, ease: "power2.inOut" }, at(5, 0.25));
+      tl.fromTo(".pr-ac", { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.006 }, at(5, 0.35));
+      IN("#pr-accl", at(5, 0.45));
+      IN("#pr-btc", at(5, 0.6), 0.7, { y: 20 });
+
+      // L6 收回 99.7%
+      IN("#pr-barg", at(6, 0.02));
+      tl.fromTo("#pr-rec", { attr: { width: 0 } }, { attr: { width: 1196 }, duration: 1.2, ease: "power2.out", immediateRender: false }, at(6, 0.1));
+      IN("#pr-sold", at(6, 0.45));
+      IN("#pr-ok", at(6, 0.65), 0.4, { scale: 1.5, svgOrigin: "390 690" }, { scale: 1, ease: "back.out(2)" });
+
+      tl.to("#pr-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["process"] = tl;
+    })();
+  </script>
+</template>

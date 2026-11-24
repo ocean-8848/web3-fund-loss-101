@@ -1,0 +1,161 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 gate，id 前缀 gt- -->
+  <div id="root" data-composition-id="gate" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="gt-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#F0B90B" />
+        </marker>
+        <marker id="gt-arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+        <marker id="gt-arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" />
+        </marker>
+      </defs>
+      <g id="gt-all">
+        <!-- 依赖汇聚线（在签名者下层） -->
+        <g id="gt-lines" stroke="#B48EF0" stroke-width="2.5" fill="none">
+          <path class="dr gt-ln" pathLength="1" d="M260 448 L760 700" />
+          <path class="dr gt-ln" pathLength="1" d="M390 448 L765 700" />
+          <path class="dr gt-ln" pathLength="1" d="M520 448 L770 700" />
+          <path class="dr gt-ln" pathLength="1" d="M650 448 L775 700" />
+          <path class="dr gt-ln" pathLength="1" d="M780 448 L780 700" />
+          <path class="dr gt-ln" pathLength="1" d="M910 448 L785 700" />
+          <path class="dr gt-ln" pathLength="1" d="M1040 448 L790 700" />
+          <path class="dr gt-ln" pathLength="1" d="M1170 448 L795 700" />
+          <path class="dr gt-ln" pathLength="1" d="M1300 448 L800 700" />
+        </g>
+
+        <!-- L0 签名者 -->
+        <g id="gt-sig">
+          <g class="gt-s h"><circle class="gt-c gt-c5" cx="260" cy="400" r="44" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text class="mono" x="260" y="410" font-size="28" fill="#e8e6df" text-anchor="middle">S1</text></g>
+          <g class="gt-s h"><circle class="gt-c gt-c5" cx="390" cy="400" r="44" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text class="mono" x="390" y="410" font-size="28" fill="#e8e6df" text-anchor="middle">S2</text></g>
+          <g class="gt-s h"><circle class="gt-c gt-c5" cx="520" cy="400" r="44" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text class="mono" x="520" y="410" font-size="28" fill="#e8e6df" text-anchor="middle">S3</text></g>
+          <g class="gt-s h"><circle class="gt-c gt-c5" cx="650" cy="400" r="44" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text class="mono" x="650" y="410" font-size="28" fill="#e8e6df" text-anchor="middle">S4</text></g>
+          <g class="gt-s h"><circle class="gt-c gt-c5" cx="780" cy="400" r="44" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text class="mono" x="780" y="410" font-size="28" fill="#e8e6df" text-anchor="middle">S5</text></g>
+          <g class="gt-s h"><circle class="gt-c" cx="910" cy="400" r="44" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text class="mono" x="910" y="410" font-size="28" fill="#e8e6df" text-anchor="middle">S6</text></g>
+          <g class="gt-s h"><circle class="gt-c" cx="1040" cy="400" r="44" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text class="mono" x="1040" y="410" font-size="28" fill="#e8e6df" text-anchor="middle">S7</text></g>
+          <g class="gt-s h"><circle class="gt-c" cx="1170" cy="400" r="44" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text class="mono" x="1170" y="410" font-size="28" fill="#e8e6df" text-anchor="middle">S8</text></g>
+          <g class="gt-s h"><circle class="gt-c" cx="1300" cy="400" r="44" fill="#132530" stroke="#58C4DD" stroke-width="3" /><text class="mono" x="1300" y="410" font-size="28" fill="#e8e6df" text-anchor="middle">S9</text></g>
+        </g>
+
+        <!-- 资金 -->
+        <g id="gt-vault" class="h">
+          <rect x="1500" y="330" width="300" height="200" rx="16" fill="#2a2410" stroke="#F0B90B" stroke-width="3" />
+          <circle cx="1650" cy="430" r="46" fill="none" stroke="#F0B90B" stroke-width="3" />
+          <text x="1650" y="443" font-size="36" font-weight="700" fill="#F0B90B" text-anchor="middle">资金</text>
+          <text x="1650" y="582" font-size="28" fill="#8a8f99" text-anchor="middle">桥 / 多签钱包</text>
+        </g>
+
+        <!-- 阈值条 -->
+        <g id="gt-meter" class="h">
+          <g fill="#22252d" stroke="#8a8f99" stroke-width="2">
+            <rect x="202" y="496" width="116" height="40" rx="6" /><rect x="332" y="496" width="116" height="40" rx="6" /><rect x="462" y="496" width="116" height="40" rx="6" />
+            <rect x="592" y="496" width="116" height="40" rx="6" /><rect x="722" y="496" width="116" height="40" rx="6" /><rect x="852" y="496" width="116" height="40" rx="6" />
+            <rect x="982" y="496" width="116" height="40" rx="6" /><rect x="1112" y="496" width="116" height="40" rx="6" /><rect x="1242" y="496" width="116" height="40" rx="6" />
+          </g>
+          <path d="M1372 516 H1486" stroke="#8a8f99" stroke-width="2.5" fill="none" stroke-dasharray="8 8" marker-end="url(#gt-arr3)" />
+        </g>
+        <g id="gt-fills" fill="#83C167">
+          <rect class="gt-f h" x="202" y="496" width="116" height="40" rx="6" /><rect class="gt-f h" x="332" y="496" width="116" height="40" rx="6" /><rect class="gt-f h" x="462" y="496" width="116" height="40" rx="6" />
+          <rect class="gt-f h" x="592" y="496" width="116" height="40" rx="6" /><rect class="gt-f h" x="722" y="496" width="116" height="40" rx="6" />
+        </g>
+        <g id="gt-rfills" fill="#FC6255">
+          <rect class="gt-rf h" x="202" y="496" width="116" height="40" rx="6" /><rect class="gt-rf h" x="332" y="496" width="116" height="40" rx="6" />
+        </g>
+        <g id="gt-mk" class="h">
+          <path d="M845 478 V556" stroke="#83C167" stroke-width="5" />
+          <text id="gt-mk5" x="845" y="604" font-size="32" font-weight="700" fill="#83C167" text-anchor="middle">阈值 5 / 9</text>
+        </g>
+        <g id="gt-mk2" class="h">
+          <path d="M455 478 V556" stroke="#FC6255" stroke-width="5" />
+          <text x="455" y="604" font-size="32" font-weight="700" fill="#FC6255" text-anchor="middle">阈值太低</text>
+        </g>
+        <path id="gt-out" class="dr h" pathLength="1" d="M1650 600 V760" stroke="#F0B90B" stroke-width="3.5" fill="none" marker-end="url(#gt-arr)" />
+        <text id="gt-outl" class="h" x="1680" y="700" font-size="32" fill="#F0B90B">放款</text>
+        <path id="gt-out2" class="dr h" pathLength="1" d="M1650 600 V760" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#gt-arr2)" />
+        <text id="gt-outl2" class="h" x="1620" y="700" font-size="32" fill="#FC6255" text-anchor="end">2 个签名就放款</text>
+
+        <!-- L2 L3 不独立 -->
+        <text id="gt-title" class="h" x="780" y="268" font-size="48" font-weight="700" fill="#FC6255" text-anchor="middle">签名者并不独立</text>
+        <g id="gt-dep" class="h">
+          <rect x="560" y="700" width="440" height="220" rx="14" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+        </g>
+        <text id="gt-d1" class="h" x="780" y="770" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">同一组织</text>
+        <text id="gt-d2" class="h" x="780" y="828" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">同一云账号</text>
+        <text id="gt-d3" class="h" x="780" y="886" font-size="34" font-weight="700" fill="#e8e6df" text-anchor="middle">同一台运维机</text>
+        <g id="gt-atk" class="h">
+          <rect x="1260" y="745" width="300" height="130" rx="14" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+          <text x="1410" y="822" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">攻击者</text>
+        </g>
+        <path id="gt-hit" class="dr h" pathLength="1" d="M1250 810 H1012" stroke="#FC6255" stroke-width="3.5" fill="none" marker-end="url(#gt-arr2)" />
+        <text id="gt-hitl" class="h" x="1130" y="784" font-size="30" fill="#FC6255" text-anchor="middle">攻破一处</text>
+      </g>
+      <g id="gt-term" class="h">
+        <rect x="70" y="56" width="620" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+        <text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">多签阈值 <tspan class="mono" font-size="28" font-weight="400" fill="#8a8f99">M-of-N</tspan></text>
+        <text x="100" y="160" font-size="28" fill="#e8e6df">N 个签名者里，至少 M 个同意才执行</text>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const BLUE = { fill: "#132530", stroke: "#58C4DD" };
+
+      // L0 签名者 + 资金
+      IN("#gt-term", at(0, 0.02));
+      tl.fromTo(".gt-s", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.12 }, at(0, 0.15));
+      IN("#gt-vault", at(0, 0.5));
+
+      // L1 凑够 5 个
+      IN("#gt-meter", at(1, 0.02));
+      IN("#gt-mk", at(1, 0.1));
+      tl.to(".gt-c5", { attr: { fill: "#1c2a17", stroke: "#83C167" }, duration: 0.3, stagger: 0.25 }, at(1, 0.25));
+      tl.fromTo(".gt-f", { opacity: 0 }, { opacity: 0.9, duration: 0.3, stagger: 0.25 }, at(1, 0.25));
+      ARROW("#gt-out", at(1, 0.62), 0.5);
+      IN("#gt-outl", at(1, 0.68));
+
+      // L2 并不独立
+      OUT("#gt-meter", at(2, 0.0)); OUT(".gt-f", at(2, 0.0)); OUT("#gt-mk", at(2, 0.0)); OUT("#gt-out", at(2, 0.0)); OUT("#gt-outl", at(2, 0.0));
+      tl.to(".gt-c", { attr: BLUE, duration: 0.4 }, at(2, 0.05));
+      IN("#gt-title", at(2, 0.2), 0.7, { y: 16 });
+
+      // L3 同一组织 / 云账号 / 运维机
+      tl.fromTo(".gt-ln", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut", stagger: 0.05 }, at(3, 0.02));
+      IN("#gt-dep", at(3, 0.12));
+      IN("#gt-d1", at(3, 0.18)); IN("#gt-d2", at(3, 0.28)); IN("#gt-d3", at(3, 0.38));
+      IN("#gt-atk", at(3, 0.5));
+      ARROW("#gt-hit", at(3, 0.56), 0.4);
+      IN("#gt-hitl", at(3, 0.6));
+      tl.to(".gt-c", { attr: { fill: "#2a1616", stroke: "#FC6255" }, duration: 0.25, stagger: 0.04 }, at(3, 0.68));
+
+      // L4 阈值太低
+      OUT("#gt-lines", at(4, 0.0)); OUT("#gt-dep", at(4, 0.0)); OUT("#gt-d1", at(4, 0.0)); OUT("#gt-d2", at(4, 0.0)); OUT("#gt-d3", at(4, 0.0));
+      OUT("#gt-atk", at(4, 0.0)); OUT("#gt-hit", at(4, 0.0)); OUT("#gt-hitl", at(4, 0.0)); OUT("#gt-title", at(4, 0.0));
+      tl.to(".gt-c", { attr: BLUE, duration: 0.3 }, at(4, 0.05));
+      IN("#gt-meter", at(4, 0.1));
+      IN("#gt-mk2", at(4, 0.18), 0.6, { x: 390 }, { x: 0 });
+      tl.fromTo(".gt-rf", { opacity: 0 }, { opacity: 0.9, duration: 0.3, stagger: 0.25 }, at(4, 0.4));
+      ARROW("#gt-out2", at(4, 0.6), 0.4);
+      IN("#gt-outl2", at(4, 0.66));
+
+      tl.to("#gt-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#gt-term", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["gate"] = tl;
+    })();
+  </script>
+</template>

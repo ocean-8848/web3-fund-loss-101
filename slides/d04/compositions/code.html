@@ -1,0 +1,185 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 code，id 前缀 cd- -->
+  <div id="root" data-composition-id="code" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="cd-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8f99" /></marker>
+        <marker id="cd-arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#FC6255" /></marker>
+        <marker id="cd-arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#83C167" /></marker>
+      </defs>
+      <g id="cd-all">
+        <!-- L0–L1 calldata 与选择器 -->
+        <g id="cd-cd">
+          <text id="cd-cdl" class="h mono" x="200" y="290" font-size="34" fill="#8a8f99">calldata</text>
+          <g id="cd-strip" class="h">
+            <rect x="200" y="320" width="1520" height="90" rx="10" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+            <text x="600" y="378" font-size="34" fill="#8a8f99" class="mono">000000000000000000000051a3…0001</text>
+          </g>
+          <rect id="cd-sel" x="200" y="320" width="0" height="90" rx="10" fill="#58C4DD" />
+          <text id="cd-selt" class="h mono" x="380" y="380" font-size="40" font-weight="700" fill="#0f1117" text-anchor="middle">a9059cbb</text>
+          <text id="cd-sell" class="h" x="380" y="466" font-size="30" fill="#58C4DD" text-anchor="middle">函数选择器 · 前 4 字节</text>
+          <text id="cd-argl" class="h" x="1160" y="466" font-size="30" fill="#8a8f99" text-anchor="middle">参数</text>
+
+          <g id="cd-fa" class="h">
+            <rect x="200" y="560" width="440" height="76" rx="10" fill="#161a22" stroke="#e8e6df" stroke-width="2" />
+            <text x="420" y="609" font-size="30" fill="#e8e6df" text-anchor="middle">函数签名 A</text>
+          </g>
+          <g id="cd-fb" class="h">
+            <rect x="200" y="690" width="440" height="76" rx="10" fill="#2a1616" stroke="#FC6255" stroke-width="2" />
+            <text x="420" y="739" font-size="30" fill="#FC6255" text-anchor="middle">暴力找到的签名 B</text>
+          </g>
+          <path id="cd-pa" class="dr h" pathLength="1" d="M650 598 C760 598 780 660 888 660" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#cd-arr)" />
+          <path id="cd-pb" class="dr h" pathLength="1" d="M650 728 C760 728 780 668 888 668" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cd-arrr)" />
+          <g id="cd-hb" class="h">
+            <rect x="900" y="624" width="280" height="80" rx="10" fill="#58C4DD" />
+            <text x="1040" y="676" font-size="36" font-weight="700" fill="#0f1117" text-anchor="middle" class="mono">a9059cbb</text>
+          </g>
+          <text id="cd-same" class="h" x="1040" y="760" font-size="28" fill="#FC6255" text-anchor="middle">同一个选择器</text>
+          <g id="cd-cnt" class="h">
+            <text x="1300" y="650" font-size="56" font-weight="700" fill="#e8e6df" class="mono">2^32</text>
+            <text x="1300" y="705" font-size="30" fill="#8a8f99">约 43 亿种取值，可以穷举</text>
+          </g>
+        </g>
+
+        <!-- L2–L3 代理合约与 delegatecall -->
+        <g id="cd-px">
+          <path id="cd-call" class="dr h" pathLength="1" d="M110 450 H288" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#cd-arr)" />
+          <text id="cd-calll" class="h" x="200" y="425" font-size="28" fill="#8a8f99" text-anchor="middle">调用</text>
+          <g id="cd-pbx" class="h">
+            <rect x="300" y="300" width="420" height="310" rx="16" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+            <rect x="330" y="400" width="360" height="54" rx="8" fill="#22252d" />
+            <rect x="330" y="466" width="360" height="54" rx="8" fill="#22252d" />
+            <rect x="330" y="532" width="360" height="54" rx="8" fill="#22252d" />
+            <text x="350" y="437" font-size="28" fill="#e8e6df" class="mono">masterCopy</text>
+            <text x="350" y="503" font-size="28" fill="#e8e6df">余额等状态</text>
+            <text x="350" y="569" font-size="28" fill="#8a8f99">…</text>
+          </g>
+          <text id="cd-pt0" class="h" x="330" y="358" font-size="34" font-weight="700" fill="#58C4DD">代理合约</text>
+          <text id="cd-pt1" class="h" x="330" y="358" font-size="34" font-weight="700" fill="#58C4DD">钱包（代理）</text>
+          <rect id="cd-slot" class="h" x="330" y="400" width="360" height="54" rx="8" fill="none" stroke="#FC6255" stroke-width="4" />
+          <path id="cd-fw" class="dr h" pathLength="1" d="M730 450 H988" stroke="#8a8f99" stroke-width="3" fill="none" marker-end="url(#cd-arr)" />
+          <text id="cd-fwl" class="h" x="860" y="425" font-size="28" fill="#8a8f99" text-anchor="middle">转发</text>
+          <g id="cd-impl">
+            <g id="cd-ib" class="h">
+              <rect x="1000" y="300" width="420" height="310" rx="16" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+              <text x="1030" y="358" font-size="34" font-weight="700" fill="#58C4DD">实现合约</text>
+              <g stroke="#58C4DD" stroke-width="6" stroke-linecap="round" opacity="0.6"><path d="M1040 420 H1300" /><path d="M1070 470 H1360" /><path d="M1070 520 H1250" /><path d="M1040 570 H1200" /></g>
+            </g>
+            <g id="cd-ir" class="h">
+              <rect x="1000" y="300" width="420" height="310" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="3" />
+              <text x="1030" y="358" font-size="34" font-weight="700" fill="#FC6255">替换后的实现</text>
+              <g stroke="#FC6255" stroke-width="6" stroke-linecap="round" opacity="0.6"><path d="M1040 420 H1300" /><path d="M1070 470 H1360" /><path d="M1040 520 H1250" /></g>
+            </g>
+          </g>
+          <text id="cd-rl" class="h" x="960" y="720" font-size="36" font-weight="700" fill="#FC6255" text-anchor="middle">能替换实现合约 = 能改写全部逻辑</text>
+
+          <g id="cd-tg" class="h">
+            <rect x="1000" y="680" width="420" height="150" rx="16" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+            <text x="1030" y="738" font-size="34" font-weight="700" fill="#FC6255">目标合约</text>
+            <text x="1030" y="790" font-size="28" fill="#e8e6df">只提供代码</text>
+          </g>
+          <path id="cd-dc" class="dr h" pathLength="1" d="M720 580 C860 580 860 755 988 755" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cd-arrr)" />
+          <text id="cd-dcl" class="h mono" x="880" y="640" font-size="28" fill="#FC6255">delegatecall</text>
+          <g id="cd-chipo"><g id="cd-chip" class="h"><rect x="1250" y="760" width="140" height="44" rx="8" fill="#FC6255" /><text x="1320" y="791" font-size="26" font-weight="700" fill="#0f1117" text-anchor="middle">目标代码</text></g></g>
+          <text id="cd-dcr" class="h" x="300" y="680" font-size="30" fill="#e8e6df">代码在钱包的存储上执行</text>
+          <text id="cd-dcr2" class="h" x="300" y="730" font-size="30" font-weight="700" fill="#FC6255">钱包自己的状态被改写</text>
+        </g>
+
+        <!-- L4 EIP-7702 -->
+        <g id="cd-77">
+          <g id="cd-eoa" class="h">
+            <rect x="300" y="360" width="440" height="220" rx="16" fill="#161a22" stroke="#e8e6df" stroke-width="2.5" />
+            <text x="330" y="420" font-size="36" font-weight="700" fill="#e8e6df" class="mono">EOA</text>
+            <text x="330" y="490" font-size="30" fill="#8a8f99" class="mono">nonce = 7</text>
+            <text x="330" y="545" font-size="28" fill="#8a8f99">私钥直接控制，没有代码</text>
+          </g>
+          <path id="cd-dg" class="dr h" pathLength="1" d="M750 470 H1088" stroke="#58C4DD" stroke-width="3" fill="none" marker-end="url(#cd-arr)" />
+          <text id="cd-dgl" class="h" x="920" y="445" font-size="28" fill="#58C4DD" text-anchor="middle">委托执行代码</text>
+          <g id="cd-ct" class="h">
+            <rect x="1100" y="360" width="440" height="220" rx="16" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" />
+            <text x="1130" y="420" font-size="36" font-weight="700" fill="#58C4DD">合约代码</text>
+            <g stroke="#58C4DD" stroke-width="6" stroke-linecap="round" opacity="0.6"><path d="M1130 480 H1400" /><path d="M1160 530 H1460" /></g>
+          </g>
+          <g id="cd-auth" class="h">
+            <rect x="620" y="660" width="600" height="110" rx="14" fill="#161a22" stroke="#83C167" stroke-width="2.5" />
+            <text x="650" y="726" font-size="30" fill="#e8e6df">授权里的 <tspan class="mono">nonce = 7</tspan></text>
+          </g>
+          <path id="cd-ok" class="h" d="M1250 712 L1270 734 L1306 690" stroke="#83C167" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          <text id="cd-okl" class="h" x="1330" y="726" font-size="30" font-weight="700" fill="#83C167">匹配才生效</text>
+        </g>
+      </g>
+
+      <!-- 术语卡 -->
+      <g id="cd-t0" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df" class="mono">calldata</text><text x="100" y="160" font-size="28" fill="#e8e6df">发送给合约的调用数据</text></g>
+      <g id="cd-t1" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">函数选择器 <tspan font-size="28" font-weight="400" fill="#8a8f99">Selector</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">函数签名哈希的前 4 字节</text></g>
+      <g id="cd-t2" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">代理合约 <tspan font-size="28" font-weight="400" fill="#8a8f99">Proxy</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">只存状态，调用转给实现合约</text></g>
+      <g id="cd-t3" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df" class="mono">delegatecall</text><text x="100" y="160" font-size="28" fill="#e8e6df">在调用方的存储上执行目标代码</text></g>
+      <g id="cd-t4" class="h"><rect x="70" y="56" width="600" height="132" rx="14" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="100" y="110" font-size="38" font-weight="700" fill="#e8e6df">EIP-7702 <tspan font-size="28" font-weight="400" fill="#8a8f99">Pectra · 2025-05</tspan></text><text x="100" y="160" font-size="28" fill="#e8e6df">EOA 把执行代码委托给合约</text></g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const TERM = (n) => { if (n > 0) OUT("#cd-t" + (n - 1), at(n, 0.0), 0.3); IN("#cd-t" + n, at(n, 0.05), 0.5, { x: -20 }); };
+
+      // L0 calldata
+      TERM(0);
+      IN("#cd-cdl", at(0, 0.08)); IN("#cd-strip", at(0, 0.12), 0.6, { x: -30 });
+      tl.to("#cd-sel", { attr: { width: 360 }, duration: 0.6, ease: "power2.out" }, at(0, 0.4));
+      IN("#cd-selt", at(0, 0.5), 0.4); IN("#cd-sell", at(0, 0.55)); IN("#cd-argl", at(0, 0.62));
+
+      // L1 碰撞
+      TERM(1);
+      IN("#cd-fa", at(1, 0.08)); ARROW("#cd-pa", at(1, 0.15), 0.5); IN("#cd-hb", at(1, 0.22), 0.4);
+      IN("#cd-cnt", at(1, 0.32));
+      IN("#cd-fb", at(1, 0.48)); ARROW("#cd-pb", at(1, 0.55), 0.5); IN("#cd-same", at(1, 0.65));
+
+      // L2 代理合约
+      OUT("#cd-cd", at(2, 0.0), 0.4);
+      TERM(2);
+      ARROW("#cd-call", at(2, 0.08), 0.4); IN("#cd-calll", at(2, 0.1));
+      IN("#cd-pbx", at(2, 0.1)); IN("#cd-pt0", at(2, 0.1));
+      ARROW("#cd-fw", at(2, 0.22), 0.5); IN("#cd-fwl", at(2, 0.25));
+      IN("#cd-ib", at(2, 0.28));
+      OUT("#cd-ib", at(2, 0.5), 0.3);
+      IN("#cd-ir", at(2, 0.52), 0.5, { y: -30 });
+      IN("#cd-rl", at(2, 0.62));
+
+      // L3 delegatecall
+      TERM(3);
+      OUT("#cd-impl", at(3, 0.0), 0.3); OUT("#cd-rl", at(3, 0.0), 0.3); OUT("#cd-fw", at(3, 0.0), 0.3); OUT("#cd-fwl", at(3, 0.0), 0.3);
+      OUT("#cd-pt0", at(3, 0.0), 0.3); IN("#cd-pt1", at(3, 0.08), 0.4);
+      IN("#cd-tg", at(3, 0.12));
+      ARROW("#cd-dc", at(3, 0.2), 0.5); IN("#cd-dcl", at(3, 0.25));
+      IN("#cd-chip", at(3, 0.3), 0.3);
+      tl.to("#cd-chipo", { x: -720, y: -223, duration: 0.8, ease: "power2.inOut" }, at(3, 0.38));
+      IN("#cd-slot", at(3, 0.58), 0.3);
+      IN("#cd-dcr", at(3, 0.6)); IN("#cd-dcr2", at(3, 0.68));
+
+      // L4 EIP-7702
+      OUT("#cd-px", at(4, 0.0), 0.4);
+      TERM(4);
+      IN("#cd-eoa", at(4, 0.1));
+      ARROW("#cd-dg", at(4, 0.2), 0.5); IN("#cd-dgl", at(4, 0.25));
+      IN("#cd-ct", at(4, 0.28));
+      IN("#cd-auth", at(4, 0.45), 0.6, { y: 20 });
+      IN("#cd-ok", at(4, 0.62), 0.3); IN("#cd-okl", at(4, 0.66));
+
+      tl.to("#cd-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      tl.to("#cd-t4", { opacity: 0, duration: 0.3 }, C.d - 0.5);
+      window.__timelines["code"] = tl;
+    })();
+  </script>
+</template>

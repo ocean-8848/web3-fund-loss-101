@@ -1,0 +1,144 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 credit，id 前缀 cr- -->
+  <div id="root" data-composition-id="credit" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="cr-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="cr-all">
+        <!-- L0 不需要算力 -->
+        <text id="cr-t" class="h" x="120" y="180" font-size="52" font-weight="700" fill="#e8e6df">入账缺陷</text>
+        <g id="cr-hp" class="h">
+          <rect x="400" y="130" width="220" height="70" rx="35" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+          <text x="510" y="177" font-size="32" fill="#8a8f99" text-anchor="middle">51% 算力</text>
+        </g>
+        <path id="cr-hpx" class="dr" pathLength="1" d="M400 200 L620 130" stroke="#FC6255" stroke-width="5" fill="none" />
+        <text id="cr-hpl" class="h" x="650" y="177" font-size="34" font-weight="700" fill="#83C167">不需要</text>
+        <g id="cr-box" class="h">
+          <rect x="1180" y="340" width="420" height="460" rx="18" fill="#1d1830" stroke="#B48EF0" stroke-width="3" />
+          <text x="1390" y="394" font-size="34" font-weight="700" fill="#B48EF0" text-anchor="middle">交易所入账系统</text>
+        </g>
+
+        <!-- L1–L2 Upbit -->
+        <g id="cr-l1">
+          <g id="cr-u" class="h">
+            <text x="120" y="476" font-size="32" font-weight="700" fill="#e8e6df">Upbit 2023</text>
+            <rect x="520" y="430" width="300" height="70" rx="35" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" stroke-dasharray="10 6" />
+            <text x="670" y="476" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">仿冒 <tspan class="mono">APT</tspan></text>
+          </g>
+          <path id="cr-ua" class="dr h" pathLength="1" d="M832 465 H1208" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cr-arr)" />
+          <g id="cr-ur" class="h">
+            <rect x="1220" y="430" width="340" height="70" rx="8" fill="#161a22" stroke="#FC6255" stroke-width="2" />
+            <text x="1390" y="476" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">记成原生 <tspan class="mono">APT</tspan></text>
+          </g>
+          <text id="cr-type" class="h" x="1390" y="546" font-size="28" fill="#FC6255" text-anchor="middle"><tspan class="mono">type</tspan> 参数：未校验</text>
+        </g>
+
+        <!-- L3–L4 Kraken -->
+        <g id="cr-l2">
+          <g id="cr-k" class="h">
+            <text x="120" y="626" font-size="32" font-weight="700" fill="#e8e6df">Kraken 2024</text>
+            <rect x="520" y="580" width="300" height="70" rx="35" fill="#161a22" stroke="#F0B90B" stroke-width="2.5" stroke-dasharray="10 6" />
+            <text x="670" y="626" font-size="30" font-weight="700" fill="#F0B90B" text-anchor="middle">未完成的充值</text>
+          </g>
+          <path id="cr-ka" class="dr h" pathLength="1" d="M832 615 H1208" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cr-arr)" />
+          <g id="cr-kr" class="h">
+            <rect id="cr-krb" x="1220" y="580" width="340" height="70" rx="8" fill="#161a22" stroke="#FC6255" stroke-width="2" />
+            <text x="1390" y="626" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">形成余额</text>
+          </g>
+          <g id="cr-ck" class="h">
+            <text x="1630" y="606" font-size="30" font-weight="700" fill="#FC6255">CertiK 提款</text>
+            <text x="1630" y="652" font-size="30" font-weight="700" fill="#B48EF0">白帽争议</text>
+          </g>
+        </g>
+
+        <!-- L5 XRP / EOS -->
+        <g id="cr-l3">
+          <g id="cr-x" class="h">
+            <text x="120" y="746" font-size="32" font-weight="700" fill="#e8e6df">XRP · EOS</text>
+            <rect x="420" y="700" width="400" height="70" rx="35" fill="#161a22" stroke="#FC6255" stroke-width="2.5" stroke-dasharray="10 6" />
+            <text x="620" y="746" font-size="28" fill="#FC6255" text-anchor="middle">部分支付 · <tspan class="mono">hard_fail</tspan></text>
+          </g>
+          <path id="cr-xa" class="dr h" pathLength="1" d="M832 735 H1208" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#cr-arr)" />
+          <g id="cr-xr" class="h">
+            <rect x="1220" y="700" width="340" height="70" rx="8" fill="#161a22" stroke="#FC6255" stroke-width="2" />
+            <text x="1390" y="746" font-size="30" font-weight="700" fill="#FC6255" text-anchor="middle">记成有效充值</text>
+          </g>
+        </g>
+
+        <!-- L6 Flow -->
+        <g id="cr-fl">
+          <text class="cr-f h" x="120" y="916" font-size="32" font-weight="700" fill="#e8e6df">Flow 2025</text>
+          <g class="cr-f h">
+            <rect x="400" y="870" width="280" height="70" rx="12" fill="#131a24" stroke="#58C4DD" stroke-width="2.5" />
+            <text x="540" y="916" font-size="30" fill="#58C4DD" text-anchor="middle">执行层漏洞</text>
+          </g>
+          <g class="cr-f h">
+            <path d="M690 905 H738" stroke="#FC6255" stroke-width="3" marker-end="url(#cr-arr)" />
+            <rect x="750" y="870" width="260" height="70" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+            <text x="880" y="916" font-size="30" fill="#FC6255" text-anchor="middle">伪造资产</text>
+          </g>
+          <g class="cr-f h">
+            <path d="M1020 905 H1068" stroke="#FC6255" stroke-width="3" marker-end="url(#cr-arr)" />
+            <rect x="1080" y="870" width="260" height="70" rx="12" fill="#2a1616" stroke="#FC6255" stroke-width="2.5" />
+            <text x="1210" y="916" font-size="30" fill="#FC6255" text-anchor="middle">跨链转出</text>
+          </g>
+          <g class="cr-f h">
+            <rect x="1420" y="870" width="320" height="70" rx="12" fill="#132530" stroke="#9CDCEB" stroke-width="2.5" />
+            <text x="1580" y="916" font-size="30" font-weight="700" fill="#9CDCEB" text-anchor="middle">验证者暂停链</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...("x" in from ? { x: 0 } : {}), ...("y" in from ? { y: 0 } : {}), ...to }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+
+      // L0
+      IN("#cr-t", at(0, 0.02), 0.6, { x: -20 });
+      IN("#cr-hp", at(0, 0.2), 0.5);
+      DRAW("#cr-hpx", at(0, 0.45), 0.3);
+      IN("#cr-hpl", at(0, 0.5), 0.4);
+      IN("#cr-box", at(0, 0.6), 0.6);
+      // L1 Upbit
+      IN("#cr-u", at(1, 0.05), 0.5, { x: -20 });
+      ARROW("#cr-ua", at(1, 0.25), 0.5);
+      IN("#cr-ur", at(1, 0.45), 0.5);
+      // L2 type 未校验
+      IN("#cr-type", at(2, 0.1), 0.5, { y: -10 });
+      tl.fromTo("#cr-ur rect", { attr: { "stroke-width": 2 } }, { attr: { "stroke-width": 6 }, duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, at(2, 0.4));
+      // L3 Kraken
+      tl.to("#cr-l1", { opacity: 0.35, duration: 0.4 }, at(3, 0.0));
+      IN("#cr-k", at(3, 0.05), 0.5, { x: -20 });
+      ARROW("#cr-ka", at(3, 0.25), 0.5);
+      IN("#cr-kr", at(3, 0.45), 0.5);
+      // L4 CertiK
+      IN("#cr-ck", at(4, 0.1), 0.6, { x: 15 });
+      // L5 XRP / EOS
+      tl.to("#cr-l2", { opacity: 0.35, duration: 0.4 }, at(5, 0.0));
+      IN("#cr-x", at(5, 0.05), 0.5, { x: -20 });
+      ARROW("#cr-xa", at(5, 0.25), 0.5);
+      IN("#cr-xr", at(5, 0.45), 0.5);
+      // L6 Flow
+      tl.to("#cr-l3", { opacity: 0.35, duration: 0.4 }, at(6, 0.0));
+      tl.fromTo(".cr-f", { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.22 }, at(6, 0.05));
+
+      tl.to("#cr-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["credit"] = tl;
+    })();
+  </script>
+</template>

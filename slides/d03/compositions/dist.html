@@ -1,0 +1,137 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 dist，id 前缀 di- -->
+  <div id="root" data-composition-id="dist" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="di-all">
+        <g id="di-unit">
+          <text id="di-h0" class="h" x="120" y="190" font-size="48" font-weight="700" fill="#e8e6df">按年份</text>
+          <text id="di-h1" class="h" x="120" y="190" font-size="48" font-weight="700" fill="#e8e6df">按类型</text>
+          <text id="di-h2" class="h" x="120" y="190" font-size="48" font-weight="700" fill="#e8e6df">按金额</text>
+          <path id="di-base" class="dr" pathLength="1" d="M100 846 H1820" stroke="#8a8f99" stroke-width="2" fill="none" />
+          <g id="di-yl" class="h" font-size="28" fill="#8a8f99" text-anchor="middle"></g>
+          <g id="di-yn" class="h" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle"></g>
+          <g id="di-tl" class="h" font-size="28" fill="#8a8f99" text-anchor="middle"></g>
+          <g id="di-tn" class="h" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle"></g>
+          <g id="di-sl" class="h" font-size="28" fill="#8a8f99" text-anchor="middle"></g>
+          <g id="di-sn" class="h" font-size="30" font-weight="700" fill="#e8e6df" text-anchor="middle"></g>
+          <g id="di-dots"></g>
+        </g>
+
+        <!-- L3 金额合计 -->
+        <g id="di-sum">
+          <text id="di-sh" class="h" x="160" y="330" font-size="48" font-weight="700" fill="#e8e6df">全库合计 <tspan fill="#F0B90B">$193.4 亿</tspan></text>
+          <rect id="di-sb" x="160" y="480" width="0" height="100" rx="6" fill="#F0B90B" opacity="0.35" />
+          <rect id="di-bn" x="160" y="480" width="0" height="100" rx="6" fill="#F0B90B" />
+          <path id="di-bk" class="dr" pathLength="1" d="M160 460 V444 H685 V460" stroke="#F0B90B" stroke-width="3" fill="none" />
+          <text id="di-bl" class="h" x="160" y="420" font-size="34" fill="#e8e6df">Binance 一条 <tspan font-weight="700" fill="#F0B90B">$63.4 亿</tspan> · 约 33%</text>
+          <text id="di-rl" class="h" x="1760" y="640" font-size="30" fill="#8a8f99" text-anchor="end">其余 212 条合计 $130 亿</text>
+        </g>
+
+        <!-- L4–L5 手法 -->
+        <g id="di-tech">
+          <text id="di-th0" class="h" x="160" y="200" font-size="48" font-weight="700" fill="#e8e6df">按手法 · 件数</text>
+          <text id="di-th1" class="h" x="160" y="200" font-size="48" font-weight="700" fill="#e8e6df">按手法 · 金额</text>
+          <g id="di-rows"></g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const NS = "http://www.w3.org/2000/svg";
+      const mk = (tag, a, p, txt) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; p.appendChild(e); return e; };
+      const $ = s => document.querySelector(s);
+
+      // 每条：第 1 位类型序号，第 2 位年份（16 进制，0=2016），第 3 位金额档
+      const D = "00010000 00010011 10100001 00110010 00012111 01012010 01410001 41100001 41200000 31110011 31110001 01412010 02210000 02210110 02410001 02012010 02111001 02112011 02110011 12100001 02112011 02010011 02013111 02411001 03012000 03010001 03111011 03012001 03410000 03112010 03412001 03011000 03412011 03110010 03010001 03110001 03010001 03412001 03010000 33110011 03010001 03110011 03012011 03110010 04012010 14001001 14101001 04010001 34011001 04012001 04010001 04012011 04210010 14101001 04412001 04112011 04412011 04412011 34410011 15100001 05410001 05010001 15101001 25200001 05110011 05111011 15100000 15201001 15200001 05210011 05110011 05410001 06010011 06110001 26101001 06010011 06112101 26200001 26001001 26200000 16101001 16201001 16101001 26200000 26200000 06011011 16001001 66200001 26200001 16200000 06011001 16101001 06110011 06210000 36410001 07010000 17001000 17200001 07110011 07110011 17001001 07010001 07010010 47200010 37110011 27201000 07410001 77100000 77100000 17100001 37110001 57100000 07111010 07010011 47200000 07010011 07412001 07010000 07011011 07211010 07110001 07211011 17100000 67000001 37010001 27101000 18001001 28001001 18001001 58201001 38112011 08111111 18101000 38011011 18101001 08110011 08210000 08112010 08010100 18101001 08110011 68401001 28101001 08210000 18101001 08111010 08111011 18100000 08111011 38111011 08011011 39011011 09110010 19001001 09310000 79100000 19101001 09110000 09410000 19200001 09110010 19001001 19101001 19001001 09110001 09110001 09110000 09110011 39110001 19001001 69001001 29001001 19001001 59101001 39111010 19001001 29101001 19201001 19001001 09110010 19001001 49000000 59001001 1a101001 1a101001 2a001001 1a100001 2a001001 0a410000 2a001001 1a101001 0a410001 1a101001 1a201000 1a002001 0a110010 1a101001 2a200000 2a101001 2a101001 5a101101 1a101001 2a101001 3a111011 4a101001 3a010011 1a200001 2a201001 0a210000 0a110001 0a310000 0a110011 0a010011".split(" ");
+      // 单位图布局：分组 key → 列，k 个一行
+      const layout = (key, x0, pitch, k, sp) => {
+        const n = {};
+        return D.map(d => { const c = key(d); const j = n[c] = (n[c] || 0) + 1; return [x0 + c * pitch + ((j - 1) % k) * sp, 820 - Math.floor((j - 1) / k) * sp]; });
+      };
+      const PY = layout(d => parseInt(d[1], 16), 180, 150, 3, 30);
+      const PT = layout(d => +d[0], 120, 220, 10, 20);
+      const PS = layout(d => +d[2], 180, 320, 10, 22);
+      const gd = $("#di-dots");
+      const dots = D.map((d, i) => mk("circle", { cx: PY[i][0], cy: PY[i][1], r: 11, fill: "#8a8f99", opacity: 0 }, gd));
+      const cex = dots.filter((c, i) => D[i][0] === "0");
+
+      // 标签
+      const YN = [5, 7, 12, 20, 15, 13, 23, 31, 25, 32, 30];
+      YN.forEach((n, c) => { const cx = 180 + c * 150 + 30; mk("text", { x: cx, y: 890 }, $("#di-yl"), String(2016 + c)); mk("text", { x: cx, y: 820 - Math.floor((n - 1) / 3) * 30 - 34 }, $("#di-yn"), n); });
+      const TN = [["CEX", 106], ["DeFi", 50], ["桥", 22], ["关联服务", 17], ["钱包", 6], ["其他", 5], ["基础设施", 4], ["支付", 3]];
+      TN.forEach((t, c) => { const cx = 120 + c * 220 + 90; mk("text", { x: cx, y: 890 }, $("#di-tl"), t[0]); mk("text", { x: cx, y: 820 - Math.floor((t[1] - 1) / 10) * 20 - 34, fill: c === 0 ? "#B48EF0" : "#e8e6df" }, $("#di-tn"), t[1]); });
+      const SN = [["< $10M", 66], ["$10M–1 亿", 91], ["$1–10 亿", 33], ["≥ $10 亿", 2], ["未披露", 21]];
+      SN.forEach((t, c) => { const cx = 180 + c * 320 + 99; mk("text", { x: cx, y: 890 }, $("#di-sl"), t[0]); mk("text", { x: cx, y: 820 - Math.floor((t[1] - 1) / 10) * 22 - 34, fill: c === 1 ? "#F0B90B" : "#e8e6df" }, $("#di-sn"), t[1]); });
+
+      // 手法行：名称、件数、金额（百万美元）
+      const R = [["根因未公开", 53, 2000.7, "$20 亿"], ["合约逻辑漏洞", 41, 3064.9, "$30.6 亿"], ["私钥/签名者失陷", 31, 8341.4, "$83.4 亿"], ["前端/DNS/供应链", 14, 158.6, "$1.59 亿"], ["内部人员与流程", 13, 293.7, "$2.94 亿"]];
+      const ORD = [2, 1, 0, 4, 3]; // 金额排序后的新行位
+      const rows = R.map((r, i) => {
+        const g = mk("g", { id: "di-r" + i, opacity: 0 }, $("#di-rows"));
+        const y = 290 + i * 110, hot = i === 2;
+        mk("text", { x: 600, y: y + 42, "font-size": 32, fill: hot ? "#FC6255" : "#e8e6df", "text-anchor": "end" }, g, r[0]);
+        const b = mk("rect", { x: 640, y, width: 0, height: 60, rx: 6, fill: hot ? "#FC6255" : "#8a8f99" }, g);
+        const wn = r[1] / 53 * 1000, ws = r[2] / 8341.4 * 1000;
+        const tn = mk("text", { x: 640 + wn + 20, y: y + 42, "font-size": 32, "font-weight": 700, fill: "#e8e6df" }, g, r[1] + " 条");
+        const ts = mk("text", { x: 640 + ws + 20, y: y + 42, "font-size": 32, "font-weight": 700, fill: "#F0B90B", opacity: 0 }, g, r[3]);
+        return { g, b, tn, ts, wn, ws, dy: (ORD[i] - i) * 110 };
+      });
+
+      // L0 年份
+      IN("#di-h0", at(0, 0.02));
+      DRAW("#di-base", at(0, 0.05), 0.6);
+      tl.fromTo(dots, { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: (L[0][1] - L[0][0]) * 0.45 / 213, immediateRender: false }, at(0, 0.1));
+      IN("#di-yl", at(0, 0.15)); IN("#di-yn", at(0, 0.55));
+
+      // L1 类型
+      OUT("#di-h0", at(1, 0.0), 0.3); OUT("#di-yl", at(1, 0.0), 0.3); OUT("#di-yn", at(1, 0.0), 0.3);
+      IN("#di-h1", at(1, 0.1));
+      dots.forEach((c, i) => tl.to(c, { attr: { cx: PT[i][0], cy: PT[i][1], r: 8 }, duration: 1.0, ease: "power2.inOut" }, at(1, 0.08) + (i % 24) * 0.008));
+      IN("#di-tl", at(1, 0.4)); IN("#di-tn", at(1, 0.5));
+      tl.to(cex, { attr: { fill: "#B48EF0" }, duration: 0.5 }, at(1, 0.55));
+
+      // L2 金额档
+      OUT("#di-h1", at(2, 0.0), 0.3); OUT("#di-tl", at(2, 0.0), 0.3); OUT("#di-tn", at(2, 0.0), 0.3);
+      IN("#di-h2", at(2, 0.1));
+      dots.forEach((c, i) => tl.to(c, { attr: { cx: PS[i][0], cy: PS[i][1], r: 9 }, duration: 1.0, ease: "power2.inOut" }, at(2, 0.08) + (i % 24) * 0.008));
+      IN("#di-sl", at(2, 0.4)); IN("#di-sn", at(2, 0.5));
+
+      // L3 合计
+      OUT("#di-unit", at(3, 0.0), 0.4);
+      IN("#di-sh", at(3, 0.08));
+      tl.to("#di-sb", { attr: { width: 1600 }, duration: 0.8, ease: "power2.out" }, at(3, 0.15));
+      tl.to("#di-bn", { attr: { width: 525 }, duration: 0.7, ease: "power2.out" }, at(3, 0.4));
+      DRAW("#di-bk", at(3, 0.45), 0.5); IN("#di-bl", at(3, 0.5)); IN("#di-rl", at(3, 0.62));
+
+      // L4 手法件数
+      OUT("#di-sum", at(4, 0.0), 0.4);
+      IN("#di-th0", at(4, 0.08));
+      rows.forEach((r, i) => { tl.to(r.g, { opacity: 1, duration: 0.3 }, at(4, 0.12) + i * 0.12); tl.to(r.b, { attr: { width: r.wn }, duration: 0.7, ease: "power2.out" }, at(4, 0.15) + i * 0.12); });
+
+      // L5 换成金额：宽度变、名次换
+      OUT("#di-th0", at(5, 0.0), 0.3); IN("#di-th1", at(5, 0.08));
+      rows.forEach(r => {
+        OUT(r.tn, at(5, 0.05), 0.3);
+        tl.to(r.b, { attr: { width: r.ws }, duration: 0.9, ease: "power2.inOut" }, at(5, 0.12));
+        tl.to(r.g, { y: r.dy, duration: 0.8, ease: "power2.inOut" }, at(5, 0.4));
+        tl.to(r.ts, { opacity: 1, duration: 0.4 }, at(5, 0.6));
+      });
+
+      tl.to("#di-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["dist"] = tl;
+    })();
+  </script>
+</template>

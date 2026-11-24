@@ -1,0 +1,69 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 intrude，id 前缀 it- -->
+  <div id="root" data-composition-id="intrude" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="it-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#FC6255" />
+        </marker>
+      </defs>
+      <g id="it-all">
+        <text id="it-head" class="h" x="960" y="160" font-size="52" font-weight="700" fill="#e8e6df" text-anchor="middle">三条入侵路径</text>
+        <g id="it-n1" class="h">
+          <text class="mono" x="80" y="294" font-size="34" font-weight="700" fill="#B48EF0">BitoPro</text>
+          <text x="80" y="334" font-size="28" fill="#F0B90B">2025 · $11.5M</text>
+        </g>
+        <g id="it-n2" class="h">
+          <text class="mono" x="80" y="554" font-size="34" font-weight="700" fill="#B48EF0">WOO X</text>
+          <text x="80" y="594" font-size="28" fill="#F0B90B">2025 · $14M</text>
+        </g>
+        <g id="it-n3" class="h">
+          <text class="mono" x="80" y="814" font-size="34" font-weight="700" fill="#B48EF0">Mixin</text>
+          <text x="80" y="854" font-size="28" fill="#F0B90B">2023 · $2 亿</text>
+        </g>
+        <g id="it-r1a" class="h"><rect x="340" y="260" width="100" height="80" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="390" y="310" font-size="28" fill="#e8e6df" text-anchor="middle">社工</text><path d="M450 300 H486" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="496" y="260" width="184" height="80" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="588" y="310" font-size="28" fill="#e8e6df" text-anchor="middle">云运维人员</text></g>
+        <g id="it-r1b" class="h"><path d="M690 300 H726" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="736" y="260" width="216" height="80" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="844" y="310" font-size="28" fill="#e8e6df" text-anchor="middle">AWS 会话劫持</text><path d="M962 300 H998" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="1008" y="260" width="240" height="80" rx="12" fill="#161a22" stroke="#B48EF0" stroke-width="2.5" /><text x="1128" y="310" font-size="28" fill="#e8e6df" text-anchor="middle">热钱包升级迁移</text><path d="M1258 300 H1294" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="1304" y="260" width="212" height="80" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="1410" y="310" font-size="28" fill="#e8e6df" text-anchor="middle">模拟运维转出</text></g>
+        <g id="it-r2a" class="h"><rect x="340" y="520" width="212" height="80" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="446" y="570" font-size="28" fill="#e8e6df" text-anchor="middle">外部协作项目</text><path d="M562 560 H598" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="608" y="520" width="184" height="80" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="700" y="570" font-size="28" fill="#e8e6df" text-anchor="middle">开发者终端</text></g>
+        <g id="it-r2b" class="h"><path d="M802 560 H838" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="848" y="520" width="279" height="80" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="988" y="570" font-size="28" fill="#e8e6df" text-anchor="middle">Kubernetes 权限</text><path d="M1137 560 H1173" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="1183" y="520" width="128" height="80" rx="12" fill="#161a22" stroke="#58C4DD" stroke-width="2.5" /><text x="1247" y="570" font-size="28" fill="#e8e6df" text-anchor="middle">数据库</text><path d="M1321 560 H1357" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="1367" y="520" width="258" height="80" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="1496" y="570" font-size="28" fill="#e8e6df" text-anchor="middle">修改账户 · 提现</text></g>
+        <g id="it-r3a" class="h"><rect x="340" y="780" width="156" height="80" rx="12" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" /><text x="418" y="830" font-size="28" fill="#e8e6df" text-anchor="middle">云服务商</text><path d="M506 820 H542" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="552" y="780" width="212" height="80" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="658" y="830" font-size="28" fill="#e8e6df" text-anchor="middle">数据库被入侵</text><path d="M774 820 H810" stroke="#FC6255" stroke-width="3" fill="none" marker-end="url(#it-arr)" /><rect x="820" y="780" width="240" height="80" rx="12" fill="#161a22" stroke="#FC6255" stroke-width="2.5" /><text x="940" y="830" font-size="28" fill="#e8e6df" text-anchor="middle">热钱包密钥外泄</text></g>
+        <g id="it-5" class="h">
+          <rect x="1680" y="525" width="140" height="70" rx="35" fill="#FC6255" />
+          <text x="1750" y="572" font-size="34" font-weight="700" fill="#0f1117" text-anchor="middle">5 层</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const STEP = (s, t, gap = 0.2) => IN(s + " > *", t, 0.4, { x: -15 }, { stagger: gap });
+
+      IN("#it-head", at(0, 0.02), 0.8, { y: 20 });
+      IN("#it-n1", at(0, 0.15), 0.5);
+      tl.set("#it-r1a", { opacity: 1 }, at(0, 0.2)); STEP("#it-r1a", at(0, 0.25));
+
+      tl.set("#it-r1b", { opacity: 1 }, at(1, 0.05)); STEP("#it-r1b", at(1, 0.08), 0.18);
+
+      IN("#it-n2", at(2, 0.05), 0.5);
+      tl.set("#it-r2a", { opacity: 1 }, at(2, 0.1)); STEP("#it-r2a", at(2, 0.15));
+
+      tl.set("#it-r2b", { opacity: 1 }, at(3, 0.05)); STEP("#it-r2b", at(3, 0.08), 0.18);
+      IN("#it-5", at(3, 0.6), 0.4, { scale: 1.5, svgOrigin: "1750 560" }, { scale: 1 });
+
+      IN("#it-n3", at(4, 0.05), 0.5);
+      tl.set("#it-r3a", { opacity: 1 }, at(4, 0.1)); STEP("#it-r3a", at(4, 0.15), 0.18);
+
+      tl.to("#it-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      window.__timelines["intrude"] = tl;
+    })();
+  </script>
+</template>

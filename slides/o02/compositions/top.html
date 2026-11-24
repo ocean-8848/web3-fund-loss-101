@@ -1,0 +1,98 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0f1117; overflow: hidden; }
+    #root svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .h { opacity: 0; }
+    #root .dr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  </style>
+  <!-- 场景 top，id 前缀 tp- -->
+  <div id="root" data-composition-id="top" data-duration="10" data-width="1920" data-height="1080">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="tp-all">
+        <g id="tp-chart">
+        <text id="tp-head" class="h" x="960" y="200" font-size="48" font-weight="700" fill="#e8e6df" text-anchor="middle">损失前 15</text>
+        <g id="tp-r0" class="h"><text x="520" y="300" font-size="28" fill="#e8e6df" text-anchor="end">Binance</text><rect id="tp-b0" x="560" y="276" width="1000.0" height="30" rx="4" fill="#F0B90B" /><text x="1576" y="300" font-size="28" fill="#F0B90B">$63.4 亿</text></g>
+        <g id="tp-r1" class="h"><text x="520" y="342" font-size="28" fill="#e8e6df" text-anchor="end">Bybit</text><rect id="tp-b1" x="560" y="318" width="230.3" height="30" rx="4" fill="#F0B90B" /><text x="806" y="342" font-size="28" fill="#F0B90B">$14.6 亿</text></g>
+        <g id="tp-r2" class="h"><text x="520" y="384" font-size="28" fill="#e8e6df" text-anchor="end">Ronin Bridge</text><rect id="tp-b2" x="560" y="360" width="98.6" height="30" rx="4" fill="#F0B90B" /><text x="675" y="384" font-size="28" fill="#F0B90B">$6.25 亿</text></g>
+        <g id="tp-r3" class="h"><text x="520" y="426" font-size="28" fill="#e8e6df" text-anchor="end">Poly Network</text><rect id="tp-b3" x="560" y="402" width="96.4" height="30" rx="4" fill="#F0B90B" /><text x="672" y="426" font-size="28" fill="#F0B90B">$6.11 亿</text></g>
+        <g id="tp-r4" class="h"><text x="520" y="468" font-size="28" fill="#e8e6df" text-anchor="end">Coincheck</text><rect id="tp-b4" x="560" y="444" width="83.6" height="30" rx="4" fill="#F0B90B" /><text x="660" y="468" font-size="28" fill="#F0B90B">$5.3 亿</text></g>
+        <g id="tp-r5" class="h"><text x="520" y="510" font-size="28" fill="#e8e6df" text-anchor="end">FTX（破产期转移）</text><rect id="tp-b5" x="560" y="486" width="75.2" height="30" rx="4" fill="#F0B90B" /><text x="651" y="510" font-size="28" fill="#F0B90B">$4.77 亿</text></g>
+        <g id="tp-r6" class="h"><text x="520" y="552" font-size="28" fill="#e8e6df" text-anchor="end">Bitget</text><rect id="tp-b6" x="560" y="528" width="61.1" height="30" rx="4" fill="#F0B90B" /><text x="637" y="552" font-size="28" fill="#F0B90B">$3.88 亿</text></g>
+        <g id="tp-r7" class="h"><text x="520" y="594" font-size="28" fill="#e8e6df" text-anchor="end">Wormhole</text><rect id="tp-b7" x="560" y="570" width="51.4" height="30" rx="4" fill="#F0B90B" /><text x="627" y="594" font-size="28" fill="#F0B90B">$3.26 亿</text></g>
+        <g id="tp-r8" class="h"><text x="520" y="636" font-size="28" fill="#e8e6df" text-anchor="end">Liquid Network</text><rect id="tp-b8" x="560" y="612" width="50.5" height="30" rx="4" fill="#F0B90B" /><text x="626" y="636" font-size="28" fill="#F0B90B">$3.2 亿</text></g>
+        <g id="tp-r9" class="h"><text x="520" y="678" font-size="28" fill="#e8e6df" text-anchor="end">BitMart</text><rect id="tp-b9" x="560" y="654" width="50.4" height="30" rx="4" fill="#F0B90B" /><text x="626" y="678" font-size="28" fill="#F0B90B">$3.19 亿</text></g>
+        <g id="tp-r10" class="h"><text x="520" y="720" font-size="28" fill="#e8e6df" text-anchor="end">DMM Bitcoin</text><rect id="tp-b10" x="560" y="696" width="48.1" height="30" rx="4" fill="#F0B90B" /><text x="624" y="720" font-size="28" fill="#F0B90B">$3.05 亿</text></g>
+        <g id="tp-r11" class="h"><text x="520" y="762" font-size="28" fill="#e8e6df" text-anchor="end">KelpDAO rsETH（LayerZero）</text><rect id="tp-b11" x="560" y="738" width="46.1" height="30" rx="4" fill="#F0B90B" /><text x="622" y="762" font-size="28" fill="#F0B90B">$2.92 亿</text></g>
+        <g id="tp-r12" class="h"><text x="520" y="804" font-size="28" fill="#e8e6df" text-anchor="end">PlayDapp</text><rect id="tp-b12" x="560" y="780" width="45.7" height="30" rx="4" fill="#F0B90B" /><text x="622" y="804" font-size="28" fill="#F0B90B">$2.9 亿</text></g>
+        <g id="tp-r13" class="h"><text x="520" y="846" font-size="28" fill="#e8e6df" text-anchor="end">Drift Protocol</text><rect id="tp-b13" x="560" y="822" width="44.6" height="30" rx="4" fill="#F0B90B" /><text x="621" y="846" font-size="28" fill="#F0B90B">$2.83 亿</text></g>
+        <g id="tp-r14" class="h"><text x="520" y="888" font-size="28" fill="#e8e6df" text-anchor="end">KuCoin</text><rect id="tp-b14" x="560" y="864" width="44.3" height="30" rx="4" fill="#F0B90B" /><text x="620" y="888" font-size="28" fill="#F0B90B">$2.81 亿</text></g>
+        <path id="tp-br" class="dr" pathLength="1" d="M984 316 H1000 V476 H984" stroke="#e8e6df" stroke-width="3" fill="none" />
+        <text id="tp-bl1" class="h" x="1030" y="388" font-size="32" font-weight="700" fill="#e8e6df">第 2–5 名合计 $32.3 亿</text>
+        <text id="tp-bl2" class="h" x="1030" y="446" font-size="32" font-weight="700" fill="#FC6255">&lt; <tspan class="mono">Binance</tspan> $63.4 亿</text>
+        </g>
+        <!-- L2 样本 -->
+        <g id="tp-samp" class="h">
+          <circle cx="960" cy="580" r="330" fill="none" stroke="#8a8f99" stroke-width="3" stroke-dasharray="14 12" />
+          <text x="960" y="340" font-size="36" fill="#8a8f99" text-anchor="middle">全部事件</text>
+        </g>
+        <g id="tp-pub" class="h">
+          <circle cx="960" cy="640" r="160" fill="#2a2410" stroke="#F0B90B" stroke-width="3" />
+          <text x="960" y="626" font-size="36" fill="#F0B90B" text-anchor="middle">公开事件</text>
+          <text x="960" y="684" font-size="44" font-weight="700" fill="#F0B90B" text-anchor="middle">213 起</text>
+        </g>
+        <!-- L3 金额误差 -->
+        <g id="tp-err" class="h">
+          <text x="960" y="400" font-size="36" fill="#e8e6df" text-anchor="middle">同一事件，不同来源的金额</text>
+          <rect x="460" y="470" width="800" height="80" rx="6" fill="#F0B90B" />
+          <rect x="1260" y="470" width="240" height="80" rx="6" fill="#F0B90B" opacity="0.25" stroke="#F0B90B" stroke-width="2" stroke-dasharray="8 6" />
+          <path d="M1340 456 V564" stroke="#F0B90B" stroke-width="3" />
+          <text x="1380" y="620" font-size="34" font-weight="700" fill="#F0B90B" text-anchor="middle">可相差 10–30%</text>
+        </g>
+        <g id="tp-26" class="h">
+          <rect x="660" y="720" width="600" height="96" rx="14" fill="#161a22" stroke="#8a8f99" stroke-width="2.5" />
+          <text x="960" y="780" font-size="34" fill="#e8e6df" text-anchor="middle">2026 年：金额多为二手汇总</text>
+        </g>
+      </g>
+
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const C = /*CUES*/{}/*END*/;
+      const L = C.L, at = (i, f = 0) => L[i][0] + f * (L[i][1] - L[i][0]);
+      const tl = gsap.timeline({ paused: true });
+      const IN = (s, t, d = 0.7, from = {}, to = {}) => tl.fromTo(s, { opacity: 0, ...from }, { opacity: 1, duration: d, ease: "power3.out", ...to }, t);
+      const OUT = (s, t, d = 0.4) => tl.to(s, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const DRAW = (s, t, d = 0.8) => tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+      const ARROW = (s, t, d = 0.6) => { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t); DRAW(s, t, d); };
+      const COUNT = (sel, from, to, t, d = 1.2, fmt = v => Math.round(v)) => {
+        const o = { v: from }, el = document.querySelector(sel);
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      };
+
+      IN("#tp-head", at(0, 0.02));
+      for (let i = 0; i < 15; i++) IN("#tp-r" + i, at(0, 0.06 + i * 0.025), 0.4, { x: -16 });
+      tl.to("#tp-r2, #tp-r3, #tp-r4, #tp-r5, #tp-r6, #tp-r7, #tp-r8, #tp-r9, #tp-r10, #tp-r11, #tp-r12, #tp-r13, #tp-r14", { opacity: 0.4, duration: 0.4 }, at(0, 0.62));
+      tl.to("#tp-b0", { attr: { fill: "#FC6255" }, duration: 0.4 }, at(0, 0.62));
+
+      // L1 第 2–5 名合计
+      tl.to("#tp-r2, #tp-r3, #tp-r4", { opacity: 1, duration: 0.4 }, at(1, 0.05));
+      DRAW("#tp-br", at(1, 0.15), 0.5);
+      IN("#tp-bl1", at(1, 0.3)); IN("#tp-bl2", at(1, 0.5));
+
+      // L2 样本只是公开事件
+      OUT("#tp-chart", at(2, 0.0), 0.4);
+      IN("#tp-samp", at(2, 0.1), 0.8, { scale: 0.85, svgOrigin: "960 580" }, { scale: 1 });
+      IN("#tp-pub", at(2, 0.35), 0.6, { scale: 0.6, svgOrigin: "960 640" }, { scale: 1 });
+
+      // L3 金额口径
+      OUT("#tp-samp", at(3, 0.0), 0.4); OUT("#tp-pub", at(3, 0.0), 0.4);
+      IN("#tp-err", at(3, 0.1), 0.6);
+      IN("#tp-26", at(3, 0.45), 0.6, { y: 16 });
+
+      tl.to("#tp-all", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, C.d - 0.5);
+      
+      window.__timelines["top"] = tl;
+    })();
+  </script>
+</template>
